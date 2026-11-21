@@ -1,0 +1,95 @@
+
+name: 청약레이더 실제 공고 자동 업데이트
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 0 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cheongyak-data-update
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install packages
+        run: pip install requests
+
+      - name: Fetch official housing data
+        env:
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+        run: python fetch_live.py
+
+      - name: Validate and prepare data
+        run: |
+          python - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+          from datetime import datetime
+
+          source = Path("data.preview.json")
+          payload = json.loads(
+              source.read_text(encoding="utf-8")
+          )
+
+          projects = payload.get("projects")
+          updated = payload.get("updated_at")
+
+          if not isinstance(projects, list):
+              raise RuntimeError("Invalid projects data")
+
+          if not projects:
+              raise RuntimeError(
+                  "No active listings. "
+                  "Existing data.json preserved."
+              )
+
+          if not updated:
+              raise RuntimeError("Missing update timestamp")
+
+          datetime.fromisoformat(updated)
+
+          required = (
+              "id", "name", "region", "start", "end"
+          )
+
+          for project in projects:
+              if not all(project.get(k) for k in required):
+                  raise RuntimeError(
+                      "Incomplete listing detected"
+                  )
+
+          shutil.copyfile(source, "data.json")
+          print("Validated listings:", len(projects))
+          PY
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update real housing notices"
+            git push origin HEAD:main
+          fi
