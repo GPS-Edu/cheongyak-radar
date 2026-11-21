@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T02:12:26.410121+09:00",
+  "updated_at": "2026-11-22T02:21:23.533326+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -634,6 +634,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "district_exploration",
+        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "modelType": "059.0000A",
+        "referencePriceEok": 2.85,
+        "transactionCount": 738,
+        "apartmentCount": 123,
+        "latestDate": "2026-11-19",
+        "scope": "경기 시흥시",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -977,6 +998,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "district_exploration",
+        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "modelType": "055.0000A",
+        "referencePriceEok": 2.65,
+        "transactionCount": 16,
+        "apartmentCount": 3,
+        "latestDate": "2026-11-09",
+        "scope": "경기 안산시 단원구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -1607,6 +1649,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "district_exploration",
+        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "modelType": "084.9500A",
+        "referencePriceEok": 6.35,
+        "transactionCount": 50,
+        "apartmentCount": 12,
+        "latestDate": "2026-11-18",
+        "scope": "경기 부천시 오정구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -2804,6 +2867,11 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "reason": "해당 주택형의 참고 거래가 충분하지 않습니다.",
+        "modelType": "104.8286"
       }
     },
     {
@@ -3621,6 +3689,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "same_dong",
+        "label": "같은 법정동·유사 면적",
+        "modelType": "084.9409A",
+        "referencePriceEok": 18.15,
+        "transactionCount": 14,
+        "apartmentCount": 6,
+        "latestDate": "2026-10-16",
+        "scope": "서울 영등포구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -4219,6 +4308,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "district_exploration",
+        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "modelType": "084.9794A",
+        "referencePriceEok": 12.5,
+        "transactionCount": 39,
+        "apartmentCount": 15,
+        "latestDate": "2026-11-02",
+        "scope": "서울 종로구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -5806,6 +5916,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "same_dong",
+        "label": "같은 법정동·유사 면적",
+        "modelType": "084.9614",
+        "referencePriceEok": 5.15,
+        "transactionCount": 97,
+        "apartmentCount": 18,
+        "latestDate": "2026-11-13",
+        "scope": "경기 고양시 덕양구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -7804,6 +7935,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "same_dong",
+        "label": "같은 법정동·유사 면적",
+        "modelType": "084.9848C",
+        "referencePriceEok": 5.52,
+        "transactionCount": 105,
+        "apartmentCount": 9,
+        "latestDate": "2026-11-08",
+        "scope": "경기 부천시 소사구",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     },
     {
@@ -8410,6 +8562,27 @@
         ],
         "distanceVerified": false,
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "district_exploration",
+        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "modelType": "059.9600A",
+        "referencePriceEok": 3.45,
+        "transactionCount": 1064,
+        "apartmentCount": 133,
+        "latestDate": "2026-11-20",
+        "scope": "경기 남양주시",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+        "verifiedComparable": false,
+        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
       }
     }
   ]
