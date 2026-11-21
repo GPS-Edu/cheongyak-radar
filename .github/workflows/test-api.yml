@@ -1,0 +1,83 @@
+
+name: 청약홈 실제 API 테스트
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install requests
+        run: pip install requests
+
+      - name: Test official housing API
+        env:
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import requests
+
+          key = os.environ.get("DATA_GO_KR_API_KEY", "")
+          if not key:
+              raise RuntimeError("API key is missing")
+
+          url = (
+              "https://api.odcloud.kr/api/"
+              "ApplyhomeInfoDetailSvc/v1/"
+              "getRemndrLttotPblancDetail"
+          )
+
+          response = requests.get(
+              url,
+              params={
+                  "serviceKey": key,
+                  "page": 1,
+                  "perPage": 100,
+                  "returnType": "JSON",
+              },
+              timeout=30,
+          )
+
+          print("HTTP status:", response.status_code)
+          response.raise_for_status()
+
+          result = response.json()
+          if result.get("matchCount") is None and "data" not in result:
+              raise RuntimeError(
+                  "Unexpected API response structure"
+              )
+
+          projects = result.get("data", [])
+          print("조회된 공고 수:", len(projects))
+          print("전체 검색 건수:", result.get("totalCount"))
+
+          regions = ("서울", "경기", "인천")
+          selected = []
+
+          for p in projects:
+              area = str(p.get("SUBSCRPT_AREA_CODE_NM", ""))
+              address = str(p.get("HSSPLY_ADRES", ""))
+              if (
+                  any(r in area for r in regions)
+                  or any(r in address for r in regions)
+              ):
+                  selected.append(p)
+
+          print("수도권 공고 수:", len(selected))
+
+          for p in selected[:10]:
+              print(
+                  "-",
+                  p.get("HOUSE_NM", "이름 없음"),
+                  "|",
+                  p.get("SUBSCRPT_AREA_CODE_NM"),
+                  "| 공고일:",
+                  p.get("RCRIT_PBLANC_DE")
+              )
+          PY
