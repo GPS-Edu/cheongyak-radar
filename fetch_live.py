@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -175,6 +176,20 @@ def scan_district_trades(session, key, project, today):
     lawd_code, district_label = match
     fetched_count = 0
     samples = []
+    candidates = []
+    # 주택형 코드의 숫자는 실측 전용면적이 아닌 면적형 표기일 수 있습니다.
+    target_areas = []
+    for model in project.get("housingTypes", []):
+        raw_area = model.get("exclusiveAreaSqm")
+        if raw_area is None:
+            found = re.match(r"^(\d{2,3})(?:\.\d+)?", str(model.get("type", "")))
+            raw_area = float(found.group(1)) if found else None
+        area = positive_number(raw_area)
+        if area is not None:
+            target_areas.append(area)
+    # 같은 법정동의 유사 면적 거래만 '비교 검토 후보'로 보관
+    dong_match = re.search(r"([가-힣]+동(?:\d+가)?)", address)
+    target_dong = dong_match.group(1) if dong_match else None
     for yyyymm in recent_months(today, count=3):
         page = 1
         while True:
@@ -199,29 +214,50 @@ def scan_district_trades(session, key, project, today):
             total = int((root.findtext(".//body/totalCount") or "0").strip())
             fetched_count += len(items)
             for item in items:
-                if len(samples) >= 3:
-                    break
                 def field(name):
                     return (item.findtext(name) or "").strip()
-                samples.append({
+                row = {
                     "apartment": field("aptNm"),
+                    "legalDong": field("umdNm"),
                     "exclusiveAreaSqm": field("excluUseAr"),
                     "dealAmountManwon": field("dealAmount"),
                     "dealYear": field("dealYear"),
                     "dealMonth": field("dealMonth"),
                     "dealDay": field("dealDay"),
-                })
+                }
+                if len(samples) < 3:
+                    samples.append(row)
+                area = positive_number(row["exclusiveAreaSqm"])
+                amount = positive_number(row["dealAmountManwon"])
+                cancelled = bool(field("cdealDay"))
+                if (target_dong and row["legalDong"] == target_dong
+                    and area is not None and amount is not None
+                    and any(abs(area - t) <= 2 for t in target_areas)
+                    and not cancelled and row["apartment"]):
+                    candidates.append({
+                        "apartment": row["apartment"],
+                        "legalDong": row["legalDong"],
+                        "exclusiveAreaSqm": round(area, 2),
+                        "dealAmountManwon": round(amount),
+                        "dealDate": (f'{row["dealYear"]}-'
+                                     f'{row["dealMonth"].zfill(2)}-'
+                                     f'{row["dealDay"].zfill(2)}'),
+                    })
             if page * 1000 >= total or not items:
                 break
             page += 1
 
+    candidates.sort(key=lambda x: x["dealDate"], reverse=True)
     return {
-        "status": "district_only_unverified",
+        "status": "same_dong_area_candidates_unverified" if target_dong else "district_only_unverified",
         "district": district_label,
+        "legalDong": target_dong,
         "months": list(recent_months(today, count=3)),
         "transactionCount": fetched_count,
         "sampleTransactions": samples,
-        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다.",
+        "candidateCount": len(candidates),
+        "candidateTransactions": candidates[:15],
+        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다.",
     }
 
 def main():
@@ -257,7 +293,8 @@ def main():
         info = project["transactionScan"]
         print(
             f"실거래 조회: {project['name']} | "
-            f"{info['status']} | {info.get('transactionCount', 0)}건"
+            f"{info['status']} | {info.get('transactionCount', 0)}건 | "
+            f"동·면적 후보 {info.get('candidateCount', 0)}건"
         )
 
     result = {"updated_at": now.isoformat(), "projects": projects}
