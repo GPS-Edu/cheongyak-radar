@@ -58,12 +58,16 @@ jobs:
                     result.get("matchCount"))
               print("이번에 조회한 건수:", len(rows))
 
-              for p in rows:
+
+              for p in rows[:5]:
                   print(
                       "공고:", p.get("HOUSE_NM"),
-                      "| 지역:",
-                      p.get("SUBSCRPT_AREA_CODE_NM"),
-                      "| 공고일:",
-                      p.get("RCRIT_PBLANC_DE")
+                      "| 공고일:", p.get("RCRIT_PBLANC_DE"),
+                      "| 접수시작:", p.get("RCEPT_BGNDE"),
+                      "| 접수종료:", p.get("RCEPT_ENDDE"),
+                      "| 일반공급 종료:", p.get("GNRL_RCEPT_ENDDE"),
+                      "| 특별공급 종료:", p.get("SPSPLY_RCEPT_ENDDE")
+                  )
+
                   )
           PY
