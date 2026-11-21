@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T01:28:42.381469+09:00",
+  "updated_at": "2026-11-22T01:43:13.055777+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -252,8 +252,9 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000560&pblancNo=2026000560",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "district_only_unverified",
+        "status": "same_dong_area_candidates_unverified",
         "district": "서울 영등포구",
+        "legalDong": "문래동3가",
         "months": [
           "202611",
           "202610",
@@ -263,6 +264,7 @@
         "sampleTransactions": [
           {
             "apartment": "당산계룡리슈빌3단지",
+            "legalDong": "당산동3가",
             "exclusiveAreaSqm": "49.993",
             "dealAmountManwon": "95,000",
             "dealYear": "2026",
@@ -271,6 +273,7 @@
           },
           {
             "apartment": "한신휴1차",
+            "legalDong": "대림동",
             "exclusiveAreaSqm": "59.89",
             "dealAmountManwon": "59,000",
             "dealYear": "2026",
@@ -279,6 +282,7 @@
           },
           {
             "apartment": "성원(1115-1)",
+            "legalDong": "대림동",
             "exclusiveAreaSqm": "73.14",
             "dealAmountManwon": "68,000",
             "dealYear": "2026",
@@ -286,7 +290,31 @@
             "dealDay": "9"
           }
         ],
-        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다."
+        "candidateCount": 3,
+        "candidateTransactions": [
+          {
+            "apartment": "문래자이",
+            "legalDong": "문래동3가",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 195000,
+            "dealDate": "2026-10-16"
+          },
+          {
+            "apartment": "태영데시앙",
+            "legalDong": "문래동3가",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 140000,
+            "dealDate": "2026-10-12"
+          },
+          {
+            "apartment": "국화맨션",
+            "legalDong": "문래동3가",
+            "exclusiveAreaSqm": 84.71,
+            "dealAmountManwon": 115000,
+            "dealDate": "2026-09-21"
+          }
+        ],
+        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다."
       }
     },
     {
@@ -336,8 +364,9 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "district_only_unverified",
+        "status": "same_dong_area_candidates_unverified",
         "district": "서울 종로구",
+        "legalDong": "교남동",
         "months": [
           "202611",
           "202610",
@@ -347,6 +376,7 @@
         "sampleTransactions": [
           {
             "apartment": "창신쌍용1",
+            "legalDong": "창신동",
             "exclusiveAreaSqm": "54.7",
             "dealAmountManwon": "90,500",
             "dealYear": "2026",
@@ -355,6 +385,7 @@
           },
           {
             "apartment": "청운현대",
+            "legalDong": "청운동",
             "exclusiveAreaSqm": "78.78",
             "dealAmountManwon": "117,000",
             "dealYear": "2026",
@@ -363,6 +394,7 @@
           },
           {
             "apartment": "창신쌍용1",
+            "legalDong": "창신동",
             "exclusiveAreaSqm": "106.62",
             "dealAmountManwon": "104,000",
             "dealYear": "2026",
@@ -370,7 +402,9 @@
             "dealDay": "7"
           }
         ],
-        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다."
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다."
       }
     },
     {
