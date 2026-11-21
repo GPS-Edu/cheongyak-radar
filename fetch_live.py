@@ -5,12 +5,24 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
+import xml.etree.ElementTree as ET
+from calendar import monthrange
 
 API_BASE = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/"
 API_URL = API_BASE + "getAPTLttotPblancDetail"
 MODEL_URL = API_BASE + "getAPTLttotPblancMdl"
 REGIONS = ("서울", "경기", "인천")
 PAGE_SIZE = 100
+TRADE_API_URL = (
+    "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/"
+    "getRTMSDataSvcAptTrade"
+)
+# Only districts reliably identified from the two Seoul listing addresses.
+# Other places remain unscanned until legal-dong code mapping is validated.
+VERIFIED_DISTRICTS = {
+    ("서울", "서울특별시 영등포구"): ("11560", "서울 영등포구"),
+    ("서울", "서울특별시 종로구"): ("11110", "서울 종로구"),
+}
 
 
 def get_date(value):
@@ -137,6 +149,81 @@ def fetch_housing_types(session, key, project):
     return output
 
 
+
+
+def recent_months(today, count=3):
+    year, month = today.year, today.month
+    for _ in range(count):
+        yield f"{year:04d}{month:02d}"
+        month -= 1
+        if month == 0:
+            month = 12
+            year -= 1
+
+
+def scan_district_trades(session, key, project, today):
+    """Fetch an *unmatched district-wide* sample; never treat as a comparable."""
+    address = project.get("district", "")
+    match = None
+    for (region, prefix), district in VERIFIED_DISTRICTS.items():
+        if project["region"] == region and address.startswith(prefix):
+            match = district
+            break
+    if match is None:
+        return {"status": "not_scanned", "reason": "시군구 코드 확인 전"}
+
+    lawd_code, district_label = match
+    fetched_count = 0
+    samples = []
+    for yyyymm in recent_months(today, count=3):
+        page = 1
+        while True:
+            response = session.get(
+                TRADE_API_URL,
+                params={
+                    "serviceKey": key,
+                    "LAWD_CD": lawd_code,
+                    "DEAL_YMD": yyyymm,
+                    "pageNo": page,
+                    "numOfRows": 1000,
+                },
+                timeout=35,
+            )
+            response.raise_for_status()
+            root = ET.fromstring(response.content)
+            result_code = (root.findtext(".//header/resultCode") or "").strip()
+            if result_code not in ("00", "000"):
+                detail = root.findtext(".//header/resultMsg") or "unknown error"
+                raise RuntimeError(f"Trade API returned {result_code}: {detail}")
+            items = root.findall(".//body/items/item")
+            total = int((root.findtext(".//body/totalCount") or "0").strip())
+            fetched_count += len(items)
+            for item in items:
+                if len(samples) >= 3:
+                    break
+                def field(name):
+                    return (item.findtext(name) or "").strip()
+                samples.append({
+                    "apartment": field("aptNm"),
+                    "exclusiveAreaSqm": field("excluUseAr"),
+                    "dealAmountManwon": field("dealAmount"),
+                    "dealYear": field("dealYear"),
+                    "dealMonth": field("dealMonth"),
+                    "dealDay": field("dealDay"),
+                })
+            if page * 1000 >= total or not items:
+                break
+            page += 1
+
+    return {
+        "status": "district_only_unverified",
+        "district": district_label,
+        "months": list(recent_months(today, count=3)),
+        "transactionCount": fetched_count,
+        "sampleTransactions": samples,
+        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다.",
+    }
+
 def main():
     key = os.environ.get("DATA_GO_KR_API_KEY", "")
     if not key:
@@ -162,6 +249,17 @@ def main():
         project["price"] = max((x["priceEok"] for x in types), default=None)
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
 
+    # Pilot: scan only 2 known Seoul districts. Do not set project.market.
+    for project in projects:
+        project["transactionScan"] = scan_district_trades(
+            session, key, project, now.date()
+        )
+        info = project["transactionScan"]
+        print(
+            f"실거래 조회: {project['name']} | "
+            f"{info['status']} | {info.get('transactionCount', 0)}건"
+        )
+
     result = {"updated_at": now.isoformat(), "projects": projects}
     Path("data.preview.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -176,4 +274,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
