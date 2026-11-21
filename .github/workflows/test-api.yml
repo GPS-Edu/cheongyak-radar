@@ -1,5 +1,5 @@
 
-name: 청약홈 실제 API 테스트
+name: 수도권 청약 공고 조회 테스트
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Compare housing APIs
+      - name: Fetch Seoul Gyeonggi Incheon
         env:
           DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
         run: |
@@ -25,49 +25,45 @@ jobs:
 
           key = os.environ["DATA_GO_KR_API_KEY"]
 
-          base = (
+          url = (
               "https://api.odcloud.kr/api/"
               "ApplyhomeInfoDetailSvc/v1/"
+              "getAPTLttotPblancDetail"
           )
 
-          apis = {
-              "일반 아파트 분양": "getAPTLttotPblancDetail",
-              "무순위·잔여세대": "getRemndrLttotPblancDetail",
-          }
+          regions = ["서울", "경기", "인천"]
 
-          for name, endpoint in apis.items():
-              print("\n==========", name, "==========")
+          for region in regions:
+              print("\n==========", region, "==========")
 
               response = requests.get(
-                  base + endpoint,
+                  url,
                   params={
                       "serviceKey": key,
                       "page": 1,
                       "perPage": 10,
                       "returnType": "JSON",
+                      "cond[SUBSCRPT_AREA_CODE_NM::EQ]": region,
                   },
                   timeout=30,
               )
 
               print("HTTP:", response.status_code)
               response.raise_for_status()
+
               result = response.json()
-
-              print("응답 항목:", list(result.keys()))
-              print("전체 건수:", result.get("totalCount"))
-              print("검색 건수:", result.get("matchCount"))
-              print("현재 건수:", result.get("currentCount"))
-
               rows = result.get("data") or []
-              print("실제 데이터 수:", len(rows))
 
-              for row in rows[:5]:
+              print("해당 지역 전체 건수:",
+                    result.get("matchCount"))
+              print("이번에 조회한 건수:", len(rows))
+
+              for p in rows:
                   print(
-                      "공고:",
-                      row.get("HOUSE_NM"),
+                      "공고:", p.get("HOUSE_NM"),
                       "| 지역:",
-                      row.get("SUBSCRPT_AREA_CODE_NM"),
-                      "| 날짜:",
-                      row.get("RCRIT_PBLANC_DE"),
+                      p.get("SUBSCRPT_AREA_CODE_NM"),
+                      "| 공고일:",
+                      p.get("RCRIT_PBLANC_DE")
                   )
           PY
