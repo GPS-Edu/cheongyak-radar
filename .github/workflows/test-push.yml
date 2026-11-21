@@ -1,0 +1,89 @@
+
+name: 내 휴대폰 테스트 알림
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install packages
+        run: pip install requests pywebpush
+
+      - name: Send one test notification
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          TEST_USER_ID: ${{ secrets.TEST_USER_ID }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os
+          import json
+          import requests
+          from pywebpush import webpush
+
+          required = [
+              "SUPABASE_URL",
+              "SUPABASE_SERVICE_ROLE_KEY",
+              "VAPID_PRIVATE_KEY",
+              "VAPID_SUBJECT",
+              "TEST_USER_ID",
+          ]
+          if any(not os.environ.get(k) for k in required):
+              raise RuntimeError("Missing GitHub Secrets")
+
+          base = os.environ["SUPABASE_URL"].rstrip("/")
+          key = os.environ["SUPABASE_SERVICE_ROLE_KEY"]
+          uid = os.environ["TEST_USER_ID"]
+
+          response = requests.get(
+              base + "/rest/v1/push_subscriptions",
+              headers={
+                  "apikey": key,
+                  "Authorization": "Bearer " + key,
+              },
+              params={
+                  "user_id": "eq." + uid,
+                  "select": "endpoint,p256dh,auth",
+                  "limit": "1",
+              },
+              timeout=25,
+          )
+          response.raise_for_status()
+          devices = response.json()
+
+          if not devices:
+              raise RuntimeError(
+                  "No push subscription for TEST_USER_ID"
+              )
+
+          device = devices[0]
+
+          webpush(
+              subscription_info={
+                  "endpoint": device["endpoint"],
+                  "keys": {
+                      "p256dh": device["p256dh"],
+                      "auth": device["auth"],
+                  },
+              },
+              data=json.dumps({
+                  "title": "청약레이더 테스트",
+                  "body": "축하합니다! 푸시 알림 연결 성공 🎉",
+              }, ensure_ascii=False),
+              vapid_private_key=os.environ["VAPID_PRIVATE_KEY"],
+              vapid_claims={
+                  "sub": os.environ["VAPID_SUBJECT"],
+              },
+              ttl=300,
+          )
+
+          print("Test push accepted by push service")
+          PY
