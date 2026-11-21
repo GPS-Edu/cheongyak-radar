@@ -173,7 +173,7 @@ function tradeCandidatesHtml(p){
   const matches=rows.filter(x=>Array.isArray(x.matchingTypes)&&x.matchingTypes.includes(t));
   if(!matches.length)continue;
   any=true;
-  out+=`<details style="margin-top:12px;border-top:1px solid #edf0f5;padding-top:12px"><summary style="cursor:pointer;font-size:13px;font-weight:800">${esc(t)}형 · 후보 ${matches.length}건${matched>rows.length?' (일부만 저장됨)':''}</summary><div style="overflow-x:auto"><table style="width:100%;font-size:12px;border-collapse:collapse"><thead><tr><th style="text-align:left">아파트·거래일</th><th>전용면적</th><th style="text-align:right">거래금액</th></tr></thead><tbody>${itemRows(matches)}</tbody></table></div>${matches.length>12?'<p class="fineprint">최근 12건만 표시합니다.</p>':''}</details>`;
+  out+=`<details open style="margin-top:12px;border-top:1px solid #edf0f5;padding-top:12px"><summary style="cursor:pointer;font-size:13px;font-weight:800">${esc(t)}형 · 후보 ${matches.length}건${matched>rows.length?' (일부만 저장됨)':''}</summary><div style="overflow-x:auto"><table style="width:100%;font-size:12px;border-collapse:collapse"><thead><tr><th style="text-align:left">아파트·거래일</th><th>전용면적</th><th style="text-align:right">거래금액</th></tr></thead><tbody>${itemRows(matches)}</tbody></table></div>${matches.length>12?'<p class="fineprint">최근 12건만 표시합니다.</p>':''}</details>`;
  }
  if(!any)out+='<p class="small muted">표시 가능한 거래 후보가 없습니다.</p>';
  return out+'<p class="fineprint" style="margin-top:15px">같은 법정동·유사 면적(±2㎡)을 사용한 검토용 거래입니다. 주택형에서 추출한 면적은 실측치가 아닐 수 있습니다. 준공연도·실제 거리·상품성·층·거래 조건을 평가하지 않아 <b>주변 시세 또는 로또 청약 판정에 사용하지 않습니다.</b></p></div>';
