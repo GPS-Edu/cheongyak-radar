@@ -1,6 +1,8 @@
 import json
 import os
 import re
+from collections import defaultdict
+from statistics import median
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -177,7 +179,7 @@ def target_area_types(project):
         area = positive_number(model.get("exclusiveAreaSqm"))
         verified = area is not None
         if area is None:
-            found = re.match(r"^(\d{2,3})(?:\.\d+)?", name)
+            found = re.match(r"^(\d{2,3}(?:\.\d+)?)", name)
             area = positive_number(found.group(1)) if found else None
         if area is not None:
             result.append({"type": name, "area": area, "verifiedArea": verified})
@@ -249,12 +251,13 @@ def fetch_district_month(session, key, lawd_code, yyyymm):
 def scan_district_trades(project, district_trades, months):
     district = identify_district(project)
     if district is None:
-        return {"status": "not_scanned", "reason": "법정동 지역코드 확인 전"}
+        return {"status": "not_scanned", "reason": "시군구 코드 확인 전"}
     lawd_code, label = district
     target_dong = identify_legal_dong(project["district"])
     all_trades = district_trades[lawd_code]
     models = target_area_types(project)
     candidates = []
+    by_type = defaultdict(list)
     for item in all_trades:
         if not target_dong or item["legalDong"] != target_dong:
             continue
@@ -262,7 +265,37 @@ def scan_district_trades(project, district_trades, months):
         if not matches:
             continue
         candidates.append({**item, "matchingTypes": [m["type"] for m in matches]})
+        for model in matches:
+            by_type[model["type"]].append(item)
+
     candidates.sort(key=lambda row: row["dealDate"], reverse=True)
+    # 통계는 화면에 저장하는 최대 80건이 아니라 전체 후보를 기준으로 산출합니다.
+    # 구축/신축의 가격 차이를 단지별로 판별할 수 없으므로, 2015년 이후 준공이라는
+    # 간단한 필터를 별도로 명시하고 '시세'나 '예상 차익'으로 확정하지 않습니다.
+    statistics = []
+    for model in models:
+        group = by_type.get(model["type"], [])
+        recent = [x for x in group if x["buildYear"].isdigit()
+                  and int(x["buildYear"]) >= 2015]
+        def summarize(rows):
+            values = [x["dealAmountManwon"] for x in rows]
+            buildings = sorted({(x["apartment"], x["jibun"]) for x in rows})
+            return {
+                "count": len(rows),
+                "apartmentCount": len(buildings),
+                "medianEok": round(median(values) / 10000, 4) if values else None,
+                "minEok": round(min(values) / 10000, 4) if values else None,
+                "maxEok": round(max(values) / 10000, 4) if values else None,
+                "latestDate": max((x["dealDate"] for x in rows), default=None),
+            }
+        statistics.append({
+            "type": model["type"],
+            "areaSqm": model["area"],
+            "areaSource": "api" if model["verifiedArea"] else "model_code_estimate",
+            "all": summarize(group),
+            "builtSince2015": summarize(recent),
+            "evaluation": "review_only",
+        })
     return {
         "status": "same_dong_area_candidates_unverified" if target_dong else "district_only_unverified",
         "district": label,
@@ -272,7 +305,8 @@ def scan_district_trades(project, district_trades, months):
         "candidateCount": len(candidates),
         "candidateTransactions": candidates[:80],
         "displayLimit": 80,
-        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다.",
+        "typeStatistics": statistics,
+        "warning": "법정동·면적 ±2㎡ 참고 통계입니다. 준공연도 2015년 이상 거래도 신축 분양단지와 직접 비교 가능하다고 검증되지 않았습니다. 실제 거리·층·단지 상품성 미검증으로 시세·차익·로또 판정을 보류합니다.",
     }
 
 
