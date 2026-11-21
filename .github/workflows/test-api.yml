@@ -1,4 +1,3 @@
-
 name: 수도권 청약 공고 조회 테스트
 
 on:
@@ -22,6 +21,8 @@ jobs:
           python - <<'PY'
           import os
           import requests
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
 
           key = os.environ["DATA_GO_KR_API_KEY"]
 
@@ -31,9 +32,13 @@ jobs:
               "getAPTLttotPblancDetail"
           )
 
-          regions = ["서울", "경기", "인천"]
+          today = datetime.now(
+              ZoneInfo("Asia/Seoul")
+          ).date()
 
-          for region in regions:
+          print("한국 기준 날짜:", today)
+
+          for region in ["서울", "경기", "인천"]:
               print("\n==========", region, "==========")
 
               response = requests.get(
@@ -54,16 +59,8 @@ jobs:
               result = response.json()
               rows = result.get("data") or []
 
-              print("해당 지역 전체 건수:",
+              print("전체 지역 공고:",
                     result.get("matchCount"))
-              print("이번에 조회한 건수:", len(rows))
-
-
-              for p in rows[:5]:
-           
-              from datetime import date
-
-              today = date.today()
 
               for p in rows:
                   name = p.get("HOUSE_NM", "이름 없음")
@@ -74,8 +71,16 @@ jobs:
                       status = "일정 확인 필요"
                   else:
                       try:
-                          start_date = date.fromisoformat(start[:10])
-                          end_date = date.fromisoformat(end[:10])
+                          start_date = (
+                              datetime.fromisoformat(
+                                  str(start)[:10]
+                              ).date()
+                          )
+                          end_date = (
+                              datetime.fromisoformat(
+                                  str(end)[:10]
+                              ).date()
+                          )
 
                           if today < start_date:
                               status = "접수 예정"
