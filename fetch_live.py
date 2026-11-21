@@ -344,6 +344,49 @@ def scan_district_trades(project, district_trades, months):
     }
 
 
+
+def select_reference_price(project):
+    """선택된 최고가 주택형의 실거래 '참고 통계'만 노출. 검증된 시세는 아님."""
+    models = project.get("housingTypes") or []
+    stats = (project.get("transactionScan") or {}).get("typeStatistics") or []
+    if not models or not stats:
+        return {"status": "unavailable", "reason": "비교할 주택형 통계가 없습니다."}
+    representative = max(models, key=lambda x: x.get("priceEok") or 0)
+    model_name = representative.get("type") or representative.get("modelNo")
+    record = next((x for x in stats if x.get("type") == model_name), None)
+    if not record:
+        return {"status": "unavailable", "reason": "대표 주택형의 거래 통계가 없습니다.", "modelType": model_name}
+    # 같은 법정동·최근 준공 통계 선호, 부족하면 동일 동 전체 참고 통계
+    # 행정구 전체 값은 가까운 곳의 '주변 시세'와 같지 않아 별도 표시
+    options = [
+        ("same_dong_recent_build", "같은 법정동·2015년 이후 준공", record.get("builtSince2015"), 3, 2),
+        ("same_dong", "같은 법정동·유사 면적", record.get("all"), 3, 2),
+        ("district_exploration", "같은 시군구·유사 면적(거리 미확인)", record.get("districtExploration"), 5, 3),
+    ]
+    for status, label, data, min_trades, min_buildings in options:
+        if not isinstance(data, dict):
+            continue
+        if (data.get("medianEok") is None or
+                data.get("count", 0) < min_trades or
+                data.get("apartmentCount", 0) < min_buildings):
+            continue
+        return {
+            "status": status,
+            "label": label,
+            "modelType": model_name,
+            "referencePriceEok": data["medianEok"],
+            "transactionCount": data["count"],
+            "apartmentCount": data["apartmentCount"],
+            "latestDate": data.get("latestDate"),
+            "scope": (project.get("transactionScan") or {}).get("district"),
+            "months": (project.get("transactionScan") or {}).get("months", []),
+            "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
+            "verifiedComparable": False,
+            "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다.",
+        }
+    return {"status": "insufficient", "reason": "해당 주택형의 참고 거래가 충분하지 않습니다.", "modelType": model_name}
+
+
 def main():
     key = os.environ.get("DATA_GO_KR_API_KEY", "")
     if not key:
@@ -387,8 +430,13 @@ def main():
         )
         info = project["transactionScan"]
         # 집계/후보 데이터는 시세 판정에 사용하지 않습니다.
-        project["market"] = None
-        project["marketComparable"] = False
+        project["market"] = None  # 검증된 주변 시세는 확인 전
+        project["marketComparable"] = False  # 자동 로또 판정 금지
+        project["referenceMarket"] = select_reference_price(project)
+        ref = project["referenceMarket"]
+        print(f"참고 실거래: {project['name']} | {ref.get('status')} | "
+              f"{ref.get('referencePriceEok', '자료 부족')}억 | "
+              f"주택형 {ref.get('modelType', '미확인')}")
         print(
             f"실거래 조회: {project['name']} | "
             f"{info['status']} | {info.get('transactionCount', 0)}건 | "
