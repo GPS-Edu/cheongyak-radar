@@ -1,0 +1,37 @@
+
+name: 실제 청약 공고 수집 미리보기
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install packages
+        run: pip install requests
+
+      - name: Fetch real housing notices
+        env:
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+        run: python fetch_live.py
+
+      - name: Upload preview file
+        uses: actions/upload-artifact@v4
+        with:
+          name: cheongyak-live-preview
+          path: data.preview.json
+          if-no-files-found: error
+          retention-days: 7
