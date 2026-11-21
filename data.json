@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T01:20:39.409028+09:00",
+  "updated_at": "2026-11-22T01:24:44.127870+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -12,11 +12,41 @@
       "start": "2026-11-16",
       "end": "2026-11-27",
       "price": 4.6436,
+      "housingTypes": [
+        {
+          "type": "055.0000A",
+          "modelNo": "01",
+          "supplyAreaSqm": 79.047,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.339
+        },
+        {
+          "type": "059.0000A",
+          "modelNo": "02",
+          "supplyAreaSqm": 84.6567,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.6436
+        },
+        {
+          "type": "059.0000B",
+          "modelNo": "03",
+          "supplyAreaSqm": 84.6141,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.6359
+        },
+        {
+          "type": "059.0000C",
+          "modelNo": "04",
+          "supplyAreaSqm": 84.5005,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.6328
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026820013-2026820013",
@@ -29,11 +59,27 @@
       "start": "2026-11-16",
       "end": "2026-11-24",
       "price": 4.6658,
+      "housingTypes": [
+        {
+          "type": "055.0000A",
+          "modelNo": "01",
+          "supplyAreaSqm": 81.5326,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.6658
+        },
+        {
+          "type": "055.0000B",
+          "modelNo": "02",
+          "supplyAreaSqm": 81.4741,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.5692
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000457-2026000457",
@@ -46,11 +92,48 @@
       "start": "2026-11-23",
       "end": "2026-11-25",
       "price": 8.5406,
+      "housingTypes": [
+        {
+          "type": "059.7100A",
+          "modelNo": "01",
+          "supplyAreaSqm": 81.0969,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.1345
+        },
+        {
+          "type": "059.9900B",
+          "modelNo": "02",
+          "supplyAreaSqm": 81.4772,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.152
+        },
+        {
+          "type": "059.9900C",
+          "modelNo": "03",
+          "supplyAreaSqm": 81.4772,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.1515
+        },
+        {
+          "type": "074.9800A",
+          "modelNo": "04",
+          "supplyAreaSqm": 101.8363,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.5423
+        },
+        {
+          "type": "084.9500A",
+          "modelNo": "05",
+          "supplyAreaSqm": 115.3774,
+          "exclusiveAreaSqm": null,
+          "priceEok": 8.5406
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000457&pblancNo=2026000457",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000576-2026000576",
@@ -63,11 +146,55 @@
       "start": "2026-11-23",
       "end": "2026-11-25",
       "price": 14.084,
+      "housingTypes": [
+        {
+          "type": "084.8861A",
+          "modelNo": "01",
+          "supplyAreaSqm": 119.2032,
+          "exclusiveAreaSqm": null,
+          "priceEok": 11.05
+        },
+        {
+          "type": "084.9580B",
+          "modelNo": "02",
+          "supplyAreaSqm": 120.6563,
+          "exclusiveAreaSqm": null,
+          "priceEok": 11.05
+        },
+        {
+          "type": "084.8700C",
+          "modelNo": "03",
+          "supplyAreaSqm": 120.9921,
+          "exclusiveAreaSqm": null,
+          "priceEok": 10.99
+        },
+        {
+          "type": "099.9001A",
+          "modelNo": "04",
+          "supplyAreaSqm": 140.8321,
+          "exclusiveAreaSqm": null,
+          "priceEok": 12.72
+        },
+        {
+          "type": "099.9015B",
+          "modelNo": "05",
+          "supplyAreaSqm": 140.3974,
+          "exclusiveAreaSqm": null,
+          "priceEok": 12.42
+        },
+        {
+          "type": "104.8286",
+          "modelNo": "06",
+          "supplyAreaSqm": 147.4366,
+          "exclusiveAreaSqm": null,
+          "priceEok": 14.084
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000560-2026000560",
@@ -80,11 +207,34 @@
       "start": "2026-11-23",
       "end": "2026-11-26",
       "price": 18.27,
+      "housingTypes": [
+        {
+          "type": "084.9409A",
+          "modelNo": "01",
+          "supplyAreaSqm": 109.7007,
+          "exclusiveAreaSqm": null,
+          "priceEok": 18.27
+        },
+        {
+          "type": "084.9708B",
+          "modelNo": "02",
+          "supplyAreaSqm": 110.4326,
+          "exclusiveAreaSqm": null,
+          "priceEok": 17.85
+        },
+        {
+          "type": "084.9894C",
+          "modelNo": "03",
+          "supplyAreaSqm": 108.7429,
+          "exclusiveAreaSqm": null,
+          "priceEok": 17.75
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000560&pblancNo=2026000560",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000505-2026000505",
@@ -97,11 +247,41 @@
       "start": "2026-11-25",
       "end": "2026-11-30",
       "price": 25.7484,
+      "housingTypes": [
+        {
+          "type": "039.9342",
+          "modelNo": "01",
+          "supplyAreaSqm": 54.2361,
+          "exclusiveAreaSqm": null,
+          "priceEok": 11.8241
+        },
+        {
+          "type": "059.9926",
+          "modelNo": "02",
+          "supplyAreaSqm": 78.3717,
+          "exclusiveAreaSqm": null,
+          "priceEok": 18.9843
+        },
+        {
+          "type": "084.9794A",
+          "modelNo": "03",
+          "supplyAreaSqm": 111.357,
+          "exclusiveAreaSqm": null,
+          "priceEok": 25.7484
+        },
+        {
+          "type": "084.9940B",
+          "modelNo": "04",
+          "supplyAreaSqm": 110.9884,
+          "exclusiveAreaSqm": null,
+          "priceEok": 25.1744
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000585-2026000585",
@@ -114,11 +294,34 @@
       "start": "2026-11-30",
       "end": "2026-12-02",
       "price": 8.4579,
+      "housingTypes": [
+        {
+          "type": "059.8728",
+          "modelNo": "01",
+          "supplyAreaSqm": 79.7293,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.4472
+        },
+        {
+          "type": "071.9348",
+          "modelNo": "02",
+          "supplyAreaSqm": 92.7098,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.2944
+        },
+        {
+          "type": "084.9614",
+          "modelNo": "03",
+          "supplyAreaSqm": 106.6083,
+          "exclusiveAreaSqm": null,
+          "priceEok": 8.4579
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000591-2026000591",
@@ -131,11 +334,62 @@
       "start": "2026-11-30",
       "end": "2026-12-02",
       "price": 7.8847,
+      "housingTypes": [
+        {
+          "type": "059.9906A",
+          "modelNo": "01",
+          "supplyAreaSqm": 80.3427,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.5932
+        },
+        {
+          "type": "059.2735B",
+          "modelNo": "02",
+          "supplyAreaSqm": 81.1004,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.4986
+        },
+        {
+          "type": "059.2599C",
+          "modelNo": "03",
+          "supplyAreaSqm": 81.0979,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.5051
+        },
+        {
+          "type": "059.1615D",
+          "modelNo": "04",
+          "supplyAreaSqm": 80.9618,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.9355
+        },
+        {
+          "type": "084.5869A",
+          "modelNo": "05",
+          "supplyAreaSqm": 112.3305,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.8256
+        },
+        {
+          "type": "084.6433B",
+          "modelNo": "06",
+          "supplyAreaSqm": 113.7312,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.8307
+        },
+        {
+          "type": "084.9848C",
+          "modelNo": "07",
+          "supplyAreaSqm": 114.4169,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.8847
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000591&pblancNo=2026000591",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000575-2026000575",
@@ -148,11 +402,34 @@
       "start": "2026-11-30",
       "end": "2026-12-02",
       "price": 6.075,
+      "housingTypes": [
+        {
+          "type": "059.9600A",
+          "modelNo": "01",
+          "supplyAreaSqm": 82.4891,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.075
+        },
+        {
+          "type": "059.7100B",
+          "modelNo": "02",
+          "supplyAreaSqm": 82.1451,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.0496
+        },
+        {
+          "type": "059.1400C",
+          "modelNo": "03",
+          "supplyAreaSqm": 81.361,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.9919
+        }
+      ],
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
-      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000575&pblancNo=2026000575",
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
     }
   ]
 }
