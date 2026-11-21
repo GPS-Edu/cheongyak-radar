@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T01:43:13.055777+09:00",
+  "updated_at": "2026-11-22T01:52:35.695721+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -48,8 +48,19 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "district_only_unverified",
+        "district": "경기 시흥시",
+        "legalDong": null,
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 1183,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -85,8 +96,19 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "경기 안산시 단원구",
+        "legalDong": "신길동",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 512,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -143,8 +165,19 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000457&pblancNo=2026000457",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "경기 부천시 오정구",
+        "legalDong": "대장동",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 121,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -208,8 +241,185 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "경기 안산시 상록구",
+        "legalDong": "성포동",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 331,
+        "candidateCount": 11,
+        "candidateTransactions": [
+          {
+            "apartment": "파크푸르지오",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.6663,
+            "dealAmountManwon": 76000,
+            "dealDate": "2026-11-10",
+            "floor": "5",
+            "buildYear": "2018",
+            "jibun": "747",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "선경",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 42000,
+            "dealDate": "2026-11-03",
+            "floor": "13",
+            "buildYear": "1990",
+            "jibun": "592",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "선경",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 47200,
+            "dealDate": "2026-10-31",
+            "floor": "10",
+            "buildYear": "1990",
+            "jibun": "592",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "예술인",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.87,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-28",
+            "floor": "2",
+            "buildYear": "1985",
+            "jibun": "583",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "예술인",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.87,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-10-03",
+            "floor": "2",
+            "buildYear": "1985",
+            "jibun": "583",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "파크푸르지오",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.5254,
+            "dealAmountManwon": 74500,
+            "dealDate": "2026-09-30",
+            "floor": "7",
+            "buildYear": "2018",
+            "jibun": "747",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "파크푸르지오",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.6663,
+            "dealAmountManwon": 76200,
+            "dealDate": "2026-09-15",
+            "floor": "2",
+            "buildYear": "2018",
+            "jibun": "747",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "선경",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 47000,
+            "dealDate": "2026-09-14",
+            "floor": "10",
+            "buildYear": "1990",
+            "jibun": "592",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "파크푸르지오",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.6663,
+            "dealAmountManwon": 79500,
+            "dealDate": "2026-09-11",
+            "floor": "25",
+            "buildYear": "2018",
+            "jibun": "747",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "선경",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 43500,
+            "dealDate": "2026-09-10",
+            "floor": "2",
+            "buildYear": "1990",
+            "jibun": "592",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          },
+          {
+            "apartment": "선경",
+            "legalDong": "성포동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-09-04",
+            "floor": "3",
+            "buildYear": "1990",
+            "jibun": "592",
+            "matchingTypes": [
+              "084.8861A",
+              "084.9580B",
+              "084.8700C"
+            ]
+          }
+        ],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -260,36 +470,7 @@
           "202610",
           "202609"
         ],
-        "transactionCount": 320,
-        "sampleTransactions": [
-          {
-            "apartment": "당산계룡리슈빌3단지",
-            "legalDong": "당산동3가",
-            "exclusiveAreaSqm": "49.993",
-            "dealAmountManwon": "95,000",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "6"
-          },
-          {
-            "apartment": "한신휴1차",
-            "legalDong": "대림동",
-            "exclusiveAreaSqm": "59.89",
-            "dealAmountManwon": "59,000",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "19"
-          },
-          {
-            "apartment": "성원(1115-1)",
-            "legalDong": "대림동",
-            "exclusiveAreaSqm": "73.14",
-            "dealAmountManwon": "68,000",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "9"
-          }
-        ],
+        "transactionCount": 315,
         "candidateCount": 3,
         "candidateTransactions": [
           {
@@ -297,24 +478,49 @@
             "legalDong": "문래동3가",
             "exclusiveAreaSqm": 84.98,
             "dealAmountManwon": 195000,
-            "dealDate": "2026-10-16"
+            "dealDate": "2026-10-16",
+            "floor": "4",
+            "buildYear": "2001",
+            "jibun": "54",
+            "matchingTypes": [
+              "084.9409A",
+              "084.9708B",
+              "084.9894C"
+            ]
           },
           {
             "apartment": "태영데시앙",
             "legalDong": "문래동3가",
             "exclusiveAreaSqm": 84.93,
             "dealAmountManwon": 140000,
-            "dealDate": "2026-10-12"
+            "dealDate": "2026-10-12",
+            "floor": "13",
+            "buildYear": "2005",
+            "jibun": "96",
+            "matchingTypes": [
+              "084.9409A",
+              "084.9708B",
+              "084.9894C"
+            ]
           },
           {
             "apartment": "국화맨션",
             "legalDong": "문래동3가",
             "exclusiveAreaSqm": 84.71,
             "dealAmountManwon": 115000,
-            "dealDate": "2026-09-21"
+            "dealDate": "2026-09-21",
+            "floor": "3",
+            "buildYear": "1983",
+            "jibun": "76-1",
+            "matchingTypes": [
+              "084.9409A",
+              "084.9708B",
+              "084.9894C"
+            ]
           }
         ],
-        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다."
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -372,39 +578,11 @@
           "202610",
           "202609"
         ],
-        "transactionCount": 63,
-        "sampleTransactions": [
-          {
-            "apartment": "창신쌍용1",
-            "legalDong": "창신동",
-            "exclusiveAreaSqm": "54.7",
-            "dealAmountManwon": "90,500",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "14"
-          },
-          {
-            "apartment": "청운현대",
-            "legalDong": "청운동",
-            "exclusiveAreaSqm": "78.78",
-            "dealAmountManwon": "117,000",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "10"
-          },
-          {
-            "apartment": "창신쌍용1",
-            "legalDong": "창신동",
-            "exclusiveAreaSqm": "106.62",
-            "dealAmountManwon": "104,000",
-            "dealYear": "2026",
-            "dealMonth": "11",
-            "dealDay": "7"
-          }
-        ],
+        "transactionCount": 61,
         "candidateCount": 0,
         "candidateTransactions": [],
-        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다."
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -447,8 +625,1060 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "경기 고양시 덕양구",
+        "legalDong": "행신동",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 1093,
+        "candidateCount": 119,
+        "candidateTransactions": [
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-11-17",
+            "floor": "13",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "한가람",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 33000,
+            "dealDate": "2026-11-13",
+            "floor": "7",
+            "buildYear": "2005",
+            "jibun": "1054",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(서광)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 50200,
+            "dealDate": "2026-11-13",
+            "floor": "10",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "행신2차에스케이뷰",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.9016,
+            "dealAmountManwon": 49500,
+            "dealDate": "2026-11-12",
+            "floor": "1",
+            "buildYear": "2006",
+            "jibun": "630",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 31000,
+            "dealDate": "2026-11-12",
+            "floor": "5",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.93,
+            "dealAmountManwon": 34700,
+            "dealDate": "2026-11-11",
+            "floor": "3",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(서광)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 47000,
+            "dealDate": "2026-11-10",
+            "floor": "1",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 31700,
+            "dealDate": "2026-11-09",
+            "floor": "11",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(동성)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.4,
+            "dealAmountManwon": 33800,
+            "dealDate": "2026-11-07",
+            "floor": "2",
+            "buildYear": "1994",
+            "jibun": "791",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 32000,
+            "dealDate": "2026-11-06",
+            "floor": "3",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 36900,
+            "dealDate": "2026-11-06",
+            "floor": "13",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 34500,
+            "dealDate": "2026-11-05",
+            "floor": "6",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(두산)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 55500,
+            "dealDate": "2026-11-05",
+            "floor": "14",
+            "buildYear": "1994",
+            "jibun": "702",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.93,
+            "dealAmountManwon": 32900,
+            "dealDate": "2026-11-04",
+            "floor": "11",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(라이프)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 52000,
+            "dealDate": "2026-11-04",
+            "floor": "15",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(동성)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.4,
+            "dealAmountManwon": 34500,
+            "dealDate": "2026-11-03",
+            "floor": "10",
+            "buildYear": "1994",
+            "jibun": "791",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(삼보)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.945,
+            "dealAmountManwon": 51500,
+            "dealDate": "2026-10-31",
+            "floor": "12",
+            "buildYear": "1994",
+            "jibun": "771",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.93,
+            "dealAmountManwon": 35000,
+            "dealDate": "2026-10-31",
+            "floor": "6",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 34000,
+            "dealDate": "2026-10-31",
+            "floor": "9",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 31000,
+            "dealDate": "2026-10-30",
+            "floor": "16",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(성원)6",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.34,
+            "dealAmountManwon": 36500,
+            "dealDate": "2026-10-30",
+            "floor": "4",
+            "buildYear": "1995",
+            "jibun": "785",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 30500,
+            "dealDate": "2026-10-30",
+            "floor": "4",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(두산)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 56000,
+            "dealDate": "2026-10-30",
+            "floor": "11",
+            "buildYear": "1994",
+            "jibun": "702",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(삼신)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 42500,
+            "dealDate": "2026-10-29",
+            "floor": "8",
+            "buildYear": "1994",
+            "jibun": "788",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을19",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 47800,
+            "dealDate": "2026-10-29",
+            "floor": "7",
+            "buildYear": "1998",
+            "jibun": "903",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(두산)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 55200,
+            "dealDate": "2026-10-28",
+            "floor": "15",
+            "buildYear": "1994",
+            "jibun": "702",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛마을19",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.94,
+            "dealAmountManwon": 45000,
+            "dealDate": "2026-10-26",
+            "floor": "5",
+            "buildYear": "1998",
+            "jibun": "903",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛주공(18-1)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 43000,
+            "dealDate": "2026-10-26",
+            "floor": "2",
+            "buildYear": "1998",
+            "jibun": "895",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 34000,
+            "dealDate": "2026-10-25",
+            "floor": "3",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(성원)6",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.34,
+            "dealAmountManwon": 35800,
+            "dealDate": "2026-10-25",
+            "floor": "15",
+            "buildYear": "1995",
+            "jibun": "785",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-24",
+            "floor": "10",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 37000,
+            "dealDate": "2026-10-23",
+            "floor": "10",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-22",
+            "floor": "6",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 31300,
+            "dealDate": "2026-10-22",
+            "floor": "20",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "행신3차SKVIEW",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.9368,
+            "dealAmountManwon": 57700,
+            "dealDate": "2026-10-22",
+            "floor": "7",
+            "buildYear": "2009",
+            "jibun": "650",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "서정센텀퍼스티지(서정마을4단지)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.81,
+            "dealAmountManwon": 57900,
+            "dealDate": "2026-10-21",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "1068",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛주공23",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 32400,
+            "dealDate": "2026-10-21",
+            "floor": "20",
+            "buildYear": "1996",
+            "jibun": "953",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛주공23",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.93,
+            "dealAmountManwon": 35200,
+            "dealDate": "2026-10-20",
+            "floor": "3",
+            "buildYear": "1996",
+            "jibun": "953",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 36750,
+            "dealDate": "2026-10-20",
+            "floor": "14",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "행신동문",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.9675,
+            "dealAmountManwon": 42500,
+            "dealDate": "2026-10-19",
+            "floor": "4",
+            "buildYear": "1998",
+            "jibun": "220",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "SK뷰1차",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.91,
+            "dealAmountManwon": 61000,
+            "dealDate": "2026-10-19",
+            "floor": "9",
+            "buildYear": "2005",
+            "jibun": "621",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(성원)6",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.34,
+            "dealAmountManwon": 38500,
+            "dealDate": "2026-10-18",
+            "floor": "12",
+            "buildYear": "1995",
+            "jibun": "785",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.56,
+            "dealAmountManwon": 34500,
+            "dealDate": "2026-10-18",
+            "floor": "20",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(삼신)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 41800,
+            "dealDate": "2026-10-16",
+            "floor": "13",
+            "buildYear": "1994",
+            "jibun": "788",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "행신파밀리에트라이하이",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.7783,
+            "dealAmountManwon": 52800,
+            "dealDate": "2026-10-16",
+            "floor": "8",
+            "buildYear": "2022",
+            "jibun": "1131",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "행신파밀리에트라이하이",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.7783,
+            "dealAmountManwon": 50000,
+            "dealDate": "2026-10-16",
+            "floor": "3",
+            "buildYear": "2022",
+            "jibun": "1131",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(라이프)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 54000,
+            "dealDate": "2026-10-16",
+            "floor": "8",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(라이프)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 51000,
+            "dealDate": "2026-10-14",
+            "floor": "13",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 35000,
+            "dealDate": "2026-10-14",
+            "floor": "12",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "행신3차SKVIEW",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.9368,
+            "dealAmountManwon": 53000,
+            "dealDate": "2026-10-13",
+            "floor": "3",
+            "buildYear": "2009",
+            "jibun": "650",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "소만마을(동성)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.4,
+            "dealAmountManwon": 35800,
+            "dealDate": "2026-10-13",
+            "floor": "10",
+            "buildYear": "1994",
+            "jibun": "791",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 34800,
+            "dealDate": "2026-10-13",
+            "floor": "10",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을주공20",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 29500,
+            "dealDate": "2026-10-13",
+            "floor": "2",
+            "buildYear": "1997",
+            "jibun": "934",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "햇빛마을19",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 49000,
+            "dealDate": "2026-10-12",
+            "floor": "19",
+            "buildYear": "1998",
+            "jibun": "903",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "행신3차SKVIEW",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.9368,
+            "dealAmountManwon": 56500,
+            "dealDate": "2026-10-11",
+            "floor": "14",
+            "buildYear": "2009",
+            "jibun": "650",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "서정마을5단지",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.6,
+            "dealAmountManwon": 76500,
+            "dealDate": "2026-10-10",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "1088",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "서정센텀퍼스티지(서정마을4단지)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-10-09",
+            "floor": "11",
+            "buildYear": "2008",
+            "jibun": "1068",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(신안)2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.75,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-10-09",
+            "floor": "3",
+            "buildYear": "1996",
+            "jibun": "798",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(서광)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 45500,
+            "dealDate": "2026-10-09",
+            "floor": "1",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(성원)6",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.34,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-09",
+            "floor": "9",
+            "buildYear": "1995",
+            "jibun": "785",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(두산)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 56500,
+            "dealDate": "2026-10-08",
+            "floor": "13",
+            "buildYear": "1994",
+            "jibun": "702",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "SK뷰1차",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.91,
+            "dealAmountManwon": 64000,
+            "dealDate": "2026-10-08",
+            "floor": "11",
+            "buildYear": "2005",
+            "jibun": "621",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛마을19",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 49500,
+            "dealDate": "2026-10-07",
+            "floor": "15",
+            "buildYear": "1998",
+            "jibun": "903",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(두산)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 56000,
+            "dealDate": "2026-10-05",
+            "floor": "7",
+            "buildYear": "1994",
+            "jibun": "702",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 36500,
+            "dealDate": "2026-10-05",
+            "floor": "6",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(서광)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 50500,
+            "dealDate": "2026-10-04",
+            "floor": "10",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "무원마을(라이프)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 48800,
+            "dealDate": "2026-10-03",
+            "floor": "10",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.56,
+            "dealAmountManwon": 36800,
+            "dealDate": "2026-10-03",
+            "floor": "8",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "무원마을(서광)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 47500,
+            "dealDate": "2026-10-03",
+            "floor": "1",
+            "buildYear": "1994",
+            "jibun": "692",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(신안)2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.75,
+            "dealAmountManwon": 52000,
+            "dealDate": "2026-10-03",
+            "floor": "11",
+            "buildYear": "1996",
+            "jibun": "798",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "햇빛마을19",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 49800,
+            "dealDate": "2026-10-02",
+            "floor": "7",
+            "buildYear": "1998",
+            "jibun": "903",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.93,
+            "dealAmountManwon": 35500,
+            "dealDate": "2026-10-02",
+            "floor": "13",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "서정마을5단지",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 71000,
+            "dealDate": "2026-09-30",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "1088",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "행신3차SKVIEW",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.9858,
+            "dealAmountManwon": 69500,
+            "dealDate": "2026-09-29",
+            "floor": "21",
+            "buildYear": "2009",
+            "jibun": "650",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "행신파밀리에트라이하이",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.7783,
+            "dealAmountManwon": 51500,
+            "dealDate": "2026-09-29",
+            "floor": "9",
+            "buildYear": "2022",
+            "jibun": "1131",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "서정센텀퍼스티지(서정마을4단지)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 58000,
+            "dealDate": "2026-09-28",
+            "floor": "14",
+            "buildYear": "2008",
+            "jibun": "1068",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "서정센텀퍼스티지(서정마을4단지)",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 84.81,
+            "dealAmountManwon": 56800,
+            "dealDate": "2026-09-28",
+            "floor": "6",
+            "buildYear": "2008",
+            "jibun": "1068",
+            "matchingTypes": [
+              "084.9614"
+            ]
+          },
+          {
+            "apartment": "소만마을(대명)7",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.04,
+            "dealAmountManwon": 33400,
+            "dealDate": "2026-09-28",
+            "floor": "3",
+            "buildYear": "1995",
+            "jibun": "783",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 35000,
+            "dealDate": "2026-09-22",
+            "floor": "6",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          },
+          {
+            "apartment": "샘터마을2",
+            "legalDong": "행신동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 34000,
+            "dealDate": "2026-09-22",
+            "floor": "13",
+            "buildYear": "1996",
+            "jibun": "983",
+            "matchingTypes": [
+              "059.8728"
+            ]
+          }
+        ],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -519,8 +1749,1240 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000591&pblancNo=2026000591",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "경기 부천시 소사구",
+        "legalDong": "소사본동",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 506,
+        "candidateCount": 79,
+        "candidateTransactions": [
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 32000,
+            "dealDate": "2026-11-20",
+            "floor": "7",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-11-18",
+            "floor": "2",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사역한라비발디프레스티지",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 60.42,
+            "dealAmountManwon": 57400,
+            "dealDate": "2026-11-16",
+            "floor": "17",
+            "buildYear": "2024",
+            "jibun": "70-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-11-11",
+            "floor": "12",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 53500,
+            "dealDate": "2026-11-08",
+            "floor": "7",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "한울펠리스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.81,
+            "dealAmountManwon": 31000,
+            "dealDate": "2026-11-07",
+            "floor": "6",
+            "buildYear": "2016",
+            "jibun": "75-16",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울KCC스위첸",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.82,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-11-07",
+            "floor": "11",
+            "buildYear": "2012",
+            "jibun": "424",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 28800,
+            "dealDate": "2026-11-07",
+            "floor": "2",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-11-05",
+            "floor": "10",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천한신더휴메트로",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.824,
+            "dealAmountManwon": 63600,
+            "dealDate": "2026-11-03",
+            "floor": "28",
+            "buildYear": "2020",
+            "jibun": "70-16",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 57000,
+            "dealDate": "2026-11-03",
+            "floor": "6",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9241,
+            "dealAmountManwon": 77500,
+            "dealDate": "2026-11-02",
+            "floor": "17",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 50000,
+            "dealDate": "2026-11-01",
+            "floor": "8",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트소사역",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9992,
+            "dealAmountManwon": 101000,
+            "dealDate": "2026-11-01",
+            "floor": "11",
+            "buildYear": "2025",
+            "jibun": "65-2",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29800,
+            "dealDate": "2026-11-01",
+            "floor": "12",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 59700,
+            "dealDate": "2026-10-31",
+            "floor": "12",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.45,
+            "dealAmountManwon": 44500,
+            "dealDate": "2026-10-29",
+            "floor": "9",
+            "buildYear": "2006",
+            "jibun": "407-1",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9241,
+            "dealAmountManwon": 74000,
+            "dealDate": "2026-10-28",
+            "floor": "15",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "양우파크타운(내안愛)",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 49500,
+            "dealDate": "2026-10-28",
+            "floor": "11",
+            "buildYear": "2003",
+            "jibun": "323",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.45,
+            "dealAmountManwon": 43500,
+            "dealDate": "2026-10-26",
+            "floor": "20",
+            "buildYear": "2006",
+            "jibun": "407-1",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9241,
+            "dealAmountManwon": 75000,
+            "dealDate": "2026-10-26",
+            "floor": "6",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-10-26",
+            "floor": "7",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 44300,
+            "dealDate": "2026-10-25",
+            "floor": "16",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29500,
+            "dealDate": "2026-10-25",
+            "floor": "3",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 42500,
+            "dealDate": "2026-10-24",
+            "floor": "12",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29000,
+            "dealDate": "2026-10-23",
+            "floor": "7",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "양우파크타운(내안愛)",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 49300,
+            "dealDate": "2026-10-23",
+            "floor": "17",
+            "buildYear": "2003",
+            "jibun": "323",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29000,
+            "dealDate": "2026-10-21",
+            "floor": "15",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 53400,
+            "dealDate": "2026-10-21",
+            "floor": "4",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 59700,
+            "dealDate": "2026-10-21",
+            "floor": "11",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 40800,
+            "dealDate": "2026-10-20",
+            "floor": "16",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29900,
+            "dealDate": "2026-10-20",
+            "floor": "2",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 54000,
+            "dealDate": "2026-10-19",
+            "floor": "13",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9241,
+            "dealAmountManwon": 76000,
+            "dealDate": "2026-10-18",
+            "floor": "18",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 55500,
+            "dealDate": "2026-10-18",
+            "floor": "11",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 52700,
+            "dealDate": "2026-10-17",
+            "floor": "5",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 59000,
+            "dealDate": "2026-10-16",
+            "floor": "6",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "한신",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.495,
+            "dealAmountManwon": 38850,
+            "dealDate": "2026-10-16",
+            "floor": "12",
+            "buildYear": "1984",
+            "jibun": "277-12",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 38500,
+            "dealDate": "2026-10-16",
+            "floor": "5",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-16",
+            "floor": "4",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9407,
+            "dealAmountManwon": 90000,
+            "dealDate": "2026-10-15",
+            "floor": "17",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "한신",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.495,
+            "dealAmountManwon": 42500,
+            "dealDate": "2026-10-14",
+            "floor": "7",
+            "buildYear": "1984",
+            "jibun": "277-12",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9241,
+            "dealAmountManwon": 74000,
+            "dealDate": "2026-10-14",
+            "floor": "9",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.45,
+            "dealAmountManwon": 43000,
+            "dealDate": "2026-10-13",
+            "floor": "7",
+            "buildYear": "2006",
+            "jibun": "407-1",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29900,
+            "dealDate": "2026-10-11",
+            "floor": "14",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-10-11",
+            "floor": "5",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29500,
+            "dealDate": "2026-10-11",
+            "floor": "10",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 50000,
+            "dealDate": "2026-10-10",
+            "floor": "15",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.8,
+            "dealAmountManwon": 58500,
+            "dealDate": "2026-10-10",
+            "floor": "14",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 35500,
+            "dealDate": "2026-10-09",
+            "floor": "1",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 60500,
+            "dealDate": "2026-10-09",
+            "floor": "10",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 33300,
+            "dealDate": "2026-10-09",
+            "floor": "6",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 28800,
+            "dealDate": "2026-10-07",
+            "floor": "8",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울KCC스위첸",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.82,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-10-05",
+            "floor": "11",
+            "buildYear": "2012",
+            "jibun": "424",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 55200,
+            "dealDate": "2026-10-03",
+            "floor": "17",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 59500,
+            "dealDate": "2026-10-02",
+            "floor": "14",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 29800,
+            "dealDate": "2026-10-01",
+            "floor": "6",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 54500,
+            "dealDate": "2026-09-30",
+            "floor": "16",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "양우파크타운(내안愛)",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 47000,
+            "dealDate": "2026-09-30",
+            "floor": "12",
+            "buildYear": "2003",
+            "jibun": "323",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 59900,
+            "dealDate": "2026-09-29",
+            "floor": "3",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 53000,
+            "dealDate": "2026-09-22",
+            "floor": "8",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 52700,
+            "dealDate": "2026-09-22",
+            "floor": "6",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 52300,
+            "dealDate": "2026-09-22",
+            "floor": "5",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "부천한신더휴메트로",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.824,
+            "dealAmountManwon": 57000,
+            "dealDate": "2026-09-19",
+            "floor": "5",
+            "buildYear": "2020",
+            "jibun": "70-16",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.45,
+            "dealAmountManwon": 44300,
+            "dealDate": "2026-09-18",
+            "floor": "11",
+            "buildYear": "2006",
+            "jibun": "407-1",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 53800,
+            "dealDate": "2026-09-18",
+            "floor": "3",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 30500,
+            "dealDate": "2026-09-16",
+            "floor": "12",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "부천한신더휴메트로",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.9715,
+            "dealAmountManwon": 63500,
+            "dealDate": "2026-09-15",
+            "floor": "20",
+            "buildYear": "2020",
+            "jibun": "70-16",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "한신",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.495,
+            "dealAmountManwon": 39900,
+            "dealDate": "2026-09-12",
+            "floor": "5",
+            "buildYear": "1984",
+            "jibun": "277-12",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-09-12",
+            "floor": "7",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.77,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-09-10",
+            "floor": "6",
+            "buildYear": "1996",
+            "jibun": "401-7",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 59.45,
+            "dealAmountManwon": 43000,
+            "dealDate": "2026-09-10",
+            "floor": "2",
+            "buildYear": "2006",
+            "jibun": "407-1",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소새울역중흥에스클래스",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.85,
+            "dealAmountManwon": 53000,
+            "dealDate": "2026-09-09",
+            "floor": "2",
+            "buildYear": "2006",
+            "jibun": "411-1",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 26000,
+            "dealDate": "2026-09-08",
+            "floor": "1",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 33300,
+            "dealDate": "2026-09-08",
+            "floor": "6",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "소사에스케이뷰",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9841,
+            "dealAmountManwon": 58900,
+            "dealDate": "2026-09-08",
+            "floor": "2",
+            "buildYear": "2004",
+            "jibun": "135",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 33500,
+            "dealDate": "2026-09-05",
+            "floor": "5",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "주공",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 58.14,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-09-01",
+            "floor": "6",
+            "buildYear": "1995",
+            "jibun": "400-8",
+            "matchingTypes": [
+              "059.9906A",
+              "059.2735B",
+              "059.2599C",
+              "059.1615D"
+            ]
+          },
+          {
+            "apartment": "부천소사역푸르지오",
+            "legalDong": "소사본동",
+            "exclusiveAreaSqm": 84.9407,
+            "dealAmountManwon": 85500,
+            "dealDate": "2026-09-01",
+            "floor": "15",
+            "buildYear": "2012",
+            "jibun": "133-12",
+            "matchingTypes": [
+              "084.5869A",
+              "084.6433B",
+              "084.9848C"
+            ]
+          }
+        ],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     },
     {
@@ -563,8 +3025,19 @@
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000575&pblancNo=2026000575",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "district_only_unverified",
+        "district": "경기 남양주시",
+        "legalDong": null,
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 1704,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다."
       }
     }
   ]
