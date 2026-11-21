@@ -18,11 +18,18 @@ TRADE_API_URL = (
     "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/"
     "getRTMSDataSvcAptTrade"
 )
-# Only districts reliably identified from the two Seoul listing addresses.
-# Other places remain unscanned until legal-dong code mapping is validated.
+# 법정동 앞 5자리: 국토교통부 실거래가 지역코드. 정확한 주소 접두어만 매칭합니다.
+# 신규 지역은 검증된 코드만 추가하며, 매핑이 없는 지역은 조회 보류합니다.
 VERIFIED_DISTRICTS = {
     ("서울", "서울특별시 영등포구"): ("11560", "서울 영등포구"),
     ("서울", "서울특별시 종로구"): ("11110", "서울 종로구"),
+    ("경기", "경기도 시흥시"): ("41390", "경기 시흥시"),
+    ("경기", "경기도 안산시 단원구"): ("41273", "경기 안산시 단원구"),
+    ("경기", "경기도 안산시 상록구"): ("41271", "경기 안산시 상록구"),
+    ("경기", "경기도 부천시 오정구"): ("41196", "경기 부천시 오정구"),
+    ("경기", "경기도 부천시 소사구"): ("41194", "경기 부천시 소사구"),
+    ("경기", "경기도 고양시 덕양구"): ("41281", "경기 고양시 덕양구"),
+    ("경기", "경기도 남양주시"): ("41360", "경기 남양주시"),
 }
 
 
@@ -162,103 +169,112 @@ def recent_months(today, count=3):
             year -= 1
 
 
-def scan_district_trades(session, key, project, today):
-    """Fetch an *unmatched district-wide* sample; never treat as a comparable."""
+def target_area_types(project):
+    """주택형 숫자에서 명목 전용면적형을 추출. 정확한 실측치 아님."""
+    result = []
+    for model in project.get("housingTypes", []):
+        name = str(model.get("type") or model.get("modelNo") or "").strip()
+        area = positive_number(model.get("exclusiveAreaSqm"))
+        verified = area is not None
+        if area is None:
+            found = re.match(r"^(\d{2,3})(?:\.\d+)?", name)
+            area = positive_number(found.group(1)) if found else None
+        if area is not None:
+            result.append({"type": name, "area": area, "verifiedArea": verified})
+    return result
+
+
+def identify_district(project):
     address = project.get("district", "")
-    match = None
     for (region, prefix), district in VERIFIED_DISTRICTS.items():
         if project["region"] == region and address.startswith(prefix):
-            match = district
+            return district
+    return None
+
+
+def identify_legal_dong(address):
+    # '문래동3가'처럼 숫자 가지번이 있는 동도 포착합니다.
+    match = re.search(r"([가-힣]+동(?:\d+가)?)", address)
+    return match.group(1) if match else None
+
+
+def fetch_district_month(session, key, lawd_code, yyyymm):
+    """실거래 API의 모든 페이지를 수집하고 취소 거래를 제외합니다."""
+    trades = []
+    page = 1
+    while True:
+        response = session.get(
+            TRADE_API_URL,
+            params={"serviceKey": key, "LAWD_CD": lawd_code,
+                    "DEAL_YMD": yyyymm, "pageNo": page, "numOfRows": 1000},
+            timeout=35,
+        )
+        response.raise_for_status()
+        root = ET.fromstring(response.content)
+        code = (root.findtext(".//header/resultCode") or "").strip()
+        if code not in ("00", "000"):
+            msg = root.findtext(".//header/resultMsg") or "unknown error"
+            raise RuntimeError(f"Trade API {lawd_code}/{yyyymm}: {code} {msg}")
+        items = root.findall(".//body/items/item")
+        total = int((root.findtext(".//body/totalCount") or "0").strip())
+        for item in items:
+            def field(name):
+                return (item.findtext(name) or "").strip()
+            if field("cdealDay"):  # 취소된 거래 제외
+                continue
+            area = positive_number(field("excluUseAr"))
+            amount = positive_number(field("dealAmount"))
+            apt = field("aptNm")
+            if not apt or area is None or amount is None:
+                continue
+            year, month, day = field("dealYear"), field("dealMonth"), field("dealDay")
+            if not (year.isdigit() and month.isdigit() and day.isdigit()):
+                continue
+            trades.append({
+                "apartment": apt,
+                "legalDong": field("umdNm"),
+                "exclusiveAreaSqm": round(area, 4),
+                "dealAmountManwon": round(amount),
+                "dealDate": f"{year}-{month.zfill(2)}-{day.zfill(2)}",
+                "floor": field("floor"),
+                "buildYear": field("buildYear"),
+                "jibun": field("jibun"),
+            })
+        if not items or page * 1000 >= total:
             break
-    if match is None:
-        return {"status": "not_scanned", "reason": "시군구 코드 확인 전"}
+        page += 1
+    return trades
 
-    lawd_code, district_label = match
-    fetched_count = 0
-    samples = []
+
+def scan_district_trades(project, district_trades, months):
+    district = identify_district(project)
+    if district is None:
+        return {"status": "not_scanned", "reason": "법정동 지역코드 확인 전"}
+    lawd_code, label = district
+    target_dong = identify_legal_dong(project["district"])
+    all_trades = district_trades[lawd_code]
+    models = target_area_types(project)
     candidates = []
-    # 주택형 코드의 숫자는 실측 전용면적이 아닌 면적형 표기일 수 있습니다.
-    target_areas = []
-    for model in project.get("housingTypes", []):
-        raw_area = model.get("exclusiveAreaSqm")
-        if raw_area is None:
-            found = re.match(r"^(\d{2,3})(?:\.\d+)?", str(model.get("type", "")))
-            raw_area = float(found.group(1)) if found else None
-        area = positive_number(raw_area)
-        if area is not None:
-            target_areas.append(area)
-    # 같은 법정동의 유사 면적 거래만 '비교 검토 후보'로 보관
-    dong_match = re.search(r"([가-힣]+동(?:\d+가)?)", address)
-    target_dong = dong_match.group(1) if dong_match else None
-    for yyyymm in recent_months(today, count=3):
-        page = 1
-        while True:
-            response = session.get(
-                TRADE_API_URL,
-                params={
-                    "serviceKey": key,
-                    "LAWD_CD": lawd_code,
-                    "DEAL_YMD": yyyymm,
-                    "pageNo": page,
-                    "numOfRows": 1000,
-                },
-                timeout=35,
-            )
-            response.raise_for_status()
-            root = ET.fromstring(response.content)
-            result_code = (root.findtext(".//header/resultCode") or "").strip()
-            if result_code not in ("00", "000"):
-                detail = root.findtext(".//header/resultMsg") or "unknown error"
-                raise RuntimeError(f"Trade API returned {result_code}: {detail}")
-            items = root.findall(".//body/items/item")
-            total = int((root.findtext(".//body/totalCount") or "0").strip())
-            fetched_count += len(items)
-            for item in items:
-                def field(name):
-                    return (item.findtext(name) or "").strip()
-                row = {
-                    "apartment": field("aptNm"),
-                    "legalDong": field("umdNm"),
-                    "exclusiveAreaSqm": field("excluUseAr"),
-                    "dealAmountManwon": field("dealAmount"),
-                    "dealYear": field("dealYear"),
-                    "dealMonth": field("dealMonth"),
-                    "dealDay": field("dealDay"),
-                }
-                if len(samples) < 3:
-                    samples.append(row)
-                area = positive_number(row["exclusiveAreaSqm"])
-                amount = positive_number(row["dealAmountManwon"])
-                cancelled = bool(field("cdealDay"))
-                if (target_dong and row["legalDong"] == target_dong
-                    and area is not None and amount is not None
-                    and any(abs(area - t) <= 2 for t in target_areas)
-                    and not cancelled and row["apartment"]):
-                    candidates.append({
-                        "apartment": row["apartment"],
-                        "legalDong": row["legalDong"],
-                        "exclusiveAreaSqm": round(area, 2),
-                        "dealAmountManwon": round(amount),
-                        "dealDate": (f'{row["dealYear"]}-'
-                                     f'{row["dealMonth"].zfill(2)}-'
-                                     f'{row["dealDay"].zfill(2)}'),
-                    })
-            if page * 1000 >= total or not items:
-                break
-            page += 1
-
-    candidates.sort(key=lambda x: x["dealDate"], reverse=True)
+    for item in all_trades:
+        if not target_dong or item["legalDong"] != target_dong:
+            continue
+        matches = [m for m in models if abs(item["exclusiveAreaSqm"] - m["area"]) <= 2]
+        if not matches:
+            continue
+        candidates.append({**item, "matchingTypes": [m["type"] for m in matches]})
+    candidates.sort(key=lambda row: row["dealDate"], reverse=True)
     return {
         "status": "same_dong_area_candidates_unverified" if target_dong else "district_only_unverified",
-        "district": district_label,
+        "district": label,
         "legalDong": target_dong,
-        "months": list(recent_months(today, count=3)),
-        "transactionCount": fetched_count,
-        "sampleTransactions": samples,
+        "months": months,
+        "transactionCount": len(all_trades),
         "candidateCount": len(candidates),
-        "candidateTransactions": candidates[:15],
-        "warning": "같은 법정동·유사 면적(±2㎡) 거래 후보입니다. 면적형 표기는 실측치와 다를 수 있고, 거리·연식·단지 특성·거래 해제 여부 등을 완전히 검증하지 않아 시세·차익 계산에는 쓰지 않습니다.",
+        "candidateTransactions": candidates[:80],
+        "displayLimit": 80,
+        "warning": "동일 법정동·주택형 면적 ±2㎡ 조건의 1차 후보. 동일 단지 가치·준공연도·거리·층·옵션·거래 특성과 주택형 실측 전용면적은 검증되지 않았습니다. 공식 시세·차익 판단에 사용하지 않습니다.",
     }
+
 
 def main():
     key = os.environ.get("DATA_GO_KR_API_KEY", "")
@@ -285,12 +301,26 @@ def main():
         project["price"] = max((x["priceEok"] for x in types), default=None)
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
 
-    # Pilot: scan only 2 known Seoul districts. Do not set project.market.
+    # 같은 시군구 API 응답을 공고별로 중복 요청하지 않고 캐시합니다.
+    months = list(recent_months(now.date(), count=3))
+    district_trades = {}
+    codes = sorted({d[0] for project in projects
+                    if (d := identify_district(project)) is not None})
+    for code in codes:
+        combined = []
+        for month in months:
+            combined.extend(fetch_district_month(session, key, code, month))
+        district_trades[code] = combined
+        print(f"지역 실거래 수집: {code} | {len(combined)}건")
+
     for project in projects:
         project["transactionScan"] = scan_district_trades(
-            session, key, project, now.date()
+            project, district_trades, months
         )
         info = project["transactionScan"]
+        # 집계/후보 데이터는 시세 판정에 사용하지 않습니다.
+        project["market"] = None
+        project["marketComparable"] = False
         print(
             f"실거래 조회: {project['name']} | "
             f"{info['status']} | {info.get('transactionCount', 0)}건 | "
