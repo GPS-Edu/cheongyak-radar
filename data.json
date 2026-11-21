@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T01:24:44.127870+09:00",
+  "updated_at": "2026-11-22T01:28:42.381469+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -46,7 +46,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026820013-2026820013",
@@ -79,7 +83,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026000457-2026000457",
@@ -133,7 +141,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000457&pblancNo=2026000457",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026000576-2026000576",
@@ -194,7 +206,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026000560-2026000560",
@@ -234,7 +250,44 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000560&pblancNo=2026000560",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "district_only_unverified",
+        "district": "서울 영등포구",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 320,
+        "sampleTransactions": [
+          {
+            "apartment": "당산계룡리슈빌3단지",
+            "exclusiveAreaSqm": "49.993",
+            "dealAmountManwon": "95,000",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "6"
+          },
+          {
+            "apartment": "한신휴1차",
+            "exclusiveAreaSqm": "59.89",
+            "dealAmountManwon": "59,000",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "19"
+          },
+          {
+            "apartment": "성원(1115-1)",
+            "exclusiveAreaSqm": "73.14",
+            "dealAmountManwon": "68,000",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "9"
+          }
+        ],
+        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다."
+      }
     },
     {
       "id": "apt-2026000505-2026000505",
@@ -281,7 +334,44 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "district_only_unverified",
+        "district": "서울 종로구",
+        "months": [
+          "202611",
+          "202610",
+          "202609"
+        ],
+        "transactionCount": 63,
+        "sampleTransactions": [
+          {
+            "apartment": "창신쌍용1",
+            "exclusiveAreaSqm": "54.7",
+            "dealAmountManwon": "90,500",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "14"
+          },
+          {
+            "apartment": "청운현대",
+            "exclusiveAreaSqm": "78.78",
+            "dealAmountManwon": "117,000",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "10"
+          },
+          {
+            "apartment": "창신쌍용1",
+            "exclusiveAreaSqm": "106.62",
+            "dealAmountManwon": "104,000",
+            "dealYear": "2026",
+            "dealMonth": "11",
+            "dealDay": "7"
+          }
+        ],
+        "warning": "같은 구의 거래 예시이며 주변 비교단지나 동일 면적이 검증되지 않았습니다."
+      }
     },
     {
       "id": "apt-2026000585-2026000585",
@@ -321,7 +411,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026000591-2026000591",
@@ -389,7 +483,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000591&pblancNo=2026000591",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     },
     {
       "id": "apt-2026000575-2026000575",
@@ -429,7 +527,11 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000575&pblancNo=2026000575",
-      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요."
+      "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      }
     }
   ]
 }
