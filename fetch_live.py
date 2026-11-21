@@ -107,6 +107,67 @@ def classify_supply(row):
     return "공급유형 확인 필요", "미확인", detail_type
 
 
+def fetch_remaining(session, key):
+    """청약홈 무순위·잔여세대 전용 공고 전체 페이지 조회.
+
+    해당 엔드포인트의 접수일 필드가 APT와 다르므로 별도 처리.
+    오류가 나면 정상인 것처럼 0건으로 넘기지 않고 업데이트를 중단합니다.
+    """
+    results = []
+    page = 1
+    while True:
+        response = session.get(
+            API_BASE + "getRemndrLttotPblancDetail",
+            params={"serviceKey": key, "page": page, "perPage": PAGE_SIZE, "returnType": "JSON"},
+            timeout=40,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        rows = payload.get("data")
+        if not isinstance(rows, list):
+            raise RuntimeError("무순위 API 응답에 data 목록이 없습니다. 이전 data.json 유지")
+        total = int(payload.get("matchCount") or 0)
+        results.extend(rows)
+        print(f"무순위 API: page={page}, received={len(rows)}, total={total}")
+        if not rows or len(results) >= total:
+            break
+        page += 1
+    return results
+
+
+def convert_remaining(row, today):
+    region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
+    name = str(row.get("HOUSE_NM") or "").strip()
+    # 일부 공고는 특별공급/일반공급 필드만 있고 접수일이 비어 있을 수 있습니다.
+    start = get_date(row.get("SUBSCRPT_RCEPT_BGNDE") or row.get("RCEPT_BGNDE")
+                     or row.get("GNRL_RCEPT_BGNDE"))
+    end = get_date(row.get("SUBSCRPT_RCEPT_ENDDE") or row.get("RCEPT_ENDDE")
+                   or row.get("GNRL_RCEPT_ENDDE"))
+    if region not in REGIONS or not name or not start or not end or end < today:
+        return None
+    house_no = str(row.get("HOUSE_MANAGE_NO") or "").strip()
+    notice_no = str(row.get("PBLANC_NO") or "").strip()
+    if not house_no or not notice_no:
+        return None
+    raw_type = " ".join(str(row.get(k) or "") for k in
+                        ("HOUSE_SECD_NM", "HOUSE_DTL_SECD_NM", "RCRIT_PBLANC_NM", "HOUSE_NM"))
+    kind = ("계약취소주택" if any(x in raw_type for x in ("계약취소", "불법행위재공급"))
+            else "무순위")
+    notice_id = f"rem-{house_no}-{notice_no}"
+    return {
+        "id": notice_id, "notice": notice_id, "name": name, "region": region,
+        "district": str(row.get("HSSPLY_ADRES") or region).strip(),
+        "kind": kind, "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+        "houseDetailType": str(row.get("HOUSE_DTL_SECD_NM") or ""),
+        "announce": get_date(row.get("RCRIT_PBLANC_DE")),
+        "start": start, "end": end, "price": None, "housingTypes": [],
+        "market": None, "marketComparable": False, "requirements": None,
+        "officialUrl": None,
+        "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+        "dataCategory": "remaining",
+    }
+
+
 def convert(row, today):
     region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
     name = str(row.get("HOUSE_NM") or "").strip()
@@ -150,8 +211,10 @@ def fetch_housing_types(session, key, project):
     if len(parts) != 3:
         return []
     house_no, notice_no = parts[1], parts[2]
+    model_url = (API_BASE + "getRemndrLttotPblancMdl"
+                 if project.get("dataCategory") == "remaining" else MODEL_URL)
     response = session.get(
-        MODEL_URL,
+        model_url,
         params={
             "serviceKey": key,
             "page": 1,
@@ -551,6 +614,59 @@ def comparable_report(project, trades, session, kakao_key, geo_cache):
 
 
 
+def opportunity_screen(project):
+    """가격 차이 검토 우선순위. 수익/적정 시세의 확정 판단이 아님."""
+    kinds = ("무순위", "잔여세대", "계약취소주택")
+    special = project.get("kind") in kinds
+    ref = project.get("referenceMarket") or {}
+    models = {str(x.get("type") or x.get("modelNo") or ""): x
+              for x in project.get("housingTypes") or []}
+    candidates = []
+    for group in ref.get("byType") or []:
+        model = models.get(str(group.get("type") or ""))
+        if not model or not positive_number(model.get("priceEok")):
+            continue
+        comp_price = positive_number(group.get("referencePriceEok"))
+        n_complex = int(group.get("complexCount") or 0)
+        n_trades = int(group.get("transactionCount") or 0)
+        distance_verified = int(group.get("distanceCheckedCount") or 0) >= 3
+        if comp_price is None or n_complex < 3 or n_trades < 8:
+            continue
+        price = float(model["priceEok"])
+        gap = round(comp_price - price, 4)
+        pct = round(100 * gap / comp_price, 1)
+        if gap <= 0:
+            continue
+        candidates.append({"type": group.get("type"), "priceEok": price,
+                           "comparableReferenceEok": comp_price,
+                           "observedGapEok": gap, "observedGapPct": pct,
+                           "apartmentCount": n_complex, "transactionCount": n_trades,
+                           "distanceVerified": distance_verified,
+                           "areaSource": group.get("areaSource"),
+                           "scopeLabel": group.get("scopeLabel")})
+    # 주소 미검증 또는 주택형 추정이라면 '높음' 판정을 금지.
+    candidates.sort(key=lambda x: (-x["observedGapPct"], -x["transactionCount"]))
+    best = candidates[0] if candidates else None
+    confirmed_for_priority = bool(best and best["distanceVerified"]
+                                  and best["areaSource"] == "api"
+                                  and best["observedGapPct"] >= 15)
+    if confirmed_for_priority:
+        tier, label = "priority_review", "가격 차이 우선 검토"
+    elif best:
+        tier, label = "manual_review", "가격 차이 추가 검증"
+    elif special:
+        tier, label = "special_supply", "무순위·재공급 공고 확인"
+    else:
+        tier, label = "watch", "공고·비교자료 확인"
+    return {"tier": tier, "label": label, "isProfitVerified": False,
+            "verifiedEligibility": False, "bestType": best,
+            "candidateTypeCount": len(candidates),
+            "noticeTypePriority": special,
+            "reason": ("비슷한 면적의 단지별 신고 거래와 공급금액의 차이를 검토할 가치가 있습니다. 당첨 자격, 위치, 단지 품질, 세금·대출·전매제한을 검증해야 합니다."
+                       if best else "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요."),
+            "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."}
+
+
 def main():
     key = os.environ.get("DATA_GO_KR_API_KEY", "")
     if not key:
@@ -569,11 +685,25 @@ def main():
                 continue
             seen.add(item["id"])
             projects.append(item)
+    # 무순위·잔여세대 전용 API (일반 아파트 API에 포함되지 않음).
+    for row in fetch_remaining(session, key):
+        item = convert_remaining(row, today)
+        if not item or item["id"] in seen:
+            continue
+        seen.add(item["id"])
+        projects.append(item)
+    print(f"수집된 활성 공고: {len(projects)}건 (무순위 포함)")
     projects.sort(key=lambda p: (p["start"], p["name"]))
 
     for project in projects:
         # Fail the entire update if an API request fails: preserve existing data.json.
-        types = fetch_housing_types(session, key, project)
+        try:
+            types = fetch_housing_types(session, key, project)
+        except (requests.RequestException, RuntimeError, ValueError) as exc:
+            if project.get("dataCategory") != "remaining":
+                raise
+            print(f"무순위 주택형 가격 미제공: {project['id']} | {type(exc).__name__}")
+            types = []
         project["housingTypes"] = types
         project["price"] = max((x["priceEok"] for x in types), default=None)
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
@@ -601,6 +731,9 @@ def main():
         project["referenceMarket"] = comparable_report(
             project, district_trades, session, kakao_key, geo_cache
         )
+        project["opportunity"] = opportunity_screen(project)
+        print(f"돈되는 청약 탐색: {project['name']} | {project['opportunity']['label']} "
+              f"| 비교 주택형 {project['opportunity']['candidateTypeCount']}개")
         ref = project["referenceMarket"]
         price_label = (f"{ref['referencePriceEok']}억" if ref.get("referencePriceEok") is not None else "비교 표본 부족")
         print(f"정밀 비교: {project['name']} | {ref.get('status')} | "
