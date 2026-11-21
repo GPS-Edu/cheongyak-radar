@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T01:14:55.655532+09:00",
+  "updated_at": "2026-11-22T01:20:39.409028+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -11,12 +11,12 @@
       "announce": "2026-11-06",
       "start": "2026-11-16",
       "end": "2026-11-27",
-      "price": null,
+      "price": 4.6436,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026820013-2026820013",
@@ -28,12 +28,12 @@
       "announce": "2026-10-30",
       "start": "2026-11-16",
       "end": "2026-11-24",
-      "price": null,
+      "price": 4.6658,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000457-2026000457",
@@ -45,12 +45,12 @@
       "announce": "2026-11-12",
       "start": "2026-11-23",
       "end": "2026-11-25",
-      "price": null,
+      "price": 8.5406,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000576-2026000576",
@@ -62,12 +62,12 @@
       "announce": "2026-11-12",
       "start": "2026-11-23",
       "end": "2026-11-25",
-      "price": null,
+      "price": 14.084,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000560-2026000560",
@@ -79,12 +79,12 @@
       "announce": "2026-11-13",
       "start": "2026-11-23",
       "end": "2026-11-26",
-      "price": null,
+      "price": 18.27,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000505-2026000505",
@@ -96,12 +96,12 @@
       "announce": "2026-11-13",
       "start": "2026-11-25",
       "end": "2026-11-30",
-      "price": null,
+      "price": 25.7484,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000585-2026000585",
@@ -113,12 +113,12 @@
       "announce": "2026-11-19",
       "start": "2026-11-30",
       "end": "2026-12-02",
-      "price": null,
+      "price": 8.4579,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000591-2026000591",
@@ -130,12 +130,12 @@
       "announce": "2026-11-20",
       "start": "2026-11-30",
       "end": "2026-12-02",
-      "price": null,
+      "price": 7.8847,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     },
     {
       "id": "apt-2026000575-2026000575",
@@ -147,12 +147,12 @@
       "announce": "2026-11-19",
       "start": "2026-11-30",
       "end": "2026-12-02",
-      "price": null,
+      "price": 6.075,
       "market": null,
       "marketComparable": false,
       "requirements": null,
       "officialUrl": null,
-      "notes": "청약홈 API에서 수집한 공고입니다. 분양가, 청약자격, 공급유형 및 접수 일정은 원문 공고문에서 확인하세요."
+      "notes": "표시된 분양가는 주택형별 분양최고금액 중 가장 높은 금액입니다. 실제 신청 주택형별 가격과 옵션 비용은 공고문에서 확인하세요."
     }
   ]
 }
