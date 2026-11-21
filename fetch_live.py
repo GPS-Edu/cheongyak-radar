@@ -154,14 +154,35 @@ def main():
             seen.add(item["id"])
             projects.append(item)
 
+ 
     projects.sort(
         key=lambda p: (p["start"], p["name"])
     )
+
+    # 실제 분양가 조회
+    for project in projects:
+        price = fetch_price(session, key, project)
+        project["price"] = price
+
+        if price is not None:
+            project["notes"] = (
+                "표시된 분양가는 주택형별 분양최고금액 중 "
+                "가장 높은 금액입니다. 실제 신청 주택형별 "
+                "가격과 옵션 비용은 공고문에서 확인하세요."
+            )
+
+        print(
+            "분양가 조회:",
+            project["name"],
+            "|",
+            f"{price}억 원" if price is not None else "확인 필요"
+        )
 
     result = {
         "updated_at": now.isoformat(),
         "projects": projects,
     }
+
 
     # Preview only: do not overwrite production data.json.
     Path("data.preview.json").write_text(
@@ -194,5 +215,59 @@ def main():
         )
 
 
+def fetch_price(session, key, project):
+    # 공고별 주택형 가격 조회
+    parts = project["id"].split("-")
+    if len(parts) != 3:
+        return None
+
+    house_no, notice_no = parts[1], parts[2]
+
+    url = (
+        "https://api.odcloud.kr/api/"
+        "ApplyhomeInfoDetailSvc/v1/"
+        "getAPTLttotPblancMdl"
+    )
+
+    try:
+        response = session.get(
+            url,
+            params={
+                "serviceKey": key,
+                "page": 1,
+                "perPage": 100,
+                "returnType": "JSON",
+                "cond[HOUSE_MANAGE_NO::EQ]": house_no,
+                "cond[PBLANC_NO::EQ]": notice_no,
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        rows = response.json().get("data") or []
+
+        amounts = []
+        for row in rows:
+            value = row.get("LTTOT_TOP_AMOUNT")
+            if value is None:
+                continue
+            try:
+                amount = float(
+                    str(value).replace(",", "")
+                )
+                if amount > 0:
+                    amounts.append(amount)
+            except (ValueError, TypeError):
+                continue
+
+        if not amounts:
+            return None
+
+        # 여러 주택형 중 가장 높은 공급금액
+        # 만원 -> 억 원
+        return round(max(amounts) / 10000, 4)
+
+    except (requests.RequestException, ValueError) as e:
+        print("Price unavailable:", project["id"], type(e).__name__)
+        return None
 if __name__ == "__main__":
     main()
