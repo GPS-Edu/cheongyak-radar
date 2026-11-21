@@ -15,7 +15,7 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Test official housing API
+      - name: Compare housing APIs
         env:
           DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
         run: |
@@ -23,61 +23,51 @@ jobs:
           import os
           import requests
 
-          key = os.environ.get("DATA_GO_KR_API_KEY", "")
-          if not key:
-              raise RuntimeError("API key is missing")
+          key = os.environ["DATA_GO_KR_API_KEY"]
 
-          url = (
+          base = (
               "https://api.odcloud.kr/api/"
               "ApplyhomeInfoDetailSvc/v1/"
-              "getRemndrLttotPblancDetail"
           )
 
-          response = requests.get(
-              url,
-              params={
-                  "serviceKey": key,
-                  "page": 1,
-                  "perPage": 100,
-                  "returnType": "JSON",
-              },
-              timeout=30,
-          )
+          apis = {
+              "일반 아파트 분양": "getAPTLttotPblancDetail",
+              "무순위·잔여세대": "getRemndrLttotPblancDetail",
+          }
 
-          print("HTTP status:", response.status_code)
-          response.raise_for_status()
+          for name, endpoint in apis.items():
+              print("\n==========", name, "==========")
 
-          result = response.json()
-          if result.get("matchCount") is None and "data" not in result:
-              raise RuntimeError(
-                  "Unexpected API response structure"
+              response = requests.get(
+                  base + endpoint,
+                  params={
+                      "serviceKey": key,
+                      "page": 1,
+                      "perPage": 10,
+                      "returnType": "JSON",
+                  },
+                  timeout=30,
               )
 
-          projects = result.get("data", [])
-          print("조회된 공고 수:", len(projects))
-          print("전체 검색 건수:", result.get("totalCount"))
+              print("HTTP:", response.status_code)
+              response.raise_for_status()
+              result = response.json()
 
-          regions = ("서울", "경기", "인천")
-          selected = []
+              print("응답 항목:", list(result.keys()))
+              print("전체 건수:", result.get("totalCount"))
+              print("검색 건수:", result.get("matchCount"))
+              print("현재 건수:", result.get("currentCount"))
 
-          for p in projects:
-              area = str(p.get("SUBSCRPT_AREA_CODE_NM", ""))
-              address = str(p.get("HSSPLY_ADRES", ""))
-              if (
-                  any(r in area for r in regions)
-                  or any(r in address for r in regions)
-              ):
-                  selected.append(p)
+              rows = result.get("data") or []
+              print("실제 데이터 수:", len(rows))
 
-          print("수도권 공고 수:", len(selected))
-
-          for p in selected[:10]:
-              print(
-                  "-",
-                  p.get("HOUSE_NM", "이름 없음"),
-                  "|",
-                  p.get("SUBSCRPT_AREA_CODE_NM"),
-                  "| 공고일:",
-                  p.get("RCRIT_PBLANC_DE")
-              )
+              for row in rows[:5]:
+                  print(
+                      "공고:",
+                      row.get("HOUSE_NM"),
+                      "| 지역:",
+                      row.get("SUBSCRPT_AREA_CODE_NM"),
+                      "| 날짜:",
+                      row.get("RCRIT_PBLANC_DE"),
+                  )
           PY
