@@ -2,5 +2,5 @@
 window.RADAR_CONFIG = {
   supabaseUrl: "https://jlkywcumodbxjvmsbhhv.supabase.co", 
   supabaseAnonKey: "sb_publishable_Lv4R4JofDCFW-EC0fVhqeQ_7wVq3Qi3",
-  vapidPublicKey: "" 
+  vapidPublicKey: "BJ0icwuxBlwuBoRqBEWPc3YXgD6IgnBmDt5b5-RStJisSSJJY_LauoczAzzdCGnk4wfLYnGqHXQlGPwVJedoA18" 
 };
