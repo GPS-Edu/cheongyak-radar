@@ -68,6 +68,4 @@ jobs:
                       "| 일반공급 종료:", p.get("GNRL_RCEPT_ENDDE"),
                       "| 특별공급 종료:", p.get("SPSPLY_RCEPT_ENDDE")
                   )
-
-                  )
           PY
