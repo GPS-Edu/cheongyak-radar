@@ -9,13 +9,14 @@ from zoneinfo import ZoneInfo
 
 import requests
 import xml.etree.ElementTree as ET
-from calendar import monthrange
 
 API_BASE = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/"
 API_URL = API_BASE + "getAPTLttotPblancDetail"
 MODEL_URL = API_BASE + "getAPTLttotPblancMdl"
 REGIONS = ("서울", "경기", "인천")
 PAGE_SIZE = 100
+TRADE_MONTHS = 6  # 계약월 기준: 당월 포함 6개월
+COMPARISON_AREA_TOLERANCE = 2.0  # 제곱미터
 TRADE_API_URL = (
     "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/"
     "getRTMSDataSvcAptTrade"
@@ -84,6 +85,22 @@ def fetch_region(session, key, region):
     return results
 
 
+def classify_supply(row):
+    """확인 가능한 청약홈 코드/명칭을 우선 사용하고 자격은 추론하지 않습니다."""
+    name = str(row.get("HOUSE_NM") or "")
+    house_type = str(row.get("HOUSE_SECD_NM") or "")
+    detail_type = str(row.get("HOUSE_DTL_SECD_NM") or "")
+    if "신혼희망타운" in house_type or "신혼희망타운" in name:
+        return "신혼희망타운", "청약홈 주택구분/단지명", detail_type
+    if "공공분양" in name or "공공분양주택" in name:
+        return "공공분양", "공고 명칭(공고문 검증 필요)", detail_type
+    if detail_type == "국민":
+        return "국민주택", "청약홈 주택구분(국민)", detail_type
+    if detail_type == "민영":
+        return "민영주택", "청약홈 주택구분(민영)", detail_type
+    return "공급유형 확인 필요", "미확인", detail_type
+
+
 def convert(row, today):
     region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
     name = str(row.get("HOUSE_NM") or "").strip()
@@ -99,13 +116,16 @@ def convert(row, today):
     notice_id = f"apt-{house_no}-{notice_no}"
     address = str(row.get("HSSPLY_ADRES") or region).strip()
     official = str(row.get("PBLANC_URL") or "").strip()
+    kind, kind_basis, house_detail = classify_supply(row)
     return {
         "id": notice_id,
         "notice": notice_id,
         "name": name,
         "region": region,
         "district": address,
-        "kind": "일반분양",
+        "kind": kind,
+        "kindBasis": kind_basis,
+        "houseDetailType": house_detail,
         "announce": announce,
         "start": start,
         "end": end,
@@ -195,9 +215,11 @@ def identify_district(project):
 
 
 def identify_legal_dong(address):
-    # '문래동3가'처럼 숫자 가지번이 있는 동도 포착합니다.
-    match = re.search(r"([가-힣]+동(?:\d+가)?)", address)
-    return match.group(1) if match else None
+    # '문래동3가' / '대장동' 구분. 법정동 불확실 시 자동 시세 계산 금지.
+    found = re.findall(r"([가-힣]+동(?:\d+가)?)", address)
+    unique = list(dict.fromkeys(found))
+    # 부천대장처럼 여러 동이 병기된 공고는 어느 동인지 확정할 수 없습니다.
+    return unique[0] if len(unique) == 1 else None
 
 
 def fetch_district_month(session, key, lawd_code, yyyymm):
@@ -248,6 +270,19 @@ def fetch_district_month(session, key, lawd_code, yyyymm):
     return trades
 
 
+def summarize_trades(rows):
+    values = [x["dealAmountManwon"] for x in rows]
+    buildings = {(x["apartment"], x["jibun"], x["legalDong"]) for x in rows}
+    return {
+        "count": len(rows),
+        "apartmentCount": len(buildings),
+        "medianEok": round(median(values) / 10000, 4) if values else None,
+        "minEok": round(min(values) / 10000, 4) if values else None,
+        "maxEok": round(max(values) / 10000, 4) if values else None,
+        "latestDate": max((x["dealDate"] for x in rows), default=None),
+    }
+
+
 def scan_district_trades(project, district_trades, months):
     district = identify_district(project)
     if district is None:
@@ -256,44 +291,40 @@ def scan_district_trades(project, district_trades, months):
     target_dong = identify_legal_dong(project["district"])
     all_trades = district_trades[lawd_code]
     models = target_area_types(project)
+    # 법정동이 맞으면 1차 후보, 동일 시군구의 다른 법정동은
+    # '범위 확장 탐색 후보'로만 보관합니다. 지리적 인접성은 판단하지 않습니다.
     candidates = []
     by_type = defaultdict(list)
+    expanded = []
+    expanded_by_type = defaultdict(list)
     for item in all_trades:
-        if not target_dong or item["legalDong"] != target_dong:
-            continue
-        matches = [m for m in models if abs(item["exclusiveAreaSqm"] - m["area"]) <= 2]
+        matches = [m for m in models if abs(item["exclusiveAreaSqm"] - m["area"]) <= COMPARISON_AREA_TOLERANCE]
         if not matches:
             continue
-        candidates.append({**item, "matchingTypes": [m["type"] for m in matches]})
-        for model in matches:
-            by_type[model["type"]].append(item)
+        tagged = {**item, "matchingTypes": [m["type"] for m in matches]}
+        if target_dong and item["legalDong"] == target_dong:
+            candidates.append(tagged)
+            for model in matches:
+                by_type[model["type"]].append(item)
+        else:
+            expanded.append(tagged)
+            for model in matches:
+                expanded_by_type[model["type"]].append(item)
 
     candidates.sort(key=lambda row: row["dealDate"], reverse=True)
-    # 통계는 화면에 저장하는 최대 80건이 아니라 전체 후보를 기준으로 산출합니다.
-    # 구축/신축의 가격 차이를 단지별로 판별할 수 없으므로, 2015년 이후 준공이라는
-    # 간단한 필터를 별도로 명시하고 '시세'나 '예상 차익'으로 확정하지 않습니다.
+    expanded.sort(key=lambda row: row["dealDate"], reverse=True)
     statistics = []
     for model in models:
-        group = by_type.get(model["type"], [])
-        recent = [x for x in group if x["buildYear"].isdigit()
-                  and int(x["buildYear"]) >= 2015]
-        def summarize(rows):
-            values = [x["dealAmountManwon"] for x in rows]
-            buildings = sorted({(x["apartment"], x["jibun"]) for x in rows})
-            return {
-                "count": len(rows),
-                "apartmentCount": len(buildings),
-                "medianEok": round(median(values) / 10000, 4) if values else None,
-                "minEok": round(min(values) / 10000, 4) if values else None,
-                "maxEok": round(max(values) / 10000, 4) if values else None,
-                "latestDate": max((x["dealDate"] for x in rows), default=None),
-            }
+        same = by_type.get(model["type"], [])
+        recent_built = [x for x in same if x["buildYear"].isdigit() and int(x["buildYear"]) >= 2015]
+        others = expanded_by_type.get(model["type"], [])
         statistics.append({
             "type": model["type"],
             "areaSqm": model["area"],
             "areaSource": "api" if model["verifiedArea"] else "model_code_estimate",
-            "all": summarize(group),
-            "builtSince2015": summarize(recent),
+            "all": summarize_trades(same),
+            "builtSince2015": summarize_trades(recent_built),
+            "districtExploration": summarize_trades(others),
             "evaluation": "review_only",
         })
     return {
@@ -305,8 +336,11 @@ def scan_district_trades(project, district_trades, months):
         "candidateCount": len(candidates),
         "candidateTransactions": candidates[:80],
         "displayLimit": 80,
+        "districtExplorationCount": len(expanded),
+        "districtExplorationTransactions": expanded[:30],
         "typeStatistics": statistics,
-        "warning": "법정동·면적 ±2㎡ 참고 통계입니다. 준공연도 2015년 이상 거래도 신축 분양단지와 직접 비교 가능하다고 검증되지 않았습니다. 실제 거리·층·단지 상품성 미검증으로 시세·차익·로또 판정을 보류합니다.",
+        "distanceVerified": False,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다.",
     }
 
 
@@ -336,7 +370,7 @@ def main():
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
 
     # 같은 시군구 API 응답을 공고별로 중복 요청하지 않고 캐시합니다.
-    months = list(recent_months(now.date(), count=3))
+    months = list(recent_months(now.date(), count=TRADE_MONTHS))
     district_trades = {}
     codes = sorted({d[0] for project in projects
                     if (d := identify_district(project)) is not None})
@@ -358,7 +392,8 @@ def main():
         print(
             f"실거래 조회: {project['name']} | "
             f"{info['status']} | {info.get('transactionCount', 0)}건 | "
-            f"동·면적 후보 {info.get('candidateCount', 0)}건"
+            f"동·면적 후보 {info.get('candidateCount', 0)}건 | "
+            f"시군구 확장 탐색 {info.get('districtExplorationCount', 0)}건"
         )
 
     result = {"updated_at": now.isoformat(), "projects": projects}
