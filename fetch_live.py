@@ -1201,6 +1201,101 @@ def opportunity_screen(project):
     }
 
 
+
+# v20: source-aware readiness summary. No unsupported eligibility/profit assertion.
+def build_v20_review(project):
+    opportunity = project.get("opportunity") or {}
+    same = project.get("sameComplexSales") or {}
+    nearby = project.get("referenceMarket") or {}
+    discovery = project.get("discovery") or {}
+    types = project.get("housingTypes") or []
+    prices = [positive_number(x.get("priceEok")) for x in types]
+    prices = [x for x in prices if x is not None]
+    same_types = same.get("byType") or []
+    same_count = sum(int(x.get("transactionCount") or 0) for x in same_types)
+    nearby_count = int(nearby.get("transactionCount") or 0)
+    near_confirmed = bool(nearby.get("locationConfirmed") and nearby.get("distanceChecked"))
+    evidence = (
+        "same_complex_apartment_sales" if same_types else
+        "distance_checked_apartment_sales" if near_confirmed and nearby_count else
+        "unverified_local_reference" if nearby_count else "missing")
+    if same_types:
+        reason = "동일 단지 매매 확인. 분양권 시세와 동일하다는 뜻은 아닙니다."
+    elif near_confirmed and nearby_count:
+        reason = "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다."
+    elif nearby_count:
+        reason = "거래는 있으나 실제 거리 검증이 없어 가격 판정에 사용하지 않습니다."
+    else:
+        reason = "검증할 거래가 부족합니다. 신규 택지·단지 주소·실거래 공개 시점 확인 필요."
+    category = opportunity.get("tier", "watch")
+    # Ranking is a review order, not a probability, expected return or financial recommendation.
+    signal = 0
+    if category == "priority_review": signal = 4
+    elif category in ("manual_review", "same_complex_review"): signal = 2
+    elif category == "price_caution": signal = -2
+    special = bool(discovery.get("isSpecialSupply"))
+    score = (max(-2, signal) * 10 + (15 if special else 0) +
+             (10 if discovery.get("deadlineSoon") else 0) +
+             (6 if discovery.get("startSoon") else 0) +
+             (7 if same_types else 0) + (4 if near_confirmed else 0))
+    # Do not pretend a downloaded API URL is the actual source PDF.
+    return {
+        "version": "v20-evidence-readiness", "reviewScore": score,
+        "priceSignal": category, "evidenceLevel": evidence,
+        "evidenceReason": reason,
+        "sameComplexTradeCount": same_count,
+        "nearbyTradeCount": nearby_count,
+        "areaVerified": any(x.get("exclusiveAreaSqm") for x in types),
+        "priceAvailable": bool(prices),
+        "minTypePriceEok": min(prices) if prices else None,
+        "maxTypePriceEok": max(prices) if prices else None,
+        "deadlineSoon": bool(discovery.get("deadlineSoon")),
+        "startSoon": bool(discovery.get("startSoon")),
+        "special": special,
+        "eligibilityStatus": "requires_official_notice_review",
+        "requiredEvidence": [
+            "모집공고문 원문 및 공급유형별 자격", "전매제한·거주의무",
+            "실제 계약금/중도금/잔금 납부 일정", "취득세·옵션·금융 비용",
+            "주택형·입지·거래시점의 비교 적합성",
+        ],
+        "investmentProfitVerified": False,
+    }
+
+
+def attach_review_evidence(project, catalogue):
+    """User-reviewed notice evidence only; cannot silently set requirements.
+
+    Catalogue is keyed by exact notice id, preventing same-named notices mixing.
+    Only evidence explicitly marked reviewed is surfaced as reviewed; the raw
+    excerpt is not converted into eligibility requirements automatically.
+    """
+    entry = catalogue.get(project.get("id"), {}) if isinstance(catalogue, dict) else {}
+    if not isinstance(entry, dict):
+        entry = {}
+    source = entry.get("sourceUrl")
+    if not isinstance(source, str) or not source.startswith("https://"):
+        source = None
+    excerpts = []
+    for item in (entry.get("excerpts") or [])[:30]:
+        if not isinstance(item, dict):
+            continue
+        page = item.get("page")
+        body = item.get("text")
+        category = item.get("category")
+        if (isinstance(page, int) and page >= 1 and isinstance(body, str)
+                and 0 < len(body) <= 700 and isinstance(category, str)
+                and category in ("eligibility", "resale", "occupancy", "payments", "other")):
+            excerpts.append({"category": category, "page": page, "text": body,
+                             "reviewed": item.get("reviewed") is True})
+    project["noticeEvidence"] = {
+        "status": ("reviewed_excerpts" if excerpts and all(x["reviewed"] for x in excerpts)
+                   else "excerpts_need_review" if excerpts else "no_source_pdf"),
+        "sourceUrl": source, "excerpts": excerpts,
+        "eligibilityAutomaticallyConfirmed": False,
+        "note": "발췌문은 공고문 검토 보조 자료입니다. AI/키워드 추출만으로 청약 자격을 확정하지 않습니다.",
+    }
+
+
 def main():
     key = os.environ.get("DATA_GO_KR_API_KEY", "")
     if not key:
@@ -1229,6 +1324,13 @@ def main():
         projects.append(item)
     print(f"수집된 활성 공고: {len(projects)}건 (무순위 포함)")
     projects.sort(key=lambda p: (p["start"], p["name"]))
+    catalogue_path = Path("notice_evidence.json")
+    try:
+        evidence_catalogue = json.loads(catalogue_path.read_text(encoding="utf-8")) if catalogue_path.exists() else {}
+        if not isinstance(evidence_catalogue, dict):
+            raise ValueError("notice_evidence.json must be an object keyed by notice ID")
+    except (ValueError, OSError) as exc:
+        raise RuntimeError("Invalid notice_evidence.json; existing data preserved") from exc
 
     for project in projects:
         # Fail the entire update if an API request fails: preserve existing data.json.
@@ -1289,6 +1391,8 @@ def main():
         project["verification"] = verification_status(project)
         project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
+        attach_review_evidence(project, evidence_catalogue)
+        project["reviewV20"] = build_v20_review(project)
         print(f"동일 단지 검증: {project['name']} | {project['sameComplexSales']['status']} "
               f"| 주택형 {len(project['sameComplexSales']['byType'])}개 "
               f"| 거래 {project['sameComplexSales']['transactionCount']}건")
@@ -1325,7 +1429,9 @@ def main():
         "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
         "startsSoonNotices": sum(p["discovery"]["startSoon"] for p in projects),
         "verificationPendingNotices": sum(p["verification"]["eligibility"] == "official_notice_required" for p in projects),
-        "algorithm": "v15-dynamic-legal-dong-code",
+        "algorithm": "v20-unified-evidence-readiness",
+        "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
+        "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
     result = {"updated_at": now.isoformat(), "projects": projects,
