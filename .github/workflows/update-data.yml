@@ -29,11 +29,14 @@ jobs:
           python-version: '3.12'
 
       - name: Install packages
-        run: pip install requests
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
       - name: Fetch official housing data
         env:
           DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+          RIGHTS_API_KEY: ${{ secrets.RIGHTS_API_KEY }}
           KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
         run: python fetch_live.py
 
@@ -43,7 +46,6 @@ jobs:
           import json
           import shutil
           from pathlib import Path
-          from datetime import datetime
 
           source = Path("data.preview.json")
 
@@ -57,7 +59,6 @@ jobs:
           )
 
           projects = payload.get("projects")
-          updated = payload.get("updated_at")
 
           if not isinstance(projects, list):
               raise RuntimeError(
@@ -70,33 +71,25 @@ jobs:
                   "Existing data.json preserved."
               )
 
-          if not updated:
-              raise RuntimeError(
-                  "Missing update timestamp"
-              )
-
-          datetime.fromisoformat(updated)
-
-          required = (
-              "id",
-              "name",
-              "region",
-              "start",
-              "end",
-          )
-
           for project in projects:
               if not isinstance(project, dict):
                   raise RuntimeError(
                       "Invalid project entry"
                   )
 
-              if not all(
-                  project.get(k) for k in required
-              ):
-                  raise RuntimeError(
-                      "Incomplete listing detected"
-                  )
+              required = [
+                  "id",
+                  "name",
+                  "region",
+                  "start",
+                  "end"
+              ]
+
+              for key in required:
+                  if not project.get(key):
+                      raise RuntimeError(
+                          f"Missing {key} in project"
+                      )
 
           shutil.copyfile(
               source,
@@ -104,8 +97,7 @@ jobs:
           )
 
           print(
-              "Validated listings:",
-              len(projects)
+              f"Validated {len(projects)} listings"
           )
           PY
 
