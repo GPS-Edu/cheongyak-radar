@@ -672,7 +672,18 @@ def attach_reported_rights(project, catalogue, today):
     op = project.get("opportunity") or {}
     op["reportedRightsEvidence"] = []
     item = catalogue.get(project.get("id"))
-    if not isinstance(item, dict) or item.get("name") != project.get("name"):
+    # API HOUSE_MANAGE_NO can change, while PBLANC_NO identifies this specific notice.
+    # If key differs, look up ONLY a matching explicit notice number and exact normalized
+    # apartment name. Never match on apartment name alone (future notices differ).
+    if item is None:
+        notice_suffix = str(project.get("id") or "").split("-")[-1]
+        for catalogue_id, candidate in catalogue.items():
+            if (isinstance(candidate, dict)
+                and str(catalogue_id).split("-")[-1] == notice_suffix
+                and str(candidate.get("name") or "").replace(" ", "") == str(project.get("name") or "").replace(" ", "")):
+                item = candidate
+                break
+    if not isinstance(item, dict) or str(item.get("name") or "").replace(" ", "") != str(project.get("name") or "").replace(" ", ""):
         return []
     if today > str(item.get("validThrough", "")):
         return []
@@ -1130,26 +1141,29 @@ def comparable_report(project, trades, session, kakao_key, geo_cache, place_cach
                                    -x["count"], x["apartment"]))
         n_trades = sum(x["count"] for x in comps)
         sufficiently_sampled = len(comps) >= MIN_COMPARABLE_COMPLEXES and n_trades >= MIN_COMPARABLE_TRADES
-        # 지역코드/주소·면적 확실성 없는 자료는 메인 시세로 간주하지 않음.
-        reference = round(median(x["medianEok"] for x in comps), 4) if sufficiently_sampled else None
+        # v24: 1~2건도 탐색 참고값을 보여준다. 시장 시세 확정과 구분한다.
+        # 위치/면적 검증이 없는 숫자를 근처 거래로 둔갑시키지 않는다.
+        reference = round(median(x["medianEok"] for x in comps), 4) if comps else None
         if site and comps:
             status, label = "distance_checked_review", "2km 이내·2015년 이후 준공 거래 참고"
         elif comps:
             status, label = "same_dong_modern_review", "같은 법정동·2015년 이후 준공 거래 참고"
         else:
             status, label = "insufficient", "비교 단지 부족"
+        sparse = bool(comps) and not sufficiently_sampled
         group.update({
-            "status": status if sufficiently_sampled else "insufficient",
+            "status": "limited_sample_review" if sparse else status,
             "scopeLabel": label,
             "referencePriceEok": reference,
             "complexCount": len(comps), "transactionCount": n_trades,
+            "smallSample": sparse, "comparisonQuality": "limited" if sparse else ("review" if comps else "insufficient"),
             "apartmentComparisons": comps[:12], "sitePositionChecked": bool(site),
             "distanceCheckedCount": len(comps) if site else 0,
             "referenceIsMarketValue": False,
             "coverageLimited": limit_hit,
             "reason": ("좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. "
                        "이는 적정 시세나 확정 차익이 아닙니다."
-                       if reference is not None else "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."),
+                       if sufficiently_sampled else ("거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다." if comps else "거리·면적·연식 조건을 만족하는 거래가 없습니다.")),
         })
     representative = max(models, key=lambda x: positive_number(x.get("priceEok")) or 0)
     rep_name = str(representative.get("type") or representative.get("modelNo") or "")
@@ -1634,15 +1648,15 @@ def main():
             rights_by_district[code]=None
             print(f"분양·입주권 조회 보류: {code} | {type(exc).__name__} | 별도 API 활용 승인 확인")
 
+    # Press report is a discoverability clue, NOT a NAVER quote or verified market price.
+    # Exact notice/name match, dated source, segregated from official transactions.
+    media_catalogue = {'rem-2026930045-2026930045': {'name': '잠실 래미안아이파크', 'validThrough': '2026-12-31', 'reportedTrades': [{'areaBandSqm': 84, 'reportedRightsEok': 43.2, 'dealDate': '2026-06-30', 'sourceTitle': '한국경제 2026-11-18 보도 (전용 84㎡ 입주권 43억 2천만원)', 'sourceUrl': 'https://www.hankyung.com/article/2026111838756', 'notes': '입주권 거래 사례. 공급 84D형과 층·타입·추가분담금 등이 달라 확정 시세로 사용하지 않음'}]}}
     media_path = Path("media_rights_evidence.json")
     if media_path.exists():
-        media_catalogue = json.loads(media_path.read_text(encoding="utf-8"))
-        if not isinstance(media_catalogue, dict):
+        external = json.loads(media_path.read_text(encoding="utf-8"))
+        if not isinstance(external, dict):
             raise RuntimeError("Invalid media_rights_evidence.json")
-    else:
-        # v22 two-file deployment: time-limited, explicitly unverified press reference.
-        # Only used for the single exact notice key, never treated as official transaction data.
-        media_catalogue = {'rem-2026930045-2026930045': {'name': '잠실 래미안아이파크', 'validThrough': '2026-11-26', 'reportedTrades': [{'areaBandSqm': 84, 'reportedRightsEok': 43.2, 'dealDate': '2026-06-30', 'sourceTitle': '한국경제 2026-11-18 보도 (전용 84㎡ 입주권 43억 2천만원)', 'sourceUrl': 'https://www.hankyung.com/article/2026111838756', 'notes': '보도된 입주권 거래는 동일 전용면적대의 사례이며 공급 84D형과 동일 동·층·타입인지 확인되지 않음'}]}}
+        media_catalogue.update(external)
 
     for project in projects:
         project["transactionScan"] = scan_district_trades(
@@ -1719,7 +1733,7 @@ def main():
         "reportedRightsReviewNotices": sum(bool(p["opportunity"].get("reportedRightsEvidence")) for p in projects),
         "rightsApiUnavailableDistricts": sum(v is None for v in rights_by_district.values()),
         "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
-        "algorithm": "v23-official-small-sample-discovery",
+        "algorithm": "v24-info-first-sparse-and-source-priority",
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
