@@ -707,57 +707,102 @@ def comparable_report(project, trades, session, kakao_key, geo_cache, place_cach
 
 
 def opportunity_screen(project):
-    """가격 차이 검토 우선순위. 수익/적정 시세의 확정 판단이 아님."""
-    kinds = ("무순위", "잔여세대", "계약취소주택")
-    special = project.get("kind") in kinds
-    ref = project.get("referenceMarket") or {}
-    models = {str(x.get("type") or x.get("modelNo") or ""): x
-              for x in project.get("housingTypes") or []}
-    candidates = []
-    for group in ref.get("byType") or []:
-        model = models.get(str(group.get("type") or ""))
-        if not model or not positive_number(model.get("priceEok")):
+    """감사 가능한 가격 신호. 거래중앙값은 시세/수익 인증이 아니다.
+
+    우위 신호는 거리 확인+주택형 실측면적+충분한 분산 표본을 충족할 때만.
+    무순위 공고의 기회는 가격 신호와 구분해 반드시 노출한다.
+    """
+    special = project.get("kind") in ("무순위", "잔여세대", "계약취소주택")
+    report = project.get("referenceMarket") or {}
+    models = {str(m.get("type") or m.get("modelNo") or ""): m
+              for m in project.get("housingTypes") or []}
+    observations = []
+    strong = []
+    caution = []
+    for group in report.get("byType") or []:
+        model_name = str(group.get("type") or "")
+        model = models.get(model_name)
+        if not model:
             continue
-        comp_price = positive_number(group.get("referencePriceEok"))
+        price = positive_number(model.get("priceEok"))
+        reference = positive_number(group.get("referencePriceEok"))
+        if price is None or reference is None:
+            continue
+        comps = group.get("apartmentComparisons") or []
         n_complex = int(group.get("complexCount") or 0)
         n_trades = int(group.get("transactionCount") or 0)
-        distance_verified = (int(group.get("distanceCheckedCount") or 0) >= 3
-                             and not group.get("coverageLimited"))
-        if comp_price is None or n_complex < 3 or n_trades < 8:
-            continue
-        price = float(model["priceEok"])
-        gap = round(comp_price - price, 4)
-        pct = round(100 * gap / comp_price, 1)
-        if gap <= 0:
-            continue
-        candidates.append({"type": group.get("type"), "priceEok": price,
-                           "comparableReferenceEok": comp_price,
-                           "observedGapEok": gap, "observedGapPct": pct,
-                           "apartmentCount": n_complex, "transactionCount": n_trades,
-                           "distanceVerified": distance_verified,
-                           "areaSource": group.get("areaSource"),
-                           "scopeLabel": group.get("scopeLabel")})
-    # 주소 미검증 또는 주택형 추정이라면 '높음' 판정을 금지.
-    candidates.sort(key=lambda x: (-x["observedGapPct"], -x["transactionCount"]))
-    best = candidates[0] if candidates else None
-    confirmed_for_priority = bool(best and best["distanceVerified"]
-                                  and best["areaSource"] == "api"
-                                  and best["observedGapPct"] >= 15)
-    if confirmed_for_priority:
-        tier, label = "priority_review", "가격 차이 우선 검토"
-    elif best:
-        tier, label = "manual_review", "가격 차이 추가 검증"
+        distances_confirmed = bool(report.get("locationConfirmed")) and (
+            int(group.get("distanceCheckedCount") or 0) >= 3)
+        area_verified = group.get("areaSource") == "api"
+        no_partial = not (group.get("coverageLimited") or report.get("comparisonCoverageLimited"))
+        # 거래가 폭넓게 분포한다면 중앙값이 적정가격을 대표하기 어렵다.
+        observed_medians = [positive_number(c.get("medianEok")) for c in comps]
+        observed_medians = [x for x in observed_medians if x is not None]
+        spread = (max(observed_medians) / min(observed_medians) - 1
+                  if len(observed_medians) >= 2 else None)
+        usable = bool(distances_confirmed and area_verified and no_partial
+                      and n_complex >= 3 and n_trades >= 10
+                      and spread is not None and spread <= 0.35)
+        gap = round(reference - price, 4)
+        pct = round(100 * gap / reference, 1)
+        observation = {
+            "type": model_name, "priceEok": round(price,4),
+            "comparableReferenceEok": round(reference,4),
+            "observedGapEok": gap, "observedGapPct": pct,
+            "apartmentCount": n_complex, "transactionCount": n_trades,
+            "distanceVerified": distances_confirmed, "areaSource": group.get("areaSource"),
+            "coverageComplete": no_partial, "complexPriceDispersionPct": (
+                round(100*spread,1) if spread is not None else None),
+            "qualityGatePassed": usable, "scopeLabel": group.get("scopeLabel"),
+            "latestComparisonDate": max((str(c.get("latestDate") or "") for c in comps), default=""),
+        }
+        observations.append(observation)
+        if usable and pct >= 15:
+            strong.append(observation)
+        elif usable and pct <= -10:
+            caution.append(observation)
+    # 강한 후보가 하나라도 있으면 우선 검토. 모든 비교는 '기회 추정'이 아닌 '실사 대상'.
+    strong.sort(key=lambda x: (-x["observedGapPct"],-x["transactionCount"]))
+    caution.sort(key=lambda x: (x["observedGapPct"],-x["transactionCount"]))
+    observations.sort(key=lambda x: (-x["observedGapPct"],-x["transactionCount"]))
+    positives = [x for x in observations if x["observedGapPct"] >= 10]
+    if strong:
+        tier, label, best = "priority_review", "가격 우위 정밀 검토", strong[0]
     elif special:
-        tier, label = "special_supply", "무순위·재공급 공고 확인"
+        tier, label, best = "special_supply", "무순위·재공급 기회 확인", (positives[0] if positives else None)
+    elif caution:
+        tier, label, best = "price_caution", "가격 열위 주의", caution[0]
+    elif positives:
+        tier, label, best = "manual_review", "가격 차이 근거 재확인", positives[0]
     else:
-        tier, label = "watch", "공고·비교자료 확인"
-    return {"tier": tier, "label": label, "isProfitVerified": False,
-            "verifiedEligibility": False, "bestType": best,
-            "candidateTypeCount": len(candidates),
-            "noticeTypePriority": special,
-            "reason": ("비슷한 면적의 단지별 신고 거래와 공급금액의 차이를 검토할 가치가 있습니다. 당첨 자격, 위치, 단지 품질, 세금·대출·전매제한을 검증해야 합니다."
-                       if best else "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요."),
-            "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."}
+        tier, label, best = "watch", "공고·비교자료 확인", None
+    issue_list = []
+    if not report.get("locationConfirmed"):
+        issue_list.append("청약 단지 위치 확인 필요")
+    if report.get("comparisonCoverageLimited"):
+        issue_list.append("비교 단지 탐색 한도 도달")
+    if not observations:
+        issue_list.append("주택형별 비교 거래 표본 부족")
+    if observations and not any(x["areaSource"] == "api" for x in observations):
+        issue_list.append("전용면적은 주택형 코드 추정치")
+    if not project.get("requirements"):
+        issue_list.append("모집공고문 청약 자격 미검증")
+    if not project.get("risk"):
+        issue_list.append("전매제한·거주의무·자금 일정 미검증")
+    return {
+        "tier": tier, "label": label, "isProfitVerified": False,
+        "verifiedEligibility": False, "bestType": best,
+        "candidateTypeCount": len(strong),
+        "observationTypeCount": len(observations),
+        "noticeTypePriority": special,
+        "priceCautionCount": len(caution),
+        "priceEvidence": observations,
+        "verificationChecklist": issue_list,
+        "screenVersion": "v12-evidence-first",
+        "reason": ("거리·전용면적·거래 표본·단지별 가격 분산 기준을 충족한 가격 차이 신호입니다. 수익 확정이 아니며 직접 확인해야 합니다."
+                   if strong else "확정적인 가격 우위는 검증되지 않았습니다. 무순위 일정과 청약 자격 또는 비교자료를 우선 확인하세요."),
+        "disclaimer": "실거래 비교는 분양권의 적정 시세·예상 차익·당첨 가능성을 입증하지 않습니다.",
+    }
 
 
 def main():
@@ -827,7 +872,8 @@ def main():
         )
         project["opportunity"] = opportunity_screen(project)
         print(f"돈되는 청약 탐색: {project['name']} | {project['opportunity']['label']} "
-              f"| 비교 주택형 {project['opportunity']['candidateTypeCount']}개")
+              f"| 엄격 기준 통과 주택형 {project['opportunity']['candidateTypeCount']}개 "
+              f"| 가격 열위 주의 {project['opportunity']['priceCautionCount']}개")
         ref = project["referenceMarket"]
         price_label = (f"{ref['referencePriceEok']}억" if ref.get("referencePriceEok") is not None else "비교 표본 부족")
         print(f"위치 검증: {project['name']} | {ref.get('locationMethod')} | "
@@ -843,7 +889,19 @@ def main():
             f"시군구 확장 탐색 {info.get('districtExplorationCount', 0)}건"
         )
 
-    result = {"updated_at": now.isoformat(), "projects": projects}
+    quality_summary = {
+        "activeNotices": len(projects),
+        "remainingNotices": sum(p.get("dataCategory") == "remaining" for p in projects),
+        "preciseSiteLocations": sum(bool((p.get("referenceMarket") or {}).get("locationConfirmed")) for p in projects),
+        "priceReviewNotices": sum(p["opportunity"]["tier"] == "priority_review" for p in projects),
+        "priceCautionNotices": sum(p["opportunity"]["tier"] == "price_caution" for p in projects),
+        "unverifiedProfitNoticeCount": len(projects),
+        "tradeMonths": months,
+        "algorithm": "v12-evidence-first",
+    }
+    print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
+    result = {"updated_at": now.isoformat(), "projects": projects,
+              "analysisQuality": quality_summary}
     Path("data.preview.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
     )
