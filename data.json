@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T15:56:46.992349+09:00",
+  "updated_at": "2026-11-22T16:33:14.665602+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -643,7 +643,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -1072,7 +1072,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -1168,7 +1168,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -1264,7 +1264,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -1950,7 +1950,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -3248,7 +3248,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -3447,7 +3447,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -4335,7 +4335,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -4481,7 +4481,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -4645,7 +4645,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -5284,7 +5284,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -6957,7 +6957,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -9038,7 +9038,7 @@
         "transactionCount": 2,
         "apartmentCount": 1,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
@@ -10024,7 +10024,7 @@
         "transactionCount": 0,
         "apartmentCount": 0,
         "distanceChecked": false,
-        "geocodingEnabled": false,
+        "geocodingEnabled": true,
         "locationConfirmed": false,
         "byType": [
           {
