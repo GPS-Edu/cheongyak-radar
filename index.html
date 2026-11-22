@@ -229,7 +229,7 @@ function sameComplexHtml(p){
   const method=(g.matchMethods||[]).map(m=>m==='same_parcel'?'단일 지번 일치':m==='within_150m_and_name'?'이름+150m 이내 위치 일치':m).join(', ');
   return `<div style="border-top:1px solid #edf0f5;padding:12px 0"><div class="flexbetween"><strong>${esc(g.type||'미확인')}형</strong><strong>${esc(money(sale))}</strong></div><div class="fineprint">동일 단지 매매 중앙값 · ${esc(g.transactionCount)}건 · 최근 ${esc(g.latestDate||'미확인')} · ${esc(method)}</div><p class="fineprint">전용면적 ${esc(g.areaSqm)}㎡ (${g.areaSource==='api'?'API 확인':'주택형 코드 추정'})${esc(priceNote)}</p></div>`;
  }).join('');
- return `<details class="card"><summary style="cursor:pointer;font-weight:800">🏢 엄격한 동일 단지 검증 결과 보기</summary><p class="small muted">같은 단지 이름에 지번 또는 좌표 증거를 추가해 확인한 아파트 매매 거래입니다. 인근 단지 비교와 섞지 않습니다.</p>${items||`<div class="notice warning">${esc(r.reason||'검증 가능한 동일 단지 매매 거래가 없습니다.')}</div>`}<div class="warn">매매 실거래는 해당 분양 주택형의 시가를 보증하지 않습니다. 분양권·입주권 거래는 이 자료에 포함되지 않으며, 전매제한·세금·자금 부담도 별도 확인해야 합니다.</div></details>`;
+ return `<div class="card"><strong>🏢 2차 검증 · 동일 단지 실거래 우선</strong><p class="small muted">같은 단지 이름에 지번 또는 좌표 증거를 추가해 확인한 아파트 매매 거래입니다. 인근 단지 비교와 섞지 않습니다.</p>${items||`<div class="notice warning">${esc(r.reason||'검증 가능한 동일 단지 매매 거래가 없습니다.')}</div>`}<div class="warn">매매 실거래는 해당 분양 주택형의 시가를 보증하지 않습니다. 분양권·입주권 거래는 이 자료에 포함되지 않으며, 전매제한·세금·자금 부담도 별도 확인해야 합니다.</div></div>`;
 }
 function opportunityInfo(p){
  const o=p.opportunity;
@@ -262,7 +262,7 @@ function opportunityDetailHtml(p){
  }).join('');
  const sameN=Array.isArray(o.sameComplexEvidence)?o.sameComplexEvidence.length:0;
  const checks=(Array.isArray(o.verificationChecklist)?o.verificationChecklist:[]).map(x=>`<li>${esc(x)}</li>`).join('');
- return `<div class="card"><strong>🎯 가격 경쟁력 심층 검토 · ${esc(o.label||'검토')}</strong><p class="small muted">동일 단지 아파트 매매 거래를 별도로 먼저 확인한 뒤, 주변 유사 단지 비교를 검토합니다. 아래 숫자는 주변 단지 비교 참고값이며 가격 차이는 수익이 아닙니다.</p>${sameN?`<p class="fineprint">동일 단지 거래 확인된 주택형 ${sameN}개 · 세부 내용은 위 '동일 단지 실거래' 카드 참조</p>`:''}${rows||'<div class="notice warning">엄격한 시세 통계 대상은 아직 부족해요. 위 실제 신고 거래금액은 별도로 확인할 수 있어요.</div>'}${checks?`<details style="margin-top:12px"><summary class="fineprint" style="cursor:pointer">청약 자격·가격 적합성 검증 항목 자세히 보기</summary><ul class="bullet">${checks}</ul></details>`:''}<div class="warn">${esc(o.disclaimer||'')} 거래단지 연식·입지·특성·층·옵션, 취득세, 금융 비용 및 청약 자격을 확인하세요.</div></div>`;
+ return `<div class="card"><strong>🎯 가격 경쟁력 심층 검토 · ${esc(o.label||'검토')}</strong><p class="small muted">동일 단지 아파트 매매 거래를 별도로 먼저 확인한 뒤, 주변 유사 단지 비교를 검토합니다. 아래 숫자는 주변 단지 비교 참고값이며 가격 차이는 수익이 아닙니다.</p>${sameN?`<p class="fineprint">동일 단지 거래 확인된 주택형 ${sameN}개 · 세부 내용은 위 '동일 단지 실거래' 카드 참조</p>`:''}${rows||'<div class="notice warning">비교 가능한 주변 거래가 없어 가격 경쟁력 판단을 보류합니다.</div>'}${checks?`<div class="divider"></div><strong>다음에 확인할 증거</strong><ul class="bullet">${checks}</ul>`:''}<div class="warn">${esc(o.disclaimer||'')} 거래단지 연식·입지·특성·층·옵션, 취득세, 금융 비용 및 청약 자격을 확인하세요.</div></div>`;
 }
 function prioritySort(a,b){return v20Rank(b)-v20Rank(a)||(dayDiff(a.end)??999)-(dayDiff(b.end)??999);}
 function rightsCardReference(p){
@@ -308,72 +308,6 @@ function providerCardGrid(p){
  return `<div class="provider-price"><div class="provider-name">${source==='네이버'?'네이버 매물 호가':'KB 제공 시세'}</div><b>${q?esc(q.range&&q.range.length===2?money(q.range[0])+' ~ '+money(q.range[1]):money(q.price)):'자동 조회 결과 없음'}</b><small>${q?esc(q.kind+' · '+q.origin+' · '+q.date+(q.area?' · '+q.area:'')+(q.count?' · 매물 '+q.count+'건':'')):('확인 원인: '+(p.privateMarketStatus||'수집 로그 확인 필요'))}</small><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${q?'시세 다시 확인 ↗':'시세 확인 ↗'}</a>${q?.url?`<a href="${esc(q.url)}" target="_blank" rel="noopener noreferrer">제공사 사이트 ↗</a>`:''}</div>`;
  }).join('')}</div>`;
 }
-// v33: 관측된 공식 거래와 투자 적합성 판정을 엄격히 분리한다.
-function tradePriceSnapshot(p){
- const models=(Array.isArray(p.housingTypes)?p.housingTypes:[]).filter(x=>Number(x.priceEok)>0);
- const modelArea=x=>{
-  const verified=Number(x.exclusiveAreaSqm);
-  if(Number.isFinite(verified)&&verified>0)return verified;
-  const m=String(x.type||x.modelNo||'').match(/^(\d{2,3}(?:\.\d+)?)/);
-  return m?Number(m[1]):null;
- };
- const sales=(p.actualTradeHighlights?.rows||[]).filter(x=>Number(x.priceEok)>0);
- const rights=(p.rightsSales?.byType||[]).flatMap(g=>(g.transactions||[]).map(t=>({
-   category:'right_trade',apartment:p.name,priceEok:Number(t.amountEok),
-   dealDate:t.date,areaSqm:Number(g.areaSqm),floor:t.floor,matchingTypes:[g.type],rightType:t.type
- }))).filter(x=>Number(x.priceEok)>0);
- const categories={same_complex_sale:0,right_trade:1,same_dong_sale:2,district_exploration:3};
- const all=[...sales,...rights];
- if(!all.length)return {rows:[],hasData:false};
- const ranked=[];
- for(const t of all){
-  const area=Number(t.areaSqm);
-  const candidates=models.map(m=>({model:m,area:modelArea(m)}))
-   .filter(x=>x.area!==null&&Number.isFinite(area)&&area>0)
-   .sort((a,b)=>Math.abs(a.area-area)-Math.abs(b.area-area));
-  const closest=candidates[0];
-  // 가장 가까운 면적 주택형에만 차이값을 연결한다. 59㎡ ↔ 84㎡ 비교 금지.
-  const delta=closest?Math.abs(closest.area-area):Infinity;
-  const compatible=!!closest&&delta<=Math.max(2,closest.area*.045);
-  const exactType=(t.matchingTypes||[]).map(String);
-  const explicit=closest&&exactType.includes(String(closest.model.type||closest.model.modelNo||''));
-  const model=(compatible||explicit)?closest?.model:null;
-  const gap=model?Number(t.priceEok)-Number(model.priceEok):null;
-  ranked.push({...t,modelType:model?String(model.type||model.modelNo||''):'',
-    supplyPrice:model?Number(model.priceEok):null,gap,
-    areaDifference:delta,comparisonEligible:!!model});
- }
- ranked.sort((a,b)=>{
-  const tier=(categories[a.category]??9)-(categories[b.category]??9);
-  if(tier)return tier;
-  // 동일한 위치 범위에서는 비교 가능 면적 → 면적 차이 → 최신 거래 순.
-  if(a.comparisonEligible!==b.comparisonEligible)return a.comparisonEligible?-1:1;
-  if(a.areaDifference!==b.areaDifference)return a.areaDifference-b.areaDifference;
-  return String(b.dealDate||'').localeCompare(String(a.dealDate||''));
- });
- return {rows:ranked,hasData:true};
-}
-function priceFirstSummary(p,compact=false){
- if(dataMode!=='live')return '';
- const items=tradePriceSnapshot(p).rows;
- if(!items.length)return `<div class="fineprint" style="margin-top:10px">📑 비교 가능한 신고 거래가 아직 수집되지 않았어요. 거래가 없다는 의미는 아닙니다.</div>`;
- const best=items[0];
- const labels={same_complex_sale:'동일 단지 매매',right_trade:'분양·입주권 신고 · 단지명/면적 매칭',same_dong_sale:'같은 법정동 유사 면적',district_exploration:'같은 시군구 유사 면적'};
- const label=labels[best.category]||'실제 신고 거래';
- const caution=['same_dong_sale','district_exploration'].includes(best.category)?' · 다른 단지 거래':' ';
- const gap=best.gap!==null&&Number.isFinite(best.gap)?`<div class="fineprint">${esc(best.modelType)}형 최고 공급가 ${esc(money(best.supplyPrice))} 대비 단순 차이 <b>${best.gap>=0?'+':''}${esc(money(best.gap))}</b> · 예상 차익 아님</div>`:'';
- const more=compact?'':`<div class="fineprint" style="margin-top:8px">신고 거래가와 공급금액의 단순 비교예요. 같은 단지라도 층·타입·권리조건이 다르면 직접적인 시세 차이가 아닙니다.</div>`;
- return `<div class="actual-deal-row" style="padding:12px 0"><div class="flexbetween"><strong>📌 ${esc(label)}</strong><b>${esc(money(Number(best.priceEok)))}</b></div><div class="fineprint">${esc(best.apartment||p.name)} · ${esc(best.dealDate||'계약일 미확인')} · ${Number(best.areaSqm)>0?esc(Number(best.areaSqm).toFixed(2))+'㎡':'면적 미확인'}${best.floor?' · '+esc(best.floor)+'층':''}${esc(caution)}</div>${gap}${more}</div>`;
-}
-function priceFirstDetail(p){
- const snapshot=tradePriceSnapshot(p);const list=snapshot.rows;
- if(!list.length)return `<div class="card"><strong>💰 분양가와 실제 거래가격</strong><div class="fineprint">공식 공급가 ${esc(supplyRange(p).label)}</div><p class="fineprint">현재 수집한 동일 단지 또는 유사 면적 신고 거래가 없습니다. 가격 조회와 청약 자격 검증은 별개의 절차입니다.</p></div>`;
- const labels={same_complex_sale:'동일 단지 매매',right_trade:'분양·입주권 (단지명 매칭 · 주소 미검증)',same_dong_sale:'같은 법정동 다른 단지',district_exploration:'같은 시군구 다른 단지'};
- const seen=new Set(),rows=[];
- for(const t of list){const key=[t.apartment,t.dealDate,t.areaSqm,t.priceEok,t.category].join('|');if(seen.has(key))continue;seen.add(key);rows.push(t);if(rows.length===6)break;}
- const table=rows.map(t=>`<div class="actual-deal-row"><div class="flexbetween"><strong>${esc(labels[t.category]||'실거래')}</strong><b>${esc(money(t.priceEok))}</b></div><div class="fineprint">${esc(t.apartment||p.name)} · ${esc(t.dealDate||'거래일 미확인')} · ${Number(t.areaSqm)>0?esc(Number(t.areaSqm).toFixed(2))+'㎡':'면적 미확인'}${t.floor?' · '+esc(t.floor)+'층':''}</div>${t.gap!==null&&Number.isFinite(t.gap)?`<div class="fineprint">${esc(t.modelType)}형 최고 공급가 ${esc(money(t.supplyPrice))} 대비 단순 차이 <b>${t.gap>=0?'+':''}${esc(money(t.gap))}</b></div>`:'<div class="fineprint">직접 비교할 주택형의 면적을 확인하지 못해 가격 차이는 표시하지 않음</div>'}</div>`).join('');
- return `<div class="card"><strong>💰 분양가 vs 실제 신고 거래</strong><p class="small muted">공식 공급가 범위 <b>${esc(supplyRange(p).label)}</b> · 동일 단지 → 분양권 → 같은 법정동 → 같은 시군구 순</p>${table}<div class="fineprint" style="margin-top:9px">금액과 계약일은 신고자료 기준입니다. 다른 단지 거래는 청약 단지 시세가 아니고 단순 가격 차이는 예상 수익이 아닙니다. 청약 자격·전매 규정은 별도 확인하세요.</div></div>`;
-}
 function actualDealCards(p){
  const r=p.actualTradeHighlights||{}, rows=Array.isArray(r.rows)?r.rows:[];
  const rights=Array.isArray(p.rightsSales?.byType)?p.rightsSales.byType:[];
@@ -412,7 +346,7 @@ function actualDealCards(p){
  return `<div class="card actual-deal-card"><strong>📑 국토부 실제 신고 거래 · 직접 비교 우선</strong><div class="fineprint">최근 ${Number(r.periodMonths)||12}개월 · 취소 신고 제외 · 동일 단지 → 같은 법정동/면적 → 같은 시군구 순</div>${context}${selected.map(helper).join('')}${news}${rightsWarning}${!selected.length&&!news?'<div class="fineprint" style="margin-top:10px">동일 단지·유사 면적 신고 거래를 현재 자료에서 확인하지 못했습니다. 거래가 없다는 의미는 아닙니다.</div>':''}<p class="fineprint">※ 다른 단지 거래는 <b>청약 단지의 시세가 아닙니다.</b> 분양·입주권 단지명 매칭은 주소 확인 전 참고 자료입니다.</p></div>`;
 }
 function publicTradeHint(p){const r=rightsCardReference(p);return r.value==='비교 보류'||r.value==='분석 전'?'국토부 거래 근거 없음 · 상세에서 확인':`국토부 등 별도 가격 근거: ${r.value} · ${r.label}`;}
-function projectCard(p){let s=scheduleStatus(p);let b=saved.includes(p.id),range=supplyRange(p);return `<article class="card"><div class="project-head"><div class="project-icon" aria-hidden="true">🏙️</div><div class="project-main"><div class="flexbetween"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><button class="bookmark ${b?'active':''}" onclick="toggleSave('${esc(p.id)}')" aria-label="관심 공고 저장">${b?'★':'☆'}</button></div><h3>${esc(p.name)}</h3><div class="muted small">⌖ ${esc(p.district)}</div></div></div><div class="tagrow">${badgeFor(p)} <span class="status-chip">${esc(s.label)}</span><span class="status-chip ${budgetInfo(p).fits===false?'review':''}">${esc(budgetInfo(p).label)}</span>${isLottoCandidate(p)?`<span class="type">${lottoCandidateLevel(p)==='verified_comparison'?'가격 우위 정밀 검토':'로또 가능성 · 추가 검증'}</span>`:''}</div>${discoveryInfo(p)}<div class="v25-supply"><small>공식 공급가 범위</small><strong>${esc(range.label)}</strong><span>${esc(range.description)}</span></div>${priceFirstSummary(p,true)}${actualDealCards(p)}<div class="row"><span class="meta">국토교통부 신고 거래 · 단지명/거래일/면적 확인 가능</span><button class="primary compact" onclick="openDetail('${esc(p.id)}')">자세히 ›</button></div></article>`}
+function projectCard(p){let s=scheduleStatus(p);let b=saved.includes(p.id),range=supplyRange(p);return `<article class="card"><div class="project-head"><div class="project-icon" aria-hidden="true">🏙️</div><div class="project-main"><div class="flexbetween"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><button class="bookmark ${b?'active':''}" onclick="toggleSave('${esc(p.id)}')" aria-label="관심 공고 저장">${b?'★':'☆'}</button></div><h3>${esc(p.name)}</h3><div class="muted small">⌖ ${esc(p.district)}</div></div></div><div class="tagrow">${badgeFor(p)} <span class="status-chip">${esc(s.label)}</span><span class="status-chip ${budgetInfo(p).fits===false?'review':''}">${esc(budgetInfo(p).label)}</span>${isLottoCandidate(p)?`<span class="type">${lottoCandidateLevel(p)==='verified_comparison'?'가격 우위 정밀 검토':'로또 가능성 · 추가 검증'}</span>`:''}</div>${discoveryInfo(p)}<div class="v25-supply"><small>공식 공급가 범위</small><strong>${esc(range.label)}</strong><span>${esc(range.description)}</span></div>${actualDealCards(p)}<div class="v25-trade-hint">📊 ${esc(publicTradeHint(p))} · 민간 시세와 별개</div><div class="row"><span class="meta">국토교통부 신고 거래 · 단지명/거래일/면적 확인 가능</span><button class="primary compact" onclick="openDetail('${esc(p.id)}')">자세히 ›</button></div></article>`}
 
 function statusBanner(){if(dataMode==='live'){let date=dataUpdated?new Date(dataUpdated):null;let stale=!date||isNaN(date)||Date.now()-date.getTime()>24*3600*1000||!!dataError;return `<div class="banner-head"><strong><span class="sync-dot ${stale?'':'ok'}"></span>${stale?'⚠ 갱신 지연·이전 자료':'실제 공고 데이터'}</strong><span>${esc(dataUpdated||'갱신 시각 미확인')}</span></div><div>${dataError?'업데이트 오류로 마지막 확인 자료를 표시합니다. 접수 일정은 청약홈에서 다시 확인하세요.':'공식 공고 기반 · 시세/자격 판정은 별도 검증 필요'}</div>`}return '<div class="banner-head"><strong>⚠ 공고 데이터 불러오기 실패</strong><span>확인 필요</span></div><div>확인되지 않은 가상 공고를 실제 청약 목록에 표시하지 않습니다. 네트워크 상태를 확인하고 청약홈에서 직접 접수 일정을 확인하세요.</div>'}
 // v9: prioritization is a review queue, never a profitability guarantee.
@@ -666,7 +600,64 @@ function removePrivatePrice(index){
  try{localStorage.setItem(marketNotesKey,JSON.stringify(all))}catch(_e){return showToast('삭제 저장 실패')}
  openDetail(p.id);showToast('기록을 삭제했어요');
 }
-function openDetail(id){currentId=id;const p=projects.find(x=>x.id===id);if(!p)return;let ev=evaluate(p),l=lottery(p),s=scheduleStatus(p),f=funding(p);let lines=[['지역',p.district],['공급 유형',p.kind],['분류 근거',p.kindBasis||'공고문 확인 필요'],['모집공고일',p.announce||'미확인'],['접수 시작',p.start||'미확인'],['접수 종료',p.end||'미확인'],['공고번호',p.notice||'미확인']];let facts=lines.map(([a,b])=>`<span class="muted">${esc(a)}</span><span>${esc(b)}</span>`).join('');let chips=ev.fails.map(x=>`<li style="color:#b84d50">✕ ${esc(x)}</li>`).join('')+ev.passes.map(x=>`<li>✓ ${esc(x)}</li>`).join('')+ev.unknown.map(x=>`<li>◌ ${esc(x)} · 공고 확인</li>`).join('');$('detailContent').innerHTML=`<div class="notice ${dataMode==='live'?'':'warning'}">${dataMode==='live'?'실제 공고 메타데이터 기반 · 최종 자격은 공고문 확인':'🧪 가상 공고 체험 화면입니다. 실제 신청할 수 없습니다.'}</div><div class="detail-hero"><div class="row"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><span style="font-size:36px">🏢</span></div><div><h2>${esc(p.name)}</h2><p>⌖ ${esc(p.district)} · ${esc(s.label)}</p></div></div><div class="card"><div class="flexbetween"><strong>기본 정보</strong><button class="bookmark ${saved.includes(p.id)?'active':''}" onclick="toggleSave('${esc(p.id)}')">${saved.includes(p.id)?'★':'☆'}</button></div><div class="divider"></div><div class="facts">${facts}</div></div>${discoveryInfo(p)}${priceFirstDetail(p)}<div class="card"><strong>🏷️ 민간 매물 호가·KB 참고 시세 (선택 확인)</strong><p class="fineprint">무료 자동조회 결과는 네이버 매물 호가와 네이버 경유 KB 제공 시세를 구분합니다. 조회 실패 시 표시하지 않으며 직접 확인한 가격을 저장할 수도 있습니다.</p>${providerCardGrid(p)}<p class="fineprint">${esc(supplyRange(p).description)}</p></div>${actualDealCards(p)}${rightsOpportunityHtml(p)}${opportunityDetailHtml(p)}${sameComplexHtml(p)}<div class="fineprint" style="margin:12px 0 16px">🔎 거래금액 확인과 로또 청약 최종 판정은 별개예요. 가격 우위·청약 자격·전매 제한은 모집공고문을 확인하세요.</div>${housingTypesHtml(p)}${realisticComparableHtml(p)}${tradeStatisticsHtml(p)}${tradeCandidatesHtml(p)}<div class="card"><strong>💳 자금 계획 시뮬레이션</strong><p class="small muted">실제 대출 승인액·취득세·중도금 일정은 반영되지 않는 단순 가정입니다.</p><div class="facts"><span class="muted">계약금 추정</span><strong>${f.deposit===null?'공고 확인 필요':esc(money(f.deposit))}</strong><span class="muted">가정 대출 비율</span><strong>${f.loan===null?'미입력':f.loan+'%'}</strong><span class="muted">필요 자기자금 가정</span><strong>${f.estimated===null?'조건에서 설정':esc(money(f.estimated))}</strong><span class="muted">입력한 현금</span><strong>${f.cash===null?'미입력':esc(money(f.cash))}</strong></div><div class="tagrow"><span class="status-chip ${f.verdict==='가정상 현금 부족'?'bad':'review'}">${esc(f.verdict)}</span></div><div class="warn">※ 대출 가능 여부는 DSR·LTV·소득·규제·금융기관 심사에 따라 달라집니다. 실제 필요한 금액은 취득세, 옵션, 이자 및 이사비 등을 더해 따로 확인하세요.</div></div><div class="card"><strong>🏠 전매·거주 및 위험 확인</strong><div class="facts" style="margin-top:14px"><span class="muted">전매제한</span><strong>${esc(f.risks.resale||'공고문 확인 필요')}</strong><span class="muted">실거주의무</span><strong>${esc(f.risks.occupancy||'공고문 확인 필요')}</strong><span class="muted">세금·부대비용</span><strong>${esc(f.risks.extraCosts||'별도 확인 필요')}</strong></div><p class="fineprint">로또 후보는 단순 가격 차이를 뜻하며, 수익률·투자 추천이나 당첨 가능성을 보증하지 않습니다.</p></div><div class="card"><div class="flexbetween"><strong>🛡 신청 자격 점검</strong>${badgeFor(p)}</div><ul class="bullet">${chips}</ul><p class="fineprint">확인 가능한 입력값과 공고의 명시적 규칙만 비교합니다. 공고문 세부 조건을 확인하기 전에는 신청 가능으로 확정하지 않습니다.</p></div><div class="card"><strong>📅 청약 일정</strong><p class="small muted">${esc(p.start||'시작일 미확인')} ~ ${esc(p.end||'종료일 미확인')} · ${esc(s.label)}</p><div class="warn">⚠ 최종 모집공고문으로 자격·가격·접수일을 확인하세요.</div></div><button class="primary full" onclick="openOfficial()">${dataMode==='live'?'청약홈에서 공식 공고 확인':'청약홈 홈페이지 열기'} ↗</button>`; $('detailContent').insertAdjacentHTML('beforeend',officialFactsHtml(p)+fundingStepsHtml(p)+fundingSimulatorHtml(p)+riskChecklistHtml(p));updateFundingSimulator();$('detailContent').insertAdjacentHTML('beforeend',v20EvidenceHtml(p)+v20DocumentHtml(p)+v20FundingHtml(p)+layeredPriceEvidenceHtml(p)+priceDiscoveryHtml(p)+independentPriceCheckHtml(p));updateV20Funding();go('detail')}
+
+// v34: 한 화면에서 공식 근거 확인, 조건 비교, 수동 검증 기록.
+const verifyStoreKey='radar-notice-verification-v1';
+function verificationStore(){try{return JSON.parse(localStorage.getItem(verifyStoreKey))||{}}catch(e){return {}}}
+function verificationRecord(p){return verificationStore()[p.id]||{}}
+function verifySelect(key,value){
+ const p=projects.find(x=>x.id===currentId);if(!p||!['resale','occupancy','tax','qualification'].includes(key))return;
+ const allowed=['unverified','checked','needs_review'];if(!allowed.includes(value))return;
+ let all=verificationStore(),r=all[p.id]||{};r[key]=value;r.updatedAt=new Date().toISOString();all[p.id]=r;
+ try{localStorage.setItem(verifyStoreKey,JSON.stringify(all))}catch(e){showToast('기록 저장에 실패했습니다');return}
+ renderVerifySummary();
+}
+function verifyScroll(id){const el=$(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+function verifiedEvidence(p,category){
+ const a=Array.isArray(p.noticeEvidence?.excerpts)?p.noticeEvidence.excerpts:[];
+ const matches=a.filter(x=>x.category===category&&x.text);
+ if(!matches.length)return '<p class="small muted">공고문에서 해당 항목의 검증된 문구를 아직 확보하지 못했습니다.</p>';
+ return matches.slice(0,3).map(x=>`<div class="v20-evidence"><b>${esc(x.page||'쪽 미확인')}쪽 · ${x.reviewed?'검토 표시':'원문 추출 (검토 대기)'}</b><p>${esc(String(x.text).slice(0,850))}</p></div>`).join('');
+}
+function verifyStatusHTML(key,label,r){
+ const v=r[key]||'unverified';
+ return `<label class="formlabel" for="ver-${key}">${label} 확인 기록 (내 기기에만 저장)</label><select class="input" id="ver-${key}" onchange="verifySelect('${key}',this.value)"><option value="unverified" ${v==='unverified'?'selected':''}>미확인</option><option value="needs_review" ${v==='needs_review'?'selected':''}>추가 확인 필요</option><option value="checked" ${v==='checked'?'selected':''}>공식 원문과 직접 대조함</option></select>`;
+}
+function renderVerifySummary(){const p=projects.find(x=>x.id===currentId),el=$('verifySummary');if(!p||!el)return;const r=verificationRecord(p);const done=['resale','occupancy','tax','qualification'].filter(k=>r[k]==='checked').length;el.textContent=`직접 대조 기록 ${done}/4개 · 이 기록은 법적 적격 판정이나 공식 인증이 아닙니다.`}
+function calcTaxScenario(){
+ const p=projects.find(x=>x.id===currentId),el=$('taxScenarioResult');if(!p||!el)return;
+ const base=Number($('taxBaseEok')?.value),rate=Number($('taxAssumedRate')?.value);
+ if(!Number.isFinite(base)||base<=0||!Number.isFinite(rate)||rate<0||rate>100){el.textContent='분양가(억 원)와 예시 세율을 입력하세요.';return}
+ const won=base*100000000*rate/100;
+ el.textContent=`예시 계산액: ${Math.round(won).toLocaleString('ko-KR')}원 (취득가액 ${base}억 × 임의 세율 ${rate}%). 실제 적용 세율·과세표준·감면·농특세·지방교육세 등을 확정한 금액이 아닙니다.`;
+}
+function verificationHubHtml(p){
+ const r=verificationRecord(p),ev=evaluate(p),risk=p.risk||{},url=p.noticeEvidence?.sourceUrl||p.officialUrl||'https://www.applyhome.co.kr/';
+ const link=/^https:\/\//i.test(url)?url:'https://www.applyhome.co.kr/';
+ const f=Number.isFinite(Number(p.price))&&p.price!==null?Number(p.price):'';
+ const rawResale=risk.resale||risk.resaleRestriction||'';
+ const rawOccupancy=risk.occupancy||risk.residenceObligation||'';
+ const eligibility=[...ev.fails.map(x=>`<li style="color:#b84d50">✕ ${esc(x)}</li>`),...ev.passes.map(x=>`<li>✓ ${esc(x)}</li>`),...ev.unknown.map(x=>`<li>◌ ${esc(x)}</li>`)].join('');
+ return `<div class="card" id="verificationHub" style="border:2px solid #dbe7f5"><strong>🔎 공고별 바로 확인 · 전매 / 거주 / 세금 / 신청자격</strong><p class="small muted">공식 출처와 내 정보의 일치 여부를 한곳에서 확인합니다. 자동으로 파악하지 못한 조건은 미확인으로 남깁니다.</p>
+ <div class="tagrow"><button class="secondary" onclick="verifyScroll('verifyResale')">전매</button><button class="secondary" onclick="verifyScroll('verifyOccupancy')">거주</button><button class="secondary" onclick="verifyScroll('verifyTax')">세금</button><button class="secondary" onclick="verifyScroll('verifyEligibility')">자격</button></div>
+ <p class="small" id="verifySummary"></p>
+ <p class="small"><a href="${esc(link)}" target="_blank" rel="noopener noreferrer">📄 해당 공고 또는 공식 출처 열기 ↗</a></p>
+ <div class="divider"></div><div id="verifyResale"><strong>① 전매제한 확인</strong><p class="small">수집된 값: <b>${esc(rawResale||'기간·기산일 미확인')}</b></p>${verifiedEvidence(p,'resale')}<p class="fineprint">기간, 시작 기준일, 무순위·재공급 시 잔여 제한 승계 여부까지 원문에서 확인하세요. 미확인 ≠ 제한 없음.</p>${verifyStatusHTML('resale','전매제한',r)}</div>
+ <div class="divider"></div><div id="verifyOccupancy"><strong>② 실거주의무 확인</strong><p class="small">수집된 값: <b>${esc(rawOccupancy||'적용 여부·기간 미확인')}</b></p>${verifiedEvidence(p,'occupancy')}<p class="fineprint">의무 대상 여부, 거주 시작 시점, 의무 기간과 예외·유예 조건을 확인하세요. 전매제한과 거주의무는 별개입니다.</p>${verifyStatusHTML('occupancy','실거주의무',r)}</div>
+ <div class="divider"></div><div id="verifyTax"><strong>③ 취득 관련 세금 계산 예시</strong><p class="small muted">취득세 자동 판정이 아닙니다. 취득 시 주택 수·면적·지역·취득가액 및 취득 시점의 법령에 따라 달라집니다.</p>
+ <label class="formlabel" for="taxBaseEok">계산용 취득가액(억 원)</label><input class="input" id="taxBaseEok" type="number" min="0.01" step="0.1" value="${esc(f)}" oninput="calcTaxScenario()">
+ <label class="formlabel" for="taxAssumedRate">예시 적용 세율(%) · 직접 가정</label><input class="input" id="taxAssumedRate" type="number" min="0" max="100" step="0.1" placeholder="예: 1" oninput="calcTaxScenario()">
+ <div class="notice" id="taxScenarioResult">가정 세율을 입력하면 단순 곱셈 결과가 표시됩니다.</div>
+ <p class="small"><a href="https://www.wetax.go.kr/" target="_blank" rel="noopener noreferrer">위택스에서 지방세 확인 ↗</a> · <a href="https://www.law.go.kr/" target="_blank" rel="noopener noreferrer">관련 법령 확인 ↗</a></p>
+ <p class="fineprint">취득세 외 등기비·옵션비·대출이자·양도 시 세금 등은 포함되지 않습니다. 관할 지자체 또는 세무 전문가에게 실제 세액을 확인하세요.</p>${verifyStatusHTML('tax','세금 및 부대비용',r)}</div>
+ <div class="divider"></div><div id="verifyEligibility"><strong>④ 내 조건과 공고 신청 자격 비교</strong><div class="tagrow"><span class="status-chip ${ev.fails.length?'bad':'review'}">${esc(ev.status)}</span></div><ul class="bullet">${eligibility}</ul>
+ ${verifiedEvidence(p,'eligibility')}
+ <p class="small"><button class="secondary" onclick="go('profile')">내 조건 수정하기</button> <a href="https://www.applyhome.co.kr/" target="_blank" rel="noopener noreferrer">청약홈: 자격확인·제한사항 조회 ↗</a></p>
+ <p class="fineprint">청약홈에서 주택소유·청약제한사항·세대 구성 등을 본인 인증 후 조회하고, 해당 공급 유형의 세부 요건을 공고문과 대조하세요. 일치 표시는 신청 가능 확정이 아닙니다.</p>${verifyStatusHTML('qualification','신청 자격',r)}</div>
+ </div>`;
+}
+
+function openDetail(id){currentId=id;const p=projects.find(x=>x.id===id);if(!p)return;let ev=evaluate(p),l=lottery(p),s=scheduleStatus(p),f=funding(p);let lines=[['지역',p.district],['공급 유형',p.kind],['분류 근거',p.kindBasis||'공고문 확인 필요'],['모집공고일',p.announce||'미확인'],['접수 시작',p.start||'미확인'],['접수 종료',p.end||'미확인'],['공고번호',p.notice||'미확인']];let facts=lines.map(([a,b])=>`<span class="muted">${esc(a)}</span><span>${esc(b)}</span>`).join('');let chips=ev.fails.map(x=>`<li style="color:#b84d50">✕ ${esc(x)}</li>`).join('')+ev.passes.map(x=>`<li>✓ ${esc(x)}</li>`).join('')+ev.unknown.map(x=>`<li>◌ ${esc(x)} · 공고 확인</li>`).join('');$('detailContent').innerHTML=`<div class="notice ${dataMode==='live'?'':'warning'}">${dataMode==='live'?'실제 공고 메타데이터 기반 · 최종 자격은 공고문 확인':'🧪 가상 공고 체험 화면입니다. 실제 신청할 수 없습니다.'}</div><div class="detail-hero"><div class="row"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><span style="font-size:36px">🏢</span></div><div><h2>${esc(p.name)}</h2><p>⌖ ${esc(p.district)} · ${esc(s.label)}</p></div></div><div class="card"><div class="flexbetween"><strong>기본 정보</strong><button class="bookmark ${saved.includes(p.id)?'active':''}" onclick="toggleSave('${esc(p.id)}')">${saved.includes(p.id)?'★':'☆'}</button></div><div class="divider"></div><div class="facts">${facts}</div></div>${discoveryInfo(p)}<div class="card"><strong>🏷️ 민간 매물 호가·KB 참고 시세 (선택 확인)</strong><p class="fineprint">무료 자동조회 결과는 네이버 매물 호가와 네이버 경유 KB 제공 시세를 구분합니다. 조회 실패 시 표시하지 않으며 직접 확인한 가격을 저장할 수도 있습니다.</p>${providerCardGrid(p)}<p class="fineprint">${esc(supplyRange(p).description)}</p></div>${actualDealCards(p)}${rightsOpportunityHtml(p)}${opportunityDetailHtml(p)}${sameComplexHtml(p)}<div class="card"><strong>📈 로또 청약 가격 비교 · 근거 종류별 확인</strong><div class="metrics"><div><small class="muted">공식 공급가 범위</small><b>${esc(supplyRange(p).label)}</b></div><div><small class="muted">${esc(rightsCardReference(p).label)}</small><b>${esc(rightsCardReference(p).value)}</b></div></div><div class="tagrow"><span class="status-chip ${l.score!==null&&l.score>=15?'good':'review'}">${esc(l.label)}</span></div><p class="small muted">${esc(l.reason)}</p><p class="fineprint">비교 적합성: ${p.marketComparable===true?"비교 검토 표시됨":"확인 전"} · 실거래가 출처와 거래 날짜를 확인하세요.</p><div class="fineprint">${dataMode==='live'?'선택된 가격 근거: '+esc(rightsCardReference(p).detail)+' · <b>근거 제한 / 예상 차익 아님</b>':'시세 출처: '+esc(p.marketSource||'연결 전')}</div><div class="warn">단순 가격 비교는 투자 수익이나 당첨 가능성을 보장하지 않습니다. 전매제한·거주의무·대출·세금·자금 마련 가능성도 확인하세요.</div></div>${housingTypesHtml(p)}${realisticComparableHtml(p)}${tradeStatisticsHtml(p)}${tradeCandidatesHtml(p)}<div class="card"><strong>💳 자금 계획 시뮬레이션</strong><p class="small muted">실제 대출 승인액·취득세·중도금 일정은 반영되지 않는 단순 가정입니다.</p><div class="facts"><span class="muted">계약금 추정</span><strong>${f.deposit===null?'공고 확인 필요':esc(money(f.deposit))}</strong><span class="muted">가정 대출 비율</span><strong>${f.loan===null?'미입력':f.loan+'%'}</strong><span class="muted">필요 자기자금 가정</span><strong>${f.estimated===null?'조건에서 설정':esc(money(f.estimated))}</strong><span class="muted">입력한 현금</span><strong>${f.cash===null?'미입력':esc(money(f.cash))}</strong></div><div class="tagrow"><span class="status-chip ${f.verdict==='가정상 현금 부족'?'bad':'review'}">${esc(f.verdict)}</span></div><div class="warn">※ 대출 가능 여부는 DSR·LTV·소득·규제·금융기관 심사에 따라 달라집니다. 실제 필요한 금액은 취득세, 옵션, 이자 및 이사비 등을 더해 따로 확인하세요.</div></div><div class="card"><strong>🏠 전매·거주 및 위험 확인</strong><div class="facts" style="margin-top:14px"><span class="muted">전매제한</span><strong>${esc(f.risks.resale||'공고문 확인 필요')}</strong><span class="muted">실거주의무</span><strong>${esc(f.risks.occupancy||'공고문 확인 필요')}</strong><span class="muted">세금·부대비용</span><strong>${esc(f.risks.extraCosts||'별도 확인 필요')}</strong></div><p class="fineprint">로또 후보는 단순 가격 차이를 뜻하며, 수익률·투자 추천이나 당첨 가능성을 보증하지 않습니다.</p></div><div class="card"><div class="flexbetween"><strong>🛡 신청 자격 점검</strong>${badgeFor(p)}</div><ul class="bullet">${chips}</ul><p class="fineprint">확인 가능한 입력값과 공고의 명시적 규칙만 비교합니다. 공고문 세부 조건을 확인하기 전에는 신청 가능으로 확정하지 않습니다.</p></div><div class="card"><strong>📅 청약 일정</strong><p class="small muted">${esc(p.start||'시작일 미확인')} ~ ${esc(p.end||'종료일 미확인')} · ${esc(s.label)}</p><div class="warn">⚠ 최종 모집공고문으로 자격·가격·접수일을 확인하세요.</div></div><button class="primary full" onclick="openOfficial()">${dataMode==='live'?'청약홈에서 공식 공고 확인':'청약홈 홈페이지 열기'} ↗</button>`; $('detailContent').insertAdjacentHTML('beforeend',officialFactsHtml(p)+fundingStepsHtml(p)+fundingSimulatorHtml(p)+riskChecklistHtml(p));updateFundingSimulator();$('detailContent').insertAdjacentHTML('beforeend',v20EvidenceHtml(p)+v20DocumentHtml(p)+v20FundingHtml(p)+layeredPriceEvidenceHtml(p)+priceDiscoveryHtml(p)+independentPriceCheckHtml(p));updateV20Funding();$('detailContent').insertAdjacentHTML('afterbegin',verificationHubHtml(p));renderVerifySummary();go('detail')}
 function openOfficial(){let p=projects.find(x=>x.id===currentId);if(!p)return;window.open(p.officialUrl||'https://www.applyhome.co.kr/','_blank','noopener,noreferrer')}
 function shareCurrent(){let p=projects.find(x=>x.id===currentId);if(!p)return;let t=`청약레이더 ${dataMode==='live'?'공고':'가상 예시'}: ${p.name} / ${p.kind} / ${p.district}. 접수종료 ${p.end||'미확인'}. ${p.officialUrl||'https://www.applyhome.co.kr/'}`;if(navigator.share)navigator.share({text:t,title:'청약레이더'}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>showToast('정보를 복사했어요')).catch(()=>showToast('복사 실패'));else showToast('공유 기능을 지원하지 않는 환경이에요')}
 function fillProfile(){$('regionChecks').innerHTML=['서울','경기','인천'].map(x=>`<button class="check ${profile.regions.includes(x)?'on':''}" onclick="toggleRegion('${x}')">${x}</button>`).join('');Object.keys(defaultProfile).filter(x=>x!=='regions').forEach(x=>{if($(x))$(x).value=profile[x]??defaultProfile[x]});updateAccountUI()}
