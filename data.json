@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T17:04:11.956934+09:00",
+  "updated_at": "2026-11-22T17:51:23.361382+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -48,7 +48,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-06",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-08",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2027-03-11",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2027-03-14",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202909",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41390",
+        "경기 시흥시"
+      ],
+      "districtResolution": {
+        "method": "verified_static_mapping",
+        "code": "41390",
+        "label": "경기 시흥시"
+      },
       "transactionScan": {
         "status": "district_only_unverified",
         "district": "경기 시흥시",
@@ -731,12 +767,22 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "accepting_or_ending",
         "daysToDeadline": 5,
         "deadlineSoon": false,
+        "startSoon": false,
+        "daysToStart": -6,
         "priority": "ordinary_notice",
         "label": "일반 공고 포착",
         "eligibilityVerified": false,
@@ -804,7 +850,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-10-30",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2027-03-30",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2027-04-02",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202911",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41273",
+        "경기 안산시 단원구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41273",
+        "label": "경기 안산시 단원구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "경기 안산시 단원구",
@@ -1177,12 +1259,22 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "accepting_or_ending",
         "daysToDeadline": 2,
         "deadlineSoon": true,
+        "startSoon": false,
+        "daysToStart": -6,
         "priority": "deadline",
         "label": "접수 마감 임박",
         "eligibilityVerified": false,
@@ -1249,12 +1341,546 @@
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910292&pblancNo=2026910292",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-18",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-11-30",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202907",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "resolvedDistrict": [
+        "28275",
+        "인천 서해구"
+      ],
+      "districtResolution": {
+        "method": "verified_static_mapping",
+        "code": "28275",
+        "label": "인천 서해구"
+      },
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "district_only_unverified",
+        "district": "인천 서해구",
+        "legalDong": null,
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "transactionCount": 1338,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "districtExplorationCount": 583,
+        "districtExplorationTransactions": [
+          {
+            "apartment": "청라제일풍경채2차에듀앤파크",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.993,
+            "dealAmountManwon": 74800,
+            "dealDate": "2026-11-17",
+            "floor": "11",
+            "buildYear": "2017",
+            "jibun": "149-2",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "가좌동",
+            "exclusiveAreaSqm": 84.765,
+            "dealAmountManwon": 30800,
+            "dealDate": "2026-11-15",
+            "floor": "9",
+            "buildYear": "1996",
+            "jibun": "214",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티SKLeaders'VIEW",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.8254,
+            "dealAmountManwon": 77000,
+            "dealDate": "2026-11-14",
+            "floor": "21",
+            "buildYear": "2022",
+            "jibun": "가-",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티2차SKLeaders`VIEW",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.9614,
+            "dealAmountManwon": 59700,
+            "dealDate": "2026-11-14",
+            "floor": "27",
+            "buildYear": "2023",
+            "jibun": "가-",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라국제업무단지센텀대광로제비앙",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 82.8228,
+            "dealAmountManwon": 62500,
+            "dealDate": "2026-11-14",
+            "floor": "3",
+            "buildYear": "2018",
+            "jibun": "83-1",
+            "matchingTypes": [
+              "084.4783B"
+            ]
+          },
+          {
+            "apartment": "청라제일풍경채2차에듀앤파크",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.939,
+            "dealAmountManwon": 76700,
+            "dealDate": "2026-11-14",
+            "floor": "18",
+            "buildYear": "2017",
+            "jibun": "149-2",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "현대",
+            "legalDong": "가좌동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 24750,
+            "dealDate": "2026-11-13",
+            "floor": "4",
+            "buildYear": "1985",
+            "jibun": "81-22",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라골드클래스커낼웨이",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 82.9214,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-11-12",
+            "floor": "1",
+            "buildYear": "2016",
+            "jibun": "165-7",
+            "matchingTypes": [
+              "084.4783B"
+            ]
+          },
+          {
+            "apartment": "루원시티센트럴타운",
+            "legalDong": "신현동",
+            "exclusiveAreaSqm": 84.66,
+            "dealAmountManwon": 55000,
+            "dealDate": "2026-11-12",
+            "floor": "13",
+            "buildYear": "2017",
+            "jibun": "306-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티 대성베르힐",
+            "legalDong": "신현동",
+            "exclusiveAreaSqm": 84.9778,
+            "dealAmountManwon": 58000,
+            "dealDate": "2026-11-11",
+            "floor": "16",
+            "buildYear": "2017",
+            "jibun": "304-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "호반베르디움(116-6)",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9925,
+            "dealAmountManwon": 62000,
+            "dealDate": "2026-11-10",
+            "floor": "5",
+            "buildYear": "2011",
+            "jibun": "116-6",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라센트럴에일린의뜰",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9704,
+            "dealAmountManwon": 80000,
+            "dealDate": "2026-11-10",
+            "floor": "6",
+            "buildYear": "2018",
+            "jibun": "156-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원e-편한세상하늘채아파트",
+            "legalDong": "신현동",
+            "exclusiveAreaSqm": 84.857,
+            "dealAmountManwon": 52000,
+            "dealDate": "2026-11-09",
+            "floor": "25",
+            "buildYear": "2010",
+            "jibun": "302-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티SKLeaders'VIEW",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.6013,
+            "dealAmountManwon": 69500,
+            "dealDate": "2026-11-09",
+            "floor": "17",
+            "buildYear": "2022",
+            "jibun": "가-",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라호수공원한신더휴",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9613,
+            "dealAmountManwon": 71500,
+            "dealDate": "2026-11-09",
+            "floor": "14",
+            "buildYear": "2020",
+            "jibun": "103-15",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "상상플러스",
+            "legalDong": "석남동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 27000,
+            "dealDate": "2026-11-09",
+            "floor": "8",
+            "buildYear": "2007",
+            "jibun": "517",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원호반베르디움더센트럴",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.6316,
+            "dealAmountManwon": 62500,
+            "dealDate": "2026-11-09",
+            "floor": "22",
+            "buildYear": "2018",
+            "jibun": "609-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라웰카운티1차",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.7379,
+            "dealAmountManwon": 56800,
+            "dealDate": "2026-11-09",
+            "floor": "19",
+            "buildYear": "2010",
+            "jibun": "130-2",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "서해그랑블",
+            "legalDong": "검암동",
+            "exclusiveAreaSqm": 84.9634,
+            "dealAmountManwon": 49700,
+            "dealDate": "2026-11-07",
+            "floor": "5",
+            "buildYear": "2003",
+            "jibun": "595-3",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원제일풍경채",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.2814,
+            "dealAmountManwon": 59900,
+            "dealDate": "2026-11-07",
+            "floor": "15",
+            "buildYear": "2018",
+            "jibun": "603-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원제일풍경채",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.4302,
+            "dealAmountManwon": 59500,
+            "dealDate": "2026-11-07",
+            "floor": "13",
+            "buildYear": "2018",
+            "jibun": "603-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라호수공원한신더휴",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9613,
+            "dealAmountManwon": 71000,
+            "dealDate": "2026-11-07",
+            "floor": "23",
+            "buildYear": "2020",
+            "jibun": "103-15",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "풍림",
+            "legalDong": "가좌동",
+            "exclusiveAreaSqm": 84.765,
+            "dealAmountManwon": 34000,
+            "dealDate": "2026-11-05",
+            "floor": "3",
+            "buildYear": "1996",
+            "jibun": "214",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "인천가좌두산위브트레지움1,2단지",
+            "legalDong": "가좌동",
+            "exclusiveAreaSqm": 84.82,
+            "dealAmountManwon": 50000,
+            "dealDate": "2026-11-05",
+            "floor": "14",
+            "buildYear": "2017",
+            "jibun": "611",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티 대성베르힐",
+            "legalDong": "신현동",
+            "exclusiveAreaSqm": 84.9778,
+            "dealAmountManwon": 59300,
+            "dealDate": "2026-11-04",
+            "floor": "19",
+            "buildYear": "2017",
+            "jibun": "304-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라29블럭호반베르디움",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9482,
+            "dealAmountManwon": 59800,
+            "dealDate": "2026-11-04",
+            "floor": "1",
+            "buildYear": "2012",
+            "jibun": "173-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "청라센트럴에일린의뜰",
+            "legalDong": "청라동",
+            "exclusiveAreaSqm": 84.9834,
+            "dealAmountManwon": 87000,
+            "dealDate": "2026-11-04",
+            "floor": "21",
+            "buildYear": "2018",
+            "jibun": "156-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티SKLeaders'VIEW",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.6419,
+            "dealAmountManwon": 73800,
+            "dealDate": "2026-11-03",
+            "floor": "32",
+            "buildYear": "2022",
+            "jibun": "가-",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원e-편한세상하늘채아파트",
+            "legalDong": "신현동",
+            "exclusiveAreaSqm": 84.928,
+            "dealAmountManwon": 57500,
+            "dealDate": "2026-11-03",
+            "floor": "21",
+            "buildYear": "2010",
+            "jibun": "302-1",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          },
+          {
+            "apartment": "루원시티2차SKLeaders`VIEW",
+            "legalDong": "가정동",
+            "exclusiveAreaSqm": 84.735,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-11-03",
+            "floor": "40",
+            "buildYear": "2023",
+            "jibun": "가-",
+            "matchingTypes": [
+              "084.4783B",
+              "084.9219C"
+            ]
+          }
+        ],
+        "typeStatistics": [
+          {
+            "type": "084.4783B",
+            "areaSqm": 84.4783,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 583,
+              "apartmentCount": 75,
+              "medianEok": 5.95,
+              "minEok": 1.75,
+              "maxEok": 10.5,
+              "latestDate": "2026-11-17"
+            },
+            "evaluation": "review_only"
+          },
+          {
+            "type": "084.9219C",
+            "areaSqm": 84.9219,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 566,
+              "apartmentCount": 73,
+              "medianEok": 5.9,
+              "minEok": 1.75,
+              "maxEok": 10.5,
+              "latestDate": "2026-11-17"
+            },
+            "evaluation": "review_only"
+          }
+        ],
+        "distanceVerified": false,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
         "status": "insufficient",
@@ -1266,11 +1892,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
-        "locationMethod": "district_unknown",
+        "locationMethod": "ambiguous_or_missing_place",
         "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
-        "candidateComplexesInspected": 0,
-        "candidateComplexesTotal": 0,
+        "candidateComplexesInspected": 25,
+        "candidateComplexesTotal": 25,
         "byType": [
           {
             "type": "084.4783B",
@@ -1316,16 +1942,28 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "reason": "확인된 시군구 코드를 찾지 못했습니다."
+        "siteLocationMethod": "ambiguous_or_missing_place",
+        "matchMethods": [],
+        "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
+      },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
       },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": true,
         "phase": "upcoming",
         "daysToDeadline": 1,
-        "deadlineSoon": true,
-        "priority": "special_deadline",
-        "label": "무순위·재공급 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
+        "priority": "special_notice",
+        "label": "무순위·재공급 접수 예정",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -1390,9 +2028,45 @@
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930046&pblancNo=2026930046",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-18",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-11-26",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-03",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-03",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202612",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "resolvedDistrict": [
+        "41610",
+        "경기 광주시"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41610",
+        "label": "경기 광주시"
+      },
       "transactionScan": {
         "status": "district_only_unverified",
         "district": "경기 광주시",
@@ -1961,14 +2635,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": true,
         "phase": "upcoming",
         "daysToDeadline": 1,
-        "deadlineSoon": true,
-        "priority": "special_deadline",
-        "label": "무순위·재공급 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
+        "priority": "special_notice",
+        "label": "무순위·재공급 접수 예정",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -2055,7 +2739,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000457&pblancNo=2026000457",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-12",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-01",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2027-01-25",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2027-01-29",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202906",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41196",
+        "경기 부천시 오정구"
+      ],
+      "districtResolution": {
+        "method": "verified_static_mapping",
+        "code": "41196",
+        "label": "경기 부천시 오정구"
+      },
       "transactionScan": {
         "status": "district_only_unverified",
         "district": "경기 부천시 오정구",
@@ -2742,14 +3462,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 3,
-        "deadlineSoon": true,
-        "priority": "deadline",
-        "label": "접수 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
+        "priority": "ordinary_notice",
+        "label": "접수 시작 임박",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -2843,7 +3573,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-12",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-01",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-13",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-15",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "203103",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41271",
+        "경기 안산시 상록구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41271",
+        "label": "경기 안산시 상록구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "경기 안산시 상록구",
@@ -4142,14 +4908,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 3,
-        "deadlineSoon": true,
-        "priority": "deadline",
-        "label": "접수 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
+        "priority": "ordinary_notice",
+        "label": "접수 시작 임박",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -4220,9 +4996,45 @@
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930045&pblancNo=2026930045",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-17",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-11-27",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202701",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "resolvedDistrict": [
+        "11710",
+        "서울 송파구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "11710",
+        "label": "서울 송파구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "서울 송파구",
@@ -5323,14 +6135,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": true,
         "phase": "upcoming",
         "daysToDeadline": 2,
-        "deadlineSoon": true,
-        "priority": "special_deadline",
-        "label": "무순위·재공급 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
+        "priority": "special_notice",
+        "label": "무순위·재공급 접수 예정",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -5434,7 +6256,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000560&pblancNo=2026000560",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-13",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-02",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-14",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-16",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "203003",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "11560",
+        "서울 영등포구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "11560",
+        "label": "서울 영등포구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "서울 영등포구",
@@ -6656,14 +7514,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 4,
         "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 1,
         "priority": "ordinary_notice",
-        "label": "일반 공고 포착",
+        "label": "접수 시작 임박",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -6811,9 +7679,45 @@
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910300&pblancNo=2026910300",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-19",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-11-27",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-01",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-01",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202912",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "resolvedDistrict": [
+        "28237",
+        "인천 부평구"
+      ],
+      "districtResolution": {
+        "method": "verified_static_mapping",
+        "code": "28237",
+        "label": "인천 부평구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "인천 부평구",
@@ -8937,14 +9841,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": true,
         "phase": "upcoming",
         "daysToDeadline": 2,
-        "deadlineSoon": true,
-        "priority": "special_deadline",
-        "label": "무순위·재공급 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 2,
+        "priority": "special_notice",
+        "label": "무순위·재공급 접수 예정",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -9115,12 +10029,254 @@
       "market": null,
       "marketComparable": false,
       "requirements": null,
-      "officialUrl": null,
+      "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910307&pblancNo=2026910307",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-19",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-11-27",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-07",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-07",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202612",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "resolvedDistrict": [
+        "28290",
+        "인천 검단구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "28290",
+        "label": "인천 검단구"
+      },
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "district_only_unverified",
+        "district": "인천 검단구",
+        "legalDong": null,
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "transactionCount": 1502,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "districtExplorationCount": 12,
+        "districtExplorationTransactions": [
+          {
+            "apartment": "검단신도시예미지트리플에듀",
+            "legalDong": "원당동",
+            "exclusiveAreaSqm": 98.486,
+            "dealAmountManwon": 64000,
+            "dealDate": "2026-10-06",
+            "floor": "20",
+            "buildYear": "2022",
+            "jibun": "1014",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "검단신도시예미지트리플에듀",
+            "legalDong": "원당동",
+            "exclusiveAreaSqm": 98.486,
+            "dealAmountManwon": 65000,
+            "dealDate": "2026-10-03",
+            "floor": "5",
+            "buildYear": "2022",
+            "jibun": "1014",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "힐스테이트신검단센트럴",
+            "legalDong": "불로동",
+            "exclusiveAreaSqm": 99.4559,
+            "dealAmountManwon": 97500,
+            "dealDate": "2026-08-21",
+            "floor": "6",
+            "buildYear": "2025",
+            "jibun": "1001",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "검단힐스테이트5차",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 99.4816,
+            "dealAmountManwon": 48800,
+            "dealDate": "2026-08-08",
+            "floor": "5",
+            "buildYear": "2013",
+            "jibun": "1075-9",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "호반써밋프라임뷰",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 97.4814,
+            "dealAmountManwon": 61500,
+            "dealDate": "2026-08-07",
+            "floor": "15",
+            "buildYear": "2022",
+            "jibun": "1314-2",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "신검단중앙역금강펜테리움센트럴파크",
+            "legalDong": "불로동",
+            "exclusiveAreaSqm": 98.8376,
+            "dealAmountManwon": 62500,
+            "dealDate": "2026-08-02",
+            "floor": "20",
+            "buildYear": "2025",
+            "jibun": "971",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "신검단중앙역금강펜테리움센트럴파크",
+            "legalDong": "불로동",
+            "exclusiveAreaSqm": 98.8376,
+            "dealAmountManwon": 70000,
+            "dealDate": "2026-07-23",
+            "floor": "17",
+            "buildYear": "2025",
+            "jibun": "971",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "호반써밋프라임뷰",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 97.4814,
+            "dealAmountManwon": 61900,
+            "dealDate": "2026-07-18",
+            "floor": "7",
+            "buildYear": "2022",
+            "jibun": "1314-2",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "호반써밋프라임뷰",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 97.4814,
+            "dealAmountManwon": 59800,
+            "dealDate": "2026-07-11",
+            "floor": "6",
+            "buildYear": "2022",
+            "jibun": "1314-2",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "호반써밋프라임뷰",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 97.4814,
+            "dealAmountManwon": 61500,
+            "dealDate": "2026-07-02",
+            "floor": "4",
+            "buildYear": "2022",
+            "jibun": "1314-2",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "호반써밋프라임뷰",
+            "legalDong": "당하동",
+            "exclusiveAreaSqm": 97.4814,
+            "dealAmountManwon": 64500,
+            "dealDate": "2026-06-29",
+            "floor": "13",
+            "buildYear": "2022",
+            "jibun": "1314-2",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          },
+          {
+            "apartment": "검단신도시예미지트리플에듀",
+            "legalDong": "원당동",
+            "exclusiveAreaSqm": 98.486,
+            "dealAmountManwon": 65500,
+            "dealDate": "2026-06-28",
+            "floor": "13",
+            "buildYear": "2022",
+            "jibun": "1014",
+            "matchingTypes": [
+              "097.9655P"
+            ]
+          }
+        ],
+        "typeStatistics": [
+          {
+            "type": "097.9655P",
+            "areaSqm": 97.9655,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 12,
+              "apartmentCount": 5,
+              "medianEok": 6.325,
+              "minEok": 4.88,
+              "maxEok": 9.75,
+              "latestDate": "2026-10-06"
+            },
+            "evaluation": "review_only"
+          }
+        ],
+        "distanceVerified": false,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
         "status": "insufficient",
@@ -9132,11 +10288,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
-        "locationMethod": "district_unknown",
+        "locationMethod": "ambiguous_or_missing_place",
         "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
-        "candidateComplexesInspected": 0,
-        "candidateComplexesTotal": 0,
+        "candidateComplexesInspected": 4,
+        "candidateComplexesTotal": 4,
         "byType": [
           {
             "type": "097.9655P",
@@ -9166,16 +10322,28 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "reason": "확인된 시군구 코드를 찾지 못했습니다."
+        "siteLocationMethod": "ambiguous_or_missing_place",
+        "matchMethods": [],
+        "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
+      },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
       },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": true,
         "phase": "upcoming",
         "daysToDeadline": 2,
-        "deadlineSoon": true,
-        "priority": "special_deadline",
-        "label": "무순위·재공급 마감 임박",
+        "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 2,
+        "priority": "special_notice",
+        "label": "무순위·재공급 접수 예정",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -9255,7 +10423,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-13",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-04",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-16",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-18",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "203008",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "11110",
+        "서울 종로구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "11110",
+        "label": "서울 종로구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "서울 종로구",
@@ -9970,14 +11174,24 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 8,
         "deadlineSoon": false,
+        "startSoon": true,
+        "daysToStart": 3,
         "priority": "ordinary_notice",
-        "label": "일반 공고 포착",
+        "label": "접수 시작 임박",
         "eligibilityVerified": false,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
@@ -10082,7 +11296,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-19",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-09",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-21",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-23",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202905",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41281",
+        "경기 고양시 덕양구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41281",
+        "label": "경기 고양시 덕양구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "경기 고양시 덕양구",
@@ -11720,12 +12970,22 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 10,
         "deadlineSoon": false,
+        "startSoon": false,
+        "daysToStart": 8,
         "priority": "ordinary_notice",
         "label": "일반 공고 포착",
         "eligibilityVerified": false,
@@ -11827,7 +13087,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000591&pblancNo=2026000591",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-20",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-08",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2026-12-21",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2026-12-23",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202805",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41194",
+        "경기 부천시 소사구"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41194",
+        "label": "경기 부천시 소사구"
+      },
       "transactionScan": {
         "status": "same_dong_area_candidates_unverified",
         "district": "경기 부천시 소사구",
@@ -14435,12 +15731,22 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 10,
         "deadlineSoon": false,
+        "startSoon": false,
+        "daysToStart": 8,
         "priority": "ordinary_notice",
         "label": "일반 공고 포착",
         "eligibilityVerified": false,
@@ -14627,7 +15933,43 @@
       "marketComparable": false,
       "requirements": null,
       "officialUrl": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000575&pblancNo=2026000575",
+      "officialFacts": {
+        "RCRIT_PBLANC_DE": {
+          "label": "모집공고일",
+          "value": "2026-11-19",
+          "source": "청약홈 공고 API"
+        },
+        "PRZWNER_PRESNATN_DE": {
+          "label": "당첨자 발표일",
+          "value": "2026-12-08",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_BGNDE": {
+          "label": "계약 시작일",
+          "value": "2027-02-15",
+          "source": "청약홈 공고 API"
+        },
+        "CNTRCT_CNCLS_ENDDE": {
+          "label": "계약 종료일",
+          "value": "2027-02-17",
+          "source": "청약홈 공고 API"
+        },
+        "MVN_PREARNGE_YM": {
+          "label": "입주 예정월",
+          "value": "202907",
+          "source": "청약홈 공고 API"
+        }
+      },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "resolvedDistrict": [
+        "41360",
+        "경기 남양주시"
+      ],
+      "districtResolution": {
+        "method": "kakao_legal_dong_code",
+        "code": "41360",
+        "label": "경기 남양주시"
+      },
       "transactionScan": {
         "status": "district_only_unverified",
         "district": "경기 남양주시",
@@ -15272,12 +16614,22 @@
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
+      "verification": {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증."
+      },
       "discovery": {
         "stage": "stage1_discovery",
         "isSpecialSupply": false,
         "phase": "upcoming",
         "daysToDeadline": 10,
         "deadlineSoon": false,
+        "startSoon": false,
+        "daysToStart": 8,
         "priority": "ordinary_notice",
         "label": "일반 공고 포착",
         "eligibilityVerified": false,
@@ -15329,8 +16681,10 @@
       "202606"
     ],
     "sameComplexVerifiedNotices": 0,
-    "deadlineSoonNotices": 8,
-    "specialDeadlineSoonNotices": 5,
-    "algorithm": "v13-two-stage-evidence"
+    "deadlineSoonNotices": 1,
+    "specialDeadlineSoonNotices": 0,
+    "startsSoonNotices": 9,
+    "verificationPendingNotices": 14,
+    "algorithm": "v15-dynamic-legal-dong-code"
   }
 }
