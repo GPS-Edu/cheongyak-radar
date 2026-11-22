@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T16:39:38.746043+09:00",
+  "updated_at": "2026-11-22T16:48:38.019990+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -645,6 +645,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 23,
+        "candidateComplexesTotal": 23,
         "byType": [
           {
             "type": "055.0000A",
@@ -659,7 +664,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.0000A",
@@ -674,7 +680,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.0000B",
@@ -689,7 +696,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.0000C",
@@ -704,11 +712,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -1074,6 +1083,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 0,
+        "candidateComplexesTotal": 0,
         "byType": [
           {
             "type": "055.0000A",
@@ -1088,7 +1102,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "055.0000B",
@@ -1103,11 +1118,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -1170,6 +1186,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "district_unknown",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 0,
+        "candidateComplexesTotal": 0,
         "byType": [
           {
             "type": "084.4783B",
@@ -1184,7 +1205,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.9219C",
@@ -1199,11 +1221,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "special_supply",
@@ -1253,8 +1276,508 @@
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "district_only_unverified",
+        "district": "경기 광주시",
+        "legalDong": null,
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "transactionCount": 1715,
+        "candidateCount": 0,
+        "candidateTransactions": [],
+        "displayLimit": 80,
+        "districtExplorationCount": 235,
+        "districtExplorationTransactions": [
+          {
+            "apartment": "태전7지구C-13BL태전파크자이",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.9967,
+            "dealAmountManwon": 51000,
+            "dealDate": "2026-11-16",
+            "floor": "1",
+            "buildYear": "2019",
+            "jibun": "726",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "더샵오포센트럴포레",
+            "legalDong": "고산동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 54800,
+            "dealDate": "2026-11-15",
+            "floor": "16",
+            "buildYear": "2022",
+            "jibun": "654",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "오포추자서희스타힐스",
+            "legalDong": "추자동",
+            "exclusiveAreaSqm": 59.963,
+            "dealAmountManwon": 31000,
+            "dealDate": "2026-11-14",
+            "floor": "23",
+            "buildYear": "2019",
+            "jibun": "586",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "대주파크빌",
+            "legalDong": "회덕동",
+            "exclusiveAreaSqm": 59.768,
+            "dealAmountManwon": 23000,
+            "dealDate": "2026-11-14",
+            "floor": "5",
+            "buildYear": "2004",
+            "jibun": "441",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1609~1614동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 54500,
+            "dealDate": "2026-11-14",
+            "floor": "13",
+            "buildYear": "2017",
+            "jibun": "703",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1609~1614동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 53000,
+            "dealDate": "2026-11-12",
+            "floor": "21",
+            "buildYear": "2017",
+            "jibun": "703",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "대주파크빌",
+            "legalDong": "회덕동",
+            "exclusiveAreaSqm": 59.768,
+            "dealAmountManwon": 20400,
+            "dealDate": "2026-11-11",
+            "floor": "7",
+            "buildYear": "2004",
+            "jibun": "441",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1615동~1620동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-11-10",
+            "floor": "7",
+            "buildYear": "2017",
+            "jibun": "704",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "대주파크빌",
+            "legalDong": "초월읍 산이리",
+            "exclusiveAreaSqm": 59.9988,
+            "dealAmountManwon": 26000,
+            "dealDate": "2026-11-09",
+            "floor": "2",
+            "buildYear": "2004",
+            "jibun": "432",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C-4,1501~1506동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 49900,
+            "dealDate": "2026-11-09",
+            "floor": "3",
+            "buildYear": "2017",
+            "jibun": "698",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "두산위브광주센트럴파크",
+            "legalDong": "탄벌동",
+            "exclusiveAreaSqm": 59.7334,
+            "dealAmountManwon": 50500,
+            "dealDate": "2026-11-09",
+            "floor": "23",
+            "buildYear": "2024",
+            "jibun": "771",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C5,1507~1514동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-11-06",
+            "floor": "10",
+            "buildYear": "2017",
+            "jibun": "699",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "파라다이스2단지",
+            "legalDong": "송정동",
+            "exclusiveAreaSqm": 59.554,
+            "dealAmountManwon": 29400,
+            "dealDate": "2026-11-04",
+            "floor": "6",
+            "buildYear": "2001",
+            "jibun": "123-1",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "양벌쌍용1차",
+            "legalDong": "양벌동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 24000,
+            "dealDate": "2026-11-04",
+            "floor": "2",
+            "buildYear": "1999",
+            "jibun": "285",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "광주태전아이파크",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.9912,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-11-03",
+            "floor": "10",
+            "buildYear": "2017",
+            "jibun": "735",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "경기광주역금호리첸시아",
+            "legalDong": "경안동",
+            "exclusiveAreaSqm": 60.49,
+            "dealAmountManwon": 50000,
+            "dealDate": "2026-11-03",
+            "floor": "5",
+            "buildYear": "2021",
+            "jibun": "447",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "동보",
+            "legalDong": "탄벌동",
+            "exclusiveAreaSqm": 59.84,
+            "dealAmountManwon": 27500,
+            "dealDate": "2026-10-31",
+            "floor": "8",
+            "buildYear": "1996",
+            "jibun": "701-1",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "이편한세상광주역6단지",
+            "legalDong": "역동",
+            "exclusiveAreaSqm": 59.7449,
+            "dealAmountManwon": 71500,
+            "dealDate": "2026-10-31",
+            "floor": "16",
+            "buildYear": "2016",
+            "jibun": "248",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1615동~1620동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 49000,
+            "dealDate": "2026-10-31",
+            "floor": "10",
+            "buildYear": "2017",
+            "jibun": "704",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C-4,1501~1506동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 54700,
+            "dealDate": "2026-10-28",
+            "floor": "8",
+            "buildYear": "2017",
+            "jibun": "698",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "우림(Lumiart)",
+            "legalDong": "고산동",
+            "exclusiveAreaSqm": 59.68,
+            "dealAmountManwon": 27200,
+            "dealDate": "2026-10-27",
+            "floor": "19",
+            "buildYear": "1998",
+            "jibun": "182-4",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "쌍용스윗닷홈1",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.793,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-10-26",
+            "floor": "3",
+            "buildYear": "2004",
+            "jibun": "690",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1615동~1620동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 48000,
+            "dealDate": "2026-10-26",
+            "floor": "6",
+            "buildYear": "2017",
+            "jibun": "704",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전6(1609~1614동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 49000,
+            "dealDate": "2026-10-25",
+            "floor": "4",
+            "buildYear": "2017",
+            "jibun": "703",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C5,1507~1514동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 51500,
+            "dealDate": "2026-10-24",
+            "floor": "5",
+            "buildYear": "2017",
+            "jibun": "699",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C5,1507~1514동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.7294,
+            "dealAmountManwon": 54500,
+            "dealDate": "2026-10-24",
+            "floor": "15",
+            "buildYear": "2017",
+            "jibun": "699",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "이편한세상태전2차(301~306동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.996,
+            "dealAmountManwon": 49000,
+            "dealDate": "2026-10-24",
+            "floor": "12",
+            "buildYear": "2017",
+            "jibun": "697",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "대주파크빌",
+            "legalDong": "회덕동",
+            "exclusiveAreaSqm": 59.768,
+            "dealAmountManwon": 25500,
+            "dealDate": "2026-10-21",
+            "floor": "2",
+            "buildYear": "2004",
+            "jibun": "441",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "힐스테이트태전(C-4,1501~1506동)",
+            "legalDong": "태전동",
+            "exclusiveAreaSqm": 59.943,
+            "dealAmountManwon": 54500,
+            "dealDate": "2026-10-20",
+            "floor": "16",
+            "buildYear": "2017",
+            "jibun": "698",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          },
+          {
+            "apartment": "동보",
+            "legalDong": "탄벌동",
+            "exclusiveAreaSqm": 59.84,
+            "dealAmountManwon": 28000,
+            "dealDate": "2026-10-20",
+            "floor": "2",
+            "buildYear": "1996",
+            "jibun": "701-1",
+            "matchingTypes": [
+              "059.8670A",
+              "059.7670C"
+            ]
+          }
+        ],
+        "typeStatistics": [
+          {
+            "type": "059.8670A",
+            "areaSqm": 59.867,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 235,
+              "apartmentCount": 48,
+              "medianEok": 4.7,
+              "minEok": 1.97,
+              "maxEok": 7.15,
+              "latestDate": "2026-11-16"
+            },
+            "evaluation": "review_only"
+          },
+          {
+            "type": "059.7670C",
+            "areaSqm": 59.767,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 235,
+              "apartmentCount": 48,
+              "medianEok": 4.7,
+              "minEok": 1.97,
+              "maxEok": 7.15,
+              "latestDate": "2026-11-16"
+            },
+            "evaluation": "review_only"
+          }
+        ],
+        "distanceVerified": false,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
         "status": "insufficient",
@@ -1266,6 +1789,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 27,
+        "candidateComplexesTotal": 27,
         "byType": [
           {
             "type": "059.8670A",
@@ -1280,7 +1808,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.7670C",
@@ -1295,11 +1824,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "special_supply",
@@ -1952,6 +2482,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 14,
+        "candidateComplexesTotal": 14,
         "byType": [
           {
             "type": "059.7100A",
@@ -1966,7 +2501,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.9900B",
@@ -1981,7 +2517,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.9900C",
@@ -1996,7 +2533,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "074.9800A",
@@ -2011,7 +2549,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.9500A",
@@ -2026,11 +2565,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -3250,13 +3790,18 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "경기도 안산시 상록구 성포동 586",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 5,
+        "candidateComplexesTotal": 5,
         "byType": [
           {
             "type": "084.8861A",
             "areaSqm": 84.8861,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
             "complexCount": 1,
             "transactionCount": 14,
@@ -3265,7 +3810,7 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.34,
+                "distanceKm": 0.336,
                 "scope": "distance_checked",
                 "count": 14,
                 "medianEok": 7.7,
@@ -3276,14 +3821,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.9580B",
             "areaSqm": 84.958,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
             "complexCount": 1,
             "transactionCount": 14,
@@ -3292,7 +3838,7 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.34,
+                "distanceKm": 0.336,
                 "scope": "distance_checked",
                 "count": 14,
                 "medianEok": 7.7,
@@ -3303,14 +3849,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.8700C",
             "areaSqm": 84.87,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
             "complexCount": 1,
             "transactionCount": 14,
@@ -3319,7 +3866,7 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.34,
+                "distanceKm": 0.336,
                 "scope": "distance_checked",
                 "count": 14,
                 "medianEok": 7.7,
@@ -3330,7 +3877,8 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "099.9001A",
@@ -3345,7 +3893,8 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "099.9015B",
@@ -3360,7 +3909,8 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "104.8286",
@@ -3375,11 +3925,12 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -3436,68 +3987,1092 @@
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
+        "status": "same_dong_area_candidates_unverified",
+        "district": "서울 송파구",
+        "legalDong": "신천동",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "transactionCount": 1382,
+        "candidateCount": 36,
+        "candidateTransactions": [
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 303000,
+            "dealDate": "2026-10-30",
+            "floor": "24",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 289000,
+            "dealDate": "2026-10-29",
+            "floor": "3",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 260000,
+            "dealDate": "2026-10-29",
+            "floor": "23",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 265000,
+            "dealDate": "2026-10-24",
+            "floor": "24",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 286000,
+            "dealDate": "2026-10-22",
+            "floor": "6",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 293000,
+            "dealDate": "2026-10-05",
+            "floor": "29",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 270000,
+            "dealDate": "2026-09-30",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 260000,
+            "dealDate": "2026-09-22",
+            "floor": "11",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 290000,
+            "dealDate": "2026-09-21",
+            "floor": "28",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 300000,
+            "dealDate": "2026-09-19",
+            "floor": "21",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.64,
+            "dealAmountManwon": 277500,
+            "dealDate": "2026-09-16",
+            "floor": "5",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 315000,
+            "dealDate": "2026-09-12",
+            "floor": "21",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 295000,
+            "dealDate": "2026-08-28",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 280000,
+            "dealDate": "2026-08-20",
+            "floor": "28",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "한신잠실코아",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 41.99,
+            "dealAmountManwon": 158000,
+            "dealDate": "2026-08-12",
+            "floor": "12",
+            "buildYear": "1988",
+            "jibun": "11-9",
+            "matchingTypes": [
+              "043.7300"
+            ]
+          },
+          {
+            "apartment": "잠실푸르지오월드마크",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.39,
+            "dealAmountManwon": 229000,
+            "dealDate": "2026-08-01",
+            "floor": "19",
+            "buildYear": "2013",
+            "jibun": "11-4",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.86,
+            "dealAmountManwon": 254000,
+            "dealDate": "2026-07-29",
+            "floor": "1",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 299000,
+            "dealDate": "2026-07-28",
+            "floor": "20",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "잠실푸르지오월드마크",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.39,
+            "dealAmountManwon": 234500,
+            "dealDate": "2026-07-28",
+            "floor": "13",
+            "buildYear": "2013",
+            "jibun": "11-4",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 287500,
+            "dealDate": "2026-07-27",
+            "floor": "18",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 298000,
+            "dealDate": "2026-07-22",
+            "floor": "3",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 294000,
+            "dealDate": "2026-07-16",
+            "floor": "25",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 310000,
+            "dealDate": "2026-07-13",
+            "floor": "6",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 296000,
+            "dealDate": "2026-07-10",
+            "floor": "30",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 295000,
+            "dealDate": "2026-07-09",
+            "floor": "7",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 291000,
+            "dealDate": "2026-07-02",
+            "floor": "16",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 294000,
+            "dealDate": "2026-07-01",
+            "floor": "10",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 298500,
+            "dealDate": "2026-06-27",
+            "floor": "12",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 295000,
+            "dealDate": "2026-06-26",
+            "floor": "19",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "한신잠실코아",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 41.99,
+            "dealAmountManwon": 117000,
+            "dealDate": "2026-06-22",
+            "floor": "4",
+            "buildYear": "1988",
+            "jibun": "11-9",
+            "matchingTypes": [
+              "043.7300"
+            ]
+          },
+          {
+            "apartment": "한신잠실코아",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 41.99,
+            "dealAmountManwon": 145000,
+            "dealDate": "2026-06-17",
+            "floor": "7",
+            "buildYear": "1988",
+            "jibun": "11-9",
+            "matchingTypes": [
+              "043.7300"
+            ]
+          },
+          {
+            "apartment": "한신잠실코아",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 41.99,
+            "dealAmountManwon": 148000,
+            "dealDate": "2026-06-17",
+            "floor": "10",
+            "buildYear": "1988",
+            "jibun": "11-9",
+            "matchingTypes": [
+              "043.7300"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 59.64,
+            "dealAmountManwon": 267000,
+            "dealDate": "2026-06-11",
+            "floor": "26",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 300000,
+            "dealDate": "2026-06-10",
+            "floor": "34",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.9,
+            "dealAmountManwon": 293000,
+            "dealDate": "2026-06-02",
+            "floor": "34",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "파크리오",
+            "legalDong": "신천동",
+            "exclusiveAreaSqm": 84.79,
+            "dealAmountManwon": 296000,
+            "dealDate": "2026-06-01",
+            "floor": "12",
+            "buildYear": "2008",
+            "jibun": "17",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          }
+        ],
+        "displayLimit": 80,
+        "districtExplorationCount": 573,
+        "districtExplorationTransactions": [
+          {
+            "apartment": "위례24단지(꿈에그린)",
+            "legalDong": "장지동",
+            "exclusiveAreaSqm": 59.66,
+            "dealAmountManwon": 187000,
+            "dealDate": "2026-11-18",
+            "floor": "12",
+            "buildYear": "2013",
+            "jibun": "901",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "올림픽훼밀리타운",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.751,
+            "dealAmountManwon": 250000,
+            "dealDate": "2026-11-18",
+            "floor": "5",
+            "buildYear": "1988",
+            "jibun": "150",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "송파시그니처롯데캐슬",
+            "legalDong": "거여동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 185500,
+            "dealDate": "2026-11-17",
+            "floor": "7",
+            "buildYear": "2021",
+            "jibun": "697",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "올림픽훼밀리타운",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.705,
+            "dealAmountManwon": 250000,
+            "dealDate": "2026-11-14",
+            "floor": "7",
+            "buildYear": "1988",
+            "jibun": "150",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "레이크팰리스",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.82,
+            "dealAmountManwon": 296000,
+            "dealDate": "2026-11-14",
+            "floor": "10",
+            "buildYear": "2006",
+            "jibun": "44",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "트리지움",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 263000,
+            "dealDate": "2026-11-14",
+            "floor": "3",
+            "buildYear": "2007",
+            "jibun": "35",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "송파시그니처롯데캐슬",
+            "legalDong": "거여동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 181000,
+            "dealDate": "2026-11-14",
+            "floor": "27",
+            "buildYear": "2021",
+            "jibun": "697",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "헬리오시티",
+            "legalDong": "가락동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 300000,
+            "dealDate": "2026-11-13",
+            "floor": "17",
+            "buildYear": "2018",
+            "jibun": "913",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "신성노바빌아파트",
+            "legalDong": "풍납동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 164000,
+            "dealDate": "2026-11-13",
+            "floor": "10",
+            "buildYear": "2000",
+            "jibun": "510",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "헬리오시티",
+            "legalDong": "가락동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 295000,
+            "dealDate": "2026-11-11",
+            "floor": "29",
+            "buildYear": "2018",
+            "jibun": "913",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "잠실엘스",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.8,
+            "dealAmountManwon": 315000,
+            "dealDate": "2026-11-11",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "19",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "올림픽훼밀리타운",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.751,
+            "dealAmountManwon": 250000,
+            "dealDate": "2026-11-11",
+            "floor": "8",
+            "buildYear": "1988",
+            "jibun": "150",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "올림픽훼밀리타운",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.705,
+            "dealAmountManwon": 250000,
+            "dealDate": "2026-11-11",
+            "floor": "4",
+            "buildYear": "1988",
+            "jibun": "150",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "선경쉐르빌(106-15)",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.84,
+            "dealAmountManwon": 88500,
+            "dealDate": "2026-11-11",
+            "floor": "6",
+            "buildYear": "2002",
+            "jibun": "106-15",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "위례24단지(꿈에그린)",
+            "legalDong": "장지동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 227000,
+            "dealDate": "2026-11-10",
+            "floor": "7",
+            "buildYear": "2013",
+            "jibun": "901",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "송파파인타운5단지",
+            "legalDong": "장지동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 208000,
+            "dealDate": "2026-11-10",
+            "floor": "6",
+            "buildYear": "2008",
+            "jibun": "845",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "e편한세상송파파크센트럴",
+            "legalDong": "거여동",
+            "exclusiveAreaSqm": 59.96,
+            "dealAmountManwon": 180000,
+            "dealDate": "2026-11-10",
+            "floor": "13",
+            "buildYear": "2021",
+            "jibun": "696",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "잠실엘스",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.8,
+            "dealAmountManwon": 310000,
+            "dealDate": "2026-11-09",
+            "floor": "22",
+            "buildYear": "2008",
+            "jibun": "19",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "송파파크데일2단지",
+            "legalDong": "마천동",
+            "exclusiveAreaSqm": 59.91,
+            "dealAmountManwon": 127000,
+            "dealDate": "2026-11-07",
+            "floor": "9",
+            "buildYear": "2011",
+            "jibun": "607",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "리센츠",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 325000,
+            "dealDate": "2026-11-07",
+            "floor": "21",
+            "buildYear": "2008",
+            "jibun": "22",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "리센츠",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 333000,
+            "dealDate": "2026-11-07",
+            "floor": "14",
+            "buildYear": "2008",
+            "jibun": "22",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "힐스테이트e편한세상문정",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 59.94,
+            "dealAmountManwon": 185000,
+            "dealDate": "2026-11-06",
+            "floor": "13",
+            "buildYear": "2024",
+            "jibun": "656",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "송파파인타운2단지",
+            "legalDong": "장지동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 179000,
+            "dealDate": "2026-11-06",
+            "floor": "9",
+            "buildYear": "2008",
+            "jibun": "835",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "문정가락현대1차",
+            "legalDong": "문정동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 198000,
+            "dealDate": "2026-11-04",
+            "floor": "3",
+            "buildYear": "1984",
+            "jibun": "3",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "가락(1차)쌍용아파트",
+            "legalDong": "가락동",
+            "exclusiveAreaSqm": 59.92,
+            "dealAmountManwon": 183500,
+            "dealDate": "2026-11-04",
+            "floor": "1",
+            "buildYear": "1997",
+            "jibun": "140",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "송파파인타운6단지",
+            "legalDong": "장지동",
+            "exclusiveAreaSqm": 84.93,
+            "dealAmountManwon": 199000,
+            "dealDate": "2026-11-04",
+            "floor": "16",
+            "buildYear": "2008",
+            "jibun": "847",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "트리지움",
+            "legalDong": "잠실동",
+            "exclusiveAreaSqm": 84.83,
+            "dealAmountManwon": 305000,
+            "dealDate": "2026-11-03",
+            "floor": "3",
+            "buildYear": "2007",
+            "jibun": "35",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "송파파크데일1단지",
+            "legalDong": "마천동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 145000,
+            "dealDate": "2026-11-03",
+            "floor": "13",
+            "buildYear": "2011",
+            "jibun": "582",
+            "matchingTypes": [
+              "084.9600D"
+            ]
+          },
+          {
+            "apartment": "송파시그니처롯데캐슬",
+            "legalDong": "거여동",
+            "exclusiveAreaSqm": 59.98,
+            "dealAmountManwon": 184000,
+            "dealDate": "2026-11-03",
+            "floor": "10",
+            "buildYear": "2021",
+            "jibun": "697",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          },
+          {
+            "apartment": "상아1차아파트",
+            "legalDong": "오금동",
+            "exclusiveAreaSqm": 60.7,
+            "dealAmountManwon": 190000,
+            "dealDate": "2026-11-03",
+            "floor": "2",
+            "buildYear": "1984",
+            "jibun": "166",
+            "matchingTypes": [
+              "059.4700A"
+            ]
+          }
+        ],
+        "typeStatistics": [
+          {
+            "type": "043.7300",
+            "areaSqm": 43.73,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 4,
+              "apartmentCount": 1,
+              "medianEok": 14.65,
+              "minEok": 11.7,
+              "maxEok": 15.8,
+              "latestDate": "2026-08-12"
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 10,
+              "apartmentCount": 4,
+              "medianEok": 10.75,
+              "minEok": 8.2,
+              "maxEok": 16.4,
+              "latestDate": "2026-10-31"
+            },
+            "evaluation": "review_only"
+          },
+          {
+            "type": "059.4700A",
+            "areaSqm": 59.47,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 8,
+              "apartmentCount": 1,
+              "medianEok": 26.6,
+              "minEok": 25.4,
+              "maxEok": 28.0,
+              "latestDate": "2026-10-29"
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 190,
+              "apartmentCount": 53,
+              "medianEok": 18.05,
+              "minEok": 6.27,
+              "maxEok": 30.4,
+              "latestDate": "2026-11-18"
+            },
+            "evaluation": "review_only"
+          },
+          {
+            "type": "084.9600D",
+            "areaSqm": 84.96,
+            "areaSource": "model_code_estimate",
+            "all": {
+              "count": 24,
+              "apartmentCount": 2,
+              "medianEok": 29.5,
+              "minEok": 22.9,
+              "maxEok": 31.5,
+              "latestDate": "2026-10-30"
+            },
+            "builtSince2015": {
+              "count": 0,
+              "apartmentCount": 0,
+              "medianEok": null,
+              "minEok": null,
+              "maxEok": null,
+              "latestDate": null
+            },
+            "districtExploration": {
+              "count": 373,
+              "apartmentCount": 100,
+              "medianEok": 21.3,
+              "minEok": 6.9,
+              "maxEok": 36.95,
+              "latestDate": "2026-11-18"
+            },
+            "evaluation": "review_only"
+          }
+        ],
+        "distanceVerified": false,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
         "status": "insufficient",
         "modelType": "084.9600D",
         "referencePriceEok": null,
-        "scopeLabel": "비교 단지 부족",
-        "transactionCount": 0,
-        "apartmentCount": 0,
-        "distanceChecked": false,
+        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+        "transactionCount": 2,
+        "apartmentCount": 1,
+        "distanceChecked": true,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "서울특별시 송파구 신천동 20-4",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 16,
+        "candidateComplexesTotal": 16,
         "byType": [
           {
             "type": "043.7300",
             "areaSqm": 43.73,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
+            "complexCount": 1,
+            "transactionCount": 1,
+            "apartmentComparisons": [
+              {
+                "apartment": "잠실라펜앤",
+                "legalDong": "방이동",
+                "buildYear": 2024,
+                "distanceKm": 0.817,
+                "scope": "distance_checked",
+                "count": 1,
+                "medianEok": 8.5,
+                "latestDate": "2026-08-19",
+                "areaSqm": 44.09
+              }
+            ],
             "sitePositionChecked": true,
-            "distanceCheckedCount": 0,
+            "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.4700A",
             "areaSqm": 59.47,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
+            "status": "distance_checked_review",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 18.65,
+            "complexCount": 2,
+            "transactionCount": 9,
+            "apartmentComparisons": [
+              {
+                "apartment": "잠실올림픽공원아이파크",
+                "legalDong": "풍납동",
+                "buildYear": 2019,
+                "distanceKm": 0.888,
+                "scope": "distance_checked",
+                "count": 7,
+                "medianEok": 22.3,
+                "latestDate": "2026-10-25",
+                "areaSqm": 59.93
+              },
+              {
+                "apartment": "송파파밀리에더퍼스트",
+                "legalDong": "송파동",
+                "buildYear": 2023,
+                "distanceKm": 1.748,
+                "scope": "distance_checked",
+                "count": 2,
+                "medianEok": 15.0,
+                "latestDate": "2026-08-15",
+                "areaSqm": 59.94
+              }
+            ],
             "sitePositionChecked": true,
-            "distanceCheckedCount": 0,
+            "distanceCheckedCount": 2,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.9600D",
             "areaSqm": 84.96,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
+            "complexCount": 1,
+            "transactionCount": 2,
+            "apartmentComparisons": [
+              {
+                "apartment": "이트리움송파(281-4)",
+                "legalDong": "풍납동",
+                "buildYear": 2024,
+                "distanceKm": 1.63,
+                "scope": "distance_checked",
+                "count": 2,
+                "medianEok": 9.425,
+                "latestDate": "2026-09-09",
+                "areaSqm": 84.83
+              }
+            ],
             "sitePositionChecked": true,
-            "distanceCheckedCount": 0,
+            "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "special_supply",
@@ -4331,19 +5906,24 @@
         "status": "distance_checked_review",
         "modelType": "084.9409A",
         "referencePriceEok": 17.925,
-        "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
         "transactionCount": 43,
         "apartmentCount": 11,
         "distanceChecked": true,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "서울특별시 영등포구 문래동3가 27-1",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 17,
+        "candidateComplexesTotal": 17,
         "byType": [
           {
             "type": "084.9409A",
             "areaSqm": 84.9409,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
@@ -4352,7 +5932,7 @@
                 "apartment": "아크로타워스퀘어",
                 "legalDong": "영등포동7가",
                 "buildYear": 2017,
-                "distanceKm": 0.85,
+                "distanceKm": 0.846,
                 "scope": "distance_checked",
                 "count": 9,
                 "medianEok": 20.9,
@@ -4363,7 +5943,7 @@
                 "apartment": "브라운스톤당산",
                 "legalDong": "당산동4가",
                 "buildYear": 2015,
-                "distanceKm": 0.96,
+                "distanceKm": 0.964,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 16.05,
@@ -4374,7 +5954,7 @@
                 "apartment": "당산롯데캐슬프레스티지",
                 "legalDong": "당산동4가",
                 "buildYear": 2017,
-                "distanceKm": 1.1,
+                "distanceKm": 1.104,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 19.0,
@@ -4385,7 +5965,7 @@
                 "apartment": "문래모아미래도",
                 "legalDong": "문래동5가",
                 "buildYear": 2017,
-                "distanceKm": 1.17,
+                "distanceKm": 1.172,
                 "scope": "distance_checked",
                 "count": 7,
                 "medianEok": 14.75,
@@ -4396,7 +5976,7 @@
                 "apartment": "당산센트럴아이파크",
                 "legalDong": "당산동5가",
                 "buildYear": 2020,
-                "distanceKm": 1.25,
+                "distanceKm": 1.251,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 24.475,
@@ -4407,7 +5987,7 @@
                 "apartment": "영등포중흥에스클래스",
                 "legalDong": "양평동1가",
                 "buildYear": 2021,
-                "distanceKm": 1.32,
+                "distanceKm": 1.316,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 16.45,
@@ -4418,7 +5998,7 @@
                 "apartment": "신길센트럴아이파크",
                 "legalDong": "신길동",
                 "buildYear": 2019,
-                "distanceKm": 1.7,
+                "distanceKm": 1.697,
                 "scope": "distance_checked",
                 "count": 3,
                 "medianEok": 17.57,
@@ -4429,7 +6009,7 @@
                 "apartment": "래미안영등포프레비뉴",
                 "legalDong": "신길동",
                 "buildYear": 2015,
-                "distanceKm": 1.72,
+                "distanceKm": 1.723,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 17.925,
@@ -4440,7 +6020,7 @@
                 "apartment": "신길센트럴자이아파트",
                 "legalDong": "신길동",
                 "buildYear": 2021,
-                "distanceKm": 1.89,
+                "distanceKm": 1.889,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 18.8,
@@ -4451,7 +6031,7 @@
                 "apartment": "더샵파크프레스티지",
                 "legalDong": "신길동",
                 "buildYear": 2022,
-                "distanceKm": 1.91,
+                "distanceKm": 1.913,
                 "scope": "distance_checked",
                 "count": 5,
                 "medianEok": 16.8,
@@ -4462,7 +6042,7 @@
                 "apartment": "힐스테이트클래시안",
                 "legalDong": "신길동",
                 "buildYear": 2020,
-                "distanceKm": 1.97,
+                "distanceKm": 1.971,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 19.505,
@@ -4473,14 +6053,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 11,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.9708B",
             "areaSqm": 84.9708,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
@@ -4489,7 +6070,7 @@
                 "apartment": "아크로타워스퀘어",
                 "legalDong": "영등포동7가",
                 "buildYear": 2017,
-                "distanceKm": 0.85,
+                "distanceKm": 0.846,
                 "scope": "distance_checked",
                 "count": 9,
                 "medianEok": 20.9,
@@ -4500,7 +6081,7 @@
                 "apartment": "브라운스톤당산",
                 "legalDong": "당산동4가",
                 "buildYear": 2015,
-                "distanceKm": 0.96,
+                "distanceKm": 0.964,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 16.05,
@@ -4511,7 +6092,7 @@
                 "apartment": "당산롯데캐슬프레스티지",
                 "legalDong": "당산동4가",
                 "buildYear": 2017,
-                "distanceKm": 1.1,
+                "distanceKm": 1.104,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 19.0,
@@ -4522,7 +6103,7 @@
                 "apartment": "문래모아미래도",
                 "legalDong": "문래동5가",
                 "buildYear": 2017,
-                "distanceKm": 1.17,
+                "distanceKm": 1.172,
                 "scope": "distance_checked",
                 "count": 7,
                 "medianEok": 14.75,
@@ -4533,7 +6114,7 @@
                 "apartment": "당산센트럴아이파크",
                 "legalDong": "당산동5가",
                 "buildYear": 2020,
-                "distanceKm": 1.25,
+                "distanceKm": 1.251,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 24.475,
@@ -4544,7 +6125,7 @@
                 "apartment": "영등포중흥에스클래스",
                 "legalDong": "양평동1가",
                 "buildYear": 2021,
-                "distanceKm": 1.32,
+                "distanceKm": 1.316,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 16.45,
@@ -4555,7 +6136,7 @@
                 "apartment": "신길센트럴아이파크",
                 "legalDong": "신길동",
                 "buildYear": 2019,
-                "distanceKm": 1.7,
+                "distanceKm": 1.697,
                 "scope": "distance_checked",
                 "count": 3,
                 "medianEok": 17.57,
@@ -4566,7 +6147,7 @@
                 "apartment": "래미안영등포프레비뉴",
                 "legalDong": "신길동",
                 "buildYear": 2015,
-                "distanceKm": 1.72,
+                "distanceKm": 1.723,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 17.925,
@@ -4577,7 +6158,7 @@
                 "apartment": "신길센트럴자이아파트",
                 "legalDong": "신길동",
                 "buildYear": 2021,
-                "distanceKm": 1.89,
+                "distanceKm": 1.889,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 18.8,
@@ -4588,7 +6169,7 @@
                 "apartment": "더샵파크프레스티지",
                 "legalDong": "신길동",
                 "buildYear": 2022,
-                "distanceKm": 1.91,
+                "distanceKm": 1.913,
                 "scope": "distance_checked",
                 "count": 5,
                 "medianEok": 16.8,
@@ -4599,7 +6180,7 @@
                 "apartment": "힐스테이트클래시안",
                 "legalDong": "신길동",
                 "buildYear": 2020,
-                "distanceKm": 1.97,
+                "distanceKm": 1.971,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 19.505,
@@ -4610,14 +6191,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 11,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.9894C",
             "areaSqm": 84.9894,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
@@ -4626,7 +6208,7 @@
                 "apartment": "아크로타워스퀘어",
                 "legalDong": "영등포동7가",
                 "buildYear": 2017,
-                "distanceKm": 0.85,
+                "distanceKm": 0.846,
                 "scope": "distance_checked",
                 "count": 9,
                 "medianEok": 20.9,
@@ -4637,7 +6219,7 @@
                 "apartment": "브라운스톤당산",
                 "legalDong": "당산동4가",
                 "buildYear": 2015,
-                "distanceKm": 0.96,
+                "distanceKm": 0.964,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 16.05,
@@ -4648,7 +6230,7 @@
                 "apartment": "당산롯데캐슬프레스티지",
                 "legalDong": "당산동4가",
                 "buildYear": 2017,
-                "distanceKm": 1.1,
+                "distanceKm": 1.104,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 19.0,
@@ -4659,7 +6241,7 @@
                 "apartment": "문래모아미래도",
                 "legalDong": "문래동5가",
                 "buildYear": 2017,
-                "distanceKm": 1.17,
+                "distanceKm": 1.172,
                 "scope": "distance_checked",
                 "count": 7,
                 "medianEok": 14.75,
@@ -4670,7 +6252,7 @@
                 "apartment": "당산센트럴아이파크",
                 "legalDong": "당산동5가",
                 "buildYear": 2020,
-                "distanceKm": 1.25,
+                "distanceKm": 1.251,
                 "scope": "distance_checked",
                 "count": 4,
                 "medianEok": 24.475,
@@ -4681,7 +6263,7 @@
                 "apartment": "영등포중흥에스클래스",
                 "legalDong": "양평동1가",
                 "buildYear": 2021,
-                "distanceKm": 1.32,
+                "distanceKm": 1.316,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 16.45,
@@ -4692,7 +6274,7 @@
                 "apartment": "신길센트럴아이파크",
                 "legalDong": "신길동",
                 "buildYear": 2019,
-                "distanceKm": 1.7,
+                "distanceKm": 1.697,
                 "scope": "distance_checked",
                 "count": 3,
                 "medianEok": 17.57,
@@ -4703,7 +6285,7 @@
                 "apartment": "래미안영등포프레비뉴",
                 "legalDong": "신길동",
                 "buildYear": 2015,
-                "distanceKm": 1.72,
+                "distanceKm": 1.723,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 17.925,
@@ -4714,7 +6296,7 @@
                 "apartment": "신길센트럴자이아파트",
                 "legalDong": "신길동",
                 "buildYear": 2021,
-                "distanceKm": 1.89,
+                "distanceKm": 1.889,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 18.8,
@@ -4725,7 +6307,7 @@
                 "apartment": "더샵파크프레스티지",
                 "legalDong": "신길동",
                 "buildYear": 2022,
-                "distanceKm": 1.91,
+                "distanceKm": 1.913,
                 "scope": "distance_checked",
                 "count": 5,
                 "medianEok": 16.8,
@@ -4736,7 +6318,7 @@
                 "apartment": "힐스테이트클래시안",
                 "legalDong": "신길동",
                 "buildYear": 2020,
-                "distanceKm": 1.97,
+                "distanceKm": 1.971,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 19.505,
@@ -4747,11 +6329,12 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 11,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "manual_review",
@@ -4768,7 +6351,7 @@
           "transactionCount": 43,
           "distanceVerified": true,
           "areaSource": "model_code_estimate",
-          "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고"
+          "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고"
         },
         "candidateTypeCount": 2,
         "noticeTypePriority": false,
@@ -4847,128 +6430,2115 @@
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "transactionScan": {
-        "status": "not_scanned",
-        "reason": "시군구 코드 확인 전"
-      },
-      "referenceMarket": {
-        "status": "insufficient",
-        "modelType": "084.9800B",
-        "referencePriceEok": null,
-        "scopeLabel": "비교 단지 부족",
-        "transactionCount": 0,
-        "apartmentCount": 0,
-        "distanceChecked": false,
-        "geocodingEnabled": true,
-        "locationConfirmed": false,
-        "byType": [
+        "status": "same_dong_area_candidates_unverified",
+        "district": "인천 부평구",
+        "legalDong": "산곡동",
+        "months": [
+          "202611",
+          "202610",
+          "202609",
+          "202608",
+          "202607",
+          "202606"
+        ],
+        "transactionCount": 2311,
+        "candidateCount": 425,
+        "candidateTransactions": [
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.903,
+            "dealAmountManwon": 69800,
+            "dealDate": "2026-11-20",
+            "floor": "19",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-11-20",
+            "floor": "5",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9317,
+            "dealAmountManwon": 61400,
+            "dealDate": "2026-11-19",
+            "floor": "3",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "우성4차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 29500,
+            "dealDate": "2026-11-19",
+            "floor": "7",
+            "buildYear": "1991",
+            "jibun": "306-3",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 35800,
+            "dealDate": "2026-11-18",
+            "floor": "8",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대3차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.94,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-11-18",
+            "floor": "10",
+            "buildYear": "1989",
+            "jibun": "370-399",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9316,
+            "dealAmountManwon": 52000,
+            "dealDate": "2026-11-18",
+            "floor": "10",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대2차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9,
+            "dealAmountManwon": 28000,
+            "dealDate": "2026-11-17",
+            "floor": "12",
+            "buildYear": "1987",
+            "jibun": "311-126",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 74.957,
+            "dealAmountManwon": 59000,
+            "dealDate": "2026-11-15",
+            "floor": "3",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "075.5600A",
+              "075.6200B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 59900,
+            "dealDate": "2026-11-14",
+            "floor": "17",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 61000,
+            "dealDate": "2026-11-14",
+            "floor": "26",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "금호이수마운트밸리",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.8167,
+            "dealAmountManwon": 44500,
+            "dealDate": "2026-11-14",
+            "floor": "18",
+            "buildYear": "2007",
+            "jibun": "507",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대1차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.6,
+            "dealAmountManwon": 37500,
+            "dealDate": "2026-11-14",
+            "floor": "7",
+            "buildYear": "1985",
+            "jibun": "307",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9365,
+            "dealAmountManwon": 77500,
+            "dealDate": "2026-11-14",
+            "floor": "25",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.58,
+            "dealAmountManwon": 42700,
+            "dealDate": "2026-11-13",
+            "floor": "20",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "쌍용더플래티넘부평",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.96,
+            "dealAmountManwon": 51800,
+            "dealDate": "2026-11-13",
+            "floor": "9",
+            "buildYear": "2022",
+            "jibun": "519",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9316,
+            "dealAmountManwon": 52000,
+            "dealDate": "2026-11-13",
+            "floor": "16",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대2차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 37500,
+            "dealDate": "2026-11-12",
+            "floor": "4",
+            "buildYear": "1987",
+            "jibun": "311-126",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "금호이수마운트밸리",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9588,
+            "dealAmountManwon": 55750,
+            "dealDate": "2026-11-12",
+            "floor": "18",
+            "buildYear": "2007",
+            "jibun": "507",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한양(185-17)",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.675,
+            "dealAmountManwon": 28200,
+            "dealDate": "2026-11-12",
+            "floor": "17",
+            "buildYear": "1993",
+            "jibun": "185-17",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 43750,
+            "dealDate": "2026-11-11",
+            "floor": "10",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평산곡푸르지오",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 62000,
+            "dealDate": "2026-11-11",
+            "floor": "18",
+            "buildYear": "2011",
+            "jibun": "510",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9365,
+            "dealAmountManwon": 76600,
+            "dealDate": "2026-11-11",
+            "floor": "5",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "현대2차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9,
+            "dealAmountManwon": 28700,
+            "dealDate": "2026-11-10",
+            "floor": "9",
+            "buildYear": "1987",
+            "jibun": "311-126",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대(124-1)",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.4,
+            "dealAmountManwon": 27500,
+            "dealDate": "2026-11-10",
+            "floor": "18",
+            "buildYear": "1993",
+            "jibun": "124-1",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "무지개",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.15,
+            "dealAmountManwon": 26400,
+            "dealDate": "2026-11-09",
+            "floor": "3",
+            "buildYear": "1991",
+            "jibun": "191-3",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-11-08",
+            "floor": "15",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 36200,
+            "dealDate": "2026-11-07",
+            "floor": "2",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대(124-1)",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.99,
+            "dealAmountManwon": 35500,
+            "dealDate": "2026-11-07",
+            "floor": "16",
+            "buildYear": "1993",
+            "jibun": "124-1",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평산곡푸르지오",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.995,
+            "dealAmountManwon": 49000,
+            "dealDate": "2026-11-07",
+            "floor": "5",
+            "buildYear": "2011",
+            "jibun": "510",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 35300,
+            "dealDate": "2026-11-07",
+            "floor": "11",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.899,
+            "dealAmountManwon": 56300,
+            "dealDate": "2026-11-06",
+            "floor": "15",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "쌍용더플래티넘부평",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 51300,
+            "dealDate": "2026-11-06",
+            "floor": "18",
+            "buildYear": "2022",
+            "jibun": "519",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "우성1차2차(294-35)",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 73.96,
+            "dealAmountManwon": 30500,
+            "dealDate": "2026-11-05",
+            "floor": "3",
+            "buildYear": "1989",
+            "jibun": "294-35",
+            "matchingTypes": [
+              "075.5600A",
+              "075.6200B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 60500,
+            "dealDate": "2026-11-05",
+            "floor": "11",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 35000,
+            "dealDate": "2026-11-04",
+            "floor": "12",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.899,
+            "dealAmountManwon": 56800,
+            "dealDate": "2026-11-04",
+            "floor": "11",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "현대2차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.96,
+            "dealAmountManwon": 37000,
+            "dealDate": "2026-11-04",
+            "floor": "9",
+            "buildYear": "1987",
+            "jibun": "311-126",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "금호이수마운트밸리",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9588,
+            "dealAmountManwon": 53900,
+            "dealDate": "2026-11-04",
+            "floor": "18",
+            "buildYear": "2007",
+            "jibun": "507",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "우성4차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 31800,
+            "dealDate": "2026-11-04",
+            "floor": "8",
+            "buildYear": "1991",
+            "jibun": "306-3",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "현대(179-92)",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.95,
+            "dealAmountManwon": 22000,
+            "dealDate": "2026-11-04",
+            "floor": "19",
+            "buildYear": "1999",
+            "jibun": "179-92",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 33850,
+            "dealDate": "2026-11-02",
+            "floor": "17",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평산곡푸르지오",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 60000,
+            "dealDate": "2026-11-02",
+            "floor": "17",
+            "buildYear": "2011",
+            "jibun": "510",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 37700,
+            "dealDate": "2026-11-01",
+            "floor": "10",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 42000,
+            "dealDate": "2026-10-31",
+            "floor": "8",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 45000,
+            "dealDate": "2026-10-31",
+            "floor": "6",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "금호이수마운트밸리",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9588,
+            "dealAmountManwon": 57000,
+            "dealDate": "2026-10-31",
+            "floor": "3",
+            "buildYear": "2007",
+            "jibun": "507",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 59750,
+            "dealDate": "2026-10-31",
+            "floor": "17",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "경남1차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 75.25,
+            "dealAmountManwon": 30800,
+            "dealDate": "2026-10-31",
+            "floor": "7",
+            "buildYear": "1990",
+            "jibun": "142-3",
+            "matchingTypes": [
+              "075.5600A",
+              "075.6200B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9316,
+            "dealAmountManwon": 52500,
+            "dealDate": "2026-10-31",
+            "floor": "5",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 41000,
+            "dealDate": "2026-10-29",
+            "floor": "3",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "인우",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 61.92,
+            "dealAmountManwon": 15500,
+            "dealDate": "2026-10-29",
+            "floor": "2",
+            "buildYear": "1984",
+            "jibun": "63-58",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 49.557,
+            "dealAmountManwon": 44000,
+            "dealDate": "2026-10-29",
+            "floor": "11",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 30300,
+            "dealDate": "2026-10-29",
+            "floor": "3",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.58,
+            "dealAmountManwon": 44500,
+            "dealDate": "2026-10-28",
+            "floor": "19",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "거산",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.18,
+            "dealAmountManwon": 16000,
+            "dealDate": "2026-10-28",
+            "floor": "1",
+            "buildYear": "1997",
+            "jibun": "63-70",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "경남4차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.715,
+            "dealAmountManwon": 22800,
+            "dealDate": "2026-10-28",
+            "floor": "6",
+            "buildYear": "1994",
+            "jibun": "274-5",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 33500,
+            "dealDate": "2026-10-27",
+            "floor": "13",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.95,
+            "dealAmountManwon": 44000,
+            "dealDate": "2026-10-27",
+            "floor": "9",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9316,
+            "dealAmountManwon": 53000,
+            "dealDate": "2026-10-27",
+            "floor": "7",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "대운",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 50.85,
+            "dealAmountManwon": 19000,
+            "dealDate": "2026-10-27",
+            "floor": "4",
+            "buildYear": "1985",
+            "jibun": "120-8",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "뉴서울아파트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.81,
+            "dealAmountManwon": 26000,
+            "dealDate": "2026-10-26",
+            "floor": "13",
+            "buildYear": "1989",
+            "jibun": "255-1",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한화2단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.88,
+            "dealAmountManwon": 35000,
+            "dealDate": "2026-10-26",
+            "floor": "13",
+            "buildYear": "1999",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "한화1단지",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.37,
+            "dealAmountManwon": 40000,
+            "dealDate": "2026-10-26",
+            "floor": "12",
+            "buildYear": "1997",
+            "jibun": "124-23",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "뉴서울아파트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.81,
+            "dealAmountManwon": 26700,
+            "dealDate": "2026-10-26",
+            "floor": "8",
+            "buildYear": "1989",
+            "jibun": "255-1",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.9317,
+            "dealAmountManwon": 60500,
+            "dealDate": "2026-10-26",
+            "floor": "4",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 60500,
+            "dealDate": "2026-10-25",
+            "floor": "12",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.583,
+            "dealAmountManwon": 56500,
+            "dealDate": "2026-10-24",
+            "floor": "15",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평신일해피트리더루츠",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.899,
+            "dealAmountManwon": 57300,
+            "dealDate": "2026-10-24",
+            "floor": "19",
+            "buildYear": "2022",
+            "jibun": "524",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "금호이수마운트밸리",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.8167,
+            "dealAmountManwon": 42700,
+            "dealDate": "2026-10-24",
+            "floor": "6",
+            "buildYear": "2007",
+            "jibun": "507",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "경남3차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.715,
+            "dealAmountManwon": 22000,
+            "dealDate": "2026-10-24",
+            "floor": "1",
+            "buildYear": "1992",
+            "jibun": "145",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 62500,
+            "dealDate": "2026-10-23",
+            "floor": "19",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "뉴서울아파트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.81,
+            "dealAmountManwon": 25300,
+            "dealDate": "2026-10-23",
+            "floor": "5",
+            "buildYear": "1989",
+            "jibun": "255-1",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9316,
+            "dealAmountManwon": 54000,
+            "dealDate": "2026-10-23",
+            "floor": "15",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "경남5차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.97,
+            "dealAmountManwon": 29500,
+            "dealDate": "2026-10-23",
+            "floor": "9",
+            "buildYear": "1992",
+            "jibun": "261-8",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평두산위브더파크",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 49.9486,
+            "dealAmountManwon": 37000,
+            "dealDate": "2026-10-22",
+            "floor": "7",
+            "buildYear": "2022",
+            "jibun": "534",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "현대1차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.6,
+            "dealAmountManwon": 33900,
+            "dealDate": "2026-10-22",
+            "floor": "1",
+            "buildYear": "1985",
+            "jibun": "307",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "현대1차",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 84.6,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-10-21",
+            "floor": "10",
+            "buildYear": "1985",
+            "jibun": "307",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 62700,
+            "dealDate": "2026-10-21",
+            "floor": "13",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평캐슬&더샵퍼스트",
+            "legalDong": "산곡동",
+            "exclusiveAreaSqm": 59.9295,
+            "dealAmountManwon": 59900,
+            "dealDate": "2026-10-21",
+            "floor": "7",
+            "buildYear": "2024",
+            "jibun": "550",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          }
+        ],
+        "displayLimit": 80,
+        "districtExplorationCount": 1298,
+        "districtExplorationTransactions": [
+          {
+            "apartment": "브라운스톤부평",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 59.99,
+            "dealAmountManwon": 47630,
+            "dealDate": "2026-11-20",
+            "floor": "10",
+            "buildYear": "2023",
+            "jibun": "553",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "삼산타운주공1단지",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 51.86,
+            "dealAmountManwon": 39700,
+            "dealDate": "2026-11-20",
+            "floor": "8",
+            "buildYear": "2005",
+            "jibun": "440-1",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "부평SKVIEW해모로",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 49.9665,
+            "dealAmountManwon": 48700,
+            "dealDate": "2026-11-20",
+            "floor": "15",
+            "buildYear": "2023",
+            "jibun": "962",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "부개주공3",
+            "legalDong": "부개동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 30000,
+            "dealDate": "2026-11-20",
+            "floor": "8",
+            "buildYear": "1996",
+            "jibun": "498-5",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "더샵부평센트럴시티",
+            "legalDong": "십정동",
+            "exclusiveAreaSqm": 59.8032,
+            "dealAmountManwon": 43000,
+            "dealDate": "2026-11-19",
+            "floor": "14",
+            "buildYear": "2022",
+            "jibun": "630",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "래미안부평",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 84.966,
+            "dealAmountManwon": 63000,
+            "dealDate": "2026-11-19",
+            "floor": "7",
+            "buildYear": "2014",
+            "jibun": "947",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "임광그대가",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 84.91,
+            "dealAmountManwon": 38000,
+            "dealDate": "2026-11-19",
+            "floor": "2",
+            "buildYear": "2008",
+            "jibun": "500",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부평삼산신원아침도시",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 74.19,
+            "dealAmountManwon": 47500,
+            "dealDate": "2026-11-18",
+            "floor": "17",
+            "buildYear": "2023",
+            "jibun": "550",
+            "matchingTypes": [
+              "075.5600A",
+              "075.6200B"
+            ]
+          },
+          {
+            "apartment": "부평SKVIEW해모로",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 59.975,
+            "dealAmountManwon": 58000,
+            "dealDate": "2026-11-18",
+            "floor": "12",
+            "buildYear": "2023",
+            "jibun": "962",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "삼산주공미래타운3차",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 59.39,
+            "dealAmountManwon": 28000,
+            "dealDate": "2026-11-18",
+            "floor": "19",
+            "buildYear": "2000",
+            "jibun": "390-6",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "중앙하이츠프리미어부평",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 59.8979,
+            "dealAmountManwon": 41350,
+            "dealDate": "2026-11-18",
+            "floor": "9",
+            "buildYear": "2023",
+            "jibun": "982",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "삼산타운2단지",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 59700,
+            "dealDate": "2026-11-18",
+            "floor": "19",
+            "buildYear": "2005",
+            "jibun": "445-5",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "삼산주공미래타운1차",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 59.39,
+            "dealAmountManwon": 28700,
+            "dealDate": "2026-11-18",
+            "floor": "5",
+            "buildYear": "2000",
+            "jibun": "387-2",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "삼산타운2단지",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 56800,
+            "dealDate": "2026-11-18",
+            "floor": "14",
+            "buildYear": "2005",
+            "jibun": "445-5",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "일신주공아파트(100~112동)",
+            "legalDong": "일신동",
+            "exclusiveAreaSqm": 59.97,
+            "dealAmountManwon": 21900,
+            "dealDate": "2026-11-18",
+            "floor": "17",
+            "buildYear": "1995",
+            "jibun": "410",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "서해그랑블",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 51500,
+            "dealDate": "2026-11-18",
+            "floor": "26",
+            "buildYear": "2011",
+            "jibun": "513",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "부개주공3",
+            "legalDong": "부개동",
+            "exclusiveAreaSqm": 49.96,
+            "dealAmountManwon": 25500,
+            "dealDate": "2026-11-18",
+            "floor": "3",
+            "buildYear": "1996",
+            "jibun": "498-5",
+            "matchingTypes": [
+              "050.2600A",
+              "050.2600B"
+            ]
+          },
+          {
+            "apartment": "부개역코오롱하늘채",
+            "legalDong": "부개동",
+            "exclusiveAreaSqm": 59.8972,
+            "dealAmountManwon": 51000,
+            "dealDate": "2026-11-18",
+            "floor": "12",
+            "buildYear": "2021",
+            "jibun": "525",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평SKVIEW해모로",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 59.975,
+            "dealAmountManwon": 55700,
+            "dealDate": "2026-11-17",
+            "floor": "6",
+            "buildYear": "2023",
+            "jibun": "962",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "부평1,2차금호타운",
+            "legalDong": "청천동",
+            "exclusiveAreaSqm": 59.805,
+            "dealAmountManwon": 31000,
+            "dealDate": "2026-11-17",
+            "floor": "3",
+            "buildYear": "1998",
+            "jibun": "200",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "청천우민늘푸른아파트",
+            "legalDong": "청천동",
+            "exclusiveAreaSqm": 59.4568,
+            "dealAmountManwon": 32500,
+            "dealDate": "2026-11-17",
+            "floor": "17",
+            "buildYear": "2020",
+            "jibun": "453",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "힐스테이트부평",
+            "legalDong": "십정동",
+            "exclusiveAreaSqm": 59.99,
+            "dealAmountManwon": 58500,
+            "dealDate": "2026-11-17",
+            "floor": "12",
+            "buildYear": "2023",
+            "jibun": "642",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "삼산타운주공1단지",
+            "legalDong": "삼산동",
+            "exclusiveAreaSqm": 59.99,
+            "dealAmountManwon": 50300,
+            "dealDate": "2026-11-17",
+            "floor": "15",
+            "buildYear": "2005",
+            "jibun": "440-1",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "건영캐스빌",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 58.6,
+            "dealAmountManwon": 15000,
+            "dealDate": "2026-11-16",
+            "floor": "4",
+            "buildYear": "2002",
+            "jibun": "252-29",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "청천푸르지오",
+            "legalDong": "청천동",
+            "exclusiveAreaSqm": 84.34,
+            "dealAmountManwon": 42500,
+            "dealDate": "2026-11-16",
+            "floor": "15",
+            "buildYear": "1998",
+            "jibun": "176",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "청천푸르지오",
+            "legalDong": "청천동",
+            "exclusiveAreaSqm": 84.94,
+            "dealAmountManwon": 37300,
+            "dealDate": "2026-11-16",
+            "floor": "11",
+            "buildYear": "1998",
+            "jibun": "176",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "브라운스톤백운",
+            "legalDong": "십정동",
+            "exclusiveAreaSqm": 84.9324,
+            "dealAmountManwon": 44500,
+            "dealDate": "2026-11-16",
+            "floor": "23",
+            "buildYear": "2014",
+            "jibun": "617",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          },
+          {
+            "apartment": "한국",
+            "legalDong": "십정동",
+            "exclusiveAreaSqm": 60.0,
+            "dealAmountManwon": 20000,
+            "dealDate": "2026-11-16",
+            "floor": "10",
+            "buildYear": "1998",
+            "jibun": "186-7",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "청천푸르지오",
+            "legalDong": "청천동",
+            "exclusiveAreaSqm": 59.36,
+            "dealAmountManwon": 31900,
+            "dealDate": "2026-11-16",
+            "floor": "11",
+            "buildYear": "1998",
+            "jibun": "176",
+            "matchingTypes": [
+              "059.9900B"
+            ]
+          },
+          {
+            "apartment": "욱일",
+            "legalDong": "부평동",
+            "exclusiveAreaSqm": 84.16,
+            "dealAmountManwon": 25000,
+            "dealDate": "2026-11-16",
+            "floor": "1",
+            "buildYear": "1990",
+            "jibun": "65-7",
+            "matchingTypes": [
+              "084.9200A",
+              "084.9800B"
+            ]
+          }
+        ],
+        "typeStatistics": [
           {
             "type": "050.2600A",
             "areaSqm": 50.26,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 28,
+              "apartmentCount": 3,
+              "medianEok": 4.215,
+              "minEok": 1.9,
+              "maxEok": 4.6,
+              "latestDate": "2026-10-29"
+            },
+            "builtSince2015": {
+              "count": 27,
+              "apartmentCount": 2,
+              "medianEok": 4.23,
+              "minEok": 3.39,
+              "maxEok": 4.6,
+              "latestDate": "2026-10-29"
+            },
+            "districtExploration": {
+              "count": 153,
+              "apartmentCount": 41,
+              "medianEok": 2.38,
+              "minEok": 1.0,
+              "maxEok": 5.05,
+              "latestDate": "2026-11-20"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "050.2600B",
             "areaSqm": 50.26,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 28,
+              "apartmentCount": 3,
+              "medianEok": 4.215,
+              "minEok": 1.9,
+              "maxEok": 4.6,
+              "latestDate": "2026-10-29"
+            },
+            "builtSince2015": {
+              "count": 27,
+              "apartmentCount": 2,
+              "medianEok": 4.23,
+              "minEok": 3.39,
+              "maxEok": 4.6,
+              "latestDate": "2026-10-29"
+            },
+            "districtExploration": {
+              "count": 153,
+              "apartmentCount": 41,
+              "medianEok": 2.38,
+              "minEok": 1.0,
+              "maxEok": 5.05,
+              "latestDate": "2026-11-20"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "059.9900B",
             "areaSqm": 59.99,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 168,
+              "apartmentCount": 22,
+              "medianEok": 4.9,
+              "minEok": 1.14,
+              "maxEok": 6.27,
+              "latestDate": "2026-11-18"
+            },
+            "builtSince2015": {
+              "count": 82,
+              "apartmentCount": 5,
+              "medianEok": 5.58,
+              "minEok": 3.1,
+              "maxEok": 6.27,
+              "latestDate": "2026-11-18"
+            },
+            "districtExploration": {
+              "count": 677,
+              "apartmentCount": 71,
+              "medianEok": 3.67,
+              "minEok": 0.88,
+              "maxEok": 6.2,
+              "latestDate": "2026-11-20"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "075.5600A",
             "areaSqm": 75.56,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 28,
+              "apartmentCount": 6,
+              "medianEok": 3.125,
+              "minEok": 2.48,
+              "maxEok": 6.15,
+              "latestDate": "2026-11-15"
+            },
+            "builtSince2015": {
+              "count": 11,
+              "apartmentCount": 2,
+              "medianEok": 5.9,
+              "minEok": 5.75,
+              "maxEok": 6.15,
+              "latestDate": "2026-11-15"
+            },
+            "districtExploration": {
+              "count": 57,
+              "apartmentCount": 15,
+              "medianEok": 5.55,
+              "minEok": 2.08,
+              "maxEok": 7.0,
+              "latestDate": "2026-11-18"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "075.6200B",
             "areaSqm": 75.62,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 28,
+              "apartmentCount": 6,
+              "medianEok": 3.125,
+              "minEok": 2.48,
+              "maxEok": 6.15,
+              "latestDate": "2026-11-15"
+            },
+            "builtSince2015": {
+              "count": 11,
+              "apartmentCount": 2,
+              "medianEok": 5.9,
+              "minEok": 5.75,
+              "maxEok": 6.15,
+              "latestDate": "2026-11-15"
+            },
+            "districtExploration": {
+              "count": 57,
+              "apartmentCount": 15,
+              "medianEok": 5.55,
+              "minEok": 2.08,
+              "maxEok": 7.0,
+              "latestDate": "2026-11-18"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "084.9200A",
             "areaSqm": 84.92,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
-            "sitePositionChecked": false,
-            "distanceCheckedCount": 0,
-            "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "all": {
+              "count": 201,
+              "apartmentCount": 33,
+              "medianEok": 3.75,
+              "minEok": 2.2,
+              "maxEok": 8.24,
+              "latestDate": "2026-11-20"
+            },
+            "builtSince2015": {
+              "count": 38,
+              "apartmentCount": 5,
+              "medianEok": 6.4,
+              "minEok": 3.95,
+              "maxEok": 8.24,
+              "latestDate": "2026-11-20"
+            },
+            "districtExploration": {
+              "count": 411,
+              "apartmentCount": 65,
+              "medianEok": 4.88,
+              "minEok": 1.87,
+              "maxEok": 9.06,
+              "latestDate": "2026-11-19"
+            },
+            "evaluation": "review_only"
           },
           {
             "type": "084.9800B",
             "areaSqm": 84.98,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
-            "scopeLabel": "비교 단지 부족",
-            "referencePriceEok": null,
-            "complexCount": 0,
-            "transactionCount": 0,
-            "apartmentComparisons": [],
+            "all": {
+              "count": 201,
+              "apartmentCount": 33,
+              "medianEok": 3.75,
+              "minEok": 2.2,
+              "maxEok": 8.24,
+              "latestDate": "2026-11-20"
+            },
+            "builtSince2015": {
+              "count": 38,
+              "apartmentCount": 5,
+              "medianEok": 6.4,
+              "minEok": 3.95,
+              "maxEok": 8.24,
+              "latestDate": "2026-11-20"
+            },
+            "districtExploration": {
+              "count": 411,
+              "apartmentCount": 65,
+              "medianEok": 4.88,
+              "minEok": 1.87,
+              "maxEok": 9.06,
+              "latestDate": "2026-11-19"
+            },
+            "evaluation": "review_only"
+          }
+        ],
+        "distanceVerified": false,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
+      },
+      "referenceMarket": {
+        "status": "same_dong_modern_review",
+        "modelType": "084.9800B",
+        "referencePriceEok": 6.25,
+        "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+        "transactionCount": 36,
+        "apartmentCount": 5,
+        "distanceChecked": false,
+        "geocodingEnabled": true,
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 46,
+        "candidateComplexesTotal": 46,
+        "byType": [
+          {
+            "type": "050.2600A",
+            "areaSqm": 50.26,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.0062,
+            "complexCount": 2,
+            "transactionCount": 27,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 21,
+                "medianEok": 4.27,
+                "latestDate": "2026-10-29",
+                "areaSqm": 49.56
+              },
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 6,
+                "medianEok": 3.7425,
+                "latestDate": "2026-10-22",
+                "areaSqm": 49.95
+              }
+            ],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "050.2600B",
+            "areaSqm": 50.26,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.0062,
+            "complexCount": 2,
+            "transactionCount": 27,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 21,
+                "medianEok": 4.27,
+                "latestDate": "2026-10-29",
+                "areaSqm": 49.56
+              },
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 6,
+                "medianEok": 3.7425,
+                "latestDate": "2026-10-22",
+                "areaSqm": 49.95
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "059.9900B",
+            "areaSqm": 59.99,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 5.25,
+            "complexCount": 5,
+            "transactionCount": 79,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평캐슬&더샵퍼스트",
+                "legalDong": "산곡동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 30,
+                "medianEok": 5.99,
+                "latestDate": "2026-11-14",
+                "areaSqm": 59.93
+              },
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 24,
+                "medianEok": 5.58,
+                "latestDate": "2026-11-06",
+                "areaSqm": 59.9
+              },
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 15,
+                "medianEok": 5.25,
+                "latestDate": "2026-11-18",
+                "areaSqm": 59.93
+              },
+              {
+                "apartment": "쌍용더플래티넘부평",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 8,
+                "medianEok": 5.08,
+                "latestDate": "2026-11-13",
+                "areaSqm": 59.96
+              },
+              {
+                "apartment": "부평샬레아넬리스",
+                "legalDong": "산곡동",
+                "buildYear": 2019,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 3.15,
+                "latestDate": "2026-07-03",
+                "areaSqm": 59.92
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "075.5600A",
+            "areaSqm": 75.56,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 5.9,
+            "complexCount": 2,
+            "transactionCount": 11,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 7,
+                "medianEok": 5.9,
+                "latestDate": "2026-11-15",
+                "areaSqm": 74.96
+              },
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 4,
+                "medianEok": 5.9,
+                "latestDate": "2026-10-16",
+                "areaSqm": 74.86
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "075.6200B",
+            "areaSqm": 75.62,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 5.9,
+            "complexCount": 2,
+            "transactionCount": 11,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 7,
+                "medianEok": 5.9,
+                "latestDate": "2026-11-15",
+                "areaSqm": 74.96
+              },
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 4,
+                "medianEok": 5.9,
+                "latestDate": "2026-10-16",
+                "areaSqm": 74.86
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "084.9200A",
+            "areaSqm": 84.92,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 6.25,
+            "complexCount": 5,
+            "transactionCount": 36,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 15,
+                "medianEok": 6.25,
+                "latestDate": "2026-11-19",
+                "areaSqm": 84.93
+              },
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.88,
+                "latestDate": "2026-11-20",
+                "areaSqm": 84.9
+              },
+              {
+                "apartment": "부평캐슬&더샵퍼스트",
+                "legalDong": "산곡동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 6,
+                "medianEok": 7.875,
+                "latestDate": "2026-11-14",
+                "areaSqm": 84.94
+              },
+              {
+                "apartment": "쌍용더플래티넘부평",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 3,
+                "medianEok": 6.0,
+                "latestDate": "2026-10-03",
+                "areaSqm": 84.89
+              },
+              {
+                "apartment": "부평샬레아넬리스",
+                "legalDong": "산곡동",
+                "buildYear": 2019,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.95,
+                "latestDate": "2026-08-10",
+                "areaSqm": 84.88
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+          },
+          {
+            "type": "084.9800B",
+            "areaSqm": 84.98,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 6.25,
+            "complexCount": 5,
+            "transactionCount": 36,
+            "apartmentComparisons": [
+              {
+                "apartment": "부평두산위브더파크",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 15,
+                "medianEok": 6.25,
+                "latestDate": "2026-11-19",
+                "areaSqm": 84.93
+              },
+              {
+                "apartment": "부평신일해피트리더루츠",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.88,
+                "latestDate": "2026-11-20",
+                "areaSqm": 84.9
+              },
+              {
+                "apartment": "부평캐슬&더샵퍼스트",
+                "legalDong": "산곡동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 6,
+                "medianEok": 7.875,
+                "latestDate": "2026-11-14",
+                "areaSqm": 84.94
+              },
+              {
+                "apartment": "쌍용더플래티넘부평",
+                "legalDong": "산곡동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 3,
+                "medianEok": 6.0,
+                "latestDate": "2026-10-03",
+                "areaSqm": 84.89
+              },
+              {
+                "apartment": "부평샬레아넬리스",
+                "legalDong": "산곡동",
+                "buildYear": 2019,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.95,
+                "latestDate": "2026-08-10",
+                "areaSqm": 84.88
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "special_supply",
@@ -5024,6 +8594,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "district_unknown",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 0,
+        "candidateComplexesTotal": 0,
         "byType": [
           {
             "type": "097.9655P",
@@ -5038,11 +8613,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "special_supply",
@@ -5657,12 +9233,17 @@
         "status": "distance_checked_review",
         "modelType": "084.9794A",
         "referencePriceEok": 21.025,
-        "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
         "transactionCount": 7,
         "apartmentCount": 2,
         "distanceChecked": true,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "서울특별시 종로구 교남동 28",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 3,
+        "candidateComplexesTotal": 3,
         "byType": [
           {
             "type": "039.9342",
@@ -5677,14 +9258,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.9926",
             "areaSqm": 59.9926,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
             "complexCount": 2,
             "transactionCount": 3,
@@ -5693,7 +9275,7 @@
                 "apartment": "경희궁자이(2단지)",
                 "legalDong": "홍파동",
                 "buildYear": 2017,
-                "distanceKm": 0.33,
+                "distanceKm": 0.332,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 23.325,
@@ -5704,7 +9286,7 @@
                 "apartment": "경희궁롯데캐슬",
                 "legalDong": "무악동",
                 "buildYear": 2019,
-                "distanceKm": 0.82,
+                "distanceKm": 0.823,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 17.81,
@@ -5715,14 +9297,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 2,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.9794A",
             "areaSqm": 84.9794,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 21.025,
             "complexCount": 2,
             "transactionCount": 7,
@@ -5731,7 +9314,7 @@
                 "apartment": "경희궁자이(2단지)",
                 "legalDong": "홍파동",
                 "buildYear": 2017,
-                "distanceKm": 0.33,
+                "distanceKm": 0.332,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 27.3,
@@ -5742,7 +9325,7 @@
                 "apartment": "인왕산2차아이파크",
                 "legalDong": "무악동",
                 "buildYear": 2015,
-                "distanceKm": 0.99,
+                "distanceKm": 0.991,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 14.75,
@@ -5753,14 +9336,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 2,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.9940B",
             "areaSqm": 84.994,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 21.025,
             "complexCount": 2,
             "transactionCount": 7,
@@ -5769,7 +9353,7 @@
                 "apartment": "경희궁자이(2단지)",
                 "legalDong": "홍파동",
                 "buildYear": 2017,
-                "distanceKm": 0.33,
+                "distanceKm": 0.332,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 27.3,
@@ -5780,7 +9364,7 @@
                 "apartment": "인왕산2차아이파크",
                 "legalDong": "무악동",
                 "buildYear": 2015,
-                "distanceKm": 0.99,
+                "distanceKm": 0.991,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 14.75,
@@ -5791,11 +9375,12 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 2,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -7405,13 +10990,18 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "경기도 고양시 덕양구 행신동 173-1",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 35,
+        "candidateComplexesTotal": 35,
         "byType": [
           {
             "type": "059.8728",
             "areaSqm": 59.8728,
             "areaSource": "model_code_estimate",
             "status": "insufficient",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": null,
             "complexCount": 1,
             "transactionCount": 7,
@@ -7420,7 +11010,7 @@
                 "apartment": "행신파밀리에트라이하이",
                 "legalDong": "행신동",
                 "buildYear": 2022,
-                "distanceKm": 1.11,
+                "distanceKm": 1.108,
                 "scope": "distance_checked",
                 "count": 7,
                 "medianEok": 5.0,
@@ -7431,7 +11021,8 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "071.9348",
@@ -7446,7 +11037,8 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "084.9614",
@@ -7461,11 +11053,12 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
@@ -9480,19 +13073,24 @@
         "status": "distance_checked_review",
         "modelType": "084.9848C",
         "referencePriceEok": 7.47,
-        "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
         "transactionCount": 76,
         "apartmentCount": 5,
         "distanceChecked": true,
         "geocodingEnabled": true,
         "locationConfirmed": true,
+        "locationMethod": "parcel_address",
+        "siteGeocodingEvidence": "경기도 부천시 소사구 소사본동 277-30",
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 23,
+        "candidateComplexesTotal": 23,
         "byType": [
           {
             "type": "059.9906A",
             "areaSqm": 59.9906,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 4.67,
             "complexCount": 9,
             "transactionCount": 112,
@@ -9501,7 +13099,7 @@
                 "apartment": "더센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2020,
-                "distanceKm": 0.76,
+                "distanceKm": 0.758,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.8,
@@ -9512,7 +13110,7 @@
                 "apartment": "부천소사현진에버빌아파트",
                 "legalDong": "소사본동",
                 "buildYear": 2023,
-                "distanceKm": 0.83,
+                "distanceKm": 0.826,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 4.35,
@@ -9523,7 +13121,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 82,
                 "medianEok": 6.26,
@@ -9534,7 +13132,7 @@
                 "apartment": "한울펠리스",
                 "legalDong": "소사본동",
                 "buildYear": 2016,
-                "distanceKm": 1.03,
+                "distanceKm": 1.031,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.1,
@@ -9556,7 +13154,7 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.1,
+                "distanceKm": 1.099,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 5.93,
@@ -9567,7 +13165,7 @@
                 "apartment": "우석WS아파트",
                 "legalDong": "괴안동",
                 "buildYear": 2016,
-                "distanceKm": 1.11,
+                "distanceKm": 1.113,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.3,
@@ -9578,7 +13176,7 @@
                 "apartment": "소사센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2019,
-                "distanceKm": 1.15,
+                "distanceKm": 1.149,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 4.67,
@@ -9600,14 +13198,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 9,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "059.2735B",
             "areaSqm": 59.2735,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
@@ -9616,7 +13215,7 @@
                 "apartment": "부천소사현진에버빌아파트",
                 "legalDong": "소사본동",
                 "buildYear": 2023,
-                "distanceKm": 0.83,
+                "distanceKm": 0.826,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 4.35,
@@ -9627,7 +13226,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 82,
                 "medianEok": 6.26,
@@ -9638,7 +13237,7 @@
                 "apartment": "한울펠리스",
                 "legalDong": "소사본동",
                 "buildYear": 2016,
-                "distanceKm": 1.03,
+                "distanceKm": 1.031,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.1,
@@ -9660,7 +13259,7 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.1,
+                "distanceKm": 1.099,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 5.93,
@@ -9671,7 +13270,7 @@
                 "apartment": "우석WS아파트",
                 "legalDong": "괴안동",
                 "buildYear": 2016,
-                "distanceKm": 1.11,
+                "distanceKm": 1.113,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.3,
@@ -9704,14 +13303,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 8,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "059.2599C",
             "areaSqm": 59.2599,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
@@ -9720,7 +13320,7 @@
                 "apartment": "부천소사현진에버빌아파트",
                 "legalDong": "소사본동",
                 "buildYear": 2023,
-                "distanceKm": 0.83,
+                "distanceKm": 0.826,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 4.35,
@@ -9731,7 +13331,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 82,
                 "medianEok": 6.26,
@@ -9742,7 +13342,7 @@
                 "apartment": "한울펠리스",
                 "legalDong": "소사본동",
                 "buildYear": 2016,
-                "distanceKm": 1.03,
+                "distanceKm": 1.031,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.1,
@@ -9764,7 +13364,7 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.1,
+                "distanceKm": 1.099,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 5.93,
@@ -9775,7 +13375,7 @@
                 "apartment": "우석WS아파트",
                 "legalDong": "괴안동",
                 "buildYear": 2016,
-                "distanceKm": 1.11,
+                "distanceKm": 1.113,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.3,
@@ -9808,14 +13408,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 8,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "059.1615D",
             "areaSqm": 59.1615,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
@@ -9824,7 +13425,7 @@
                 "apartment": "부천소사현진에버빌아파트",
                 "legalDong": "소사본동",
                 "buildYear": 2023,
-                "distanceKm": 0.83,
+                "distanceKm": 0.826,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 4.35,
@@ -9835,7 +13436,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 82,
                 "medianEok": 6.26,
@@ -9846,7 +13447,7 @@
                 "apartment": "한울펠리스",
                 "legalDong": "소사본동",
                 "buildYear": 2016,
-                "distanceKm": 1.03,
+                "distanceKm": 1.031,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.1,
@@ -9868,7 +13469,7 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.1,
+                "distanceKm": 1.099,
                 "scope": "distance_checked",
                 "count": 2,
                 "medianEok": 5.93,
@@ -9879,7 +13480,7 @@
                 "apartment": "우석WS아파트",
                 "legalDong": "괴안동",
                 "buildYear": 2016,
-                "distanceKm": 1.11,
+                "distanceKm": 1.113,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 3.3,
@@ -9912,14 +13513,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 8,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.5869A",
             "areaSqm": 84.5869,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
@@ -9928,7 +13530,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 43,
                 "medianEok": 8.04,
@@ -9939,7 +13541,7 @@
                 "apartment": "부천옥길자이",
                 "legalDong": "옥길동",
                 "buildYear": 2018,
-                "distanceKm": 1.46,
+                "distanceKm": 1.458,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 7.47,
@@ -9950,7 +13552,7 @@
                 "apartment": "옥길호반베르디움",
                 "legalDong": "옥길동",
                 "buildYear": 2017,
-                "distanceKm": 1.5,
+                "distanceKm": 1.495,
                 "scope": "distance_checked",
                 "count": 13,
                 "medianEok": 8.0,
@@ -9972,7 +13574,7 @@
                 "apartment": "역곡아펠리시움",
                 "legalDong": "괴안동",
                 "buildYear": 2022,
-                "distanceKm": 1.93,
+                "distanceKm": 1.931,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 5.5,
@@ -9983,14 +13585,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 5,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.6433B",
             "areaSqm": 84.6433,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
@@ -9999,7 +13602,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 43,
                 "medianEok": 8.04,
@@ -10010,7 +13613,7 @@
                 "apartment": "부천옥길자이",
                 "legalDong": "옥길동",
                 "buildYear": 2018,
-                "distanceKm": 1.46,
+                "distanceKm": 1.458,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 7.47,
@@ -10021,7 +13624,7 @@
                 "apartment": "옥길호반베르디움",
                 "legalDong": "옥길동",
                 "buildYear": 2017,
-                "distanceKm": 1.5,
+                "distanceKm": 1.495,
                 "scope": "distance_checked",
                 "count": 13,
                 "medianEok": 8.0,
@@ -10043,7 +13646,7 @@
                 "apartment": "역곡아펠리시움",
                 "legalDong": "괴안동",
                 "buildYear": 2022,
-                "distanceKm": 1.93,
+                "distanceKm": 1.931,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 5.5,
@@ -10054,14 +13657,15 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 5,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           },
           {
             "type": "084.9848C",
             "areaSqm": 84.9848,
             "areaSource": "model_code_estimate",
             "status": "distance_checked_review",
-            "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고",
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
@@ -10070,7 +13674,7 @@
                 "apartment": "일루미스테이트",
                 "legalDong": "범박동",
                 "buildYear": 2024,
-                "distanceKm": 0.97,
+                "distanceKm": 0.968,
                 "scope": "distance_checked",
                 "count": 43,
                 "medianEok": 8.04,
@@ -10081,7 +13685,7 @@
                 "apartment": "부천옥길자이",
                 "legalDong": "옥길동",
                 "buildYear": 2018,
-                "distanceKm": 1.46,
+                "distanceKm": 1.458,
                 "scope": "distance_checked",
                 "count": 6,
                 "medianEok": 7.47,
@@ -10092,7 +13696,7 @@
                 "apartment": "옥길호반베르디움",
                 "legalDong": "옥길동",
                 "buildYear": 2017,
-                "distanceKm": 1.5,
+                "distanceKm": 1.495,
                 "scope": "distance_checked",
                 "count": 13,
                 "medianEok": 8.0,
@@ -10114,7 +13718,7 @@
                 "apartment": "역곡아펠리시움",
                 "legalDong": "괴안동",
                 "buildYear": 2022,
-                "distanceKm": 1.93,
+                "distanceKm": 1.931,
                 "scope": "distance_checked",
                 "count": 1,
                 "medianEok": 5.5,
@@ -10125,11 +13729,12 @@
             "sitePositionChecked": true,
             "distanceCheckedCount": 5,
             "referenceIsMarketValue": false,
-            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+            "coverageLimited": false,
+            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "manual_review",
@@ -10146,7 +13751,7 @@
           "transactionCount": 113,
           "distanceVerified": true,
           "areaSource": "model_code_estimate",
-          "scopeLabel": "반경 2km·2015년 이후 준공 단지 거래 참고"
+          "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고"
         },
         "candidateTypeCount": 1,
         "noticeTypePriority": false,
@@ -10769,6 +14374,11 @@
         "distanceChecked": false,
         "geocodingEnabled": true,
         "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
+        "comparisonCoverageLimited": false,
+        "candidateComplexesInspected": 27,
+        "candidateComplexesTotal": 27,
         "byType": [
           {
             "type": "059.9600A",
@@ -10783,7 +14393,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.7100B",
@@ -10798,7 +14409,8 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           },
           {
             "type": "059.1400C",
@@ -10813,11 +14425,12 @@
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
-            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+            "coverageLimited": false,
+            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
           }
         ],
         "marketComparable": false,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다."
       },
       "opportunity": {
         "tier": "watch",
