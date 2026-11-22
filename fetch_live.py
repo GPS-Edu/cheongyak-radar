@@ -1602,7 +1602,16 @@ def main():
             print(f"무순위 주택형 가격 미제공: {project['id']} | {type(exc).__name__}")
             types = []
         project["housingTypes"] = types
-        project["price"] = max((x["priceEok"] for x in types), default=None)
+        # The public model endpoint exposes LTTOT_TOP_AMOUNT (top supply price per housing type).
+        # Do NOT label the minimum across these values as the lowest unit/floor price.
+        values = [float(x["priceEok"]) for x in types if positive_number(x.get("priceEok"))]
+        project["price"] = max(values, default=None)  # legacy compatibility
+        project["supplyPriceRange"] = {
+            "minEok": min(values, default=None),
+            "maxEok": max(values, default=None),
+            "basis": "per_model_top_amount_range",
+            "modelCount": len(values),
+        }
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
 
     # 처음 보는 행정구역도 Kakao의 법정동 코드로 확인 후 실거래 조회에 포함.
