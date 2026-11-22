@@ -320,12 +320,196 @@ def target_area_types(project):
     return result
 
 
+def _administrative_aliases(prefix):
+    """Only equivalent official-province abbreviations, never fuzzy district inference."""
+    options = {prefix}
+    for full, short in (("인천광역시 ", "인천 "),
+                        ("서울특별시 ", "서울 "),
+                        ("경기도 ", "경기 ")):
+        if prefix.startswith(full):
+            options.add(short + prefix[len(full):])
+        if prefix.startswith(short):
+            options.add(full + prefix[len(short):])
+    return options
+
+
 def identify_district(project):
+    """Resolve verified LAWD_CD from explicit admin divisions anywhere in notice.
+
+    Do not depend on an exact address prefix: official notices often begin with a
+    project name and contain the real district in parentheses. Multiple distinct
+    matching codes -> ambiguous -> do not scan. District-free project-area names
+    are recognized only for explicitly reviewed geographical labels.
+    """
+    dynamic = project.get("resolvedDistrict")
+    if (isinstance(dynamic, (list, tuple)) and len(dynamic) == 2 and
+            re.fullmatch(r"\d{5}", str(dynamic[0]))):
+        return (str(dynamic[0]), str(dynamic[1]))
+    region = str(project.get("region") or "").strip()
     address = str(project.get("district") or "").strip()
-    for (region, prefix), district in VERIFIED_DISTRICTS.items():
-        if project["region"] == region and address.startswith(prefix):
-            return district
+    if region not in REGIONS or not address:
+        return None
+    normalized = re.sub(r"\s+", " ", address)
+    found = {}
+    for (mapped_region, prefix), district in VERIFIED_DISTRICTS.items():
+        if mapped_region != region:
+            continue
+        # '인천 검단신도시' is not an administrative name; it is handled
+        # separately only if it does not conflict with a known district.
+        if prefix == '인천 검단신도시':
+            continue
+        for alias in _administrative_aliases(prefix):
+            # Avoid incorrectly matching '서해구' in '서해구청', or a
+            # longer place name sharing only a prefix.
+            if re.search(r'(?<![가-힣])' + re.escape(alias)
+                         + r'(?=$|[^가-힣])', normalized):
+                found[district[0]] = district
+                break
+    if len(found) > 1:
+        return None
+    if len(found) == 1:
+        return next(iter(found.values()))
+    # Reviewed new-town alias; require explicit project-area text, not a
+    # guess based on similar apartment marketing names.
+    if region == '인천' and re.search(r'(?<![가-힣])(?:인천\s+)?검단신도시(?=$|[^가-힣])', normalized):
+        return VERIFIED_DISTRICTS[("인천", "인천 검단신도시")]
     return None
+
+
+# 자동 지역코드 판별: 카카오 로컬 API 법정동 코드의 앞 5자리 사용.
+# 신규 구/시가 생겨도 확인된 원본 주소에서만 계산하며 지명 추정은 하지 않는다.
+PROVINCE_PREFIXES = {
+    "서울": ("서울특별시", "서울"), "경기": ("경기도", "경기"),
+    "인천": ("인천광역시", "인천"),
+}
+
+
+def _province_matches(value, region):
+    value = str(value or "").replace(" ", "")
+    return any(value == x for x in PROVINCE_PREFIXES.get(region, ()))
+
+
+def _administrative_query_candidates(project):
+    """공고에 실제 적힌 지명·주소만 검색한다. 아파트명은 주소로 취급하지 않는다.
+
+    사업지구/괄호/여러 주소를 병기한 공고에서 지명을 찾아낸다.
+    결과가 여러 개이면 이후 '동일 코드'로 교차 확인하며 임의 선택하지 않는다.
+    """
+    region = str(project.get("region") or "").strip()
+    raw = re.sub(r"\s+", " ", str(project.get("district") or "")).strip()
+    if region not in PROVINCE_PREFIXES:
+        return []
+    official, abbreviated = PROVINCE_PREFIXES[region]
+    # 도로명과 필지 주소 중 정확하게 읽을 수 있는 주소를 우선한다.
+    # 괄호 앞의 사업지구 명칭은 뒤에 붙여 검색하지 않는다.
+    candidates = []
+    for match in re.finditer(r"(?<![가-힣])(?:" + re.escape(official) + "|" +
+                             re.escape(abbreviated) + r")\s+", raw):
+        fragment = raw[match.start():].split(')')[0].split('(')[0].strip()
+        fragment = re.split(r"(?:\s+일원|\s+내\s+|\s+주변|\s+[A-Z]?-?\d+BL)", fragment)[0]
+        fragment = re.sub(r"^(?:" + re.escape(abbreviated) + r")\s+", official + " ", fragment)
+        # 인천광역시 검단구 이음4로 101, 경기도 성남시 분당구 판교역로 123 등.
+        # 유효한 행정명(시/군/구) + 추가 구체정보가 필요.
+        parts = fragment.split()
+        if len(parts) >= 3 and any(t.endswith(("시", "군", "구")) for t in parts[1:]):
+            candidates.append(fragment)
+            # 주소 검색이 실패하면 행정구역+읍면동 단계까지 줄여 재시도.
+            for i in range(len(parts)-1, 2, -1):
+                if parts[i].endswith(("읍", "면", "동", "리", "가")):
+                    candidates.append(" ".join(parts[:i+1]))
+                    break
+    # 축약된 주소(성남시 분당구 / 강남구 / 수지구)도 다룬다.
+    # 주소에 실제로 존재하는 시/구만 사용하고 모델이 지명을 새로 생성하지 않는다.
+    if not candidates:
+        for match in re.finditer(
+            r"(?<![가-힣])([가-힣]{2,}(?:시|군))\s+"
+            r"([가-힣]{2,}구)(?:\s+([가-힣0-9]{2,}(?:읍|면|동|리)))?", raw):
+            candidates.append(official + " " + match.group(0))
+    if not candidates:
+        for match in re.finditer(r"(?<![가-힣])([가-힣]{2,}구)\s+"
+                                 r"([가-힣0-9]{2,}(?:읍|면|동|리))", raw):
+            candidates.append(official + " " + match.group(0))
+    return list(dict.fromkeys(candidates))[:6]
+
+
+def _verified_b_code(document, region, query=None):
+    address = document.get("address") or {}
+    code = str(address.get("b_code") or "")
+    if not re.fullmatch(r"\d{10}", code) or code[:5] == "00000":
+        return None
+    if not _province_matches(address.get("region_1depth_name"), region):
+        return None
+    expected_prefix = {"서울": "11", "경기": "41", "인천": "28"}.get(region)
+    if expected_prefix and not code.startswith(expected_prefix):
+        return None
+    if query:
+        # 행정구역명이 입력에 명시됐으면 결과 주소에도 포함되어야 한다.
+        # 예: 용인시 수지구 -> 서울 수지구/경기 다른 구 매칭 금지.
+        names = re.findall(r"[가-힣]{1,}(?:시|군|구)",
+                           str(query).replace("서울특별시", "").replace("인천광역시", "").replace("경기도", ""))
+        actual = str(address.get("region_2depth_name") or "").replace(" ", "")
+        if names and not all(name in actual for name in names):
+            return None
+    # 실제 검색된 도로명 주소도 법정동 주소 객체가 있어야 확인된 것으로 취급.
+    label = (str(address.get("region_1depth_name") or "") + " " +
+             str(address.get("region_2depth_name") or "")).strip()
+    return (code[:5], label)
+
+
+def resolve_district_dynamic(project, session, kakao_key, cache=None):
+    """Kakao 법정동 10자리 -> LAWD_CD 5자리. 불일치/미검증은 보류.
+
+    완전히 동일한 좌표가 아니더라도, *지역코드만* 결정하는 함수.
+    위치 검증을 받았다는 의미로 해석하면 안 된다.
+    """
+    if cache is None:
+        cache = {}
+    static = identify_district(project)
+    if not kakao_key:
+        return (static, "verified_static_mapping") if static else (None, "kakao_key_missing")
+    candidates = _administrative_query_candidates(project)
+    if not candidates:
+        return (static, "verified_static_mapping") if static else (None, "no_explicit_address")
+    confirmed = {}
+    for query in candidates:
+        if query not in cache:
+            try:
+                response = session.get(
+                    "https://dapi.kakao.com/v2/local/search/address.json",
+                    params={"query": query, "size": 10},
+                    headers={"Authorization": "KakaoAK " + kakao_key},
+                    timeout=15,
+                )
+                response.raise_for_status()
+                cache[query] = response.json().get("documents") or []
+            except (requests.RequestException, ValueError, AttributeError) as exc:
+                print("행정구역 자동조회 보류:", type(exc).__name__)
+                cache[query] = []
+        # 같은 검색어에 대해 상이한 코드가 반환되면 모호한 주소: 사용하지 않음.
+        matches = []
+        for doc in cache[query]:
+            verified = _verified_b_code(doc, project.get("region"), query)
+            if verified:
+                matches.append(verified)
+        codes = {x[0] for x in matches}
+        if len(codes) > 1:
+            return None, "ambiguous_address_results"
+        if len(codes) == 1:
+            confirmed[next(iter(codes))] = matches[0]
+    if len(confirmed) > 1:
+        return None, "conflicting_address_codes"
+    if not confirmed:
+        return (static, "verified_static_mapping") if static else (None, "address_code_unavailable")
+    return next(iter(confirmed.values())), "kakao_legal_dong_code"
+
+
+def district_resolution_reason(project):
+    """Safe diagnostics; no unverified 'nearby market price' fallback."""
+    if identify_district(project):
+        return "resolved"
+    return ("공고 주소에서 관할 시군구를 확정하지 못했습니다. "
+            "신규 행정구역·사업지구 표기는 공식 주소 확인이 필요합니다. "
+            "주변 거래가격을 임의로 대입하지 않았습니다.")
 
 
 def identify_legal_dong(address):
@@ -400,7 +584,7 @@ def summarize_trades(rows):
 def scan_district_trades(project, district_trades, months):
     district = identify_district(project)
     if district is None:
-        return {"status": "not_scanned", "reason": "시군구 코드 확인 전"}
+        return {"status": "not_scanned", "reason": district_resolution_reason(project)}
     lawd_code, label = district
     target_dong = identify_legal_dong(project["district"])
     all_trades = district_trades[lawd_code]
@@ -776,7 +960,7 @@ def same_complex_report(project, district_trades, session, kakao_key,
               "transactionCount": 0, "latestDate": None,
               "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다."}
     if not district:
-        result["reason"] = "확인된 시군구 코드를 찾지 못했습니다."
+        result["reason"] = district_resolution_reason(project)
         return result
     rows = district_trades.get(district[0], [])
     if not rows:
@@ -1059,6 +1243,23 @@ def main():
         project["price"] = max((x["priceEok"] for x in types), default=None)
         print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
 
+    # 처음 보는 행정구역도 Kakao의 법정동 코드로 확인 후 실거래 조회에 포함.
+    # 캐시는 한 번의 실행에서 여러 공고가 같은 도로·동을 참조할 때 중복 조회 방지.
+    administrative_cache = {}
+    for project in projects:
+        resolved, method = resolve_district_dynamic(
+            project, session, kakao_key, administrative_cache)
+        if resolved:
+            project["resolvedDistrict"] = list(resolved)
+        # 앱이 행정구역만 확인한 사실을 실제 단지 좌표 확인으로 오인하지 않도록 분리.
+        project["districtResolution"] = {
+            "method": method, "code": resolved[0] if resolved else None,
+            "label": resolved[1] if resolved else None,
+        }
+        print(f"지역코드 판별: {project['name']} | "
+              f"{resolved[0] if resolved else 'unknown'} | "
+              f"{resolved[1] if resolved else '주소 검증 필요'} | {method}")
+
     # 같은 시군구 API 응답을 공고별로 중복 요청하지 않고 캐시합니다.
     months = list(recent_months(now.date(), count=TRADE_MONTHS))
     district_trades = {}
@@ -1124,7 +1325,7 @@ def main():
         "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
         "startsSoonNotices": sum(p["discovery"]["startSoon"] for p in projects),
         "verificationPendingNotices": sum(p["verification"]["eligibility"] == "official_notice_required" for p in projects),
-        "algorithm": "v14-application-ready-review",
+        "algorithm": "v15-dynamic-legal-dong-code",
     }
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
     result = {"updated_at": now.isoformat(), "projects": projects,
