@@ -10,13 +10,14 @@ from zoneinfo import ZoneInfo
 
 import requests
 import xml.etree.ElementTree as ET
+from urllib.parse import unquote
 
 API_BASE = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/"
 API_URL = API_BASE + "getAPTLttotPblancDetail"
 MODEL_URL = API_BASE + "getAPTLttotPblancMdl"
 REGIONS = ("서울", "경기", "인천")
 PAGE_SIZE = 100
-TRADE_MONTHS = 6  # 계약월 기준: 당월 포함 6개월
+TRADE_MONTHS = 12  # 계약월 기준: 당월 포함 최근 12개월, 소수 거래 확보
 # 거리 확인은 선택사항. GitHub Secret KAKAO_REST_API_KEY가 없으면 지도좌표 미검증.
 MAX_DISTANCE_KM = 2.0
 MAX_GEOCODE_COMPLEXES = 65  # 단지 수 제한: 위치 확인한 후보를 우선 검토
@@ -571,20 +572,75 @@ def fetch_district_month(session, key, lawd_code, yyyymm):
 
 
 
+class RightsApiError(RuntimeError):
+    """The rights feed failed; keep its error category without exposing API keys."""
+    def __init__(self, category, detail, permanent=False):
+        self.category = category
+        self.detail = detail
+        self.permanent = permanent
+        super().__init__(f"{category}: {detail}")
+
+
+def rights_api_response_error(response):
+    """Inspect HTTP and API errors. Never print response URLs (contain serviceKey)."""
+    raw = (response.text or "")[:2048]
+    code = ""
+    message = ""
+    try:
+        root = ET.fromstring(response.content)
+        code = (root.findtext(".//header/resultCode") or root.findtext(".//resultCode") or "").strip()
+        message = (root.findtext(".//header/resultMsg") or root.findtext(".//resultMsg") or "").strip()
+    except ET.ParseError:
+        # Data.go.kr sometimes returns an XML OpenAPI_ServiceResponse body.
+        m = re.search(r"<returnReasonCode>\s*([^<]+)", raw)
+        code = m.group(1).strip() if m else ""
+        m = re.search(r"<returnAuthMsg>\s*([^<]+)", raw)
+        message = m.group(1).strip() if m else ""
+    if not code and not message:
+        code_match = re.search(r"<returnReasonCode>\s*([^<]+)", raw)
+        message_match = re.search(r"<returnAuthMsg>\s*([^<]+)", raw)
+        if code_match:
+            code = code_match.group(1).strip()
+        if message_match:
+            message = message_match.group(1).strip()
+    status = response.status_code
+    reason = (message or code or f"HTTP {status}")[:180]
+    auth_tokens = ("SERVICE_ACCESS_DENIED", "SERVICE_KEY_IS_NOT_REGISTERED",
+                   "SERVICE_KEY_IS_NOT_REGISTERED_ERROR", "UNREGISTERED_KEY", "ACCESS_DENIED",
+                   "INVALID_KEY", "LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR")
+    upper = (code + " " + message).upper()
+    if status in (401, 403) or any(t in upper for t in auth_tokens if t != "LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR") or code in ("20", "22", "30"):
+        return RightsApiError("AUTH_OR_SERVICE_PERMISSION", f"HTTP {status}; {reason}", permanent=True)
+    if status == 429 or "LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR" in upper:
+        return RightsApiError("RATE_LIMIT", f"HTTP {status}; {reason}", permanent=True)
+    if status >= 400:
+        return RightsApiError("HTTP_ERROR", f"HTTP {status}; {reason}", permanent=False)
+    if code and code not in ("00", "000"):
+        return RightsApiError("API_RESPONSE_ERROR", f"code={code}; {reason}", permanent=(code in ("20", "22", "30")))
+    return None
+
+
 def parse_rights_xml(content):
-    """분양권/입주권 실거래만 파싱. 취소 건, 가격/면적 없는 건은 제외."""
-    root = ET.fromstring(content)
+    """Parse apartment presale-right transfers. These are NOT ordinary apartment sales."""
+    try:
+        root = ET.fromstring(content)
+    except ET.ParseError as exc:
+        raise RightsApiError("BAD_XML", "비XML 응답 또는 API 게이트웨이 오류") from exc
     code = (root.findtext(".//header/resultCode") or "").strip()
-    if code not in ("00", "000"):
+    if root.tag == "OpenAPI_ServiceResponse" or root.find(".//returnAuthMsg") is not None:
+        auth_code = (root.findtext(".//returnReasonCode") or "").strip()
+        auth_msg = (root.findtext(".//returnAuthMsg") or "인증 또는 서비스 권한 오류").strip()
+        raise RightsApiError("AUTH_OR_SERVICE_PERMISSION", f"{auth_code}; {auth_msg[:120]}", permanent=True)
+    if code not in ("", "00", "000"):
         msg = root.findtext(".//header/resultMsg") or "unknown error"
-        raise RuntimeError(f"Rights API: {code} {msg}")
+        raise RightsApiError("API_RESPONSE_ERROR", f"code={code}; {msg[:120]}", permanent=code in ("20", "22", "30"))
     entries = []
     for item in root.findall(".//body/items/item"):
         def get(*keys):
-            for key in keys:
-                val = (item.findtext(key) or "").strip()
-                if val:
-                    return val
+            for name in keys:
+                value = (item.findtext(name) or "").strip()
+                if value:
+                    return value
             return ""
         if get("cdealDay", "cdealDe") or get("cdealType") in ("O", "Y"):
             continue
@@ -592,7 +648,7 @@ def parse_rights_xml(content):
         amount = positive_number(get("dealAmount", "dealAmt"))
         area = positive_number(get("excluUseAr", "excluUseArea", "exclusiveArea"))
         year, month, day = get("dealYear"), get("dealMonth"), get("dealDay")
-        if not name or amount is None or area is None or not (year.isdigit() and month.isdigit() and day.isdigit()):
+        if not name or amount is None or area is None or not all(x.isdigit() for x in (year, month, day)):
             continue
         try:
             deal_date = datetime(int(year), int(month), int(day)).date().isoformat()
@@ -611,9 +667,12 @@ def fetch_rights_month(session, key, code, month):
     rows = []
     page = 1
     while True:
-        response = session.get(RIGHTS_API_URL, params={"serviceKey":key, "LAWD_CD": code,
-            "DEAL_YMD":month, "pageNo":page,"numOfRows":1000}, timeout=35)
-        response.raise_for_status()
+        response = session.get(RIGHTS_API_URL,
+            params={"serviceKey": key, "LAWD_CD": code,
+                    "DEAL_YMD": month, "pageNo": page, "numOfRows": 1000}, timeout=35)
+        error = rights_api_response_error(response)
+        if error:
+            raise error
         batch, total = parse_rights_xml(response.content)
         rows.extend(batch)
         if page * 1000 >= total:
@@ -898,6 +957,51 @@ def scan_district_trades(project, district_trades, months):
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다.",
     }
 
+
+
+def build_actual_trade_highlights(project):
+    """공식 신고 매매의 개별 거래를 앱 첫 화면에 전송한다.
+
+    동일 단지(주소 확인) > 같은 법정동+유사 전용면적 > 구 전체 탐색 순으로
+    출처와 거리 검증 여부를 구분한다. 다른 단지 가격을 해당 청약 시세로 오인하지 않게 한다.
+    """
+    same = project.get("sameComplexSales") or {}
+    direct=[]
+    for group in same.get("byType") or []:
+        for row in group.get("recentTransactions") or []:
+            price = positive_number(row.get("dealAmountManwon"))
+            if not price: continue
+            direct.append({
+                "apartment":row.get("apartment") or project.get("name"),
+                "type":group.get("type"), "areaSqm":row.get("exclusiveAreaSqm"),
+                "priceEok":round(price/10000,4), "dealDate":row.get("dealDate"),
+                "floor":row.get("floor"), "category":"same_complex_sale",
+                "scope":"동일 단지 매매 · 지번/좌표 확인", "distanceVerified":True,
+            })
+    direct.sort(key=lambda x:x.get("dealDate") or "",reverse=True)
+    if direct:
+        return {"status":"same_complex", "rows":direct[:6],
+                "source":"국토교통부 아파트 매매 실거래 신고", "periodMonths":TRADE_MONTHS}
+    scan=project.get("transactionScan") or {}
+    candidates=list(scan.get("candidateTransactions") or [])
+    if candidates:
+        category, scope = "same_dong_sale", "같은 법정동 · 유사 면적 (동일 단지 아님)"
+    else:
+        candidates=list(scan.get("districtExplorationTransactions") or [])
+        category, scope = "district_exploration", "시군구 전체 탐색 · 거리 미확인"
+    rows=[]
+    for row in candidates:
+        price=positive_number(row.get("dealAmountManwon"))
+        if not price:continue
+        rows.append({"apartment":row.get("apartment"), "areaSqm":row.get("exclusiveAreaSqm"),
+            "priceEok":round(price/10000,4),"dealDate":row.get("dealDate"),
+            "floor":row.get("floor"),"buildYear":row.get("buildYear"),
+            "legalDong":row.get("legalDong"),"matchingTypes":row.get("matchingTypes") or [],
+            "category":category,"scope":scope,"distanceVerified":False})
+    rows.sort(key=lambda x:x.get("dealDate") or "",reverse=True)
+    return {"status":category if rows else "no_matches", "rows":rows[:6],
+            "source":"국토교통부 아파트 매매 실거래 신고", "periodMonths":TRADE_MONTHS,
+            "reason":None if rows else "동일 단지 및 같은 면적대의 신고 매매가 조회되지 않았습니다."}
 
 
 def complex_key(row):
@@ -2001,19 +2105,53 @@ def main():
         district_trades[code] = combined
         print(f"지역 실거래 수집: {code} | {len(combined)}건")
 
-    # 분양/입주권 거래는 매매와 별도 API. 별도 활용 신청이 안 된 경우에는
-    # 공고 업데이트를 멈추지 않고 가격 신호를 보류한다.
+    # A successful apartment-sale API call does NOT imply permission to use
+    # the independent presale-rights API. Stop repeated 401/403 calls.
     rights_by_district = {}
+    rights_error_summary = {"status": "ok", "detail": "", "testedDistricts": 0,
+                            "successfulDistricts": 0, "failedDistricts": 0}
+    rights_key = os.environ.get("RIGHTS_API_KEY", "").strip() or key
+    # Requests encodes params itself; a URL-encoded key must be decoded once.
+    if "%" in rights_key:
+        rights_key = unquote(rights_key)
+    blocked = None
     for code in codes:
+        if blocked is not None:
+            rights_by_district[code] = None
+            continue
+        rights_error_summary["testedDistricts"] += 1
         try:
             all_rights=[]
             for month in recent_months(now.date(), count=RIGHTS_MONTHS):
-                all_rights.extend(fetch_rights_month(session, key, code, month))
-            rights_by_district[code]=all_rights
+                all_rights.extend(fetch_rights_month(session, rights_key, code, month))
+            rights_by_district[code] = all_rights
+            rights_error_summary["successfulDistricts"] += 1
             print(f"분양·입주권 실거래: {code} | {len(all_rights)}건")
+        except RightsApiError as exc:
+            rights_by_district[code] = None
+            rights_error_summary["failedDistricts"] += 1
+            rights_error_summary["status"] = exc.category
+            rights_error_summary["detail"] = exc.detail
+            print(f"분양·입주권 API 진단: {code} | {exc.category} | {exc.detail}")
+            if exc.permanent:
+                blocked = exc
+                print("분양·입주권 API 반복 조회 중단: 서비스 이용 권한/호출 한도 문제일 수 있습니다. "
+                      "공공데이터포털 데이터 15126471 활용 신청 및 인증키를 확인하세요.")
+        except (requests.Timeout, requests.ConnectionError) as exc:
+            rights_by_district[code] = None
+            rights_error_summary["failedDistricts"] += 1
+            rights_error_summary["status"] = "NETWORK_ERROR"
+            rights_error_summary["detail"] = type(exc).__name__
+            print(f"분양·입주권 API 네트워크 오류: {code} | {type(exc).__name__}")
         except (requests.RequestException, RuntimeError, ValueError, ET.ParseError) as exc:
-            rights_by_district[code]=None
-            print(f"분양·입주권 조회 보류: {code} | {type(exc).__name__} | 별도 API 활용 승인 확인")
+            rights_by_district[code] = None
+            rights_error_summary["failedDistricts"] += 1
+            rights_error_summary["status"] = "UNEXPECTED_ERROR"
+            rights_error_summary["detail"] = type(exc).__name__
+            print(f"분양·입주권 API 응답 오류: {code} | {type(exc).__name__}")
+    if blocked is not None:
+        rights_error_summary["failedDistricts"] = sum(v is None for v in rights_by_district.values())
+    print("분양·입주권 API 전체 진단:", json.dumps(rights_error_summary, ensure_ascii=False))
 
     # Press report is a discoverability clue, NOT a NAVER quote or verified market price.
     # Exact notice/name match, dated source, segregated from official transactions.
@@ -2039,6 +2177,7 @@ def main():
         project["sameComplexSales"] = same_complex_report(
             project, district_trades, session, kakao_key, geo_cache, place_cache
         )
+        project["actualTradeHighlights"] = build_actual_trade_highlights(project)
         project["verification"] = verification_status(project)
         project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
@@ -2084,7 +2223,14 @@ def main():
         )
 
     # Free best-effort Naver listing + KB-provided prices; no paid license.
-    attach_free_web_quotes(session, projects, today)
+    # 비공식 네이버 웹 조회는 GitHub Actions에서 전체 ReadTimeout이 재현됨.
+    # 공식 실거래 기능을 지연시키지 않도록 기본 비활성화한다.
+    if os.environ.get("ENABLE_UNOFFICIAL_NAVER", "0") == "1":
+        attach_free_web_quotes(session, projects, today)
+    else:
+        for project in projects:
+            project["privateMarketStatus"] = "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+        print("무료 웹 시세: 비활성화 · 국토부 실제 신고 거래를 우선 표시")
 
     quality_summary = {
         "activeNotices": len(projects),
@@ -2102,6 +2248,7 @@ def main():
         "rightsReviewNotices": sum(bool(p["opportunity"].get("rightsEvidence")) for p in projects),
         "reportedRightsReviewNotices": sum(bool(p["opportunity"].get("reportedRightsEvidence")) for p in projects),
         "rightsApiUnavailableDistricts": sum(v is None for v in rights_by_district.values()),
+        "rightsApiHealth": rights_error_summary,
         "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
         "algorithm": "v28-listing-price-fallback",
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
