@@ -963,48 +963,80 @@ def scan_district_trades(project, district_trades, months):
 
 
 def build_actual_trade_highlights(project):
-    """공식 신고 매매의 개별 거래를 앱 첫 화면에 전송한다.
+    """직접 비교 가능한 공식 거래를 우선하는 첫 화면용 데이터.
 
-    동일 단지(주소 확인) > 같은 법정동+유사 전용면적 > 구 전체 탐색 순으로
-    출처와 거리 검증 여부를 구분한다. 다른 단지 가격을 해당 청약 시세로 오인하지 않게 한다.
+    동일 단지 > 같은 법정동+주택형별 유사 면적 > 같은 시군구 유사 면적.
+    다른 단지 거래를 동일 단지 시세라고 주장하지 않는다.
     """
     same = project.get("sameComplexSales") or {}
-    direct=[]
+    models = target_area_types(project)
+    # 정확한 전용면적이 있는 타입을 우선하되 원래 API 매칭 규칙을 유지한다.
+    areas = [float(m["area"]) for m in models if positive_number(m.get("area"))]
+    def area_distance(row):
+        area = positive_number(row.get("areaSqm"))
+        return min((abs(area - a) for a in areas), default=999.0) if area else 999.0
+    def relevant_types(row):
+        area = positive_number(row.get("areaSqm"))
+        if not area:
+            return []
+        return [str(m["type"]) for m in models
+                if abs(area - float(m["area"])) <= COMPARISON_AREA_TOLERANCE]
+    direct = []
     for group in same.get("byType") or []:
         for row in group.get("recentTransactions") or []:
             price = positive_number(row.get("dealAmountManwon"))
-            if not price: continue
+            if not price:
+                continue
             direct.append({
-                "apartment":row.get("apartment") or project.get("name"),
-                "type":group.get("type"), "areaSqm":row.get("exclusiveAreaSqm"),
-                "priceEok":round(price/10000,4), "dealDate":row.get("dealDate"),
-                "floor":row.get("floor"), "category":"same_complex_sale",
-                "scope":"동일 단지 매매 · 지번/좌표 확인", "distanceVerified":True,
+                "apartment": row.get("apartment") or project.get("name"),
+                "type": group.get("type"), "matchingTypes": [str(group.get("type"))],
+                "areaSqm": row.get("exclusiveAreaSqm"),
+                "priceEok": round(price / 10000, 4), "dealDate": row.get("dealDate"),
+                "floor": row.get("floor"), "category": "same_complex_sale",
+                "scope": "동일 단지 매매 · 지번/좌표 확인", "distanceVerified": True,
             })
-    direct.sort(key=lambda x:x.get("dealDate") or "",reverse=True)
+    # 동일 단지 거래는 최근 계약일을 먼저, 동일 날짜에는 면적 근접도를 우선.
+    direct.sort(key=lambda x: (str(x.get("dealDate") or ""), -area_distance(x)), reverse=True)
     if direct:
-        return {"status":"same_complex", "rows":direct[:6],
-                "source":"국토교통부 아파트 매매 실거래 신고", "periodMonths":TRADE_MONTHS}
-    scan=project.get("transactionScan") or {}
-    candidates=list(scan.get("candidateTransactions") or [])
-    if candidates:
-        category, scope = "same_dong_sale", "같은 법정동 · 유사 면적 (동일 단지 아님)"
-    else:
-        candidates=list(scan.get("districtExplorationTransactions") or [])
-        category, scope = "district_exploration", "시군구 전체 탐색 · 거리 미확인"
-    rows=[]
-    for row in candidates:
-        price=positive_number(row.get("dealAmountManwon"))
-        if not price:continue
-        rows.append({"apartment":row.get("apartment"), "areaSqm":row.get("exclusiveAreaSqm"),
-            "priceEok":round(price/10000,4),"dealDate":row.get("dealDate"),
-            "floor":row.get("floor"),"buildYear":row.get("buildYear"),
-            "legalDong":row.get("legalDong"),"matchingTypes":row.get("matchingTypes") or [],
-            "category":category,"scope":scope,"distanceVerified":False})
-    rows.sort(key=lambda x:x.get("dealDate") or "",reverse=True)
-    return {"status":category if rows else "no_matches", "rows":rows[:6],
-            "source":"국토교통부 아파트 매매 실거래 신고", "periodMonths":TRADE_MONTHS,
-            "reason":None if rows else "동일 단지 및 같은 면적대의 신고 매매가 조회되지 않았습니다."}
+        return {"status": "same_complex", "rows": direct[:6],
+                "source": "국토교통부 아파트 매매 실거래 신고", "periodMonths": TRADE_MONTHS,
+                "priority": "same_complex_first"}
+
+    scan = project.get("transactionScan") or {}
+    same_dong = list(scan.get("candidateTransactions") or [])
+    district = list(scan.get("districtExplorationTransactions") or [])
+    rows = []
+    for category, scope, candidates in (
+        ("same_dong_sale", "같은 법정동 · 유사 면적 (동일 단지 아님)", same_dong),
+        ("district_exploration", "같은 시군구 · 유사 면적 (거리 미확인)", district),
+    ):
+        for row in candidates:
+            price = positive_number(row.get("dealAmountManwon"))
+            if not price:
+                continue
+            datum = {"apartment": row.get("apartment"),
+                "areaSqm": row.get("exclusiveAreaSqm"),
+                "priceEok": round(price / 10000, 4), "dealDate": row.get("dealDate"),
+                "floor": row.get("floor"), "buildYear": row.get("buildYear"),
+                "legalDong": row.get("legalDong"),
+                "matchingTypes": row.get("matchingTypes") or relevant_types({"areaSqm": row.get("exclusiveAreaSqm")}),
+                "category": category, "scope": scope, "distanceVerified": False}
+            # 주택형별 유사 면적 후보만 첫 화면에 사용한다.
+            if datum["matchingTypes"]:
+                rows.append(datum)
+    # 같은 법정동을 우선한 다음, 전용면적의 근접도와 계약일로 정렬.
+    rows.sort(key=lambda x: (
+        0 if x["category"] == "same_dong_sale" else 1,
+        round(area_distance(x), 2),
+        -(int(str(x.get("dealDate") or "").replace("-", "")[:8])
+          if str(x.get("dealDate") or "").replace("-", "")[:8].isdigit() else 0),
+    ))
+    status = ("same_dong_sale" if rows[0]["category"] == "same_dong_sale"
+              else "district_exploration") if rows else "no_matches"
+    return {"status": status, "rows": rows[:6],
+            "source": "국토교통부 아파트 매매 실거래 신고", "periodMonths": TRADE_MONTHS,
+            "priority": "area_and_legal_dong_first",
+            "reason": None if rows else "동일 단지 및 같은 면적대의 신고 매매가 조회되지 않았습니다."}
 
 
 def complex_key(row):
@@ -2214,6 +2246,7 @@ def main():
             project, district_trades, session, kakao_key, geo_cache, place_cache
         )
         project["actualTradeHighlights"] = build_actual_trade_highlights(project)
+        project["priceFirstVersion"] = "v33-observed-transactions-not-valuations"
         project["verification"] = verification_status(project)
         project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
