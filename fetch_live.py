@@ -1,739 +1,2125 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><meta name="description" content="청약레이더 - 관심 지역과 개인 조건에 맞는 청약 후보"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><title>청약레이더 v25 · 첫 화면 시세 비교</title><style>
-:root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#202b3b;background:#f4f6f9;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9ac0ff;outline-offset:2px}button:disabled{opacity:.5}#app{max-width:480px;margin:0 auto;min-height:100dvh;background:#f8fafc;box-shadow:0 0 45px #1d345014;padding-bottom:90px}.page{display:none;padding:24px 20px 25px;animation:fade .15s}.page.active{display:block}@keyframes fade{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:none}}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{font-size:21px;font-weight:850;letter-spacing:-1.1px;display:flex;align-items:center;gap:9px}.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:#e5efff;border-radius:12px;color:#2670ef}.iconbtn{border:0;background:#fff;border-radius:12px;padding:10px 12px;color:#4b5970;position:relative}.red-dot{position:absolute;width:6px;height:6px;background:#f24863;border-radius:50%;right:8px;top:8px}.muted{color:#8994a5}.small{font-size:12px;line-height:1.65}.eyebrow{font-size:13px;color:#6a7b91;font-weight:680}.greeting{font-size:26px;line-height:1.35;letter-spacing:-1.25px;margin:7px 0 20px;font-weight:850}.card{border-radius:20px;background:#fff;border:1px solid #edf0f5;box-shadow:0 5px 24px #12243b06;padding:18px;margin-bottom:12px}.soft{background:#ecf4ff;border-color:#ecf4ff}.summary{display:flex;align-items:center;gap:12px}.circle{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:13px;background:#deebff;color:#2874f0;font-size:19px}.summary .body{flex:1;min-width:0}.summary strong{font-size:14px}.summary p{font-size:12px;color:#61758e;line-height:1.65;margin:6px 0 0}.link{color:#2874f0;font-size:12px;font-weight:750;border:none;background:transparent;padding:8px 0}.section{margin:26px 0 13px;display:flex;justify-content:space-between;align-items:center;gap:10px}.section h2{font-size:19px;letter-spacing:-.7px;margin:0}.pillrow{display:flex;gap:7px;overflow:auto;scrollbar-width:none;margin:0 -20px 15px;padding:0 20px}.pillrow::-webkit-scrollbar{display:none}.pill{border:1px solid #e1e7f0;background:#fff;color:#607189;border-radius:99px;padding:10px 14px;font-size:13px;font-weight:700;white-space:nowrap}.pill.on{color:white;background:#2372f5;border-color:#2372f5}.type{display:inline-flex;align-items:center;background:#fff0f3;color:#ef4e6c;border-radius:7px;padding:5px 8px;font-size:11px;font-weight:800}.type.unsold{background:#eaf2ff;color:#2672ed}.project-head{display:flex;gap:12px;align-items:start}.project-icon{width:53px;height:57px;border-radius:12px;background:linear-gradient(145deg,#dcecff,#b2cdfb);display:grid;place-items:center;font-size:28px;flex:none}.project-main{flex:1;min-width:0}.project-main h3{font-size:16px;letter-spacing:-.5px;margin:8px 0 5px}.pricegrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#f7f9fc;border-radius:13px;padding:14px;margin:14px 0}.pricegrid small{display:block;color:#8793a4;font-size:11px;margin-bottom:5px}.pricegrid b{font-size:19px;letter-spacing:-.7px}.profit{font-size:12px;font-weight:750;color:#d94462;background:#fff1f3;padding:8px 10px;border-radius:8px;display:inline-block}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.date{color:#758397;font-size:12px;font-weight:650}.primary{border:0;background:#2876f8;color:#fff;border-radius:13px;padding:14px 17px;font-weight:800}.secondary{border:0;background:#edf4ff;color:#2666df;border-radius:13px;padding:13px 15px;font-weight:800}.full{width:100%}.compact{padding:9px 12px;font-size:12px}.page-title{font-size:22px;font-weight:830;letter-spacing:-1px;margin:0}.searchbar{display:flex;align-items:center;background:#fff;border:1px solid #e5ecf5;border-radius:14px;padding:0 14px;margin-bottom:15px}.searchbar input{border:0;background:transparent;width:100%;padding:15px 10px;outline:0;font-size:14px}.result-count{font-size:13px;color:#8a96a8;margin-bottom:12px}.divider{height:1px;background:#edf0f5;margin:15px 0}.detail-hero{background:linear-gradient(135deg,#dfedff,#a5c6f5);border-radius:20px;padding:25px 20px;margin-bottom:14px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.detail-hero h2{font-size:24px;margin:15px 0 5px;letter-spacing:-1px}.detail-hero p{font-size:13px;margin:0;color:#4b6485}.facts{display:grid;grid-template-columns:100px 1fr;row-gap:13px;font-size:13px}.facts .muted{color:#8995a6}.bullet{font-size:13px;line-height:1.8;color:#4a5b71;padding-left:18px;margin:7px 0}.warn{background:#fff8e8;border-radius:12px;padding:12px;color:#90671f;font-size:12px;line-height:1.65}.formlabel{display:block;font-size:13px;font-weight:800;margin:18px 0 9px}.input{width:100%;border:1px solid #dce5f0;background:#fff;padding:13px;border-radius:12px;color:#2b3f58}.checks{display:flex;gap:8px;flex-wrap:wrap}.check{border:1px solid #dce6f2;border-radius:12px;padding:11px 14px;background:white;color:#68788d;font-size:13px;font-weight:700}.check.on{background:#e8f1ff;border-color:#96bcff;color:#256bee}.settings-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid #eff1f6}.settings-row:last-child{border:0}.settings-row strong{font-size:14px}.settings-row p{font-size:12px;line-height:1.55;color:#8491a2;margin:5px 0 0}.toggle{width:49px;height:29px;border:0;border-radius:20px;background:#d5dce7;padding:3px;flex:none;transition:.2s}.toggle:after{content:"";display:block;background:white;width:23px;height:23px;border-radius:50%;box-shadow:0 1px 3px #0002;transition:.2s}.toggle.on{background:#2876f8}.toggle.on:after{transform:translateX(20px)}.inbox{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid #eff1f6}.inbox:last-child{border:0}.inbox .circle{width:36px;height:36px}.inbox strong{font-size:13px}.inbox p{font-size:12px;color:#8491a2;line-height:1.6;margin:5px 0}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);display:flex;justify-content:space-around;background:#fff;border-top:1px solid #edf0f4;padding:9px 6px max(10px,env(safe-area-inset-bottom));z-index:9}.nav{background:transparent;border:0;color:#8995a6;font-size:11px;font-weight:750;display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 12px;min-width:70px}.nav .symbol{font-size:23px;line-height:1.2}.nav.on{color:#2672ee}.demo{font-size:12px;line-height:1.65;color:#8c661e;background:#fff8e8;border-radius:13px;padding:12px 14px;margin:13px 0 18px}.empty{text-align:center;padding:42px 14px;color:#8291a6;font-size:13px;line-height:1.8}.toast{position:fixed;left:50%;bottom:94px;transform:translateX(-50%);max-width:calc(100% - 40px);width:max-content;border-radius:12px;background:#1e3048;color:white;padding:12px 17px;font-size:13px;z-index:20;display:none}.toast.show{display:block}.sticky-action{position:sticky;bottom:83px;background:#f8fafce8;padding:10px 0}.footnote{font-size:11px;color:#8c98aa;line-height:1.7}.ghost{border:none;background:transparent;color:#688097;font-weight:750;font-size:12px}.hidden{display:none!important}@media(min-width:600px){#app{margin:24px auto;border-radius:26px;min-height:calc(100dvh - 48px);overflow:hidden}.bottom{border-radius:0 0 24px 24px}}@media(prefers-reduced-motion:reduce){.page{animation:none}}
+import json
+import math
+import os
+import re
+from collections import defaultdict
+from statistics import median
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
 
-:root{--blue:#2876f8}.notice{border-radius:15px;padding:13px 15px;font-size:12px;line-height:1.6;background:#eef5ff;color:#31557d;margin:12px 0}.notice.warning{background:#fff8e8;color:#85602b}.notice.success{background:#eaf8f0;color:#24724d}.status-chip{font-size:11px;font-weight:800;border-radius:7px;padding:6px 9px;display:inline-block;background:#eff4fa;color:#63748b}.status-chip.good{color:#16835d;background:#e5f7ee}.status-chip.bad{color:#b84d50;background:#fff0ef}.status-chip.review{color:#94651f;background:#fff5e3}.meta{font-size:12px;color:#8793a4;line-height:1.7}.tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.tag{font-size:11px;border-radius:7px;background:#f2f5fb;padding:5px 8px;color:#586c88;font-weight:700}.bookmark{background:#f6f9fd;border:0;border-radius:10px;padding:8px 10px;font-size:20px;color:#7b8fa7}.bookmark.active{color:#2876f8;background:#e7f0ff}.metrics{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.metrics>div{flex:1;background:#f6f9fc;padding:12px;border-radius:13px;min-width:100px}.metrics b{display:block;font-size:16px;margin-top:5px}.fielddesc{font-size:11px;color:#8b98a8;line-height:1.6;margin:5px 0 0}.choicebar{display:flex;gap:8px;margin:12px 0}.choicebar button{flex:1}.active-tab{background:#2876f8!important;color:white!important}.spark{font-size:20px}.activity{font-size:12px;color:#7b8ca2}.alertitem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #edf0f5;cursor:pointer}.alertitem:last-child{border-bottom:0}.alertitem .circle{width:34px;height:34px}.alertitem strong{font-size:13px}.alertitem p{font-size:12px;color:#78889b;margin:5px 0}.flexbetween{display:flex;align-items:center;justify-content:space-between;gap:12px}.tinybtn{border:1px solid #e0e8f5;background:white;padding:8px 10px;border-radius:10px;font-size:12px;font-weight:750;color:#4973ba}.fineprint{font-size:11px;line-height:1.7;color:#8c98aa}.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.row2>*{min-width:0}.underline-link{border:0;background:none;padding:2px 0;color:#286fe4;font-size:12px;font-weight:750;text-align:left}.sync-dot{display:inline-block;width:7px;height:7px;background:#e8ae32;border-radius:50%;margin-right:6px}.sync-dot.ok{background:#1db77b}.banner-head{display:flex;align-items:center;justify-content:space-between;gap:9px}.guide-card{border-radius:15px;background:#f7faff;padding:13px;margin:12px 0}.hide{display:none!important} .toast{z-index:100} .page{padding-top:23px} .project-main h3{word-break:keep-all} .card{overflow-wrap:anywhere} .primary:focus-visible,.secondary:focus-visible{outline:3px solid #a5caff}
+import requests
+import xml.etree.ElementTree as ET
 
-/* v12 evidence-first screening; preserves cloud / push flows */
-.radar-dashboard{border:1px solid #dce8fb;background:linear-gradient(145deg,#eff5ff,#fff);border-radius:19px;padding:16px;margin:14px 0}
-.radar-dashboard h2{font-size:17px;margin:0 0 10px;letter-spacing:-.4px}.radar-dashboard .dash-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.radar-dashboard .dash-stat{background:white;border-radius:11px;padding:11px 7px;text-align:center;border:1px solid #e7eefb}.dash-stat b{display:block;font-size:21px;margin-top:4px}.dash-stat small{font-size:10px;color:#677c96;line-height:1.4}
-.quick-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.quick-actions button{border:1px solid #cddff9;border-radius:10px;background:#fff;color:#2262c5;padding:9px 11px;font-size:12px;font-weight:750}
-.op-risklist{padding:0;margin:12px 0;list-style:none}.op-risklist li{margin:7px 0;padding:10px;background:#f8fafc;border-radius:9px;font-size:12px;line-height:1.6}
-.sim-label{display:flex;justify-content:space-between;font-size:13px;font-weight:750;margin:12px 0 6px}.sim-range{width:100%;accent-color:#2876f8}.sim-result{border-radius:12px;background:#eef5ff;padding:13px;margin-top:13px;line-height:1.7;font-size:13px}.sim-result strong{font-size:19px}.sim-note{font-size:11px;color:#738297;line-height:1.7;margin-top:8px}
-
-.v12-evidence{border:1px solid #e3ebf5;background:#fafcff;border-radius:12px;padding:12px;margin:10px 0}
-.v12-evidence strong{font-size:13px}.v12-evidence p{margin:8px 0 0}.v12-evidence .row2{align-items:start}
-
-.v20-toprow{width:100%;background:transparent;border:0;border-top:1px solid #e5e7eb;padding:12px 0;text-align:left;display:flex;flex-direction:column;gap:4px;cursor:pointer;color:inherit;font:inherit}
-.v20-toprow span{font-weight:700;font-size:14px}.v20-toprow small{color:#64748b;font-size:12px}
-.v20-evidence{border-top:1px solid #e5e7eb;padding:10px 0;overflow-wrap:anywhere}.v20-evidence p{white-space:pre-wrap;font-size:13px}
-.v20-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.v20-grid label{display:flex;flex-direction:column;font-size:12px;gap:5px}.v20-grid input{border:1px solid #d1d5db;border-radius:8px;width:100%;max-width:100%;padding:9px;background:white;color:#111}
-
-/* v25: first-glance prices, no conflation of public comps and private quotes */
-.v25-supply{background:#f0f6ff;border:1px solid #d9e7fc;border-radius:13px;padding:13px;margin-top:12px;display:flex;flex-direction:column;gap:5px}.v25-supply small{color:#526b90;font-size:11px;font-weight:750}.v25-supply strong{font-size:21px;color:#18385f;letter-spacing:-.7px}.v25-supply span{font-size:10px;color:#71849c;line-height:1.55}
-.provider-price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}.provider-price{border-radius:13px;border:1px solid #e4eaf3;padding:12px 10px;background:#fff;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:6px}.provider-price .provider-name{font-size:12px;font-weight:850;color:#4e6688}.provider-price b{font-size:16px;letter-spacing:-.3px}.provider-price small{font-size:10px;color:#8b97a8;line-height:1.55;min-height:30px}.provider-price a{font-size:11px;color:#226bd6;text-decoration:none;font-weight:800}.v25-trade-hint{font-size:11px;color:#7a8799;line-height:1.5;padding:10px 1px;border-bottom:1px solid #edf0f5}
-</style></head><body>
-<div id="app">
-<section class="page active" id="home">
- <div class="topbar"><div class="brand"><span class="mark">⌂</span>청약레이더</div><button class="iconbtn" aria-label="알림 보기" onclick="go('alerts')">🔔</button></div>
- <span class="eyebrow">내 조건에 맞는 기회만 쏙</span><h1 class="greeting">놓치면 아쉬운 청약,<br>한눈에 확인하세요 👀</h1>
- <div id="dataStatus" class="notice"></div>
- <div id="opportunityDashboard" class="radar-dashboard" aria-live="polite"></div>
- <div class="card" id="v20TopBoard" aria-live="polite"></div>
- <div class="card soft summary"><span class="circle">♙</span><div class="body"><strong>내 청약 조건</strong><p id="homeSummary"></p></div><button class="link" onclick="go('profile')">수정 ›</button></div>
- <div class="section"><h2>내 추천 후보</h2><button class="link" onclick="go('list')">전체 보기 ›</button></div>
- <div id="recommendations"></div><div class="card"><div class="row"><strong>📊 청약레이더 현황</strong><span class="muted small" id="statsMode"></span></div><div class="pricegrid" style="margin-bottom:0"><div><small>전체 공고</small><b id="allCount">0건</b></div><div><small>내 조건 후보</small><b id="matchCount">0건</b></div></div></div>
- <button class="secondary full" onclick="refreshLive(true)">↻ 공고 새로고침</button>
-</section>
-<section class="page" id="list">
- <div class="topbar"><h1 class="page-title">청약 목록</h1><button class="iconbtn" aria-label="저장한 청약만 보기" onclick="toggleSavedFilter()">☆</button></div>
- <div class="searchbar"><span>⌕</span><input id="search" placeholder="단지명이나 지역 검색" aria-label="청약 검색" oninput="renderList()"></div>
- <div class="pillrow" id="listFilters"></div><div class="flexbetween" style="margin:10px 0 14px"><span class="result-count" id="resultCount"></span><select id="sort" aria-label="정렬" class="input" style="width:auto;padding:8px 10px;font-size:12px" onchange="renderList()"><option value="priority">검토 우선순위</option><option value="deadline">마감 임박순</option><option value="recent">최근 공고순</option><option value="name">단지명순</option></select></div><div id="listItems"></div>
-</section>
-<section class="page" id="detail"><div class="topbar"><button class="iconbtn" onclick="go('list')" aria-label="뒤로가기">‹</button><h1 class="page-title" style="font-size:18px">청약 상세</h1><button class="iconbtn" aria-label="공유" onclick="shareCurrent()">↗</button></div><div id="detailContent"></div></section>
-<section class="page" id="profile">
- <div class="card" id="accountBox"><div class="flexbetween"><strong>👥 친구별 계정</strong><span class="status-chip" id="cloudState">설정 전</span></div><p class="small muted" id="cloudInfo">Supabase 연결 전에는 이 기기에만 저장됩니다.</p><div id="signedOut"><label class="formlabel" for="loginEmail">이메일 주소</label><input class="input" type="email" id="loginEmail" placeholder="friend@example.com" autocomplete="email"><button class="primary full" style="margin-top:10px" onclick="sendLoginLink()">이메일 로그인 링크 받기</button><p class="fineprint">받은 메일의 링크를 눌러 로그인하세요. 별도 비밀번호를 저장하지 않습니다.</p></div><div id="signedIn" class="hidden"><p class="small" id="accountEmail"></p><button class="secondary full" onclick="signOutRadar()">로그아웃</button></div></div>
-
- <div class="topbar"><h1 class="page-title">내 조건</h1><span class="muted small">개인 맞춤 설정</span></div>
- <div class="card soft summary"><span class="circle">♙</span><div class="body"><strong>내 청약 프로필</strong><p>로그인 전에는 이 기기에 저장하고, 로그인 후 조건 저장 시 내 Supabase 계정에도 동기화합니다. 친구별 계정은 분리됩니다.</p></div></div>
- <div class="card"><label class="formlabel" style="margin-top:0">관심 지역 (현재 자동 수집 지원: 서울·경기·인천)</label><div class="checks" id="regionChecks"></div><p class="fielddesc">다른 지역은 아직 공고 자동 수집에 포함되지 않습니다. 지역 선택을 늘려도 해당 지역 청약이 추가되지는 않습니다.</p>
- <label class="formlabel" for="residence">현재 거주지</label><select class="input" id="residence"><option>인천</option><option>서울</option><option>경기</option><option>기타</option></select>
- <label class="formlabel" for="residenceMonths">현재 지역 거주기간</label><select class="input" id="residenceMonths"><option value="unknown">모름 / 입력하지 않음</option><option value="0">1년 미만</option><option value="12">1~2년</option><option value="24">2년 이상</option></select>
- <label class="formlabel" for="homes">주택 보유</label><select class="input" id="homes"><option value="0">무주택</option><option value="1">1주택</option><option value="2">2주택 이상</option></select>
- <label class="formlabel" for="householdHomes">세대원 주택 보유 여부</label><select class="input" id="householdHomes"><option value="unknown">확인하지 않음</option><option value="no">세대원 모두 무주택</option><option value="yes">보유 세대원 있음</option></select>
- <label class="formlabel" for="head">세대주 여부</label><select class="input" id="head"><option value="yes">세대주</option><option value="no">세대원</option></select>
- <label class="formlabel" for="account">청약통장</label><select class="input" id="account" onchange="updateAccountUI()"><option value="yes">보유</option><option value="no">없음</option></select>
- <div id="yearsWrap"><label class="formlabel" for="years">청약통장 가입기간</label><select class="input" id="years"><option value="0">1년 미만</option><option value="1">1~2년</option><option value="3">2년 이상</option></select></div>
- <label class="formlabel" for="budget">최대 분양가</label><select class="input" id="budget"><option value="5">5억 이하</option><option value="10">10억 이하</option><option value="15">15억 이하</option><option value="999">제한 없음</option></select>
- <div class="divider"></div><strong>추가 자격 정보 <span class="muted small">선택 입력</span></strong>
-<p class="fielddesc">모르는 정보는 미확인으로 남기세요. 신청 가능 여부를 확정하지 않습니다.</p>
-<label class="formlabel" for="age">현재 나이</label><select class="input" id="age"><option value="unknown">미확인</option><option value="under19">만 19세 미만</option><option value="19to29">만 19~29세</option><option value="30to39">만 30~39세</option><option value="over40">만 40세 이상</option></select>
-<label class="formlabel" for="marital">혼인 상태</label><select class="input" id="marital"><option value="unknown">미확인</option><option value="single">미혼</option><option value="married">기혼</option><option value="other">그 외</option></select>
-<label class="formlabel" for="firstHome">생애최초 주택 구입 여부</label><select class="input" id="firstHome"><option value="unknown">미확인</option><option value="yes">생애최초 해당 가능</option><option value="no">과거 주택 보유 이력 있음</option></select>
-<label class="formlabel" for="dependents">부양가족 수</label><select class="input" id="dependents"><option value="unknown">미확인</option><option value="0">0명</option><option value="1">1명</option><option value="2">2명</option><option value="3">3명 이상</option></select>
-<label class="formlabel" for="income">가구 소득 관련 자격</label><select class="input" id="income"><option value="unknown">공고별 기준 확인 전</option><option value="check">소득·자산 조건 확인 필요</option></select>
-<div class="divider"></div><strong>자금 계획 <span class="muted small">투자 검토용</span></strong>
-<label class="formlabel" for="cash">사용 가능한 현금</label><select class="input" id="cash"><option value="unknown">미입력</option><option value="0.5">0.5억</option><option value="1">1억</option><option value="2">2억</option><option value="3">3억</option><option value="5">5억</option><option value="7">7억</option><option value="10">10억 이상</option></select>
-<label class="formlabel" for="loanPercent">대출 가능 비율 가정 <span class="muted small">실제 승인 여부와 무관</span></label><select class="input" id="loanPercent"><option value="unknown">가정하지 않음</option><option value="0">0% (전액 현금)</option><option value="20">20%</option><option value="40">40%</option><option value="60">60%</option></select>
-<label class="formlabel" for="restricted">과거 당첨·재당첨 제한</label><select class="input" id="restricted"><option value="unknown">확인하지 않음</option><option value="no">제한 없음 확인</option><option value="yes">제한 있을 수 있음</option></select><p class="fielddesc">정확한 자격은 공고별 세대·소득·자산·주택·재당첨 제한 조건을 모두 확인해야 해요. 입력한 프로필은 기기에 저장되며, 로그인 상태에서 조건 저장 시 Supabase 계정에도 동기화됩니다. 민감한 정보는 필요한 경우에만 입력하세요.</p></div>
- <div class="notice warning" id="storageNotice">⚠ 로그인 전에는 설정이 이 기기에만 보관됩니다. 친구별 클라우드 저장을 사용하려면 로그인하세요.</div>
- <button class="primary full" onclick="saveProfile()">조건 저장하기</button>
- <div class="card" style="margin-top:18px"><strong>⚙ 설정 백업 · 복원</strong><p class="small muted">휴대폰을 바꿀 때 설정 파일로 옮길 수 있어요.</p><div class="row2"><button class="secondary" onclick="exportSettings()">설정 내보내기</button><button class="secondary" onclick="document.getElementById('backupInput').click()">설정 가져오기</button></div><input id="backupInput" class="hide" type="file" accept="application/json,.json" onchange="importSettings(event)"></div>
-</section>
-<section class="page" id="alerts"><div class="topbar"><h1 class="page-title">알림</h1><button class="ghost" onclick="clearInbox()">모두 읽음</button></div>
- <div class="card"><div class="flexbetween"><strong>📲 자동 푸시 연결</strong><span class="status-chip" id="pushState">연결 전</span></div><p class="small muted">로그인 후 이 기기에서 수신을 허용하면, 실제 공고 데이터가 수집될 때 조건에 맞는 새 공고·마감 안내를 받을 수 있어요.</p><button class="primary full" onclick="enableRadarPush()">이 기기 푸시 알림 켜기</button><button class="secondary full" style="margin-top:8px" onclick="disableRadarPush()">이 기기 푸시 알림 끄기</button><p class="fineprint" id="pushNote">기기 구독 성공만으로 로또 알림 발송이 보장되지 않습니다. 서버 발송 코드에서 가격 신호 조건을 별도로 확인해야 합니다. 아이폰은 Safari에서 홈 화면에 설치한 뒤 실행하세요.</p></div><div class="card"><strong>🔔 알림 설정</strong><p class="small muted">관심 후보와 마감 안내를 받도록 설정해요.</p>
- <div class="settings-row"><div><strong>로또 청약 후보</strong><p>가격 우위 검토 신호가 있는 후보입니다. 서버 푸시 수신은 별도 발송 작업의 조건에 따라 달라지며, 웹 화면의 후보 표시와 같지 않을 수 있습니다.</p></div><button class="toggle" id="toggleLotto" aria-label="로또 후보 알림" onclick="toggleAlert('lotto')"></button></div>
- <div class="settings-row"><div><strong>무순위 청약</strong><p>무순위·잔여세대·계약취소 공고</p></div><button class="toggle" id="toggleUnsold" aria-label="무순위 알림" onclick="toggleAlert('unsold')"></button></div>
- <div class="settings-row"><div><strong>마감 임박</strong><p>접수 마감 하루 전 안내 후보</p></div><button class="toggle" id="toggleDeadline" aria-label="마감 임박 알림" onclick="toggleAlert('deadline')"></button></div>
- <button class="secondary full" style="margin-top:17px" onclick="testNotice()">이 기기에서 알림 테스트</button><p class="fineprint">이 기기 알림 테스트가 가능하며, 실제 자동 푸시 발송은 서버 작업과 사용자별 구독 설정에 따라 이루어집니다.</p></div>
- <div class="section"><h2>최근 알림</h2><span class="muted small">이 기기 기록</span></div><div class="card" id="inbox"></div>
- <div class="card"><strong>📲 홈 화면에 설치하기</strong><p class="small muted">안드로이드: Chrome 메뉴 → 설치<br>아이폰: Safari 공유 → 홈 화면에 추가 (iOS 16.4 이상 웹 푸시 지원)</p><button class="secondary full" onclick="installApp()">앱 설치하기</button></div>
- <div class="notice">💡 자동 푸시는 별도 GitHub Actions 발송 작업을 사용합니다. 수신 여부는 푸시 설정 및 발송 이력에서 확인하세요.</div>
-</section>
-<nav class="bottom" aria-label="주요 메뉴"><button class="nav on" data-target="home" onclick="go('home')"><span class="symbol">⌂</span>홈</button><button class="nav" data-target="list" onclick="go('list')"><span class="symbol">▤</span>청약</button><button class="nav" data-target="profile" onclick="go('profile')"><span class="symbol">♙</span>내 조건</button><button class="nav" data-target="alerts" onclick="go('alerts')"><span class="symbol">♧</span>알림</button></nav>
-<div class="toast" id="toast" role="status"></div></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="./config.js"></script>
-<script>
-
-'use strict';
-const $=id=>document.getElementById(id);
-const keys={profile:'radar-profile-v3',settings:'radar-alerts-v3',saved:'radar-saved-v3',inbox:'radar-inbox-v3',known:'radar-known-v3'};
-const defaultProfile={regions:['서울','경기','인천'],residence:'인천',residenceMonths:'unknown',homes:'0',householdHomes:'unknown',head:'yes',account:'yes',years:'3',budget:'10',restricted:'unknown',age:'unknown',marital:'unknown',firstHome:'unknown',dependents:'unknown',income:'unknown',cash:'unknown',loanPercent:'unknown'};
-const defaultSettings={lotto:true,unsold:true,deadline:true};
-function load(key,def){try{let data=JSON.parse(localStorage.getItem(key));if(data&&typeof data==='object'&&!Array.isArray(data))return {...def,...data};if(Array.isArray(def)&&Array.isArray(data))return data}catch(e){}return Array.isArray(def)?[...def]:{...def}}
-function persist(key,val){try{localStorage.setItem(key,JSON.stringify(val))}catch(e){showToast('설정 저장에 실패했어요')}}
-let profile=load(keys.profile,defaultProfile),settings=load(keys.settings,defaultSettings),saved=load(keys.saved,[]),inbox=load(keys.inbox,[]),known=load(keys.known,{});
-// 과거 버전에서 선택한 미지원 지역은 숨김 없이 지원 지역으로 정규화합니다.
-profile.regions=(Array.isArray(profile.regions)?profile.regions:defaultProfile.regions).filter(x=>['서울','경기','인천'].includes(x));
-if(!profile.regions.length)profile.regions=[...defaultProfile.regions];
-let analysisQuality=null;let projects=[],dataMode='demo',dataUpdated='',dataError='',filter='전체',savedOnly=false,currentId=null,installPrompt=null,toastTimer=null;
-const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const supportedRegions=['서울','경기','인천'];
-const validRegion=x=>supportedRegions.includes(x);
-function showToast(t){let node=$('toast');node.textContent=t;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('show'),3100)}
-function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===page));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('on',x.dataset.target===(page==='detail'?'list':page)));if(page==='home')renderHome();if(page==='list')renderList();if(page==='profile')fillProfile();if(page==='alerts')renderAlerts();window.scrollTo(0,0)}
-const addDays=n=>{const x=new Date();x.setHours(12,0,0,0);x.setDate(x.getDate()+n);return [x.getFullYear(),String(x.getMonth()+1).padStart(2,'0'),String(x.getDate()).padStart(2,'0')].join('-')};
-// All examples are clearly labeled, fictional, and dynamically dated solely for UI testing.
-const examples=[
- {id:'sample-1',name:'[예시] 인천 송도 미래파크',region:'인천',district:'인천 연수구',kind:'무순위',announce:addDays(-3),start:addDays(1),end:addDays(3),price:6.2,market:8.4,marketSource:'가상 시세 (체험 전용)',marketDate:null,notice:'SAMPLE-1',requirements:{noHouse:true,residence:'인천',householdNoHouse:true,minResidenceMonths:12},risk:{resale:'공고문 확인 필요',occupancy:'공고문 확인 필요',depositPercent:10,extraCosts:'취득세·부대비용 별도'},marketComparable:true,notes:'예시 공고입니다. 실제 분양 정보가 아니에요.'},
- {id:'sample-2',name:'[예시] 경기 광교 센트럴',region:'경기',district:'경기 수원시',kind:'일반분양',announce:addDays(-1),start:addDays(4),end:addDays(7),price:8.5,market:10.7,marketSource:'가상 시세 (체험 전용)',marketDate:null,notice:'SAMPLE-2',requirements:{noHouse:true,account:true,minYears:2,head:true,minAge:19},risk:{resale:'전매제한 확인 필요',occupancy:'실거주의무 확인 필요',depositPercent:10},marketComparable:true,notes:'가상의 일반분양 청약 자격을 시험하는 예시입니다.'},
- {id:'sample-3',name:'[예시] 서울 강동 리버뷰',region:'서울',district:'서울 강동구',kind:'계약취소주택',announce:addDays(-2),start:addDays(0),end:addDays(1),price:9.5,market:12.1,marketSource:'가상 시세 (체험 전용)',marketDate:null,notice:'SAMPLE-3',requirements:{noHouse:true,residence:'서울',head:true,marital:'married'},risk:{resale:'공고문 확인 필요',occupancy:'공고문 확인 필요',depositPercent:20},marketComparable:true,notes:'실제 계약취소주택 조건과 다를 수 있습니다.'}
-];
-function normalize(p,i){if(!p||typeof p!=='object')return null;let region=String(p.region||''),name=String(p.name||'');if(!validRegion(region)||!name)return null;let price=(p.price===null||p.price===undefined||p.price==='')?null:Number(p.price),market=(p.market===null||p.market===undefined||p.market==='')?null:Number(p.market);if(!Number.isFinite(price)||price<0)price=null;if(!Number.isFinite(market)||market<0)market=null;return {...p,id:String(p.notice||p.id||`idx-${i}`),region,name,kind:String(p.kind||'기타'),district:String(p.district||region),price,market,requirements:p.requirements&&typeof p.requirements==='object'&&!Array.isArray(p.requirements)?p.requirements:null,announce:p.announce||'',start:p.start||'',end:p.end||'',notes:String(p.notes||''),officialUrl:(typeof p.officialUrl==='string'&&/^https:\/\//.test(p.officialUrl))?p.officialUrl:null}}
-function parseDate(s){if(!s)return null;const m=String(s).match(/^(\d{4})[-.]?(\d{2})[-.]?(\d{2})/);if(!m)return null;const d=new Date(Number(m[1]),Number(m[2])-1,Number(m[3]));return d.getFullYear()===Number(m[1])&&d.getMonth()===Number(m[2])-1&&d.getDate()===Number(m[3])?d:null}
-function dayDiff(s){let d=parseDate(s);if(!d)return null;let today=new Date();today.setHours(0,0,0,0);return Math.round((d-today)/86400000)}
-function scheduleStatus(p){
- const start=dayDiff(p.start),end=dayDiff(p.end);
- if(end!==null&&end<0)return {label:'접수 마감',order:3,d:Math.abs(end),phase:'closed'};
- if(start!==null&&start>0)return {label:`접수 시작 D-${start}`,order:1,d:start,phase:'upcoming'};
- if(end!==null&&end>=0)return {label:end===0?'오늘 접수 마감':`접수 중 · D-${end}`,order:0,d:end,phase:'accepting'};
- return {label:'일정 확인 필요',order:2,d:99999,phase:'unknown'};
-}
-function money(v){return v===null?'확인 필요':(Math.round(v*10)/10).toFixed(1)+'억'}
-function evaluate(p){
- const r=p.requirements||{},fails=[],passes=[],unknown=[];
- const add=(label,requirement,result)=>{if(requirement===undefined||requirement===null||requirement==='unknown'){unknown.push(label+' (공고 요건 미확인)');return}if(result===null){unknown.push(label+' (내 정보 확인 필요)');return}if(result)passes.push(label);else fails.push(label+' 불일치')};
- add('본인 무주택',r.noHouse,r.noHouse===undefined?null:(!r.noHouse||profile.homes==='0'));
- add('세대원 모두 무주택',r.householdNoHouse,profile.householdHomes==='unknown'?null:(!r.householdNoHouse||(profile.homes==='0'&&profile.householdHomes==='no')));
- add('세대주',r.head,r.head===undefined?null:(!r.head||profile.head==='yes'));
- add('청약통장 보유',r.account,r.account===undefined?null:(!r.account||profile.account==='yes'));
- add('청약통장 가입기간',r.minYears,profile.account==='no'?false:(r.minYears===undefined||profile.years==='unknown'?null:Number(profile.years)>=Number(r.minYears)));
- add('거주지역',r.residence,r.residence===undefined?null:profile.residence===r.residence);
- add('해당지역 거주기간',r.minResidenceMonths,profile.residenceMonths==='unknown'?null:Number(profile.residenceMonths)>=Number(r.minResidenceMonths));
- add('만 19세 이상',r.minAge,profile.age==='unknown'?null:(r.minAge===19?profile.age!=='under19':null));
- add('혼인 조건',r.marital,profile.marital==='unknown'?null:profile.marital===r.marital);
- add('생애최초 조건',r.firstHome,profile.firstHome==='unknown'?null:(r.firstHome===true?profile.firstHome==='yes':true));
- add('부양가족 수',r.minDependents,profile.dependents==='unknown'?null:Number(profile.dependents)>=Number(r.minDependents));
- if(profile.restricted==='yes')unknown.push('재당첨·과거 당첨 제한 여부 (제한 가능성 있음)');
- else if(profile.restricted==='unknown')unknown.push('재당첨·과거 당첨 제한 여부');
- // 공고별 예외·소득·자산·세대 구성을 자동 확정할 수 없으므로 항상 재확인이 필요합니다.
- unknown.push('소득·자산·공급 유형별 예외·공고문 전체 조건');
- return {status:fails.length?'조건 불일치':passes.length?'추가 확인 필요':'자격 확인 대기',fails,passes,unknown:[...new Set(unknown)]};
-}
-function lottery(p){
- const base={label:'시세 분석 대기',reason:'실거래 참고 통계는 표시되지만, 거리·연식·단지 특성이 검증된 비교 시세가 없어 로또 청약 판정을 보류합니다.',score:null,spread:null,discount:null,signal:'판정 보류'};
- if(p.price===null||p.market===null||p.market<=0)return base;
- if(dataMode==='live'&&(!p.marketSource||!p.marketDate||p.marketComparable!==true))return {...base,reason:'시세 출처·기준일·비교 적합성 검증 전이므로 로또 후보로 판정하지 않습니다.'};
- const spread=p.market-p.price,discount=(spread/p.market)*100;
- return {label:spread>0&&discount>=15?'로또 후보':'가격 비교 필요',reason:`단순 시세 차이 ${money(spread)} · 유사 시세 대비 ${discount.toFixed(1)}% 차이. 세금·비용·시점·물건 특성은 반영하지 않았어요.`,score:discount,spread,discount,signal:discount>=25?'시세 차이 큼':discount>=15?'시세 차이 있음':'추가 비교 필요'};
-}
-function funding(p){
- const risks=p.risk||{}, pct=risks.depositPercent===undefined||risks.depositPercent===null?NaN:Number(risks.depositPercent);
- const deposit=p.price!==null&&Number.isFinite(pct)&&pct>=0&&pct<=100?p.price*pct/100:null;
- const loan=profile.loanPercent==='unknown'?null:Number(profile.loanPercent);
- const estimated=p.price!==null&&loan!==null?p.price*(1-loan/100):null;
- const cash=profile.cash==='unknown'?null:Number(profile.cash);
- let verdict='자금 검토 필요';
- if(estimated!==null&&cash!==null)verdict=cash>=estimated?'가정상 현금 범위 내':'가정상 현금 부족';
- return {deposit,estimated,cash,loan,verdict,risks};
-}
-// v14.1: 검증된 가격 우위뿐 아니라 근거가 있는 로또 검토 후보도 예산 예외로 노출합니다.
-// 무순위라는 이유만으로 로또 후보로 오인하거나, 단지명만으로 판정하지 않습니다.
-function lottoCandidateLevel(p){
- if(dataMode!=='live')return lottery(p).label==='로또 후보'?'review':null;
- const o=p.opportunity||{};
- if(o.tier==='priority_review'&&Number(o.candidateTypeCount)>0)return 'verified_comparison';
- if((o.earlyPriceSignals||[]).some(s=>Number(s.referenceGapEok)>=1.5&&Number(s.referenceGapPct)>=10&&Number(s.transactionCount)>=1))return 'early_review';
- if((o.rightsEvidence||[]).some(x=>Number(x.referenceGapEok)>=2&&Number(x.referenceGapPct)>=10))return 'review';
- if((o.reportedRightsEvidence||[]).some(x=>Number(x.referenceGapEok)>=2&&Number(x.referenceGapPct)>=10))return 'review';
- const nearby=Array.isArray(o.priceEvidence)?o.priceEvidence:[];
- const same=Array.isArray(o.sameComplexEvidence)?o.sameComplexEvidence:[];
- const indicative=nearby.some(x=>Number(x.observedGapPct)>=10&&Number(x.comparableReferenceEok)>0&&Number(x.priceEok)>0)
-  ||same.some(x=>Number(x.observedGapPct)>=10&&Number(x.sameComplexMedianEok)>0&&Number(x.priceEok)>0);
- return indicative?'review':null;
-}
-function isLottoCandidate(p){return lottoCandidateLevel(p)!==null;}
-function isBudgetVisible(p){return budgetInfo(p).fits!==false||isLottoCandidate(p);}
-function canSee(p){
- return profile.regions.includes(p.region) && isBudgetVisible(p);
-}
-function budgetInfo(p){
- if(profile.budget==='999')return {fits:true,label:'예산 제한 없음'};
- const cap=Number(profile.budget);
- const prices=(Array.isArray(p.housingTypes)?p.housingTypes:[]).map(x=>Number(x.priceEok)).filter(x=>Number.isFinite(x)&&x>0);
- const minimum=prices.length?Math.min(...prices):(p.price===null?null:Number(p.price));
- if(minimum===null||!Number.isFinite(minimum))return {fits:null,label:'분양가 확인 필요'};
- return minimum<=cap?{fits:true,label:'예산 범위 내 주택형 있음'}:{fits:false,label:isLottoCandidate(p)?'예산 초과 · 로또 검토 후보로 표시':'설정 예산 초과 · 전체 목록에는 표시'};
-}
-function noticeType(p){return ['무순위','계약취소주택','잔여세대'].includes(p.kind)}
-function badgeFor(p){let e=evaluate(p);return `<span class="status-chip ${e.fails.length?'bad':'review'}">${esc(e.status)}</span>`}
-// 참고용 실제 거래 중앙값: 시장가치 및 자동 로또 판정에는 사용하지 않습니다.
-function referenceMarketInfo(p){
- const r=p.referenceMarket;
- if(dataMode!=='live')return {label:'주변 시세',value:money(p.market),detail:'체험 데이터'};
- if(!r)return {label:'비교 가능한 거래',value:'분석 전',detail:'거래 비교 자료를 불러오지 못했습니다.'};
- let shown=r;
- let val=Number(r.referencePriceEok);
- // 대표 최고가형에 비교 표본이 없으면, 비교 가능한 다른 주택형을 명시해서 표시한다.
- if(!Number.isFinite(val)||val<=0||r.status==='insufficient'){
-  const alternate=Array.isArray(r.byType)?r.byType.find(t=>Number(t.referencePriceEok)>0&&t.status!=='insufficient'):null;
-  if(alternate){shown={...r,referencePriceEok:alternate.referencePriceEok,modelType:alternate.type,apartmentCount:alternate.complexCount,transactionCount:alternate.transactionCount,distanceChecked:Number(alternate.distanceCheckedCount)>0,smallSample:alternate.smallSample};val=Number(alternate.referencePriceEok)}
- }
- if(!Number.isFinite(val)||val<=0)return {
-  label:'비교 단지 참고값',value:'비교 보류',
-  detail:'유사 단지·위치 또는 거래 표본 부족 · 시군구 전체 중앙값 미사용'
- };
- const geo=shown.distanceChecked===true;
- return {label:shown.smallSample?'소수 주변 거래 참고 (시세 미확정)':(geo?'2km 이내 신축 거래 참고':'같은 동 신축 거래 참고'),
-  value:money(val),
-  detail:`${shown.modelType||'주택형 미확인'}형 · ${shown.apartmentCount||0}개 단지 / ${shown.transactionCount||0}건 · 단지별 중앙값의 중앙값 · ${geo?'좌표 거리 확인':'실제 거리 미확인'}${shown.smallSample?' · 표본 1~4건 또는 단지 1곳, 시장 시세 아님':''}${r.comparisonCoverageLimited?' · 일부 단지 탐색 제한':''}`
- };
+API_BASE = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/"
+API_URL = API_BASE + "getAPTLttotPblancDetail"
+MODEL_URL = API_BASE + "getAPTLttotPblancMdl"
+REGIONS = ("서울", "경기", "인천")
+PAGE_SIZE = 100
+TRADE_MONTHS = 6  # 계약월 기준: 당월 포함 6개월
+# 거리 확인은 선택사항. GitHub Secret KAKAO_REST_API_KEY가 없으면 지도좌표 미검증.
+MAX_DISTANCE_KM = 2.0
+MAX_GEOCODE_COMPLEXES = 65  # 단지 수 제한: 위치 확인한 후보를 우선 검토
+MIN_COMPARABLE_TRADES = 5
+MIN_COMPARABLE_COMPLEXES = 2
+COMPARISON_AREA_TOLERANCE = 2.0  # 제곱미터
+RIGHTS_API_URL = "https://apis.data.go.kr/1613000/RTMSDataSvcSilvTrade/getRTMSDataSvcSilvTrade"
+RIGHTS_MONTHS = 12
+TRADE_API_URL = (
+    "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/"
+    "getRTMSDataSvcAptTrade"
+)
+# 법정동 앞 5자리: 국토교통부 실거래가 지역코드. 정확한 주소 접두어만 매칭합니다.
+# 신규 지역은 검증된 코드만 추가하며, 매핑이 없는 지역은 조회 보류합니다.
+VERIFIED_DISTRICTS = {
+    ("서울", "서울특별시 영등포구"): ("11560", "서울 영등포구"),
+    ("서울", "서울특별시 종로구"): ("11110", "서울 종로구"),
+    ("경기", "경기도 시흥시"): ("41390", "경기 시흥시"),
+    ("경기", "경기도 안산시 단원구"): ("41273", "경기 안산시 단원구"),
+    ("경기", "경기도 안산시 상록구"): ("41271", "경기 안산시 상록구"),
+    ("경기", "경기도 부천시 오정구"): ("41196", "경기 부천시 오정구"),
+    ("경기", "경기도 부천시 소사구"): ("41194", "경기 부천시 소사구"),
+    ("경기", "경기도 고양시 덕양구"): ("41281", "경기 고양시 덕양구"),
+    ("경기", "경기도 남양주시"): ("41360", "경기 남양주시"),
+    ("경기", "경기도 광주시"): ("41610", "경기 광주시"),
+    ("서울", "서울특별시 송파구"): ("11710", "서울 송파구"),
+    # 2026-07-01 행정구역 개편 후 코드 (법정동 코드 앞 5자리).
+    ("인천", "인천광역시 서해구"): ("28275", "인천 서해구"),
+    ("인천", "인천광역시 검단구"): ("28290", "인천 검단구"),
+    # 신규 검단지구 공고 중 행정구 접두어가 없는 공식 사업지구 표기.
+    ("인천", "인천 검단신도시"): ("28290", "인천 검단구"),
+    ("인천", "인천광역시 부평구"): ("28237", "인천 부평구"),
+    ("인천", "인천광역시 계양구"): ("28245", "인천 계양구"),
+    ("인천", "인천광역시 연수구"): ("28185", "인천 연수구"),
+    ("인천", "인천광역시 남동구"): ("28200", "인천 남동구"),
 }
 
-function discoveryInfo(p){
- const d=p.discovery||{},s=scheduleStatus(p),special=noticeType(p);
- const heading=s.phase==='upcoming'?'접수 예정 · 시작일 확인':s.phase==='accepting'?(s.d<=3?'접수 중 · 마감 임박':'접수 중'):s.phase==='closed'?'접수 종료':'접수 일정 확인 필요';
- const detail=s.phase==='upcoming'?`접수 시작까지 ${s.d}일 · 종료일 ${esc(p.end||'미확인')}`:s.phase==='accepting'?`접수 종료까지 ${s.d}일`:s.phase==='closed'?'접수 기간이 지났습니다.':'공식 공고의 접수 일정을 확인하세요.';
- return `<div class="notice" style="margin:8px 0 0"><strong>📡 1차 기회 포착 · ${special?'무순위·재공급 · ':''}${heading}</strong><div class="fineprint">${detail} · 자격 및 실제 접수시간은 모집공고문에서 확인하세요.</div></div>`;
-}
-function sameComplexHtml(p){
- const r=p.sameComplexSales;
- if(dataMode!=='live'||!r)return '';
- const groups=Array.isArray(r.byType)?r.byType:[];
- const items=groups.map(g=>{
-  const model=(Array.isArray(p.housingTypes)?p.housingTypes:[]).find(m=>String(m.type||m.modelNo||'')===String(g.type||''));
-  const sale=Number(g.medianEok), price=Number(model?.priceEok);
-  const priceNote=Number.isFinite(price)&&price>0&&Number.isFinite(sale)&&sale>0?
-   ` · 최고 분양가 ${money(price)} / 단순 가격 차이 ${money(sale-price)} (예상 차익 아님)`:'';
-  const method=(g.matchMethods||[]).map(m=>m==='same_parcel'?'단일 지번 일치':m==='within_150m_and_name'?'이름+150m 이내 위치 일치':m).join(', ');
-  return `<div style="border-top:1px solid #edf0f5;padding:12px 0"><div class="flexbetween"><strong>${esc(g.type||'미확인')}형</strong><strong>${esc(money(sale))}</strong></div><div class="fineprint">동일 단지 매매 중앙값 · ${esc(g.transactionCount)}건 · 최근 ${esc(g.latestDate||'미확인')} · ${esc(method)}</div><p class="fineprint">전용면적 ${esc(g.areaSqm)}㎡ (${g.areaSource==='api'?'API 확인':'주택형 코드 추정'})${esc(priceNote)}</p></div>`;
- }).join('');
- return `<div class="card"><strong>🏢 2차 검증 · 동일 단지 실거래 우선</strong><p class="small muted">같은 단지 이름에 지번 또는 좌표 증거를 추가해 확인한 아파트 매매 거래입니다. 인근 단지 비교와 섞지 않습니다.</p>${items||`<div class="notice warning">${esc(r.reason||'검증 가능한 동일 단지 매매 거래가 없습니다.')}</div>`}<div class="warn">매매 실거래는 해당 분양 주택형의 시가를 보증하지 않습니다. 분양권·입주권 거래는 이 자료에 포함되지 않으며, 전매제한·세금·자금 부담도 별도 확인해야 합니다.</div></div>`;
-}
-function opportunityInfo(p){
- const o=p.opportunity;
- if(dataMode!=='live'||!o)return {rank:0,label:'검토 정보 없음',detail:'실제 공고 데이터가 필요합니다.'};
- const ranks={priority_review:6,special_supply:5,early_price_review:4,manual_review:4,same_complex_review:3,price_caution:2,watch:1};
- const b=o.bestType;
- let detail=b?`${b.type||'주택형'}형 · 분양 ${money(Number(b.priceEok))} / 비교 거래 참고 ${money(Number(b.comparableReferenceEok))} · ${Number(b.apartmentCount)||0}개 단지 · ${Number(b.transactionCount)||0}건`:
-  (o.earlyPriceSignals?.length?`소수 실거래에서 가격 차이 ${o.earlyPriceSignals.length}건의 근거 확인 · 실거래 표본 부족, 추가 검증 필요`:(o.noticeTypePriority?'무순위·재공급 일정 및 신청 자격 확인 필요':'검증 가능한 비교 자료가 충분하지 않습니다.'));
- if(b&&b.qualityGatePassed)detail+=' · 표본·위치·면적 조건 통과(수익 검증 아님)';
- else if(b)detail+=' · 비교 근거 미완료';
- return {rank:ranks[o.tier]||0,label:o.label||'공고 검토',detail};
-}
-function opportunityCardLine(p){const o=opportunityInfo(p);return dataMode==='live'?`<div class="notice" style="margin:10px 0 0"><strong>🔎 ${esc(o.label)}</strong><div class="small">${esc(o.detail)}</div></div>`:'';}
-function rightsOpportunityHtml(p){
- const o=p.opportunity||{};
- const verified=Array.isArray(o.rightsEvidence)?o.rightsEvidence:[];
- const reported=Array.isArray(o.reportedRightsEvidence)?o.reportedRightsEvidence:[];
- if(!verified.length&&!reported.length)return '';
- const rows=verified.map(x=>`<div class="v12-evidence"><b>${esc(x.type)}형 · 분양/입주권 신고 거래</b><div class="row2"><div><div class="fineprint">공급가</div><strong>${esc(money(x.salePriceEok))}</strong></div><div><div class="fineprint">신고 거래 중앙값</div><strong>${esc(money(x.rightsMedianEok))}</strong></div></div><p class="fineprint">단순 가격차 ${esc(money(x.referenceGapEok))} · ${esc(x.transactionCount)}건 · 마지막 계약 ${esc(x.latestDate)} · ${esc((x.rightTypes||[]).join(', '))}</p><p class="fineprint">단지명·지역·전용면적 확인 / 정확한 동·호·권리가액·추가분담금 확인 전</p></div>`).join('');
- const news=reported.map(x=>`<div class="v12-evidence"><b>${esc(x.type)}형 · 보도에 따른 참고 거래 (공식 API 미검증)</b><div class="row2"><div><div class="fineprint">공급가</div><strong>${esc(money(x.salePriceEok))}</strong></div><div><div class="fineprint">보도된 입주권 거래</div><strong>${esc(money(x.reportedRightsEok))}</strong></div></div><p class="fineprint">단순 가격차 ${esc(money(x.referenceGapEok))} · 전용면적 ${esc(x.areaNote)} · 거래일 ${esc(x.dealDate)} · 출처 ${esc(x.sourceTitle)}</p><p class="fineprint">보도상 같은 전용면적대 거래이며 같은 타입·층·동호의 시세임을 보장하지 않습니다. 거래 취소·추가분담금 확인 필요.</p>${/^https:\/\//.test(x.sourceUrl||'')?`<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener noreferrer">보도 근거 확인 ↗</a>`:''}</div>`).join('');
- return `<div class="card"><strong>🔥 분양·입주권 가격 우위 단서</strong><p class="small muted">동일 단지 매매와 구분된 분양/입주권 자료입니다. 아래 차액은 세금·추가분담금·거래구조를 반영하지 않은 비교 수치이며 예상 수익이 아닙니다.</p>${rows}${news}</div>`;
-}
-function opportunityDetailHtml(p){
- const o=p.opportunity;if(dataMode!=='live'||!o)return '';
- const observations=Array.isArray(o.priceEvidence)?o.priceEvidence:[];
- const rows=observations.map(x=>{
-  const gap=Number(x.observedGapEok),positive=gap>0;
-  const flags=[x.distanceVerified?'거리 검증':'거리 미검증',x.areaSource==='api'?'면적 확인':'면적 추정',x.coverageComplete?'탐색 한도 이내':'탐색 일부',x.qualityGatePassed?'엄격 표본 충족':'추가 검토 필요'];
-  return `<div class="v12-evidence"><div class="flexbetween"><strong>${esc(x.type||'주택형 미확인')}형</strong><span class="status-chip ${x.qualityGatePassed?'good':'review'}">${x.qualityGatePassed?'비교 조건 통과':'검토 자료'}</span></div><div class="row2" style="margin-top:10px"><div><div class="fineprint">최고 분양가</div><strong>${esc(money(Number(x.priceEok)))}</strong></div><div><div class="fineprint">비교 단지 거래 참고</div><strong>${esc(money(Number(x.comparableReferenceEok)))}</strong></div></div><p class="fineprint">단순 차이 ${positive?'+':''}${esc(money(gap))} (${esc(x.observedGapPct)}%) · ${esc(x.apartmentCount)}개 단지 · ${esc(x.transactionCount)}건 · 단지별 가격 분산 ${x.complexPriceDispersionPct===null?'미확인':esc(x.complexPriceDispersionPct)+'%'}</p><p class="fineprint">${flags.map(esc).join(' · ')} · 최근 비교 거래 ${esc(x.latestComparisonDate||'미확인')}</p></div>`;
- }).join('');
- const sameN=Array.isArray(o.sameComplexEvidence)?o.sameComplexEvidence.length:0;
- const checks=(Array.isArray(o.verificationChecklist)?o.verificationChecklist:[]).map(x=>`<li>${esc(x)}</li>`).join('');
- return `<div class="card"><strong>🎯 가격 경쟁력 심층 검토 · ${esc(o.label||'검토')}</strong><p class="small muted">동일 단지 아파트 매매 거래를 별도로 먼저 확인한 뒤, 주변 유사 단지 비교를 검토합니다. 아래 숫자는 주변 단지 비교 참고값이며 가격 차이는 수익이 아닙니다.</p>${sameN?`<p class="fineprint">동일 단지 거래 확인된 주택형 ${sameN}개 · 세부 내용은 위 '동일 단지 실거래' 카드 참조</p>`:''}${rows||'<div class="notice warning">비교 가능한 주변 거래가 없어 가격 경쟁력 판단을 보류합니다.</div>'}${checks?`<div class="divider"></div><strong>다음에 확인할 증거</strong><ul class="bullet">${checks}</ul>`:''}<div class="warn">${esc(o.disclaimer||'')} 거래단지 연식·입지·특성·층·옵션, 취득세, 금융 비용 및 청약 자격을 확인하세요.</div></div>`;
-}
-function prioritySort(a,b){return v20Rank(b)-v20Rank(a)||(dayDiff(a.end)??999)-(dayDiff(b.end)??999);}
-function rightsCardReference(p){
- const o=p.opportunity||{};
- const verified=(o.rightsEvidence||[]).filter(x=>Number(x.referenceGapEok)>=2&&Number(x.referenceGapPct)>=10).sort((a,b)=>b.referenceGapEok-a.referenceGapEok);
- if(verified.length){const x=verified[0];return {label:'분양/입주권 신고 거래 참고',value:money(x.rightsMedianEok),detail:`${x.type}형 · 신고 ${x.transactionCount}건 · 단순 차이 +${money(x.referenceGapEok)} · 수익 미검증`};}
- const reported=(o.reportedRightsEvidence||[]).filter(x=>Number(x.referenceGapEok)>=2&&Number(x.referenceGapPct)>=10).sort((a,b)=>b.referenceGapEok-a.referenceGapEok);
- if(reported.length){const x=reported[0];return {label:'동일 단지 입주권 보도 사례 (공식 미검증)',value:money(x.reportedRightsEok),detail:`${x.type}형과 유사 면적대 · 단순 차이 +${money(x.referenceGapEok)} · 보도 출처 확인 필요`};}
- const early=(o.earlyPriceSignals||[]).filter(x=>Number(x.referenceGapEok)>=1.5&&Number(x.referenceGapPct)>=10).sort((a,b)=>Number(b.referenceGapEok)-Number(a.referenceGapEok));
- if(early.length){const x=early[0];return {label:'소수 거래 가격 신호 · 검토',value:money(x.referenceEok),detail:`${x.type}형 · ${x.sourceLabel||'공식 신고'} ${x.transactionCount}건 · 단순 차이 +${money(x.referenceGapEok)} · 수익 미검증`};}
- return referenceMarketInfo(p);
-}
-function cardPrivatePriceMemo(p){
- const notes=privatePriceRows(p).filter(x=>Number(x.price)>0).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
- if(!notes.length)return '';
- const n=notes[0];return `<div class="fineprint" style="padding:6px 0">🔎 직접 기록한 ${esc(n.source)} ${esc(n.category)} · ${esc(money(Number(n.price)))} · ${esc(n.date||'일자 미기재')} · 실거래 자동 검증 아님</div>`;
-}
-// v25: provider prices are ONLY independently verified records, never nearby public transactions.
-function supplyRange(p){
- const prices=(Array.isArray(p.housingTypes)?p.housingTypes:[]).map(x=>Number(x.priceEok)).filter(x=>Number.isFinite(x)&&x>0);
- const low=prices.length?Math.min(...prices):(Number(p.price)>0?Number(p.price):null);
- const high=prices.length?Math.max(...prices):(Number(p.price)>0?Number(p.price):null);
- return {low,high,label:low===null?'공급가 확인 필요':Math.abs(high-low)<.00001?money(low):`${money(low)} ~ ${money(high)}`,
-  description:prices.length?'주택형별 최고 공급금액의 최저~최고 (층별 최저가는 공고문 확인)':'대표 공급금액만 확인됨'};
-}
-function providerQuote(p,source){
- // Optional explicitly sourced and dated authorized feed; not populated by this collector.
- const feed=Array.isArray(p.privateMarketQuotes)?p.privateMarketQuotes:[];
- const allowed=feed.filter(x=>x&&x.source===source&&Number(x.priceEok)>0&&x.checkedAt&&x.kind&&x.evidenceUrl&&/^https:\/\//.test(x.evidenceUrl));
- const manual=privatePriceRows(p).filter(x=>x.source===source&&Number(x.price)>0&&x.date);
- const q=allowed.map(x=>({price:Number(x.priceEok),date:String(x.checkedAt),kind:String(x.kind),area:String(x.area||''),origin:String(x.origin||'공개 웹 조회 참고값'),url:x.evidenceUrl,range:Array.isArray(x.priceRangeEok)?x.priceRangeEok:null}))
-  .concat(manual.map(x=>({price:Number(x.price),date:String(x.date),kind:String(x.category||'가격 참고'),area:String(x.area||''),origin:'직접 기록',url:''})));
- q.sort((a,b)=>b.date.localeCompare(a.date));
- return q[0]||null;
-}
-function marketSearchUrl(p,source){
- const query=cleanProjectQuery(p)+' '+(source==='KB'?'KB부동산 시세':'네이버페이 부동산 시세');
- return 'https://search.naver.com/search.naver?query='+encodeURIComponent(query);
-}
-function providerCardGrid(p){
- return `<div class="provider-price-grid">${['네이버','KB'].map(source=>{
- const q=providerQuote(p,source),url=marketSearchUrl(p,source);
- return `<div class="provider-price"><div class="provider-name">${source==='네이버'?'네이버 매물 호가':'KB 제공 시세'}</div><b>${q?esc(q.range&&q.range.length===2?money(q.range[0])+' ~ '+money(q.range[1]):money(q.price)):'무료 자동조회 미확인'}</b><small>${q?esc(q.kind+' · '+q.origin+' · '+q.date+(q.area?' · '+q.area:'')):'무료 자동조회 미확인 · 단지 검색/접근 제한 또는 해당 면적 시세 없음'}</small><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${q?'시세 다시 확인 ↗':'시세 확인 ↗'}</a>${q?.url?`<a href="${esc(q.url)}" target="_blank" rel="noopener noreferrer">제공사 사이트 ↗</a>`:''}</div>`;
- }).join('')}</div>`;
-}
-function publicTradeHint(p){const r=rightsCardReference(p);return r.value==='비교 보류'||r.value==='분석 전'?'국토부 거래 근거 없음 · 상세에서 확인':`국토부 등 별도 가격 근거: ${r.value} · ${r.label}`;}
-function projectCard(p){let s=scheduleStatus(p);let b=saved.includes(p.id),range=supplyRange(p);return `<article class="card"><div class="project-head"><div class="project-icon" aria-hidden="true">🏙️</div><div class="project-main"><div class="flexbetween"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><button class="bookmark ${b?'active':''}" onclick="toggleSave('${esc(p.id)}')" aria-label="관심 공고 저장">${b?'★':'☆'}</button></div><h3>${esc(p.name)}</h3><div class="muted small">⌖ ${esc(p.district)}</div></div></div><div class="tagrow">${badgeFor(p)} <span class="status-chip">${esc(s.label)}</span><span class="status-chip ${budgetInfo(p).fits===false?'review':''}">${esc(budgetInfo(p).label)}</span>${isLottoCandidate(p)?`<span class="type">${lottoCandidateLevel(p)==='verified_comparison'?'가격 우위 정밀 검토':'로또 가능성 · 추가 검증'}</span>`:''}</div>${discoveryInfo(p)}<div class="v25-supply"><small>공식 공급가 범위</small><strong>${esc(range.label)}</strong><span>${esc(range.description)}</span></div>${providerCardGrid(p)}<div class="v25-trade-hint">📊 ${esc(publicTradeHint(p))} · 민간 시세와 별개</div><div class="row"><span class="meta">네이버 매물 호가·KB 제공 시세 무료 자동조회 시도 · 미확인 값은 표시하지 않음</span><button class="primary compact" onclick="openDetail('${esc(p.id)}')">자세히 ›</button></div></article>`}
 
-function statusBanner(){if(dataMode==='live'){let date=dataUpdated?new Date(dataUpdated):null;let stale=!date||isNaN(date)||Date.now()-date.getTime()>24*3600*1000||!!dataError;return `<div class="banner-head"><strong><span class="sync-dot ${stale?'':'ok'}"></span>${stale?'⚠ 갱신 지연·이전 자료':'실제 공고 데이터'}</strong><span>${esc(dataUpdated||'갱신 시각 미확인')}</span></div><div>${dataError?'업데이트 오류로 마지막 확인 자료를 표시합니다. 접수 일정은 청약홈에서 다시 확인하세요.':'공식 공고 기반 · 시세/자격 판정은 별도 검증 필요'}</div>`}return '<div class="banner-head"><strong>⚠ 공고 데이터 불러오기 실패</strong><span>확인 필요</span></div><div>확인되지 않은 가상 공고를 실제 청약 목록에 표시하지 않습니다. 네트워크 상태를 확인하고 청약홈에서 직접 접수 일정을 확인하세요.</div>'}
-// v9: prioritization is a review queue, never a profitability guarantee.
-function dashboardHtml(list){
- const reviews=dataMode==='live'?list.filter(p=>['priority_review','manual_review','same_complex_review','rights_trade_review','early_price_review'].includes(p.opportunity?.tier)).length:0;
- const unsold=dataMode==='live'?list.filter(noticeType).length:0;
- const cautions=dataMode==='live'?list.filter(p=>p.opportunity?.tier==='price_caution').length:0;
- const soon=dataMode==='live'?list.filter(p=>{let d=dayDiff(p.end);return d!==null&&d>=0&&d<=3}).length:0;
- const positioned=dataMode==='live'?list.filter(p=>p.referenceMarket?.locationConfirmed).length:0;
- return `<h2>🎯 기회 탐색 대시보드</h2><div class="dash-stats"><div class="dash-stat"><small>가격 비교 검토</small><b>${reviews}</b></div><div class="dash-stat"><small>무순위·재공급</small><b>${unsold}</b></div><div class="dash-stat"><small>3일 내 마감</small><b>${soon}</b></div></div><div class="quick-actions"><button onclick="jumpToOpportunity('추천 검토')">🔎 우선 검토</button><button onclick="jumpToOpportunity('무순위')">🎟️ 무순위</button><button onclick="jumpToOpportunity('전체')">📋 전체 공고</button><button onclick="jumpToOpportunity('가격 열위 주의')">⚠ 가격 열위 ${cautions}</button></div><p class="fineprint" style="margin:12px 0 0">위치가 확인된 공고 ${positioned}건 / 현재 목록 ${list.length}건 · 이 순위는 가격 우위의 검토 순서일 뿐 예상 수익·자격을 보장하지 않습니다.</p>`;
-}
-function jumpToOpportunity(f){filter=f;go('list');}
-function pricedTypes(p){return (Array.isArray(p.housingTypes)?p.housingTypes:[]).filter(t=>t&&Number.isFinite(Number(t.priceEok))&&Number(t.priceEok)>0)}
-function fundingSimulatorHtml(p){
- const types=pricedTypes(p);
- const opts=types.length?types.map((t,i)=>`<option value="${i}">${esc(String(t.type||'주택형'))} · ${esc(money(Number(t.priceEok)))}</option>`).join(''):`<option value="0">대표 분양가 · ${esc(money(p.price))}</option>`;
- const initialCash=profile.cash==='unknown'?1:Number(profile.cash);
- const cash=Number.isFinite(initialCash)?Math.min(30,Math.max(0,initialCash)):1;
- const initialLoan=profile.loanPercent==='unknown'?40:Number(profile.loanPercent);
- const loan=Number.isFinite(initialLoan)?Math.min(80,Math.max(0,initialLoan)):40;
- return `<div class="card"><strong>💰 주택형별 자금 계획 계산기</strong><p class="small muted">주택형을 고르고 현금·가정 대출 비율을 조절해 보세요. 값은 저장되지 않습니다.</p><label class="formlabel" for="simType" style="margin-top:12px">분양 주택형</label><select class="input" id="simType" onchange="updateFundingSimulator();updateV20Funding()">${opts}</select><div class="sim-label"><label for="simCash">내 현금</label><span id="simCashLabel"></span></div><input class="sim-range" type="range" id="simCash" min="0" max="30" step="0.5" value="${cash}" oninput="updateFundingSimulator()"><div class="sim-label"><label for="simLoan">가정 대출 비율</label><span id="simLoanLabel"></span></div><input class="sim-range" type="range" id="simLoan" min="0" max="80" step="5" value="${loan}" oninput="updateFundingSimulator()"><div class="sim-result" id="simResult" aria-live="polite"></div><p class="sim-note">실제 LTV·DSR·소득·대출 심사, 계약금/중도금 일정, 취득세·옵션·이자·거주의무는 반영하지 않은 단순 계산입니다. 실제 대출 한도가 이 비율보다 낮거나 불가능할 수 있습니다.</p></div>`;
-}
-function updateFundingSimulator(){
- const p=projects.find(x=>x.id===currentId);if(!p||!$('simResult'))return;
- const types=pricedTypes(p),index=Number($('simType').value);
- const price=types.length?Number(types[index]?.priceEok):p.price;
- const cash=Number($('simCash').value),loan=Number($('simLoan').value);
- $('simCashLabel').textContent=cash.toFixed(1)+'억';$('simLoanLabel').textContent=loan+'% (가정)';
- if(price===null||!Number.isFinite(Number(price))||Number(price)<=0){$('simResult').textContent='분양가 정보가 없어 계산할 수 없습니다.';return;}
- const need=Math.max(0,Number(price)*(1-loan/100)),gap=need-cash;
- const result=$('simResult');result.textContent='';
- const headline=document.createElement('strong');headline.textContent=gap>0?'가정상 부족 '+money(gap):'가정상 현금 범위 내';result.appendChild(headline);
- const desc=document.createElement('div');desc.textContent='분양가 '+money(Number(price))+' · 가정상 필요한 자기자금 '+money(need)+' · 입력 현금 '+money(cash);result.appendChild(desc);
-}
-function officialFactsHtml(p){
- const facts=p.officialFacts&&typeof p.officialFacts==='object'?Object.values(p.officialFacts).filter(x=>x&&x.label&&x.value):[];
- const cells=facts.map(x=>`<span class="muted">${esc(x.label)}</span><strong>${esc(x.value)}</strong>`).join('');
- return `<div class="card"><strong>📄 청약홈 공고에서 확보한 일정</strong>${cells?`<div class="facts" style="margin-top:14px">${cells}</div>`:'<p class="small muted">당첨자 발표·계약·입주 일정 정보는 API에서 확인되지 않았습니다.</p>'}<p class="fineprint">청약홈 API에 실제 값이 있는 필드만 표시합니다. 계약금 비율·전매제한·실거주의무는 이 화면에서 확인된 것으로 간주하지 않습니다. 공고문 원문을 반드시 검토하세요.</p></div>`;
-}
-function fundingStepsHtml(p){
- const models=pricedTypes(p);
- if(!models.length)return `<div class="card"><strong>💸 계약·잔금 대비</strong><p class="small muted">공식 분양가 미확인 · 공고문 확인이 먼저 필요합니다.</p></div>`;
- const low=Math.min(...models.map(m=>Number(m.priceEok)));
- const high=Math.max(...models.map(m=>Number(m.priceEok)));
- return `<div class="card"><strong>💸 자금 준비의 출발점</strong><p class="small muted">확인된 주택형 최고 공급금액의 범위: <b>${esc(money(low))} ~ ${esc(money(high))}</b></p><div class="facts"><span class="muted">10% 가정</span><strong>${esc(money(low*.1))} ~ ${esc(money(high*.1))}</strong><span class="muted">20% 가정</span><strong>${esc(money(low*.2))} ~ ${esc(money(high*.2))}</strong><span class="muted">잔여 금액</span><strong>공식 계약금·중도금·잔금 일정 확인 필요</strong></div><p class="fineprint">10%, 20%는 계약금 비율을 확인한 결과가 아닌 계산 예시입니다. 실제 납부 시기·비율, 대출 실행 시점·한도, 취득세·옵션·이자에 따라 필요한 현금은 달라집니다.</p></div>`;
-}
-function riskChecklistHtml(p){
- const issues=[];
- if(!p.requirements)issues.push('공고문 원문으로 무주택·거주지·세대주·재당첨·청약통장 자격 검증 필요');
- if(!p.marketComparable)issues.push('비교 단지 적합성·실제 거리 검증 전');
- if(!p.risk?.resale)issues.push('공고문 원문에서 전매제한 기간과 실거주의무 여부 확인 필요');
- if(p.risk?.depositPercent===undefined||p.risk?.depositPercent===null)issues.push('공식 계약금 비율·중도금·잔금 날짜 확인 필요');
- if(p.kind==='신혼희망타운'||p.kind==='공공분양')issues.push('공공공급 유형의 소득·자산·세대 요건 확인 필요');
- if(noticeType(p))issues.push('무순위·계약취소 유형별 거주지역·주택 소유·재당첨 요건 확인 필요');
- return `<div class="card"><strong>🛡️ 신청 전 확인 체크리스트</strong><ul class="op-risklist">${issues.map(x=>`<li>◻ ${esc(x)}</li>`).join('')||'<li>공식 공고문과 자금 계획을 최종 확인하세요.</li>'}</ul><p class="fineprint">자동 적합 판정이 아니라 확인할 항목의 목록입니다.</p></div>`;
-}
+def get_date(value):
+    if not value:
+        return ""
+    value = str(value)[:10]
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date().isoformat()
+    except ValueError:
+        return ""
 
-// v20: explicit review-order ranking, no inferred profit or guaranteed eligibility.
-function v20Rank(p){
- const r=p.reviewV20||{},s=scheduleStatus(p);
- let score=Number(r.reviewScore);
- if(!Number.isFinite(score))score=(noticeType(p)?15:0)+(isLottoCandidate(p)?10:0);
- // Past or missing deadlines cannot be treated as urgent future opportunities.
- if(s.phase==='closed')score-=100;
- return score;
-}
-function v20TopBoard(list){
- if(dataMode!=='live')return '<strong>🏆 우선 검토 TOP 5</strong><p class="small muted">실제 공고 연결 후 표시됩니다.</p>';
- const best=[...list].sort((a,b)=>v20Rank(b)-v20Rank(a)||(dayDiff(a.end)??999)-(dayDiff(b.end)??999)).slice(0,5);
- let html='<strong>🏆 오늘 먼저 확인할 공고 TOP 5</strong><p class="small muted">무순위·가격 신호·접수 일정·자료 신뢰도로 정렬한 검토 순서입니다. 예상 수익률이나 당첨 가능성 순위가 아닙니다.</p>';
- html+=best.map((p,i)=>`<button class="v20-toprow" onclick="openDetail('${esc(p.id)}')"><span>${i+1}위 · ${esc(p.name)}</span><small>${esc(noticeType(p)?'무순위·재공급 · ':'')}${esc(scheduleStatus(p).label)} · ${esc(p.opportunity?.tier==='rights_trade_review'?'분양/입주권 가격 신호':p.opportunity?.tier==='early_price_review'?'소수 거래 로또 조기 검토':(p.reviewV20||{}).evidenceLevel==='same_complex_apartment_sales'?'동일단지 거래':(p.reviewV20||{}).evidenceLevel==='distance_checked_apartment_sales'?'거리검증 거래':'가격 검증 대기')}</small></button>`).join('');
- return html||'<p class="muted">현재 후보가 없습니다.</p>';
-}
-function v20DocumentHtml(p){
- const n=p.noticeEvidence||{};
- const excerpts=Array.isArray(n.excerpts)?n.excerpts:[];
- const categories={eligibility:'신청 자격',resale:'전매제한',occupancy:'실거주 의무',payments:'계약·납부 일정',other:'기타'};
- const status=n.status==='reviewed_excerpts'?'발췌문 검토 표시됨':excerpts.length?'발췌문 검토 대기':'공고문 PDF 미확보';
- let html=`<div class="card"><strong>📄 공고문 근거 · 자격/전매/거주/납부</strong><p class="small muted">${esc(status)} · AI 추출만으로 적격 판정하지 않습니다.</p>`;
- if(n.sourceUrl&&/^https:\/\//.test(n.sourceUrl))html+=`<p><a href="${esc(n.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 원문 출처 열기 ↗</a></p>`;
- if(excerpts.length)html+=excerpts.map(x=>`<div class="v20-evidence"><b>${esc(categories[x.category]||'기타')} · ${esc(x.page)}쪽</b> <span class="muted">${x.reviewed?'사람 검토 표시':'추출 원문 · 확인 대기'}</span><p>${esc(x.text)}</p></div>`).join('');
- else html+='<p class="small muted">공식 API에는 공고문 PDF 원문이 항상 제공되지 않습니다. 출처가 검증된 PDF만 별도 추출·검토한 뒤 여기에 표시합니다.</p>';
- html+='<p class="fineprint">모집공고문 최신 정정사항·개별 세대 요건은 반드시 공식 공고에서 재확인하세요.</p></div>';
- return html;
-}
-function v20EvidenceHtml(p){
- const r=p.reviewV20||{},label={same_complex_apartment_sales:'동일 단지 매매 거래 있음',distance_checked_apartment_sales:'거리 확인 주변 매매 거래',unverified_local_reference:'거리 미확인 참고 거래',missing:'검증 가능한 거래 없음'}[r.evidenceLevel]||'검증 대기';
- return `<div class="card"><strong>📊 v20 가격 근거 품질</strong><div class="facts" style="margin-top:12px"><span class="muted">비교 자료</span><strong>${esc(label)}</strong><span class="muted">동일 단지 거래</span><strong>${esc(Number(r.sameComplexTradeCount)||0)}건</strong><span class="muted">주변 비교 거래</span><strong>${esc(Number(r.nearbyTradeCount)||0)}건</strong><span class="muted">로또 수익 검증</span><strong>미검증</strong></div><p class="small muted">${esc(r.evidenceReason||'자료 확인 필요')}</p><p class="fineprint">아파트 매매 거래와 분양권·입주권 거래는 서로 다릅니다. 동일 단지명이더라도 주소 확인 없이 비교하지 않습니다.</p></div>`;
-}
-function v20FundingHtml(p){
- return `<div class="card"><strong>💰 총 자금·추가비용 시나리오</strong><p class="small muted">주택형 최고 공급가 기준. 아래 계약금 비율·대출·취득세·옵션·이자 등은 모두 입력 가정이며 실제 계약 조건이 아닙니다.</p><div class="v20-grid"><label>계약금 가정(%)<input id="v20Deposit" type="number" min="0" max="100" step="5" value="10" oninput="updateV20Funding()"></label><label>대출 비율 가정(%)<input id="v20Loan" type="number" min="0" max="100" step="5" value="40" oninput="updateV20Funding()"></label><label>취득세 등 비용 가정(만원)<input id="v20Tax" type="number" min="0" max="200000" step="100" value="0" oninput="updateV20Funding()"></label><label>옵션·금융·이사비(만원)<input id="v20Other" type="number" min="0" max="200000" step="100" value="0" oninput="updateV20Funding()"></label></div><div id="v20FundingResult" class="sim-result" aria-live="polite"></div><p class="fineprint">DSR/LTV·중도금 대출·보증·실제 납부일·세금은 별도 확인. 여기의 대출 비율은 승인 가능액이 아닙니다.</p></div>`;
-}
-function updateV20Funding(){
- const p=projects.find(x=>x.id===currentId),el=$('v20FundingResult');if(!p||!el)return;
- const model=pricedTypes(p),idx=Number($('simType')?.value||0),p0=model.length?Number((model[idx]||model[0]).priceEok):Number(p.price);
- if(!Number.isFinite(p0)||p0<=0){el.textContent='분양가 확인 전';return;}
- const value=(id,max)=>{let n=Number($(id)?.value);return Number.isFinite(n)?Math.min(max,Math.max(0,n)):0};
- const dep=value('v20Deposit',100),loan=value('v20Loan',100),tax=value('v20Tax',200000)/10000,other=value('v20Other',200000)/10000;
- const down=p0*dep/100,borrow=p0*loan/100,own=Math.max(0,p0-borrow)+tax+other;
- // Deposit + financing mismatch is surfaced; never suggest loan is available at signing.
- el.textContent=`주택형 기준 ${money(p0)} · 초기 계약금 가정 ${money(down)} · 전체 자기자금 가정 ${money(own)} · 부대비용 가정 ${money(tax+other)}. 대출 실행 전 계약금 현금 확보가 별도로 필요합니다.`;
-}
-function renderHome(){let list=projects.filter(canSee).sort(prioritySort);$('homeSummary').textContent=`${profile.regions.join(' · ')} / ${profile.homes==='0'?'무주택':profile.homes+'주택'} / ${profile.residence} 거주 / ${profile.head==='yes'?'세대주':'세대원'} / ${profile.account==='yes'?'통장 보유':'통장 없음'} / 최대 ${profile.budget==='999'?'제한 없음':profile.budget+'억'}`;$('dataStatus').innerHTML=statusBanner();$('dataStatus').className='notice '+(dataMode==='live'?'success':'warning');$('opportunityDashboard').innerHTML=dashboardHtml(list);$('v20TopBoard').innerHTML=v20TopBoard(list);$('recommendations').innerHTML=list.length?list.slice(0,3).map(projectCard).join(''):'<div class="card empty">내 지역·예산에 맞는 후보가 없어요.<br>공고나 조건을 확인해 보세요.</div>';$('allCount').textContent=projects.length+'건';$('matchCount').textContent=list.length+'건';$('statsMode').textContent=dataMode==='live'?'공식 데이터':dataMode==='unavailable'?'연결 오류':'가상 데이터'}
-function chooseFilter(f){filter=f;renderList()}function toggleSavedFilter(){savedOnly=!savedOnly;renderList();showToast(savedOnly?'저장한 청약만 표시해요':'모든 청약을 표시해요')}
-function renderList(){const ff=['전체','내 예산','추천 검토','가격 열위 주의','서울','경기','인천','로또 후보','무순위','저장됨'];$('listFilters').innerHTML=ff.map(x=>`<button class="pill ${filter===x?'on':''}" onclick="chooseFilter('${x}')">${x}</button>`).join('');const q=$('search').value.trim().toLowerCase();let list=projects.filter(p=>(filter==='전체'||filter==='내 예산'||profile.regions.includes(p.region))&&(filter==='전체'||(filter==='내 예산'&&canSee(p))||p.region===filter||(filter==='추천 검토'&&['priority_review','manual_review','special_supply','same_complex_review','rights_trade_review','early_price_review'].includes(p.opportunity?.tier))||(filter==='가격 열위 주의'&&p.opportunity?.tier==='price_caution')||(filter==='무순위'&&noticeType(p))||(filter==='로또 후보'&&isLottoCandidate(p))||(filter==='저장됨'&&saved.includes(p.id)))&&(!savedOnly||saved.includes(p.id))&&`${p.name} ${p.district}`.toLowerCase().includes(q));const sort=$('sort').value;list.sort((a,b)=>filter==='추천 검토'||sort==='priority'?prioritySort(a,b):sort==='recent'?String(b.announce).localeCompare(String(a.announce)):sort==='name'?a.name.localeCompare(b.name,'ko'):scheduleStatus(a).order-scheduleStatus(b).order||scheduleStatus(a).d-scheduleStatus(b).d);$('resultCount').textContent=`${list.length}건 · 전체 수집 ${projects.length}건 · ${dataMode==='live'?'실제 공고':dataMode==='unavailable'?'연결 오류':'가상 데이터'} · 내 예산 필터에도 로또 검토 후보는 예외 표시`;$('listItems').innerHTML=list.length?list.map(projectCard).join(''):'<div class="card empty">해당 조건의 공고가 없어요.<br>지역·유형을 변경해 보세요.</div>'}
-function toggleSave(id){if(saved.includes(id))saved=saved.filter(x=>x!==id);else saved.push(id);persist(keys.saved,saved);queueCloudSave();renderHome();renderList();if(document.getElementById('detail').classList.contains('active'))openDetail(id);showToast(saved.includes(id)?'관심 공고에 저장했어요':'관심 공고에서 해제했어요')}
-// Show model-level prices independently from unverified market comparisons.
-function housingTypesHtml(p){
- const items=Array.isArray(p.housingTypes)?p.housingTypes.filter(x=>x&&typeof x==='object'&&Number.isFinite(Number(x.priceEok))&&Number(x.priceEok)>0):[];
- if(!items.length)return `<div class="card"><strong>🏠 주택형별 분양가</strong><p class="small muted">아직 주택형별 가격 자료가 없습니다. 공고문을 확인하세요.</p></div>`;
- const rows=items.map(x=>{
-  const model=String(x.type||x.modelNo||'주택형 미확인');
-  const exclusive=Number(x.exclusiveAreaSqm);
-  const modelAreaMatch=model.match(/^(\d{2,3})(?:\.\d+)?[A-Za-z]?$/);
-  const areaLabel=Number.isFinite(exclusive)&&exclusive>0
-   ?`${exclusive.toFixed(2).replace(/\.?0+$/,'')}㎡ (API)`
-   :modelAreaMatch?`${Number(modelAreaMatch[1])}㎡형 (주택형 표기)`:'미확인';
-  return `<tr><td style="padding:12px 8px;border-bottom:1px solid #edf0f5"><strong>${esc(model)}</strong></td><td style="padding:12px 8px;border-bottom:1px solid #edf0f5;color:#607189">${esc(areaLabel)}</td><td style="padding:12px 8px;border-bottom:1px solid #edf0f5;text-align:right;font-weight:800">${esc(money(Number(x.priceEok)))}</td></tr>`;
- }).join('');
- return `<div class="card"><strong>🏠 주택형별 분양가</strong><p class="small muted">청약홈 주택형별 최고 공급금액 기준</p><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;text-align:left;font-size:13px"><thead><tr style="color:#8793a4;font-size:11px"><th style="padding:10px 8px">주택형</th><th style="padding:10px 8px">면적 표기</th><th style="padding:10px 8px;text-align:right">최고 분양가</th></tr></thead><tbody>${rows}</tbody></table></div><p class="fineprint">면적에 (API)가 붙으면 확인된 전용면적이고, 55㎡형처럼 표시되면 주택형 코드에서 읽은 명목 면적입니다. 정확한 전용면적은 공고문에서 확인하세요. 대표 분양가는 주택형별 최고금액 중 최댓값이며 옵션·세금 등은 포함되지 않을 수 있습니다.</p></div>`;
-}
-// 수도권 전역: 주택형별 거래 후보를 묶어 보여줍니다. 시세/차익 판정은 보류합니다.
-// 실거래 거래행은 펼침/접힘이 아닌 일반 카드로 표시합니다.
-// 비교 단지의 적합성은 확정하지 않으며, 데이터가 없는 경우 빈 표를 만들지 않습니다.
-function tradePrice(row){const n=Number(row?.dealAmountManwon);return Number.isFinite(n)&&n>0?(n/10000).toFixed(2)+'억':'미확인'}
-function tradeEntry(row){
- const area=Number(row.exclusiveAreaSqm);
- return `<div style="padding:10px 0;border-bottom:1px solid #edf0f5"><div class="flexbetween"><strong style="font-size:13px">${esc(row.apartment||'단지명 미확인')}</strong><strong style="font-size:13px">${esc(tradePrice(row))}</strong></div><div class="fineprint">${esc(row.legalDong||'법정동 미확인')} · ${esc(row.dealDate||'거래일 미확인')} · ${Number.isFinite(area)?esc(area.toFixed(2))+'㎡':'면적 미확인'}${row.buildYear?' · '+esc(row.buildYear)+'년 준공':''}${row.floor?' · '+esc(row.floor)+'층':''}</div></div>`;
-}
-function tradeCandidatesHtml(p){
- const scan=p.transactionScan;
- if(!scan)return `<div class="card"><strong>🏘️ 주변 실거래 검토</strong><p class="small muted">자료 연결 전입니다.</p></div>`;
- if(scan.status==='not_scanned')return `<div class="card"><strong>🏘️ 주변 실거래 검토</strong><div class="warn">${esc(scan.reason||'시군구 코드를 확인하지 못했습니다.')}</div></div>`;
- const rows=Array.isArray(scan.candidateTransactions)?scan.candidateTransactions:[];
- const exploration=Array.isArray(scan.districtExplorationTransactions)?scan.districtExplorationTransactions:[];
- const sameCount=Number(scan.candidateCount)||0;
- const broaderCount=Number(scan.districtExplorationCount)||0;
- const types=Array.isArray(p.housingTypes)?p.housingTypes:[];
- let html=`<div class="card"><strong>🏘️ 실제 아파트 거래 내역</strong><p class="small muted">${esc((scan.months||[]).join(' · '))} · ${esc(scan.district||'')} 전체 ${Number(scan.transactionCount)||0}건</p><div class="notice">같은 법정동·유사 면적 거래 ${sameCount}건 / 다른 법정동 포함 탐색 후보 ${broaderCount}건<br>다른 법정동 거래는 실제 거리상 가까운 거래가 아닐 수도 있습니다.</div>`;
- if(!scan.legalDong)html+='<div class="warn">공고 주소에서 법정동을 확정하지 못해 같은 동 비교를 수행하지 않았습니다.</div>';
- if(!sameCount)html+='<p class="small muted">같은 동·유사 면적의 거래가 없습니다. 아래에서 같은 시군구의 탐색용 거래를 확인할 수 있습니다.</p>';
- let shown=0;
- for(const t of types){
-  const type=String(t.type||t.modelNo||'');if(!type)continue;
-  const filtered=rows.filter(x=>Array.isArray(x.matchingTypes)&&x.matchingTypes.includes(type));
-  if(!filtered.length)continue;
-  shown++;
-  html+=`<div style="margin-top:16px"><strong>${esc(type)}형 · 동일 법정동 ${filtered.length}건 표시</strong>${filtered.slice(0,8).map(tradeEntry).join('')}${filtered.length>8?'<p class="fineprint">최근 8건만 표시</p>':''}</div>`;
- }
- if(sameCount&&!shown)html+='<p class="small muted">최근 표본의 상세 거래 일부는 데이터 용량 제한으로 생략되었습니다.</p>';
- if(broaderCount){
-  html+=`<details style="margin-top:16px"><summary style="cursor:pointer;font-size:13px;font-weight:800">다른 법정동 포함 탐색용 거래 보기 (${broaderCount}건, 최대 12건 표시)</summary><p class="fineprint">같은 시군구일 뿐 실제 거리·입지 검증 전입니다. 시세 통계에 포함되지 않습니다.</p>${exploration.slice(0,12).map(tradeEntry).join('')}</details>`;
- }
- return html+'<div class="warn" style="margin-top:14px">자료의 거래금액은 실거래 신고 금액입니다. 이 거래가 청약 단지와 직접 비교 가능한지는 검증되지 않았으며, 예상 차익과 로또 판정에는 사용하지 않습니다.</div></div>';
-}
-function tradeStatisticsHtml(p){
- const scan=p.transactionScan;
- const groups=Array.isArray(scan?.typeStatistics)?scan.typeStatistics:[];
- if(!groups.length)return '';
- const format=x=>x===null||x===undefined||!Number.isFinite(Number(x))?'자료 없음':Number(x).toFixed(2)+'억';
- const count=x=>`${Number(x?.count)||0}건 · ${Number(x?.apartmentCount)||0}개 단지`;
- const rows=groups.map(x=>{
-  const a=x.all||{},b=x.builtSince2015||{},c=x.districtExploration||{};
-  const area=x.areaSqm===null||x.areaSqm===undefined?'미확인':Number(x.areaSqm).toFixed(2)+'㎡';
-  return `<div style="padding:14px 0;border-top:1px solid #edf0f5"><strong>${esc(x.type||'미확인')}형</strong><span class="muted small"> · ${x.areaSource==='api'?'전용면적 API':'주택형 표기 추정'} ${esc(area)}</span><div class="row2" style="margin-top:10px"><div class="guide-card" style="margin:0"><span class="small muted">같은 동 유사 면적</span><b style="display:block;margin-top:5px">${esc(format(a.medianEok))}</b><span class="fineprint">중앙값 · ${esc(count(a))}</span></div><div class="guide-card" style="margin:0"><span class="small muted">같은 동 2015년 이후 준공</span><b style="display:block;margin-top:5px">${esc(format(b.medianEok))}</b><span class="fineprint">중앙값 · ${esc(count(b))}</span></div></div><div class="fineprint" style="margin-top:8px">같은 동 범위 ${esc(format(a.minEok))} ~ ${esc(format(a.maxEok))} · 최근 거래 ${esc(a.latestDate||'없음')}</div><div class="fineprint">다른 법정동 포함(시군구 탐색): ${esc(count(c))} · 중앙값 ${esc(format(c.medianEok))} — <b>거리 미확인, 시세로 사용 금지</b></div>${(Number(b.count)||0)<3|| (Number(b.apartmentCount)||0)<2?'<div class="fineprint">2015년 이후 준공 비교 표본 부족</div>':''}</div>`;
- }).join('');
- return `<div class="card"><strong>📊 주택형별 실거래 통계</strong><p class="small muted">최근 ${Number(scan?.months?.length)||6}개월 계약월 · 면적 ±2㎡ · 법정동 구분</p>${rows}<div class="warn">통계의 중앙값은 신고된 거래의 중간값일 뿐 실제 주변 시세가 아닙니다. 거래 건수, 준공연도, 층, 위치, 규모·품질과 실측 면적을 검증하기 전에는 차익이나 투자 수익을 계산하지 않습니다.</div></div>`;
-}
 
-function realisticComparableHtml(p){
- const r=p.referenceMarket;
- if(dataMode!=='live'||!r)return '';
- const types=Array.isArray(r.byType)?r.byType:[];
- const panels=types.map(t=>{
-  const value=t.referencePriceEok===null||t.referencePriceEok===undefined?'비교 보류':money(Number(t.referencePriceEok));
-  const rows=(Array.isArray(t.apartmentComparisons)?t.apartmentComparisons:[]).map(x=>{
-    const km=x.distanceKm===null||x.distanceKm===undefined?'실제 거리 미확인':`${Number(x.distanceKm).toFixed(2)}km (직선거리)`;
-    return `<div style="border-top:1px solid #edf0f5;padding:10px 0"><div class="flexbetween"><strong>${esc(x.apartment||'단지 미확인')}</strong><strong>${esc(money(Number(x.medianEok)))}</strong></div><div class="fineprint">${esc(x.legalDong||'')} · ${esc(x.buildYear||'')}년 준공 · ${esc(x.areaSqm||'')}㎡ · ${esc(x.count||0)}건 · ${esc(km)} · 최근 ${esc(x.latestDate||'미확인')}</div></div>`;
-  }).join('');
-  return `<div style="padding:15px 0;border-top:1px solid #edf0f5"><div class="flexbetween"><strong>${esc(t.type||'주택형 미확인')}형</strong><strong>${esc(value)}</strong></div><p class="fineprint">${esc(t.scopeLabel||'비교 후보 없음')} · ${Number(t.complexCount)||0}개 단지 / ${Number(t.transactionCount)||0}건 · ${t.areaSource==='api'?'실측 면적(API)':'주택형 코드 기반 면적(추정)'}</p>${rows||'<p class="fineprint">조건에 맞는 신축 유사 면적 단지가 없습니다.</p>'}</div>`;
- }).join('');
- return `<div class="card"><strong>📍 현실성 강화 비교: 신축·면적·단지별 실거래</strong><div class="notice warning">시군구 전체 중앙값은 제외했습니다. 최근 6개월·2015년 이후 준공·전용면적 ±2㎡·2층 이상 거래만 포함합니다. 거래 1건도 위치·면적 확인 시 관측값으로 보여줍니다. 다만 단지 2곳·거래 5건 미만은 소수 거래로 별도 표시합니다.</div>${panels||'<p class="small muted">분석 자료 없음</p>'}<p class="fineprint">위치 확인 방식: ${esc(({parcel_address:'공고의 단일 지번으로 확인',exact_place_name:'카카오 장소명 정확 일치',district_unknown:'시군구 미확인',ambiguous_or_missing_place:'단지 위치 검색 결과가 없거나 모호함',api_key_missing:'지도 API 미연결',no_models:'주택형 미제공'})[r.locationMethod]||'주소 좌표 확인 전')} · 거래 단지 탐색 ${Number(r.candidateComplexesInspected)||0}/${Number(r.candidateComplexesTotal)||0}${r.comparisonCoverageLimited?' · 일부 단지는 탐색 한도 때문에 미검증':''}</p><div class="warn">거리 확인: ${r.distanceChecked?'카카오 좌표 기반 직선거리 확인된 후보가 있습니다.':'좌표 미확인 — 같은 법정동만 후보로 보입니다.'} 비교 결과는 감정평가 시세나 확정 예상 차익이 아닙니다. 청약 단지와 비교 아파트의 실제 상품성·규모·입지를 따로 확인해야 합니다.</div><p class="fineprint"><a href="https://new.land.naver.com/" target="_blank" rel="noopener noreferrer">네이버 부동산에서 매물·시세 직접 확인 ↗</a> · <a href="https://rt.molit.go.kr/" target="_blank" rel="noopener noreferrer">국토교통부 실거래가 확인 ↗</a></p></div>`;
-}
+def positive_number(value):
+    try:
+        if value is None or str(value).strip() in ("", "-"):
+            return None
+        number = float(str(value).replace(",", ""))
+        return number if 0 < number < float("inf") else None
+    except (ValueError, TypeError):
+        return None
 
-// v22: 공공 실거래를 기준으로 하고 민간 매물 호가는 참고용으로만 분리.
-// 네이버/KB 가격을 자동 수집하지 않으며, 사용자가 기록한 호가는 추천 점수/푸시에 사용하지 않음.
-const marketNotesKey='radar-market-notes-v22';
-function marketNotes(){try{const x=JSON.parse(localStorage.getItem(marketNotesKey)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(_e){return {}}}
-function cleanProjectQuery(p){return String(p.name||'').replace(/\([^)]*\)/g,' ').replace(/(공공분양주택|신혼희망타운|본청약|공공분양)/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
-function privatePriceRows(p){
- const note=marketNotes()[p.id];
- if(!note)return [];
- if(Array.isArray(note))return note.filter(x=>x&&typeof x==='object');
- if(Number(note.price)>0)return [{source:'네이버',category:'매물 호가',price:note.price,date:note.date||'',area:'',memo:'이전 버전에서 저장한 값'}];
- return [];
-}
-function layeredPriceEvidenceHtml(p){
- const o=p.opportunity||{};
- const reported=(o.reportedRightsEvidence||[]).filter(x=>Number(x.reportedRightsEok)>0);
- const rights=(o.rightsEvidence||[]).filter(x=>Number(x.rightsMedianEok)>0);
- const same=(p.sameComplexSales?.byType||[]).filter(x=>Number(x.medianEok)>0);
- const nearby=(p.referenceMarket?.byType||[]).filter(x=>Number(x.referencePriceEok)>0);
- const rows=[];
- for(const x of rights) rows.push({source:'국토부 분양·입주권 신고 · 단지명/면적 검토',price:x.rightsMedianEok,type:x.type,date:x.latestDate,count:x.transactionCount,link:''});
- for(const x of same) rows.push({source:'국토부 동일 단지 아파트 매매',price:x.medianEok,type:x.type,date:x.latestDate,count:x.transactionCount,link:''});
- for(const x of reported) rows.push({source:'언론 보도 입주권 거래 · 공식 API 미검증',price:x.reportedRightsEok,type:x.type,date:x.dealDate,count:'보도 1건',link:x.sourceUrl});
- for(const x of nearby) rows.push({source:x.smallSample?'주변 소수 거래 · 적정시세 미확정':'주변 유사 단지 매매 참고',price:x.referencePriceEok,type:x.type,date:x.latestComparisonDate,count:x.transactionCount,link:''});
- const memo=privatePriceRows(p).filter(x=>Number(x.price)>0);
- for(const x of memo)rows.push({source:`${x.source} ${x.category} · 직접 기록, 자동 검증 아님`,price:x.price,type:x.area||'주택형 확인 필요',date:x.date,count:'사용자 입력',link:''});
- if(!rows.length)return '';
- return `<div class="card"><strong>📊 가격 근거 한눈에 보기 · 서로 다른 가격은 별도 표시</strong><p class="fineprint">아래 숫자는 동일 기준의 시장가격이 아닙니다. 입주권 계약금액·추가분담금·층·주택형 차이를 반드시 확인하세요. 주변 단지 가격이 더 낮더라도 같은 단지의 신고·보도 사례를 숨기지 않습니다.</p>${rows.slice(0,18).map(x=>`<div style="padding:10px 0;border-top:1px solid #edf0f5"><div class="flexbetween"><span class="fineprint">${esc(x.source)}</span><strong>${esc(money(Number(x.price)))}</strong></div><div class="fineprint">${esc(x.type||'타입 미확인')} · ${esc(x.date||'거래일 미확인')} · ${esc(x.count||'표본 확인 필요')}${x.link&&/^https:\/\//.test(x.link)?` · <a href="${esc(x.link)}" target="_blank" rel="noopener noreferrer">근거 기사 ↗</a>`:''}</div></div>`).join('')}</div>`;
-}
-function priceDiscoveryHtml(p){
- const o=p.opportunity||{}, rows=Array.isArray(o.earlyPriceSignals)?o.earlyPriceSignals:[];
- if(!rows.length)return `<div class="card"><strong>🔭 소수 거래 조기 탐색</strong><p class="small muted">현재 가격 차이가 확인된 소수 공식 거래가 없습니다. 가격 경쟁력이 없다는 의미는 아닙니다.</p></div>`;
- return `<div class="card"><strong>🔭 소수 거래도 보여주는 로또 조기 탐색</strong><p class="fineprint">동일 단지·분양권·주변 비교는 각각 다른 시장입니다. 표본 1건도 노출하지만 적정 시세나 차익으로 확정하지 않습니다.</p>${rows.slice(0,8).map(x=>`<div style="padding:12px 0;border-top:1px solid #e7ebf2"><strong>${esc(x.type)}형 · ${esc(x.sourceLabel)}</strong><div class="facts" style="margin-top:8px"><span class="muted">공급가</span><strong>${esc(money(x.salePriceEok))}</strong><span class="muted">신고 거래 참고</span><strong>${esc(money(x.referenceEok))}</strong><span class="muted">단순 가격 차이</span><strong>+${esc(money(x.referenceGapEok))} (${esc(x.referenceGapPct)}%)</strong><span class="muted">거래 표본</span><strong>${esc(x.transactionCount)}건 · ${esc(x.latestDate||'최신일 미확인')}</strong></div><p class="fineprint">${x.transactionCount<=2?'⚠ 1~2건으로 시장 전체를 대표하지 않습니다. ':''} 거래 권리·층·추가분담금·취소 여부 및 정확한 타입을 확인하세요.</p></div>`).join('')}</div>`;
-}
-function independentPriceCheckHtml(p){
- const q=cleanProjectQuery(p),naverQuery=encodeURIComponent(q+' 네이버페이 부동산'),
-  kbQuery=encodeURIComponent(q+' KB부동산 시세'), notes=privatePriceRows(p);
- const prev=notes.map((x,i)=>`<div style="padding:10px 0;border-top:1px solid #e7ebf2"><div class="flexbetween"><strong>${esc(x.source)} · ${esc(x.category)}</strong><strong>${esc(money(x.price))}</strong></div><p class="fineprint">${esc(x.area||'주택형 미기록')} · 확인 ${esc(x.date||'날짜 미기록')} ${x.memo?'· '+esc(x.memo):''}</p><button class="secondary compact" onclick="removePrivatePrice(${i})">삭제</button></div>`).join('');
- return `<div class="card"><strong>🔍 다중 시세 교차 확인 · 국토부 / 네이버 / KB</strong>
- <p class="small muted">국토부의 신고 매매·분양권 거래는 자동 분석하고, 네이버 매물 호가와 KB 시세는 각각 확인해 기록할 수 있습니다. 민간 가격은 자동으로 가져오지 않으며, 추천 점수에 섞지 않습니다.</p>
- <div class="row2" style="margin-top:12px"><a class="secondary" style="text-align:center;text-decoration:none;padding:12px" href="https://search.naver.com/search.naver?query=${naverQuery}" target="_blank" rel="noopener noreferrer">네이버 단지 검색 ↗</a><a class="secondary" style="text-align:center;text-decoration:none;padding:12px" href="https://search.naver.com/search.naver?query=${kbQuery}" target="_blank" rel="noopener noreferrer">KB 시세 검색 ↗</a></div>
- <div class="row2" style="margin-top:8px"><a class="secondary" style="text-align:center;text-decoration:none;padding:12px" href="https://rt.molit.go.kr/" target="_blank" rel="noopener noreferrer">국토부 실거래 ↗</a><a class="secondary" style="text-align:center;text-decoration:none;padding:12px" href="https://kbland.kr/" target="_blank" rel="noopener noreferrer">KB부동산 ↗</a></div>
- <div class="divider"></div><strong>네이버·KB 확인 가격 추가</strong><p class="fineprint">입력한 내용은 이 기기에만 저장됩니다. 매물 호가·KB 일반 시세·실거래를 구분하고, 주택형 및 확인일을 남겨 주세요.</p>
- <label class="formlabel" for="privateSource">가격 출처</label><select id="privateSource" class="input"><option value="네이버">네이버부동산</option><option value="KB">KB부동산</option><option value="기타">기타 직접 확인</option></select>
- <label class="formlabel" for="privateCategory">가격 종류</label><select id="privateCategory" class="input"><option value="매물 호가">매물 호가 (실제 거래 아님)</option><option value="시세 참고">KB 등 시세 참고 (실제 거래 아님)</option><option value="거래 신고 확인">별도 확인한 거래 신고 (중복 확인 필요)</option></select>
- <label class="formlabel" for="privateArea">비교 주택형</label><input id="privateArea" class="input" maxlength="60" placeholder="예: 전용 84㎡ / 84A">
- <label class="formlabel" for="noteAskingPrice">확인 가격 (억원)</label><input id="noteAskingPrice" type="number" min="0.1" max="500" step="0.01" class="input" placeholder="예: 35">
- <label class="formlabel" for="privateMemo">거래 조건·층·확인 내용 (선택)</label><input id="privateMemo" class="input" maxlength="180" placeholder="예: 84A 중층 매물">
- <button class="secondary full" style="margin-top:8px" onclick="saveMarketNote()">가격 기록 추가</button>
- ${prev||'<p class="fineprint">아직 기록한 민간 시세가 없습니다.</p>'}
- <p class="fineprint">참고 가격은 실제 매매가격과 다를 수 있습니다. 수익 예측이나 서버 푸시 발송 조건에 반영되지 않습니다.</p></div>`;
-}
-function saveMarketNote(){
- const p=projects.find(x=>x.id===currentId);if(!p)return;
- const value=Number($('noteAskingPrice')?.value);
- if(!Number.isFinite(value)||value<0.1||value>500)return showToast('가격은 0.1~500억 사이로 입력하세요');
- const source=$('privateSource')?.value||'기타',category=$('privateCategory')?.value||'매물 호가';
- if(!['네이버','KB','기타'].includes(source)||!['매물 호가','시세 참고','거래 신고 확인'].includes(category))return showToast('출처와 가격 종류를 확인하세요');
- const rows=privatePriceRows(p);rows.push({source,category,price:value,area:String($('privateArea')?.value||'').slice(0,60),memo:String($('privateMemo')?.value||'').slice(0,180),date:new Date().toLocaleDateString('ko-KR')});
- const all=marketNotes();all[p.id]=rows.slice(-20);
- try{localStorage.setItem(marketNotesKey,JSON.stringify(all))}catch(_e){return showToast('기기 저장 공간 부족')}
- openDetail(p.id);showToast('시세 참고를 기록했어요');
-}
-function removePrivatePrice(index){
- const p=projects.find(x=>x.id===currentId);if(!p)return;
- const rows=privatePriceRows(p);if(index<0||index>=rows.length)return;
- rows.splice(index,1);const all=marketNotes();all[p.id]=rows;
- try{localStorage.setItem(marketNotesKey,JSON.stringify(all))}catch(_e){return showToast('삭제 저장 실패')}
- openDetail(p.id);showToast('기록을 삭제했어요');
-}
-function openDetail(id){currentId=id;const p=projects.find(x=>x.id===id);if(!p)return;let ev=evaluate(p),l=lottery(p),s=scheduleStatus(p),f=funding(p);let lines=[['지역',p.district],['공급 유형',p.kind],['분류 근거',p.kindBasis||'공고문 확인 필요'],['모집공고일',p.announce||'미확인'],['접수 시작',p.start||'미확인'],['접수 종료',p.end||'미확인'],['공고번호',p.notice||'미확인']];let facts=lines.map(([a,b])=>`<span class="muted">${esc(a)}</span><span>${esc(b)}</span>`).join('');let chips=ev.fails.map(x=>`<li style="color:#b84d50">✕ ${esc(x)}</li>`).join('')+ev.passes.map(x=>`<li>✓ ${esc(x)}</li>`).join('')+ev.unknown.map(x=>`<li>◌ ${esc(x)} · 공고 확인</li>`).join('');$('detailContent').innerHTML=`<div class="notice ${dataMode==='live'?'':'warning'}">${dataMode==='live'?'실제 공고 메타데이터 기반 · 최종 자격은 공고문 확인':'🧪 가상 공고 체험 화면입니다. 실제 신청할 수 없습니다.'}</div><div class="detail-hero"><div class="row"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><span style="font-size:36px">🏢</span></div><div><h2>${esc(p.name)}</h2><p>⌖ ${esc(p.district)} · ${esc(s.label)}</p></div></div><div class="card"><div class="flexbetween"><strong>기본 정보</strong><button class="bookmark ${saved.includes(p.id)?'active':''}" onclick="toggleSave('${esc(p.id)}')">${saved.includes(p.id)?'★':'☆'}</button></div><div class="divider"></div><div class="facts">${facts}</div></div>${discoveryInfo(p)}<div class="card"><strong>🏷️ 네이버·KB 시세 한눈에 보기</strong><p class="fineprint">무료 자동조회 결과는 네이버 매물 호가와 네이버 경유 KB 제공 시세를 구분합니다. 조회 실패 시 표시하지 않으며 직접 확인한 가격을 저장할 수도 있습니다.</p>${providerCardGrid(p)}<p class="fineprint">${esc(supplyRange(p).description)}</p></div>${rightsOpportunityHtml(p)}${opportunityDetailHtml(p)}${sameComplexHtml(p)}<div class="card"><strong>📈 로또 청약 가격 비교 · 근거 종류별 확인</strong><div class="metrics"><div><small class="muted">공식 공급가 범위</small><b>${esc(supplyRange(p).label)}</b></div><div><small class="muted">${esc(rightsCardReference(p).label)}</small><b>${esc(rightsCardReference(p).value)}</b></div></div><div class="tagrow"><span class="status-chip ${l.score!==null&&l.score>=15?'good':'review'}">${esc(l.label)}</span></div><p class="small muted">${esc(l.reason)}</p><p class="fineprint">비교 적합성: ${p.marketComparable===true?"비교 검토 표시됨":"확인 전"} · 실거래가 출처와 거래 날짜를 확인하세요.</p><div class="fineprint">${dataMode==='live'?'선택된 가격 근거: '+esc(rightsCardReference(p).detail)+' · <b>근거 제한 / 예상 차익 아님</b>':'시세 출처: '+esc(p.marketSource||'연결 전')}</div><div class="warn">단순 가격 비교는 투자 수익이나 당첨 가능성을 보장하지 않습니다. 전매제한·거주의무·대출·세금·자금 마련 가능성도 확인하세요.</div></div>${housingTypesHtml(p)}${realisticComparableHtml(p)}${tradeStatisticsHtml(p)}${tradeCandidatesHtml(p)}<div class="card"><strong>💳 자금 계획 시뮬레이션</strong><p class="small muted">실제 대출 승인액·취득세·중도금 일정은 반영되지 않는 단순 가정입니다.</p><div class="facts"><span class="muted">계약금 추정</span><strong>${f.deposit===null?'공고 확인 필요':esc(money(f.deposit))}</strong><span class="muted">가정 대출 비율</span><strong>${f.loan===null?'미입력':f.loan+'%'}</strong><span class="muted">필요 자기자금 가정</span><strong>${f.estimated===null?'조건에서 설정':esc(money(f.estimated))}</strong><span class="muted">입력한 현금</span><strong>${f.cash===null?'미입력':esc(money(f.cash))}</strong></div><div class="tagrow"><span class="status-chip ${f.verdict==='가정상 현금 부족'?'bad':'review'}">${esc(f.verdict)}</span></div><div class="warn">※ 대출 가능 여부는 DSR·LTV·소득·규제·금융기관 심사에 따라 달라집니다. 실제 필요한 금액은 취득세, 옵션, 이자 및 이사비 등을 더해 따로 확인하세요.</div></div><div class="card"><strong>🏠 전매·거주 및 위험 확인</strong><div class="facts" style="margin-top:14px"><span class="muted">전매제한</span><strong>${esc(f.risks.resale||'공고문 확인 필요')}</strong><span class="muted">실거주의무</span><strong>${esc(f.risks.occupancy||'공고문 확인 필요')}</strong><span class="muted">세금·부대비용</span><strong>${esc(f.risks.extraCosts||'별도 확인 필요')}</strong></div><p class="fineprint">로또 후보는 단순 가격 차이를 뜻하며, 수익률·투자 추천이나 당첨 가능성을 보증하지 않습니다.</p></div><div class="card"><div class="flexbetween"><strong>🛡 신청 자격 점검</strong>${badgeFor(p)}</div><ul class="bullet">${chips}</ul><p class="fineprint">확인 가능한 입력값과 공고의 명시적 규칙만 비교합니다. 공고문 세부 조건을 확인하기 전에는 신청 가능으로 확정하지 않습니다.</p></div><div class="card"><strong>📅 청약 일정</strong><p class="small muted">${esc(p.start||'시작일 미확인')} ~ ${esc(p.end||'종료일 미확인')} · ${esc(s.label)}</p><div class="warn">⚠ 최종 모집공고문으로 자격·가격·접수일을 확인하세요.</div></div><button class="primary full" onclick="openOfficial()">${dataMode==='live'?'청약홈에서 공식 공고 확인':'청약홈 홈페이지 열기'} ↗</button>`; $('detailContent').insertAdjacentHTML('beforeend',officialFactsHtml(p)+fundingStepsHtml(p)+fundingSimulatorHtml(p)+riskChecklistHtml(p));updateFundingSimulator();$('detailContent').insertAdjacentHTML('beforeend',v20EvidenceHtml(p)+v20DocumentHtml(p)+v20FundingHtml(p)+layeredPriceEvidenceHtml(p)+priceDiscoveryHtml(p)+independentPriceCheckHtml(p));updateV20Funding();go('detail')}
-function openOfficial(){let p=projects.find(x=>x.id===currentId);if(!p)return;window.open(p.officialUrl||'https://www.applyhome.co.kr/','_blank','noopener,noreferrer')}
-function shareCurrent(){let p=projects.find(x=>x.id===currentId);if(!p)return;let t=`청약레이더 ${dataMode==='live'?'공고':'가상 예시'}: ${p.name} / ${p.kind} / ${p.district}. 접수종료 ${p.end||'미확인'}. ${p.officialUrl||'https://www.applyhome.co.kr/'}`;if(navigator.share)navigator.share({text:t,title:'청약레이더'}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>showToast('정보를 복사했어요')).catch(()=>showToast('복사 실패'));else showToast('공유 기능을 지원하지 않는 환경이에요')}
-function fillProfile(){$('regionChecks').innerHTML=['서울','경기','인천'].map(x=>`<button class="check ${profile.regions.includes(x)?'on':''}" onclick="toggleRegion('${x}')">${x}</button>`).join('');Object.keys(defaultProfile).filter(x=>x!=='regions').forEach(x=>{if($(x))$(x).value=profile[x]??defaultProfile[x]});updateAccountUI()}
-function toggleRegion(r){let set=new Set(profile.regions);if(set.has(r))set.delete(r);else set.add(r);profile.regions=[...set];fillProfile()}
-function updateAccountUI(){$('yearsWrap').classList.toggle('hidden',$('account').value==='no')}
-function saveProfile(){if(!profile.regions.length)return showToast('관심 지역을 선택해 주세요');Object.keys(defaultProfile).filter(x=>x!=='regions').forEach(x=>profile[x]=$(x).value);persist(keys.profile,profile);queueCloudSave();renderHome();go('home');showToast(cloudUser?'내 계정에 조건을 저장하고 있어요':'이 기기에 내 조건을 저장했어요')}
-function toggleAlert(k){settings[k]=!settings[k];persist(keys.settings,settings);queueCloudSave();renderAlerts()}
-function renderAlerts(){[['lotto','toggleLotto'],['unsold','toggleUnsold'],['deadline','toggleDeadline']].forEach(([k,id])=>{$(id).classList.toggle('on',settings[k]);$(id).setAttribute('aria-pressed',String(settings[k]))});$('inbox').innerHTML=inbox.length?inbox.slice(0,40).map((n,i)=>`<div class="alertitem" onclick="openAlert(${i})"><span class="circle">${['deadline','start'].includes(n.kind)?'⏳':'🔔'}</span><div><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p><span class="muted small">${esc(n.time)} · ${n.read?'읽음':'새 알림'}</span></div></div>`).join(''):'<div class="empty">아직 새로운 알림이 없어요.<br>실제 공고가 갱신되면 앱 내 알림이 기록됩니다.</div>'}
-function clearInbox(){inbox=inbox.map(n=>({...n,read:true}));persist(keys.inbox,inbox);renderAlerts();showToast('알림을 모두 읽음 처리했어요')}
-function openAlert(i){let item=inbox[i];if(!item)return;item.read=true;persist(keys.inbox,inbox);let p=projects.find(x=>x.id===item.id);if(p)openDetail(p.id);else renderAlerts()}
-function addInbox(n){inbox=[{...n,time:new Date().toLocaleString('ko-KR'),read:false},...inbox].slice(0,70);persist(keys.inbox,inbox)}
-function exportSettings(){let blob=new Blob([JSON.stringify({version:3,profile,settings,saved},null,2)],{type:'application/json'});let u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='cheongyak-radar-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
-async function importSettings(event){try{let f=event.target.files?.[0];if(!f)return;if(f.size>100000)throw Error('파일이 너무 큽니다');let obj=JSON.parse(await f.text());if(obj.version!==3||!obj.profile||!Array.isArray(obj.profile.regions))throw Error('올바른 v3 설정 파일이 아닙니다');let rg=obj.profile.regions.filter(validRegion);if(!rg.length)throw Error('유효한 관심 지역이 없습니다');profile={...defaultProfile,...Object.fromEntries(Object.keys(defaultProfile).filter(x=>x!=='regions'&&typeof obj.profile[x]==='string').map(x=>[x,obj.profile[x]])),regions:rg};settings={...defaultSettings,...Object.fromEntries(Object.keys(defaultSettings).filter(x=>typeof obj.settings?.[x]==='boolean').map(x=>[x,obj.settings[x]]))};saved=Array.isArray(obj.saved)?obj.saved.filter(x=>typeof x==='string').slice(0,500):[];persist(keys.profile,profile);persist(keys.settings,settings);persist(keys.saved,saved);queueCloudSave();fillProfile();renderHome();renderList();showToast('설정을 가져왔어요')}catch(e){showToast('가져오기 실패: '+e.message)}finally{event.target.value=''}}
-async function testNotice(){if(!('Notification'in window))return showToast('이 브라우저는 알림을 지원하지 않습니다');if(!window.isSecureContext)return showToast('HTTPS에서 알림 테스트가 가능합니다');try{const permission=await Notification.requestPermission();if(permission!=='granted')return showToast('알림 권한을 허용해 주세요');if('serviceWorker'in navigator){let reg=await navigator.serviceWorker.ready;await reg.showNotification('청약레이더 알림 테스트',{body:'테스트 성공! 기기 알림 표시 테스트입니다.',icon:'./icon-192.png'})}else new Notification('청약레이더 알림 테스트',{body:'기기 알림 표시 테스트입니다.'});showToast('테스트 알림을 보냈어요')}catch(e){showToast('알림 테스트 실패 · 기기 설정을 확인하세요')}}
-function installApp(){if(installPrompt){installPrompt.prompt();installPrompt=null}else showToast('브라우저의 홈 화면에 추가 메뉴를 사용하세요')}
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e});
-function processNewData(next){
- if(dataMode!=='live')return;
- const ids=next.map(x=>x.id).sort(),hash=ids.join('|'),previous=known.hash;
- const signals=Object.fromEntries(next.map(p=>[p.id,lottoCandidateLevel(p)||'none']));
- if(previous&&Array.isArray(known.ids)){
-  const old=new Set(known.ids);
-  for(const p of next){
-   if(!canSee(p)||evaluate(p).fails.length)continue;
-   if(!old.has(p.id)){
-    if((noticeType(p)&&settings.unsold)||(isLottoCandidate(p)&&settings.lotto))
-     addInbox({kind:'new',id:p.id,marker:'new-'+p.id,title:'새로운 청약 후보: '+p.name,body:p.kind+' · '+p.district+' · 청약 자격 및 가격 확인 필요'});
-   }else if(known.signals&&settings.lotto&&signals[p.id]!=='none'&&signals[p.id]!==known.signals[p.id]){
-    const marker='signal-'+p.id+'-'+signals[p.id];
-    if(!inbox.some(x=>x.marker===marker))
-     addInbox({kind:'signal',id:p.id,marker,title:'가격 검토 신호 변경: '+p.name,body:'비교 근거가 업데이트됐습니다. 수익 확정이 아닌 추가 검토 대상입니다.'});
-   }
-  }
- }
- known={hash,ids,signals};persist(keys.known,known);
-}
-function deadlineAlerts(){
- if(dataMode!=='live'||!settings.deadline)return;
- const today=addDays(0);
- for(const p of projects){
-  if(!canSee(p)||evaluate(p).fails.length)continue;
-  const events=[
-   {when:dayDiff(p.start)===1,code:'start',title:'내일 접수 시작: '},
-   {when:dayDiff(p.end)===1,code:'deadline',title:'내일 접수 마감: '}
-  ];
-  for(const event of events){
-   if(!event.when)continue;
-   const marker=event.code+'-'+p.id+'-'+today;
-   if(inbox.some(x=>x.marker===marker))continue;
-   addInbox({kind:event.code,id:p.id,marker,title:event.title+p.name,body:p.district+' · 공식 공고문에서 접수 시간·자격 확인'});
-  }
- }
-}
-async function refreshLive(manual=false){
- try{
-  const response=await fetch('./data.json?ts='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw Error('데이터 파일 없음');
-  const payload=await response.json();
-  if(payload.error)throw Error('수집 실패');
-  if(!payload.updated_at||!Array.isArray(payload.projects)||!payload.projects.length)throw Error('공고 데이터 없음');
-  const checked=payload.projects.map(normalize).filter(Boolean);
-  if(!checked.length)throw Error('표시할 실제 공고 없음');
-  dataMode='live';dataUpdated=payload.updated_at;analysisQuality=payload.analysisQuality||null;
-  projects=checked;dataError='';
-  // 마지막 정상 수집본만 기기에 저장. 네트워크 장애 시 가상 공고로 대체하지 않음.
-  try{localStorage.setItem('radar-last-valid-live-v1',JSON.stringify(payload))}catch(_error){}
-  processNewData(projects);deadlineAlerts();
-  if(manual)showToast('실제 공고를 갱신했어요');
- }catch(error){
-  dataError=String(error?.message||'네트워크 오류');
-  let cached=null;
-  try{cached=JSON.parse(localStorage.getItem('radar-last-valid-live-v1')||'null')}catch(_error){}
-  if(cached&&cached.updated_at&&Array.isArray(cached.projects)&&cached.projects.length){
-   const checked=cached.projects.map(normalize).filter(Boolean);
-   if(checked.length){dataMode='live';dataUpdated=cached.updated_at;analysisQuality=cached.analysisQuality||null;projects=checked;}
-   else{dataMode='unavailable';projects=[];dataUpdated='';analysisQuality=null;}
-  }else{dataMode='unavailable';projects=[];dataUpdated='';analysisQuality=null;}
-  // 오류 상태에서는 신규/마감 알림을 만들지 않음.
-  if(manual)showToast('갱신 실패 · 이전 자료 또는 오류 안내를 표시합니다');
- }
- renderHome();renderList();renderAlerts();
-}
-// v4: friends login & secure cloud-backed settings. Public configuration is in config.js.
-const cloudConfig=window.RADAR_CONFIG||{};
-const cloudEnabled=!!(cloudConfig.supabaseUrl&&cloudConfig.supabaseAnonKey&&window.supabase);
-const radarCloud=cloudEnabled?window.supabase.createClient(cloudConfig.supabaseUrl,cloudConfig.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
-let cloudUser=null;
-let cloudHydrating=false;
-let cloudInitComplete=false;
-function cloudStatus(message){if($('cloudState'))$('cloudState').textContent=message}
-async function initCloud(){
- if(!radarCloud){cloudStatus('설정 전');$('cloudInfo').textContent='config.js에서 Supabase 주소와 공개 키를 설정해야 로그인할 수 있어요.';return}
- const {data,error}=await radarCloud.auth.getUser();if(error&&error.name!=='AuthSessionMissingError')console.warn('로그인 확인',error.message);
- await onCloudUser(data?.user||null);
- radarCloud.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>onCloudUser(session?.user||null),0)});
-}
-async function onCloudUser(user){
- if(cloudHydrating)return;
- if(cloudInitComplete && cloudUser?.id===user?.id)return;
- cloudHydrating=true;
- try{
-  const cloudUserBeforeSwitch=cloudUser?.id;
-  cloudUser=user;
-  $('signedIn').classList.toggle('hidden',!user);$('signedOut').classList.toggle('hidden',!!user);
-  $('accountEmail').textContent=user?.email||'';
-  cloudStatus(user?'로그인됨':'로그인 필요');
-  $('cloudInfo').textContent=user?'내 조건과 알림 설정은 로그인 계정에 연결됩니다.':'이 기기만 사용하거나 이메일로 로그인할 수 있어요.';
-  $('storageNotice').textContent=user?'🔒 조건을 저장하면 Supabase 계정에 동기화됩니다. 접근 제한은 서버 정책(RLS)으로 관리됩니다.':'⚠ 로그인 전의 설정은 이 기기에만 저장됩니다.';
-  // Clear prior signed-in user's cache on sign-out/account switch; retain guest settings.
-  if(cloudUserBeforeSwitch && cloudUserBeforeSwitch!==user?.id){profile=structuredClone(defaultProfile);settings={...defaultSettings};saved=[];}
-  if(user){
-   const {data,error}=await radarCloud.from('user_preferences').select('profile,settings,saved').eq('user_id',user.id).maybeSingle();
-   if(error){showToast('클라우드 불러오기 실패: '+error.message)}
-   else if(data){
-    if(data.profile&&Array.isArray(data.profile.regions)){const available=data.profile.regions.filter(validRegion);profile={...defaultProfile,...data.profile,regions:available.length?available:[...defaultProfile.regions]}}
-    if(data.settings)settings={...defaultSettings,...data.settings};
-    if(Array.isArray(data.saved))saved=data.saved.filter(x=>typeof x==='string').slice(0,500);
-   }
-  }
-  persist(keys.profile,profile);persist(keys.settings,settings);persist(keys.saved,saved);
-  fillProfile();renderHome();renderList();renderAlerts();await updatePushState();
- }finally{cloudHydrating=false;cloudInitComplete=true}
-}
-async function sendLoginLink(){
- if(!radarCloud)return showToast('먼저 config.js에서 Supabase를 연결해 주세요');
- const email=$('loginEmail').value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return showToast('올바른 이메일을 입력해 주세요');
- const {error}=await radarCloud.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname}});
- showToast(error?'로그인 이메일 실패: '+error.message:'이메일로 로그인 링크를 보냈어요');
-}
-async function signOutRadar(){if(!radarCloud)return;await radarCloud.auth.signOut();await onCloudUser(null);showToast('로그아웃했습니다')}
-let cloudWriteQueue=Promise.resolve();
-function queueCloudSave(){
- if(!radarCloud||!cloudUser||cloudHydrating)return;
- const record={user_id:cloudUser.id,profile:JSON.parse(JSON.stringify(profile)),settings:{...settings},saved:[...saved],updated_at:new Date().toISOString()};
- cloudWriteQueue=cloudWriteQueue.catch(()=>{}).then(async()=>{
-  const {error}=await radarCloud.from('user_preferences').upsert(record,{onConflict:'user_id'});
-  if(error)showToast('클라우드 저장 실패: '+error.message);
- });
-}
-function uint8FromBase64URL(base64){const padding='='.repeat((4-base64.length%4)%4);const b=atob((base64+padding).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(b,c=>c.charCodeAt(0))}
-async function updatePushState(){
- if(!$('pushState'))return;
- if(!cloudUser||!cloudConfig.vapidPublicKey){$('pushState').textContent=cloudUser?'푸시 키 설정 필요':'로그인 필요';return}
- if(!('serviceWorker'in navigator)||!('PushManager'in window)){ $('pushState').textContent='미지원 기기';return }
- try{const r=await navigator.serviceWorker.ready;const sub=await r.pushManager.getSubscription();$('pushState').textContent=sub?'기기 구독됨':'수신 꺼짐'}catch(e){$('pushState').textContent='확인 실패'}
-}
-async function enableRadarPush(){
- if(!cloudUser)return showToast('먼저 이메일로 로그인해 주세요');
- if(!cloudConfig.vapidPublicKey)return showToast('config.js에 VAPID 공개 키를 설정해 주세요');
- if(!window.isSecureContext||!('serviceWorker'in navigator)||!('PushManager'in window))return showToast('HTTPS의 지원 브라우저에서 설치 후 사용해 주세요');
- try{
-  if((await Notification.requestPermission())!=='granted')return showToast('알림 권한을 허용해야 합니다');
-  const reg=await navigator.serviceWorker.ready;
-  let sub=await reg.pushManager.getSubscription();
-  if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:uint8FromBase64URL(cloudConfig.vapidPublicKey)});
-  const data=sub.toJSON();
-  const {error}=await radarCloud.from('push_subscriptions').upsert({user_id:cloudUser.id,endpoint:data.endpoint,p256dh:data.keys.p256dh,auth:data.keys.auth,updated_at:new Date().toISOString()},{onConflict:'user_id,endpoint'});
-  if(error)throw error;
-  await updatePushState();showToast('이 기기의 푸시 구독을 저장했어요');
- }catch(e){showToast('푸시 연결 실패: '+(e.message||'기기 설정을 확인하세요'))}
-}
-async function disableRadarPush(){
- if(!('serviceWorker'in navigator))return showToast('기기 푸시를 지원하지 않아요');
- try{
-  let reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();
-  if(sub){if(radarCloud&&cloudUser){const {error}=await radarCloud.from('push_subscriptions').delete().eq('user_id',cloudUser.id).eq('endpoint',sub.endpoint);if(error)throw error}await sub.unsubscribe()}
-  await updatePushState();showToast('이 기기 푸시를 해제했어요');
- }catch(e){showToast('해제 실패: '+e.message)}
+
+def fetch_region(session, key, region):
+    results = []
+    page = 1
+    while True:
+        response = session.get(
+            API_URL,
+            params={
+                "serviceKey": key,
+                "page": page,
+                "perPage": PAGE_SIZE,
+                "returnType": "JSON",
+                "cond[SUBSCRPT_AREA_CODE_NM::EQ]": region,
+            },
+            timeout=40,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        rows = payload.get("data")
+        if not isinstance(rows, list):
+            raise RuntimeError(f"{region}: API response has no data list")
+        total = int(payload.get("matchCount") or 0)
+        results.extend(rows)
+        print(f"{region}: page={page}, received={len(rows)}, total={total}")
+        if not rows or len(results) >= total:
+            break
+        page += 1
+    return results
+
+
+def classify_supply(row):
+    """확인 가능한 청약홈 코드/명칭을 우선 사용하고 자격은 추론하지 않습니다."""
+    name = str(row.get("HOUSE_NM") or "")
+    house_type = str(row.get("HOUSE_SECD_NM") or "")
+    detail_type = str(row.get("HOUSE_DTL_SECD_NM") or "")
+    if "신혼희망타운" in house_type or "신혼희망타운" in name:
+        return "신혼희망타운", "청약홈 주택구분/단지명", detail_type
+    if "공공분양" in name or "공공분양주택" in name:
+        return "공공분양", "공고 명칭(공고문 검증 필요)", detail_type
+    if detail_type == "국민":
+        return "국민주택", "청약홈 주택구분(국민)", detail_type
+    if detail_type == "민영":
+        return "민영주택", "청약홈 주택구분(민영)", detail_type
+    return "공급유형 확인 필요", "미확인", detail_type
+
+
+def fetch_remaining(session, key):
+    """청약홈 무순위·잔여세대 전용 공고 전체 페이지 조회.
+
+    해당 엔드포인트의 접수일 필드가 APT와 다르므로 별도 처리.
+    오류가 나면 정상인 것처럼 0건으로 넘기지 않고 업데이트를 중단합니다.
+    """
+    results = []
+    page = 1
+    while True:
+        response = session.get(
+            API_BASE + "getRemndrLttotPblancDetail",
+            params={"serviceKey": key, "page": page, "perPage": PAGE_SIZE, "returnType": "JSON"},
+            timeout=40,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        rows = payload.get("data")
+        if not isinstance(rows, list):
+            raise RuntimeError("무순위 API 응답에 data 목록이 없습니다. 이전 data.json 유지")
+        total = int(payload.get("matchCount") or 0)
+        results.extend(rows)
+        print(f"무순위 API: page={page}, received={len(rows)}, total={total}")
+        if not rows or len(results) >= total:
+            break
+        page += 1
+    return results
+
+
+def official_facts(row):
+    """Only echo explicit public API fields; unknown means unknown, not no restriction."""
+    names = {
+        "RCRIT_PBLANC_DE": "모집공고일",
+        "PRZWNER_PRESNATN_DE": "당첨자 발표일",
+        "CNTRCT_CNCLS_BGNDE": "계약 시작일",
+        "CNTRCT_CNCLS_ENDDE": "계약 종료일",
+        "MVN_PREARNGE_YM": "입주 예정월",
+    }
+    fields = {}
+    for key, label in names.items():
+        value = str(row.get(key) or "").strip()
+        if not value or value in ("-", "null", "None"):
+            continue
+        if len(value) > 100:
+            continue
+        fields[key] = {"label": label, "value": value, "source": "청약홈 공고 API"}
+    return fields
+
+
+def verification_status(project):
+    """Unknown restrictions/eligibility must never be interpreted as unrestricted."""
+    return {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증.",
+    }
+
+
+def convert_remaining(row, today):
+    region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
+    name = str(row.get("HOUSE_NM") or "").strip()
+    # 일부 공고는 특별공급/일반공급 필드만 있고 접수일이 비어 있을 수 있습니다.
+    start = get_date(row.get("SUBSCRPT_RCEPT_BGNDE") or row.get("RCEPT_BGNDE")
+                     or row.get("GNRL_RCEPT_BGNDE"))
+    end = get_date(row.get("SUBSCRPT_RCEPT_ENDDE") or row.get("RCEPT_ENDDE")
+                   or row.get("GNRL_RCEPT_ENDDE"))
+    if region not in REGIONS or not name or not start or not end or end < today:
+        return None
+    house_no = str(row.get("HOUSE_MANAGE_NO") or "").strip()
+    notice_no = str(row.get("PBLANC_NO") or "").strip()
+    if not house_no or not notice_no:
+        return None
+    raw_type = " ".join(str(row.get(k) or "") for k in
+                        ("HOUSE_SECD_NM", "HOUSE_DTL_SECD_NM", "RCRIT_PBLANC_NM", "HOUSE_NM"))
+    kind = ("계약취소주택" if any(x in raw_type for x in ("계약취소", "불법행위재공급"))
+            else "무순위")
+    notice_id = f"rem-{house_no}-{notice_no}"
+    return {
+        "id": notice_id, "notice": notice_id, "name": name, "region": region,
+        "district": str(row.get("HSSPLY_ADRES") or region).strip(),
+        "kind": kind, "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+        "houseDetailType": str(row.get("HOUSE_DTL_SECD_NM") or ""),
+        "announce": get_date(row.get("RCRIT_PBLANC_DE")),
+        "start": start, "end": end, "price": None, "housingTypes": [],
+        "market": None, "marketComparable": False, "requirements": None,
+        "officialUrl": (str(row.get("PBLANC_URL") or "").strip() if str(row.get("PBLANC_URL") or "").strip().startswith("https://") else None),
+        "officialFacts": official_facts(row),
+        "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+        "dataCategory": "remaining",
+    }
+
+
+def convert(row, today):
+    region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
+    name = str(row.get("HOUSE_NM") or "").strip()
+    start = get_date(row.get("RCEPT_BGNDE"))
+    end = get_date(row.get("RCEPT_ENDDE"))
+    announce = get_date(row.get("RCRIT_PBLANC_DE"))
+    if region not in REGIONS or not name or not start or not end or end < today:
+        return None
+    house_no = str(row.get("HOUSE_MANAGE_NO") or "").strip()
+    notice_no = str(row.get("PBLANC_NO") or "").strip()
+    if not house_no or not notice_no:
+        return None
+    notice_id = f"apt-{house_no}-{notice_no}"
+    address = str(row.get("HSSPLY_ADRES") or region).strip()
+    official = str(row.get("PBLANC_URL") or "").strip()
+    kind, kind_basis, house_detail = classify_supply(row)
+    return {
+        "id": notice_id,
+        "notice": notice_id,
+        "name": name,
+        "region": region,
+        "district": address,
+        "kind": kind,
+        "kindBasis": kind_basis,
+        "houseDetailType": house_detail,
+        "announce": announce,
+        "start": start,
+        "end": end,
+        "price": None,
+        "housingTypes": [],
+        "market": None,
+        "marketComparable": False,
+        "requirements": None,
+        "officialUrl": official if official.startswith("https://") else None,
+        "officialFacts": official_facts(row),
+        "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+    }
+
+
+def fetch_housing_types(session, key, project):
+    parts = project["id"].split("-")
+    if len(parts) != 3:
+        return []
+    house_no, notice_no = parts[1], parts[2]
+    model_url = (API_BASE + "getRemndrLttotPblancMdl"
+                 if project.get("dataCategory") == "remaining" else MODEL_URL)
+    response = session.get(
+        model_url,
+        params={
+            "serviceKey": key,
+            "page": 1,
+            "perPage": 100,
+            "returnType": "JSON",
+            "cond[HOUSE_MANAGE_NO::EQ]": house_no,
+            "cond[PBLANC_NO::EQ]": notice_no,
+        },
+        timeout=30,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    rows = payload.get("data")
+    if not isinstance(rows, list):
+        raise RuntimeError("Invalid housing model response")
+    total = int(payload.get("matchCount") or 0)
+    if total > len(rows):
+        raise RuntimeError("Housing model response truncated; refusing partial prices")
+    output = []
+    for row in rows:
+        amount = positive_number(row.get("LTTOT_TOP_AMOUNT"))
+        if amount is None:
+            continue
+        output.append({
+            "type": str(row.get("HOUSE_TY") or "").strip(),
+            "modelNo": str(row.get("MODEL_NO") or "").strip(),
+            "supplyAreaSqm": positive_number(row.get("SUPLY_AR")),
+            "exclusiveAreaSqm": positive_number(row.get("EXCLUSE_AR")),
+            "priceEok": round(amount / 10000, 4),
+        })
+    return output
+
+
+
+
+def recent_months(today, count=3):
+    year, month = today.year, today.month
+    for _ in range(count):
+        yield f"{year:04d}{month:02d}"
+        month -= 1
+        if month == 0:
+            month = 12
+            year -= 1
+
+
+def target_area_types(project):
+    """주택형 숫자에서 명목 전용면적형을 추출. 정확한 실측치 아님."""
+    result = []
+    for model in project.get("housingTypes", []):
+        name = str(model.get("type") or model.get("modelNo") or "").strip()
+        area = positive_number(model.get("exclusiveAreaSqm"))
+        verified = area is not None
+        if area is None:
+            found = re.match(r"^(\d{2,3}(?:\.\d+)?)", name)
+            area = positive_number(found.group(1)) if found else None
+        if area is not None:
+            result.append({"type": name, "area": area, "verifiedArea": verified})
+    return result
+
+
+def _administrative_aliases(prefix):
+    """Only equivalent official-province abbreviations, never fuzzy district inference."""
+    options = {prefix}
+    for full, short in (("인천광역시 ", "인천 "),
+                        ("서울특별시 ", "서울 "),
+                        ("경기도 ", "경기 ")):
+        if prefix.startswith(full):
+            options.add(short + prefix[len(full):])
+        if prefix.startswith(short):
+            options.add(full + prefix[len(short):])
+    return options
+
+
+def identify_district(project):
+    """Resolve verified LAWD_CD from explicit admin divisions anywhere in notice.
+
+    Do not depend on an exact address prefix: official notices often begin with a
+    project name and contain the real district in parentheses. Multiple distinct
+    matching codes -> ambiguous -> do not scan. District-free project-area names
+    are recognized only for explicitly reviewed geographical labels.
+    """
+    dynamic = project.get("resolvedDistrict")
+    if (isinstance(dynamic, (list, tuple)) and len(dynamic) == 2 and
+            re.fullmatch(r"\d{5}", str(dynamic[0]))):
+        return (str(dynamic[0]), str(dynamic[1]))
+    region = str(project.get("region") or "").strip()
+    address = str(project.get("district") or "").strip()
+    if region not in REGIONS or not address:
+        return None
+    normalized = re.sub(r"\s+", " ", address)
+    found = {}
+    for (mapped_region, prefix), district in VERIFIED_DISTRICTS.items():
+        if mapped_region != region:
+            continue
+        # '인천 검단신도시' is not an administrative name; it is handled
+        # separately only if it does not conflict with a known district.
+        if prefix == '인천 검단신도시':
+            continue
+        for alias in _administrative_aliases(prefix):
+            # Avoid incorrectly matching '서해구' in '서해구청', or a
+            # longer place name sharing only a prefix.
+            if re.search(r'(?<![가-힣])' + re.escape(alias)
+                         + r'(?=$|[^가-힣])', normalized):
+                found[district[0]] = district
+                break
+    if len(found) > 1:
+        return None
+    if len(found) == 1:
+        return next(iter(found.values()))
+    # Reviewed new-town alias; require explicit project-area text, not a
+    # guess based on similar apartment marketing names.
+    if region == '인천' and re.search(r'(?<![가-힣])(?:인천\s+)?검단신도시(?=$|[^가-힣])', normalized):
+        return VERIFIED_DISTRICTS[("인천", "인천 검단신도시")]
+    return None
+
+
+# 자동 지역코드 판별: 카카오 로컬 API 법정동 코드의 앞 5자리 사용.
+# 신규 구/시가 생겨도 확인된 원본 주소에서만 계산하며 지명 추정은 하지 않는다.
+PROVINCE_PREFIXES = {
+    "서울": ("서울특별시", "서울"), "경기": ("경기도", "경기"),
+    "인천": ("인천광역시", "인천"),
 }
 
-fillProfile();renderHome();renderList();renderAlerts();refreshLive();initCloud();if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 
-</script></body></html>
+def _province_matches(value, region):
+    value = str(value or "").replace(" ", "")
+    return any(value == x for x in PROVINCE_PREFIXES.get(region, ()))
+
+
+def _administrative_query_candidates(project):
+    """공고에 실제 적힌 지명·주소만 검색한다. 아파트명은 주소로 취급하지 않는다.
+
+    사업지구/괄호/여러 주소를 병기한 공고에서 지명을 찾아낸다.
+    결과가 여러 개이면 이후 '동일 코드'로 교차 확인하며 임의 선택하지 않는다.
+    """
+    region = str(project.get("region") or "").strip()
+    raw = re.sub(r"\s+", " ", str(project.get("district") or "")).strip()
+    if region not in PROVINCE_PREFIXES:
+        return []
+    official, abbreviated = PROVINCE_PREFIXES[region]
+    # 도로명과 필지 주소 중 정확하게 읽을 수 있는 주소를 우선한다.
+    # 괄호 앞의 사업지구 명칭은 뒤에 붙여 검색하지 않는다.
+    candidates = []
+    for match in re.finditer(r"(?<![가-힣])(?:" + re.escape(official) + "|" +
+                             re.escape(abbreviated) + r")\s+", raw):
+        fragment = raw[match.start():].split(')')[0].split('(')[0].strip()
+        fragment = re.split(r"(?:\s+일원|\s+내\s+|\s+주변|\s+[A-Z]?-?\d+BL)", fragment)[0]
+        fragment = re.sub(r"^(?:" + re.escape(abbreviated) + r")\s+", official + " ", fragment)
+        # 인천광역시 검단구 이음4로 101, 경기도 성남시 분당구 판교역로 123 등.
+        # 유효한 행정명(시/군/구) + 추가 구체정보가 필요.
+        parts = fragment.split()
+        if len(parts) >= 3 and any(t.endswith(("시", "군", "구")) for t in parts[1:]):
+            candidates.append(fragment)
+            # 주소 검색이 실패하면 행정구역+읍면동 단계까지 줄여 재시도.
+            for i in range(len(parts)-1, 2, -1):
+                if parts[i].endswith(("읍", "면", "동", "리", "가")):
+                    candidates.append(" ".join(parts[:i+1]))
+                    break
+    # 축약된 주소(성남시 분당구 / 강남구 / 수지구)도 다룬다.
+    # 주소에 실제로 존재하는 시/구만 사용하고 모델이 지명을 새로 생성하지 않는다.
+    if not candidates:
+        for match in re.finditer(
+            r"(?<![가-힣])([가-힣]{2,}(?:시|군))\s+"
+            r"([가-힣]{2,}구)(?:\s+([가-힣0-9]{2,}(?:읍|면|동|리)))?", raw):
+            candidates.append(official + " " + match.group(0))
+    if not candidates:
+        for match in re.finditer(r"(?<![가-힣])([가-힣]{2,}구)\s+"
+                                 r"([가-힣0-9]{2,}(?:읍|면|동|리))", raw):
+            candidates.append(official + " " + match.group(0))
+    return list(dict.fromkeys(candidates))[:6]
+
+
+def _verified_b_code(document, region, query=None):
+    address = document.get("address") or {}
+    code = str(address.get("b_code") or "")
+    if not re.fullmatch(r"\d{10}", code) or code[:5] == "00000":
+        return None
+    if not _province_matches(address.get("region_1depth_name"), region):
+        return None
+    expected_prefix = {"서울": "11", "경기": "41", "인천": "28"}.get(region)
+    if expected_prefix and not code.startswith(expected_prefix):
+        return None
+    if query:
+        # 행정구역명이 입력에 명시됐으면 결과 주소에도 포함되어야 한다.
+        # 예: 용인시 수지구 -> 서울 수지구/경기 다른 구 매칭 금지.
+        names = re.findall(r"[가-힣]{1,}(?:시|군|구)",
+                           str(query).replace("서울특별시", "").replace("인천광역시", "").replace("경기도", ""))
+        actual = str(address.get("region_2depth_name") or "").replace(" ", "")
+        if names and not all(name in actual for name in names):
+            return None
+    # 실제 검색된 도로명 주소도 법정동 주소 객체가 있어야 확인된 것으로 취급.
+    label = (str(address.get("region_1depth_name") or "") + " " +
+             str(address.get("region_2depth_name") or "")).strip()
+    return (code[:5], label)
+
+
+def resolve_district_dynamic(project, session, kakao_key, cache=None):
+    """Kakao 법정동 10자리 -> LAWD_CD 5자리. 불일치/미검증은 보류.
+
+    완전히 동일한 좌표가 아니더라도, *지역코드만* 결정하는 함수.
+    위치 검증을 받았다는 의미로 해석하면 안 된다.
+    """
+    if cache is None:
+        cache = {}
+    static = identify_district(project)
+    if not kakao_key:
+        return (static, "verified_static_mapping") if static else (None, "kakao_key_missing")
+    candidates = _administrative_query_candidates(project)
+    if not candidates:
+        return (static, "verified_static_mapping") if static else (None, "no_explicit_address")
+    confirmed = {}
+    for query in candidates:
+        if query not in cache:
+            try:
+                response = session.get(
+                    "https://dapi.kakao.com/v2/local/search/address.json",
+                    params={"query": query, "size": 10},
+                    headers={"Authorization": "KakaoAK " + kakao_key},
+                    timeout=15,
+                )
+                response.raise_for_status()
+                cache[query] = response.json().get("documents") or []
+            except (requests.RequestException, ValueError, AttributeError) as exc:
+                print("행정구역 자동조회 보류:", type(exc).__name__)
+                cache[query] = []
+        # 같은 검색어에 대해 상이한 코드가 반환되면 모호한 주소: 사용하지 않음.
+        matches = []
+        for doc in cache[query]:
+            verified = _verified_b_code(doc, project.get("region"), query)
+            if verified:
+                matches.append(verified)
+        codes = {x[0] for x in matches}
+        if len(codes) > 1:
+            return None, "ambiguous_address_results"
+        if len(codes) == 1:
+            confirmed[next(iter(codes))] = matches[0]
+    if len(confirmed) > 1:
+        return None, "conflicting_address_codes"
+    if not confirmed:
+        return (static, "verified_static_mapping") if static else (None, "address_code_unavailable")
+    return next(iter(confirmed.values())), "kakao_legal_dong_code"
+
+
+def district_resolution_reason(project):
+    """Safe diagnostics; no unverified 'nearby market price' fallback."""
+    if identify_district(project):
+        return "resolved"
+    return ("공고 주소에서 관할 시군구를 확정하지 못했습니다. "
+            "신규 행정구역·사업지구 표기는 공식 주소 확인이 필요합니다. "
+            "주변 거래가격을 임의로 대입하지 않았습니다.")
+
+
+def identify_legal_dong(address):
+    # '문래동3가' / '대장동' 구분. 법정동 불확실 시 자동 시세 계산 금지.
+    found = re.findall(r"([가-힣]+동(?:\d+가)?)", address)
+    unique = list(dict.fromkeys(found))
+    # 부천대장처럼 여러 동이 병기된 공고는 어느 동인지 확정할 수 없습니다.
+    return unique[0] if len(unique) == 1 else None
+
+
+def fetch_district_month(session, key, lawd_code, yyyymm):
+    """실거래 API의 모든 페이지를 수집하고 취소 거래를 제외합니다."""
+    trades = []
+    page = 1
+    while True:
+        response = session.get(
+            TRADE_API_URL,
+            params={"serviceKey": key, "LAWD_CD": lawd_code,
+                    "DEAL_YMD": yyyymm, "pageNo": page, "numOfRows": 1000},
+            timeout=35,
+        )
+        response.raise_for_status()
+        root = ET.fromstring(response.content)
+        code = (root.findtext(".//header/resultCode") or "").strip()
+        if code not in ("00", "000"):
+            msg = root.findtext(".//header/resultMsg") or "unknown error"
+            raise RuntimeError(f"Trade API {lawd_code}/{yyyymm}: {code} {msg}")
+        items = root.findall(".//body/items/item")
+        total = int((root.findtext(".//body/totalCount") or "0").strip())
+        for item in items:
+            def field(name):
+                return (item.findtext(name) or "").strip()
+            if field("cdealDay"):  # 취소된 거래 제외
+                continue
+            area = positive_number(field("excluUseAr"))
+            amount = positive_number(field("dealAmount"))
+            apt = field("aptNm")
+            if not apt or area is None or amount is None:
+                continue
+            year, month, day = field("dealYear"), field("dealMonth"), field("dealDay")
+            if not (year.isdigit() and month.isdigit() and day.isdigit()):
+                continue
+            trades.append({
+                "apartment": apt,
+                "legalDong": field("umdNm"),
+                "exclusiveAreaSqm": round(area, 4),
+                "dealAmountManwon": round(amount),
+                "dealDate": f"{year}-{month.zfill(2)}-{day.zfill(2)}",
+                "floor": field("floor"),
+                "buildYear": field("buildYear"),
+                "jibun": field("jibun"),
+            })
+        if not items or page * 1000 >= total:
+            break
+        page += 1
+    return trades
+
+
+
+def parse_rights_xml(content):
+    """분양권/입주권 실거래만 파싱. 취소 건, 가격/면적 없는 건은 제외."""
+    root = ET.fromstring(content)
+    code = (root.findtext(".//header/resultCode") or "").strip()
+    if code not in ("00", "000"):
+        msg = root.findtext(".//header/resultMsg") or "unknown error"
+        raise RuntimeError(f"Rights API: {code} {msg}")
+    entries = []
+    for item in root.findall(".//body/items/item"):
+        def get(*keys):
+            for key in keys:
+                val = (item.findtext(key) or "").strip()
+                if val:
+                    return val
+            return ""
+        if get("cdealDay", "cdealDe") or get("cdealType") in ("O", "Y"):
+            continue
+        name = get("aptNm", "buildingName", "bldgNm", "aptName")
+        amount = positive_number(get("dealAmount", "dealAmt"))
+        area = positive_number(get("excluUseAr", "excluUseArea", "exclusiveArea"))
+        year, month, day = get("dealYear"), get("dealMonth"), get("dealDay")
+        if not name or amount is None or area is None or not (year.isdigit() and month.isdigit() and day.isdigit()):
+            continue
+        try:
+            deal_date = datetime(int(year), int(month), int(day)).date().isoformat()
+        except ValueError:
+            continue
+        kind_raw = get("slerGbn", "rightGbn", "tradeType", "type")
+        kind = "입주권" if "입주" in kind_raw else ("분양권" if "분양" in kind_raw else "분양·입주권(세부 미확인)")
+        entries.append({"apartment": name, "exclusiveAreaSqm": round(area, 3),
+                        "dealAmountManwon": amount, "dealDate": deal_date,
+                        "legalDong": get("umdNm"), "floor": get("floor"),
+                        "rightType": kind, "jibun": get("jibun")})
+    return entries, int(root.findtext(".//body/totalCount") or "0")
+
+
+def fetch_rights_month(session, key, code, month):
+    rows = []
+    page = 1
+    while True:
+        response = session.get(RIGHTS_API_URL, params={"serviceKey":key, "LAWD_CD": code,
+            "DEAL_YMD":month, "pageNo":page,"numOfRows":1000}, timeout=35)
+        response.raise_for_status()
+        batch, total = parse_rights_xml(response.content)
+        rows.extend(batch)
+        if page * 1000 >= total:
+            break
+        page += 1
+    return rows
+
+
+def rights_report(project, rights_by_district):
+    """동일 단지명 + 같은 시군구 + 공고 주택형 면적으로 분양/입주권 별도 확인.
+
+    지번/동 확인이 안 되는 경우에도 검토 신호는 남기지만 '동일 단지 확정'은 금지.
+    """
+    result = {"status":"no_matching_trades", "source":"국토교통부 아파트 분양권전매 실거래",
+              "dataType":"sale_or_occupancy_right", "byType":[], "reviewOnly":True}
+    district = identify_district(project)
+    if not district:
+        result["status"] = "district_unknown"
+        return result
+    rows = rights_by_district.get(district[0])
+    if rows is None:
+        result["status"] = "api_unavailable"
+        return result
+    name = project.get("name")
+    project_dong = identify_legal_dong(project.get("district", ""))
+    name_matches = [r for r in rows if _same_complex_name(name, r.get("apartment"))
+                    and (not project_dong or not r.get("legalDong") or project_dong == r["legalDong"])]
+    for model in target_area_types(project):
+        if not model.get("verifiedArea"):
+            continue  # 주택형 코드 유추 면적은 억대 가격 신호에 사용 금지
+        matches = [r for r in name_matches if abs(r["exclusiveAreaSqm"]-model["area"]) <= 1.0]
+        if not matches:
+            continue
+        matches.sort(key=lambda r:r["dealDate"], reverse=True)
+        prices = [r["dealAmountManwon"] for r in matches]
+        matched = (project_dong and all(r.get("legalDong") == project_dong for r in matches))
+        result["byType"].append({
+            "type": model["type"], "areaSqm": model["area"],
+            "transactionCount":len(matches), "medianEok":round(median(prices)/10000,4),
+            "minEok":round(min(prices)/10000,4),"maxEok":round(max(prices)/10000,4),
+            "latestDate":matches[0]["dealDate"],
+            "rightTypes":sorted(set(r["rightType"] for r in matches)),
+            "sameDistrictConfirmed":True,"legalDongConfirmed":bool(matched),
+            "addressVerified":False,"matchingMethod":"name_district_area_review",
+            "transactions":[{"date":r["dealDate"],"amountEok":round(r["dealAmountManwon"]/10000,4),
+                             "type":r["rightType"],"floor":r["floor"]} for r in matches[:5]],
+        })
+    result["status"] = "matched_for_review" if result["byType"] else "no_matching_trades"
+    result["matchCount"] = sum(x["transactionCount"] for x in result["byType"])
+    return result
+
+
+
+def attach_reported_rights(project, catalogue, today):
+    """검증 가능한 공개 보도 근거. 공공 API 데이터와 섞지 않음."""
+    op = project.get("opportunity") or {}
+    op["reportedRightsEvidence"] = []
+    item = catalogue.get(project.get("id"))
+    # API HOUSE_MANAGE_NO can change, while PBLANC_NO identifies this specific notice.
+    # If key differs, look up ONLY a matching explicit notice number and exact normalized
+    # apartment name. Never match on apartment name alone (future notices differ).
+    if item is None:
+        notice_suffix = str(project.get("id") or "").split("-")[-1]
+        for catalogue_id, candidate in catalogue.items():
+            if (isinstance(candidate, dict)
+                and str(catalogue_id).split("-")[-1] == notice_suffix
+                and str(candidate.get("name") or "").replace(" ", "") == str(project.get("name") or "").replace(" ", "")):
+                item = candidate
+                break
+    if not isinstance(item, dict) or str(item.get("name") or "").replace(" ", "") != str(project.get("name") or "").replace(" ", ""):
+        return []
+    if today > str(item.get("validThrough", "")):
+        return []
+    models = project.get("housingTypes") or []
+    signals=[]
+    for evidence in item.get("reportedTrades") or []:
+        reported=positive_number(evidence.get("reportedRightsEok"))
+        area=positive_number(evidence.get("areaBandSqm"))
+        source=str(evidence.get("sourceUrl") or "")
+        if not reported or not area or not source.startswith("https://"):
+            continue
+        for model in models:
+            exact=positive_number(model.get("exclusiveAreaSqm"))
+            if exact is None or abs(exact-area)>=1.8:
+                continue
+            price=positive_number(model.get("priceEok"))
+            if price is None:
+                continue
+            difference=round(reported-price,4)
+            pct=round(difference/reported*100,1)
+            signals.append({"type":model.get("type"),"salePriceEok":price,
+                "reportedRightsEok":reported,"referenceGapEok":difference,"referenceGapPct":pct,
+                "dealDate":evidence.get("dealDate"),"areaNote":f"{area:g}㎡대 (공급 타입과 불일치 가능)",
+                "sourceTitle":evidence.get("sourceTitle"),"sourceUrl":source,
+                "verifiedAsOfficialApi":False,"profitVerified":False})
+    op["reportedRightsEvidence"]=signals
+    if any(x["referenceGapEok"]>=2 and x["referenceGapPct"]>=10 for x in signals):
+        if op.get("tier") not in ("priority_review","rights_trade_review"):
+            op["tier"]="rights_trade_review"
+            op["label"]="입주권 보도 가격차 검토"
+        op["reason"] = "언론에 보도된 동일 단지 전용면적대 입주권 거래가 확인되었습니다. 실제 분양권 가치·추가분담금·거래 취소 여부는 미검증입니다."
+    return signals
+
+
+def attach_rights_opportunity(project):
+    """일반 아파트 실거래 판단과 별도로 입주권 기회 신호를 추가한다."""
+    op = project.get("opportunity") or {}
+    rights = project.get("rightsSales") or {}
+    models = {str(x.get("type")):x for x in project.get("housingTypes") or []}
+    signals=[]
+    for item in rights.get("byType") or []:
+        model=models.get(str(item.get("type")))
+        price=positive_number((model or {}).get("priceEok"))
+        reference=positive_number(item.get("medianEok"))
+        if price is None or reference is None:
+            continue
+        gap=round(reference-price,4)
+        percent=round(100*gap/reference,1)
+        signals.append({"type":item["type"],"salePriceEok":price,"rightsMedianEok":reference,
+                        "referenceGapEok":gap,"referenceGapPct":percent,
+                        "transactionCount":item["transactionCount"],"latestDate":item["latestDate"],
+                        "rightTypes":item["rightTypes"],"verification":"name_district_area_only",
+                        "isInvestmentProfit":False})
+    signals.sort(key=lambda x:x["referenceGapEok"],reverse=True)
+    op["rightsEvidence"]=signals
+    positive=[x for x in signals if x["referenceGapEok"]>=2 and x["referenceGapPct"]>=10]
+    if positive and op.get("tier") not in ("priority_review",):
+        op["tier"]="rights_trade_review"
+        op["label"]="분양·입주권 가격 우위 검토"
+        op["reason"]="동일 명칭·시군구·면적의 분양/입주권 거래 가격 신호입니다. 거래권리 종류·동호수·권리가액·추가분담금·계약 상태를 확인해야 합니다. 예상 순이익이 아닙니다."
+    project["opportunity"]=op
+    return signals
+
+
+
+
+def attach_early_price_signals(project):
+    """Small-sample *discovery* leads, never a verified valuation/profit.
+
+    Each signal keeps the exact model, source, area validation, trade count and date.
+    Private asking prices are deliberately excluded from server-side ranking.
+    """
+    op = project.get("opportunity") or {}
+    types = {str(m.get("type") or m.get("modelNo") or ""): m
+             for m in project.get("housingTypes") or []}
+    signals = []
+
+    def collect(rows, source, label, reference_key, count_key, date_key, condition):
+        for row in rows:
+            if not condition(row):
+                continue
+            typ = str(row.get("type") or "")
+            model = types.get(typ)
+            if not model:
+                continue
+            supply = positive_number(model.get("priceEok"))
+            reference = positive_number(row.get(reference_key))
+            if supply is None or reference is None:
+                continue
+            count = int(row.get(count_key) or 0)
+            if count < 1:
+                continue
+            gap = round(reference - supply, 4)
+            pct = round(100 * gap / reference, 1)
+            if gap < 1.5 or pct < 10:
+                continue
+            signals.append({
+                "type": typ, "source": source, "sourceLabel": label,
+                "salePriceEok": round(supply, 4),
+                "referenceEok": round(reference, 4),
+                "referenceGapEok": gap, "referenceGapPct": pct,
+                "transactionCount": count,
+                "latestDate": row.get(date_key) or None,
+                "verifiedArea": bool(model.get("exclusiveAreaSqm")),
+                "reviewOnly": True, "profitVerified": False,
+            })
+
+    # Same-complex apartment sales: exact parcel or within 150m and same complex name.
+    collect((project.get("sameComplexSales") or {}).get("byType") or [],
+            "same_complex_sale", "동일 단지 매매 신고", "medianEok",
+            "transactionCount", "latestDate",
+            lambda r: r.get("areaSource") == "api")
+    # Rights trades: name + legal district (+ sometimes legal dong) + official area.
+    collect((project.get("rightsSales") or {}).get("byType") or [],
+            "rights_trade", "분양·입주권 신고(단지명 확인 필요)", "medianEok",
+            "transactionCount", "latestDate", lambda r: True)
+    # Nearby: at least one distance-checked comparand and official area; not a district average.
+    reference = project.get("referenceMarket") or {}
+    collect(reference.get("byType") or [],
+            "nearby_sale", "주변 유사 단지 매매(2km 검증)", "referencePriceEok",
+            "transactionCount", "latestComparisonDate",
+            lambda r: (reference.get("locationConfirmed") is True
+                       and int(r.get("distanceCheckedCount") or 0) > 0
+                       and r.get("areaSource") == "api"
+                       and not r.get("coverageLimited")
+                       and not reference.get("comparisonCoverageLimited")))
+    # Source ordering is not a profit or valuation ranking.
+    order = {"same_complex_sale": 0, "rights_trade": 1, "nearby_sale": 2}
+    signals.sort(key=lambda s: (order.get(s["source"], 9), -s["referenceGapEok"]))
+    op["earlyPriceSignals"] = signals[:20]
+    op["earlySignalCount"] = len(signals)
+    # Do not demote strong price tier, rights tier, or any special notice.
+    if signals and op.get("tier") in ("watch", "manual_review", "same_complex_review", "special_supply"):
+        op["tier"] = "early_price_review"
+        op["label"] = "로또 조기 검토 · 적은 거래 표본"
+        op["reason"] = ("공식 매매 또는 분양·입주권 신고거래에서 가격 차이 신호를 찾았습니다. "
+                        "1~2건도 검토 대상으로 표시하지만 적정 시세나 수익은 미검증입니다.")
+    project["opportunity"] = op
+    return signals
+
+
+def summarize_trades(rows):
+    values = [x["dealAmountManwon"] for x in rows]
+    buildings = {(x["apartment"], x["jibun"], x["legalDong"]) for x in rows}
+    return {
+        "count": len(rows),
+        "apartmentCount": len(buildings),
+        "medianEok": round(median(values) / 10000, 4) if values else None,
+        "minEok": round(min(values) / 10000, 4) if values else None,
+        "maxEok": round(max(values) / 10000, 4) if values else None,
+        "latestDate": max((x["dealDate"] for x in rows), default=None),
+    }
+
+
+def scan_district_trades(project, district_trades, months):
+    district = identify_district(project)
+    if district is None:
+        return {"status": "not_scanned", "reason": district_resolution_reason(project)}
+    lawd_code, label = district
+    target_dong = identify_legal_dong(project["district"])
+    all_trades = district_trades[lawd_code]
+    models = target_area_types(project)
+    # 법정동이 맞으면 1차 후보, 동일 시군구의 다른 법정동은
+    # '범위 확장 탐색 후보'로만 보관합니다. 지리적 인접성은 판단하지 않습니다.
+    candidates = []
+    by_type = defaultdict(list)
+    expanded = []
+    expanded_by_type = defaultdict(list)
+    for item in all_trades:
+        matches = [m for m in models if abs(item["exclusiveAreaSqm"] - m["area"]) <= COMPARISON_AREA_TOLERANCE]
+        if not matches:
+            continue
+        tagged = {**item, "matchingTypes": [m["type"] for m in matches]}
+        if target_dong and item["legalDong"] == target_dong:
+            candidates.append(tagged)
+            for model in matches:
+                by_type[model["type"]].append(item)
+        else:
+            expanded.append(tagged)
+            for model in matches:
+                expanded_by_type[model["type"]].append(item)
+
+    candidates.sort(key=lambda row: row["dealDate"], reverse=True)
+    expanded.sort(key=lambda row: row["dealDate"], reverse=True)
+    statistics = []
+    for model in models:
+        same = by_type.get(model["type"], [])
+        recent_built = [x for x in same if x["buildYear"].isdigit() and int(x["buildYear"]) >= 2015]
+        others = expanded_by_type.get(model["type"], [])
+        statistics.append({
+            "type": model["type"],
+            "areaSqm": model["area"],
+            "areaSource": "api" if model["verifiedArea"] else "model_code_estimate",
+            "all": summarize_trades(same),
+            "builtSince2015": summarize_trades(recent_built),
+            "districtExploration": summarize_trades(others),
+            "evaluation": "review_only",
+        })
+    return {
+        "status": "same_dong_area_candidates_unverified" if target_dong else "district_only_unverified",
+        "district": label,
+        "legalDong": target_dong,
+        "months": months,
+        "transactionCount": len(all_trades),
+        "candidateCount": len(candidates),
+        "candidateTransactions": candidates[:80],
+        "displayLimit": 80,
+        "districtExplorationCount": len(expanded),
+        "districtExplorationTransactions": expanded[:30],
+        "typeStatistics": statistics,
+        "distanceVerified": False,
+        "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다.",
+    }
+
+
+
+def complex_key(row):
+    return (str(row.get("apartment") or "").strip(),
+            str(row.get("legalDong") or "").strip(),
+            str(row.get("jibun") or "").strip())
+
+
+def haversine_km(lat1, lon1, lat2, lon2):
+    radius = 6371.0088
+    a1, a2 = math.radians(lat1), math.radians(lat2)
+    dl = math.radians(lon2 - lon1)
+    da = a2 - a1
+    h = math.sin(da / 2) ** 2 + math.cos(a1) * math.cos(a2) * math.sin(dl / 2) ** 2
+    return 2 * radius * math.asin(math.sqrt(h))
+
+
+def site_parcel_address(project):
+    """공고 주소에 단일 지번이 명시된 경우만 지오코딩에 사용."""
+    address = str(project.get("district") or "")
+    if any(x in address for x in (" 일원", "지구 내", "블록")):
+        # '일원'이 붙어도 명확한 단일 지번이 기재된 경우는 허용.
+        pass
+    m = re.search(r"^((?:서울특별시|경기도|인천광역시)\s+.*?[가-힣]+동(?:\d+가)?\s+\d+(?:-\d+)?)\s*번지", address)
+    if not m:
+        return None
+    if len(re.findall(r"[가-힣]+동(?:\d+가)?", m.group(1))) != 1:
+        return None
+    return m.group(1).strip()
+
+
+def geocode_address(session, kakao_key, address, cache):
+    if not kakao_key or not address:
+        return None
+    if address in cache:
+        return cache[address]
+    try:
+        response = session.get(
+            "https://dapi.kakao.com/v2/local/search/address.json",
+            params={"query": address},
+            headers={"Authorization": "KakaoAK " + kakao_key},
+            timeout=15,
+        )
+        response.raise_for_status()
+        docs = response.json().get("documents") or []
+        item = docs[0] if docs else None
+        result = (float(item["y"]), float(item["x"])) if item else None
+        if result and not (33 < result[0] < 39 and 124 < result[1] < 132):
+            result = None
+    except (requests.RequestException, KeyError, TypeError, ValueError, IndexError) as exc:
+        print("위치 조회 보류:", type(exc).__name__)
+        result = None
+    cache[address] = result
+    return result
+
+
+
+def site_location(session, kakao_key, project, geo_cache, place_cache):
+    """공고의 위치를 보수적으로 확인한다.
+
+    1) 정확한 '동 + 지번'을 우선 사용한다.
+    2) 없으면 청약 단지명으로 카카오 장소검색을 수행한다. 장소 이름과
+       관할 시군구가 모두 일치하고 서로 모순된 결과가 없는 경우에만 사용.
+    검색 실패 또는 결과가 애매하면 좌표를 사용하지 않는다.
+    """
+    if not kakao_key:
+        return None, "api_key_missing", None
+    address = site_parcel_address(project)
+    if address:
+        point = geocode_address(session, kakao_key, address, geo_cache)
+        if point:
+            return point, "parcel_address", address
+    district = identify_district(project)
+    if not district:
+        return None, "district_unknown", None
+    name = str(project.get("name") or "").strip()
+    # 긴 별칭·블록명은 장소 검색에서 잘못된 랜드마크와 매칭될 수 있음.
+    simple_name = re.sub(r"\([^)]*\)", "", name).strip()
+    simple_name = re.sub(r"\s+(?:공공분양주택|신혼희망타운).*$", "", simple_name).strip()
+    if len(simple_name) < 5:
+        return None, "place_name_unusable", None
+    key = (district[0], simple_name)
+    if key not in place_cache:
+        try:
+            resp = session.get(
+                "https://dapi.kakao.com/v2/local/search/keyword.json",
+                params={"query": simple_name, "size": 10},
+                headers={"Authorization": "KakaoAK " + kakao_key}, timeout=12,
+            )
+            resp.raise_for_status()
+            place_cache[key] = resp.json().get("documents") or []
+        except (requests.RequestException, ValueError, AttributeError) as exc:
+            print("단지 장소조회 보류:", type(exc).__name__)
+            place_cache[key] = []
+    docs = place_cache[key]
+    def norm(s):
+        return re.sub(r"[^가-힣a-z0-9]", "", str(s or "").lower())
+    wanted = norm(simple_name)
+    # 작은 아파트명 공통 접두어만으로는 판정하지 않고 정확한 일치만 허용.
+    expected_district = district[1].replace("서울 ", "").replace("경기 ", "").replace("인천 ", "")
+    matching = []
+    for d in docs:
+        place_name = norm(d.get("place_name"))
+        addr = str(d.get("road_address_name") or d.get("address_name") or "")
+        district_tail = expected_district.split()[-1]
+        if place_name != wanted or district_tail not in addr:
+            continue
+        try:
+            lat, lon = float(d["y"]), float(d["x"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        if 33 < lat < 39 and 124 < lon < 132:
+            matching.append((lat, lon))
+    if len(matching) != 1:
+        return None, "ambiguous_or_missing_place", None
+    return matching[0], "exact_place_name", simple_name
+
+
+def _safe_positive_int(v):
+    try:
+        n = int(str(v))
+        return n if n >= 0 else 0
+    except (ValueError, TypeError):
+        return 0
+
+def trade_address(project, trade):
+    """실거래가의 법정동+지번으로 단지 위치를 찾는다. 지번 없으면 제외."""
+    jibun = str(trade.get("jibun") or "").strip()
+    dong = str(trade.get("legalDong") or "").strip()
+    district = identify_district(project)
+    if not (district and re.fullmatch(r"\d+(?:-\d+)?", jibun) and dong):
+        return None
+    prefix = district[1]
+    if prefix.startswith("서울 "):
+        prefix = prefix.replace("서울 ", "서울특별시 ", 1)
+    elif prefix.startswith("경기 "):
+        prefix = prefix.replace("경기 ", "경기도 ", 1)
+    elif prefix.startswith("인천 "):
+        prefix = prefix.replace("인천 ", "인천광역시 ", 1)
+    return f"{prefix} {dong} {jibun}"
+
+
+def comparable_report(project, trades, session, kakao_key, geo_cache, place_cache=None):
+    """주택형별 *검토용* 비교: 위치 확인 우선, 동일 지역 거래의 엄격한 분리.
+
+    수집 중 누락된 단지/거래가 있을 수 있으므로 referencePriceEok는
+    반드시 참고값이며 market/marketComparable은 여전히 설정하지 않는다.
+    """
+    if place_cache is None:
+        place_cache = {}
+    models = project.get("housingTypes") or []
+    if not models:
+        return {"status": "no_models", "reason": "주택형 가격 정보가 없습니다.", "byType": [],
+                "locationConfirmed": False, "locationMethod": "no_models"}
+    site, site_method, site_evidence = site_location(
+        session, kakao_key, project, geo_cache, place_cache
+    )
+    district = identify_district(project)
+    district_rows = trades.get(district[0], []) if district else []
+    legal_dong = identify_legal_dong(project.get("district", ""))
+    # 동·지번+아파트명으로 위치 조회. 한 공고의 모든 주택형에서 동일 단지 좌표 재사용.
+    groups = []
+    district_candidates = defaultdict(list)
+    for model in models:
+        name = str(model.get("type") or model.get("modelNo") or "")
+        area = positive_number(model.get("exclusiveAreaSqm"))
+        area_verified = area is not None
+        if area is None:
+            match = re.match(r"^(\d{2,3}(?:\.\d+)?)", name)
+            area = positive_number(match.group(1)) if match else None
+        if area is None:
+            groups.append({"type": name, "status": "area_unknown", "referencePriceEok": None,
+                           "reason": "전용면적을 확인할 수 없습니다."})
+            continue
+        eligible = []
+        for row in district_rows:
+            year = _safe_positive_int(row.get("buildYear"))
+            floor = _safe_positive_int(row.get("floor"))
+            if abs(row["exclusiveAreaSqm"] - area) > COMPARISON_AREA_TOLERANCE:
+                continue
+            # 준공연도 없는 자료는 검증 불가, 2015 이전 구축은 별도 탐색표만 이용.
+            if year < 2015 or floor < 2:
+                continue
+            eligible.append(row)
+        for row in eligible:
+            district_candidates[complex_key(row)].append((name, row))
+        groups.append({"type": name, "areaSqm": area,
+                       "areaSource": "api" if area_verified else "model_code_estimate",
+                       "status": "pending"})
+
+    # 우선순위에 거래량을 과도하게 쓰지 않는다: 동일 법정동 -> 최근 거래 ->
+    # 비교 가능한 주택형 다양성 -> 거래건수. 실제 거리는 좌표 조회 이후 결정.
+    # API 일일 호출을 무제한 쓰지 않기 위해 한 공고당 최대 65단지까지 검사하고
+    # 한도에 닿으면 coverageLimited를 표시한다.
+    ordered = sorted(district_candidates.items(),
+        key=lambda kv: (
+            0 if legal_dong and kv[0][1] == legal_dong else 1,
+            -max(int(t[1]["dealDate"].replace("-", "")) for t in kv[1]),
+            -len({t[0] for t in kv[1]}),
+            -len(kv[1]),
+            kv[0],
+        ))
+    inspected = ordered[:MAX_GEOCODE_COMPLEXES]
+    limit_hit = len(ordered) > len(inspected)
+    positions = {}
+    if site:
+        for key, tagged in inspected:
+            address = trade_address(project, tagged[0][1])
+            point = geocode_address(session, kakao_key, address, geo_cache) if address else None
+            if point:
+                dist = haversine_km(site[0], site[1], point[0], point[1])
+                if dist <= MAX_DISTANCE_KM:
+                    positions[key] = round(dist, 3)
+    for group in groups:
+        if group["status"] == "area_unknown":
+            continue
+        model_name = group["type"]
+        comps = []
+        for key, tagged in inspected:
+            subset = [r for m, r in tagged if m == model_name]
+            if not subset:
+                continue
+            if site:
+                if key not in positions:
+                    continue  # 좌표 없는 거래를 거리 검증된 것으로 섞지 않음
+                distance, scope = positions[key], "distance_checked"
+            elif legal_dong and key[1] == legal_dong:
+                distance, scope = None, "same_dong_only"
+            else:
+                continue
+            comps.append({
+                "apartment": key[0], "legalDong": key[1],
+                "buildYear": _safe_positive_int(subset[0].get("buildYear")),
+                "distanceKm": distance, "scope": scope,
+                "count": len(subset),
+                "medianEok": round(median(r["dealAmountManwon"] for r in subset) / 10000, 4),
+                "latestDate": max(r["dealDate"] for r in subset),
+                "areaSqm": round(median(r["exclusiveAreaSqm"] for r in subset), 2),
+            })
+        comps.sort(key=lambda x: (x["distanceKm"] if x["distanceKm"] is not None else 999,
+                                   -x["count"], x["apartment"]))
+        n_trades = sum(x["count"] for x in comps)
+        sufficiently_sampled = len(comps) >= MIN_COMPARABLE_COMPLEXES and n_trades >= MIN_COMPARABLE_TRADES
+        # v24: 1~2건도 탐색 참고값을 보여준다. 시장 시세 확정과 구분한다.
+        # 위치/면적 검증이 없는 숫자를 근처 거래로 둔갑시키지 않는다.
+        reference = round(median(x["medianEok"] for x in comps), 4) if comps else None
+        if site and comps:
+            status, label = "distance_checked_review", "2km 이내·2015년 이후 준공 거래 참고"
+        elif comps:
+            status, label = "same_dong_modern_review", "같은 법정동·2015년 이후 준공 거래 참고"
+        else:
+            status, label = "insufficient", "비교 단지 부족"
+        sparse = bool(comps) and not sufficiently_sampled
+        group.update({
+            "status": "limited_sample_review" if sparse else status,
+            "scopeLabel": label,
+            "referencePriceEok": reference,
+            "complexCount": len(comps), "transactionCount": n_trades,
+            "smallSample": sparse, "comparisonQuality": "limited" if sparse else ("review" if comps else "insufficient"),
+            "apartmentComparisons": comps[:12], "sitePositionChecked": bool(site),
+            "distanceCheckedCount": len(comps) if site else 0,
+            "referenceIsMarketValue": False,
+            "coverageLimited": limit_hit,
+            "reason": ("좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. "
+                       "이는 적정 시세나 확정 차익이 아닙니다."
+                       if sufficiently_sampled else ("거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다." if comps else "거리·면적·연식 조건을 만족하는 거래가 없습니다.")),
+        })
+    representative = max(models, key=lambda x: positive_number(x.get("priceEok")) or 0)
+    rep_name = str(representative.get("type") or representative.get("modelNo") or "")
+    rep = next((x for x in groups if x.get("type") == rep_name), None)
+    return {
+        "status": rep.get("status") if rep else "insufficient",
+        "modelType": rep_name,
+        "referencePriceEok": rep.get("referencePriceEok") if rep else None,
+        "scopeLabel": rep.get("scopeLabel") if rep else "비교 대상 없음",
+        "transactionCount": rep.get("transactionCount", 0) if rep else 0,
+        "apartmentCount": rep.get("complexCount", 0) if rep else 0,
+        "distanceChecked": bool(rep and rep.get("distanceCheckedCount")),
+        "geocodingEnabled": bool(kakao_key),
+        "locationConfirmed": bool(site),
+        "locationMethod": site_method,
+        "siteGeocodingEvidence": site_evidence,
+        "comparisonCoverageLimited": limit_hit,
+        "candidateComplexesInspected": len(inspected),
+        "candidateComplexesTotal": len(ordered),
+        "byType": groups, "marketComparable": False,
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다.",
+    }
+
+
+def _complex_name_key(value):
+    """엄격한 단지명 정규화: 공백·문장부호·'아파트' 접미사만 제거."""
+    value = re.sub(r"\([^)]*\)", "", str(value or "")).lower()
+    value = re.sub(r"[^가-힣a-z0-9]", "", value)
+    return re.sub(r"아파트$", "", value)
+
+
+def _same_complex_name(project_name, transaction_name):
+    """짧거나 흔한 접두어 일치로 같은 단지를 결정하지 않는다."""
+    project_key = _complex_name_key(project_name)
+    trade_key = _complex_name_key(transaction_name)
+    if min(len(project_key), len(trade_key)) < 7:
+        return False
+    return (project_key == trade_key or
+            (min(len(project_key), len(trade_key)) >= 10 and
+             (project_key in trade_key or trade_key in project_key)))
+
+
+def same_complex_report(project, district_trades, session, kakao_key,
+                        geo_cache, place_cache=None):
+    """동일 단지 거래를 주변 시세와 별도로 수집·표시한다.
+
+    매칭에 반드시 검증된 단지 위치 또는 공고/거래의 정확한 지번이 필요하다.
+    단지명만 비슷하면 매칭하지 않으며, 아파트 *매매* 거래만 반환한다.
+    신축 예정 단지나 데이터 부족은 정상적인 미확인 결과다.
+    """
+    district = identify_district(project)
+    result = {"status": "not_verified", "source": "국토교통부 아파트 매매 실거래",
+              "matchesAreApartmentSales": True, "byType": [],
+              "transactionCount": 0, "latestDate": None,
+              "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다."}
+    if not district:
+        result["reason"] = district_resolution_reason(project)
+        return result
+    rows = district_trades.get(district[0], [])
+    if not rows:
+        result["reason"] = "해당 시군구에 조회된 아파트 매매 거래가 없습니다."
+        return result
+    models = target_area_types(project)
+    if not models:
+        result["reason"] = "비교할 공급 주택형 면적이 없습니다."
+        return result
+    exact_site_parcel = site_parcel_address(project)
+    project_dong = identify_legal_dong(project.get("district", ""))
+    site, site_method, _ = site_location(
+        session, kakao_key, project, geo_cache,
+        place_cache if place_cache is not None else {})
+    result["siteLocationMethod"] = site_method
+    # 지번이 명시된 공고라면 주소 전체를 정규화하여 같은 지번인지 검증.
+    parcel_match = None
+    if exact_site_parcel:
+        m = re.search(r"([가-힣]+동(?:\d+가)?)\s+(\d+(?:-\d+)?)$", exact_site_parcel)
+        if m:
+            parcel_match = (m.group(1), m.group(2))
+    candidate_rows = []
+    geo_ok = {}
+    for row in rows:
+        if not _same_complex_name(project.get("name"), row.get("apartment")):
+            continue
+        if _safe_positive_int(row.get("floor")) < 2:
+            continue
+        row_dong = str(row.get("legalDong") or "").strip()
+        row_parcel = str(row.get("jibun") or "").strip()
+        parcel_confirmed = bool(parcel_match and (row_dong, row_parcel) == parcel_match)
+        # 주소가 일치하지 않는 거래는 실제 두 좌표가 충분히 가까워야만 동일 단지 후보.
+        coordinate_confirmed = False
+        if not parcel_confirmed and site and row_parcel:
+            address = trade_address(project, row)
+            if address:
+                if address not in geo_ok:
+                    geo_ok[address] = geocode_address(session, kakao_key, address, geo_cache)
+                point = geo_ok[address]
+                coordinate_confirmed = bool(point and
+                    haversine_km(site[0], site[1], point[0], point[1]) <= 0.15)
+        if not parcel_confirmed and not coordinate_confirmed:
+            continue
+        candidate_rows.append((row, "same_parcel" if parcel_confirmed else "within_150m_and_name"))
+    result["matchMethods"] = sorted(set(method for _, method in candidate_rows))
+    by_type = []
+    for model in models:
+        subset = [(r, method) for r, method in candidate_rows
+                  if abs(r["exclusiveAreaSqm"] - model["area"]) <= 1.0]
+        subset.sort(key=lambda pair: pair[0]["dealDate"], reverse=True)
+        if not subset:
+            continue
+        prices = [pair[0]["dealAmountManwon"] for pair in subset]
+        by_type.append({
+            "type": model["type"], "areaSqm": model["area"],
+            "areaSource": "api" if model["verifiedArea"] else "model_code_estimate",
+            "transactionCount": len(subset), "medianEok": round(median(prices)/10000, 4),
+            "minEok": round(min(prices)/10000, 4), "maxEok": round(max(prices)/10000, 4),
+            "latestDate": subset[0][0]["dealDate"],
+            "matchMethods": sorted(set(method for _, method in subset)),
+            "recentTransactions": [{"dealDate": r["dealDate"],
+              "apartment": r["apartment"], "exclusiveAreaSqm": r["exclusiveAreaSqm"],
+              "dealAmountManwon": r["dealAmountManwon"], "floor": r.get("floor"),
+              "matchMethod": method} for r, method in subset[:6]],
+            "comparisonIsProfit": False,
+        })
+    result["byType"] = by_type
+    result["transactionCount"] = len({id(r) for r, _ in candidate_rows})
+    result["latestDate"] = max((r["dealDate"] for r, _ in candidate_rows), default=None)
+    result["status"] = "same_complex_sales_found" if by_type else "not_verified"
+    result["reason"] = ("동일 단지명과 지번 또는 150m 이내 좌표가 일치한 아파트 매매 실거래입니다."
+                        if by_type else "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다.")
+    return result
+
+
+def discovery_screen(project, today):
+    """자료 부족과 무관하게 접수 기회(1차)를 모니터링. 이 결과는 가격 검증과 독립적."""
+    special = project.get("kind") in ("무순위", "잔여세대", "계약취소주택")
+    end, start = get_date(project.get("end")), get_date(project.get("start"))
+    days = ((datetime.strptime(end, "%Y-%m-%d").date() -
+             datetime.strptime(today, "%Y-%m-%d").date()).days) if end else None
+    if days is None:
+        phase = "date_unknown"
+    elif days < 0:
+        phase = "closed"
+    elif start and start > today:
+        phase = "upcoming"
+    else:
+        phase = "accepting_or_ending"
+    urgent = phase == "accepting_or_ending" and days is not None and 0 <= days <= 3
+    start_days = ((datetime.strptime(start, "%Y-%m-%d").date() -
+                   datetime.strptime(today, "%Y-%m-%d").date()).days) if start else None
+    start_soon = phase == "upcoming" and start_days is not None and 0 < start_days <= 3
+    return {
+        "stage": "stage1_discovery", "isSpecialSupply": special,
+        "phase": phase, "daysToDeadline": days,
+        "deadlineSoon": urgent, "startSoon": start_soon,
+        "daysToStart": start_days,
+        "priority": ("special_deadline" if special and urgent else
+                     "special_notice" if special else
+                     "deadline" if urgent else "ordinary_notice"),
+        "label": ("무순위·재공급 마감 임박" if special and urgent else
+                  "무순위·재공급 접수 예정" if special and phase == "upcoming" else
+                  "무순위·재공급 기회" if special else
+                  "접수 마감 임박" if urgent else
+                  "접수 시작 임박" if start_soon else "일반 공고 포착"),
+        "eligibilityVerified": False,
+        "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다.",
+    }
+
+
+def opportunity_screen(project):
+    """감사 가능한 가격 신호. 거래중앙값은 시세/수익 인증이 아니다.
+
+    우위 신호는 거리 확인+주택형 실측면적+충분한 분산 표본을 충족할 때만.
+    무순위 공고의 기회는 가격 신호와 구분해 반드시 노출한다.
+    """
+    special = project.get("kind") in ("무순위", "잔여세대", "계약취소주택")
+    report = project.get("referenceMarket") or {}
+    same_complex = project.get("sameComplexSales") or {}
+    verified_same_types = {str(row.get("type")): row
+                           for row in same_complex.get("byType") or []}
+    models = {str(m.get("type") or m.get("modelNo") or ""): m
+              for m in project.get("housingTypes") or []}
+    observations = []
+    strong = []
+    caution = []
+    for group in report.get("byType") or []:
+        model_name = str(group.get("type") or "")
+        model = models.get(model_name)
+        if not model:
+            continue
+        price = positive_number(model.get("priceEok"))
+        reference = positive_number(group.get("referencePriceEok"))
+        if price is None or reference is None:
+            continue
+        comps = group.get("apartmentComparisons") or []
+        n_complex = int(group.get("complexCount") or 0)
+        n_trades = int(group.get("transactionCount") or 0)
+        distances_confirmed = bool(report.get("locationConfirmed")) and (
+            int(group.get("distanceCheckedCount") or 0) >= 3)
+        area_verified = group.get("areaSource") == "api"
+        no_partial = not (group.get("coverageLimited") or report.get("comparisonCoverageLimited"))
+        # 거래가 폭넓게 분포한다면 중앙값이 적정가격을 대표하기 어렵다.
+        observed_medians = [positive_number(c.get("medianEok")) for c in comps]
+        observed_medians = [x for x in observed_medians if x is not None]
+        spread = (max(observed_medians) / min(observed_medians) - 1
+                  if len(observed_medians) >= 2 else None)
+        usable = bool(distances_confirmed and area_verified and no_partial
+                      and n_complex >= 3 and n_trades >= 10
+                      and spread is not None and spread <= 0.35)
+        gap = round(reference - price, 4)
+        pct = round(100 * gap / reference, 1)
+        observation = {
+            "type": model_name, "priceEok": round(price,4),
+            "comparableReferenceEok": round(reference,4),
+            "observedGapEok": gap, "observedGapPct": pct,
+            "apartmentCount": n_complex, "transactionCount": n_trades,
+            "distanceVerified": distances_confirmed, "areaSource": group.get("areaSource"),
+            "coverageComplete": no_partial, "complexPriceDispersionPct": (
+                round(100*spread,1) if spread is not None else None),
+            "qualityGatePassed": usable, "scopeLabel": group.get("scopeLabel"),
+            "latestComparisonDate": max((str(c.get("latestDate") or "") for c in comps), default=""),
+        }
+        observations.append(observation)
+        if usable and pct >= 15:
+            strong.append(observation)
+        elif usable and pct <= -10:
+            caution.append(observation)
+    # 동일 단지의 직접 거래는 인근 비교보다 먼저 검토하되, 소수 표본과
+    # 명목 면적 추정값을 가격 우위 확정 판정에 사용하지 않는다.
+    same_evidence = []
+    for model_name, group in verified_same_types.items():
+        model = models.get(model_name)
+        price = positive_number(model.get("priceEok")) if model else None
+        ref = positive_number(group.get("medianEok"))
+        if price is None or ref is None:
+            continue
+        delta = round(ref-price,4)
+        same_evidence.append({
+            "type": model_name, "priceEok": round(price,4),
+            "sameComplexMedianEok": round(ref,4),
+            "observedGapEok": delta,
+            "observedGapPct": round(100*delta/ref,1),
+            "transactionCount": int(group.get("transactionCount") or 0),
+            "latestDate": group.get("latestDate"),
+            "areaVerified": group.get("areaSource")=="api",
+            "evidenceStatus": "same_complex_apartment_sales_review",
+            "strongEnoughForAutomaticProfitClaim": False,
+        })
+    same_evidence.sort(key=lambda x: -x["observedGapPct"])
+    # 강한 후보가 하나라도 있으면 우선 검토. 모든 비교는 '기회 추정'이 아닌 '실사 대상'.
+    strong.sort(key=lambda x: (-x["observedGapPct"],-x["transactionCount"]))
+    caution.sort(key=lambda x: (x["observedGapPct"],-x["transactionCount"]))
+    observations.sort(key=lambda x: (-x["observedGapPct"],-x["transactionCount"]))
+    positives = [x for x in observations if x["observedGapPct"] >= 10]
+    if strong:
+        tier, label, best = "priority_review", "가격 우위 정밀 검토", strong[0]
+    elif special:
+        tier, label, best = "special_supply", "무순위·재공급 기회 확인", (positives[0] if positives else None)
+    elif caution:
+        tier, label, best = "price_caution", "가격 열위 주의", caution[0]
+    elif positives:
+        tier, label, best = "manual_review", "가격 차이 근거 재확인", positives[0]
+    elif same_evidence and same_evidence[0]["observedGapPct"] >= 10:
+        tier, label, best = "same_complex_review", "동일 단지 거래 비교 필요", None
+    else:
+        tier, label, best = "watch", "공고·비교자료 확인", None
+    issue_list = []
+    if not report.get("locationConfirmed"):
+        issue_list.append("청약 단지 위치 확인 필요")
+    if report.get("comparisonCoverageLimited"):
+        issue_list.append("비교 단지 탐색 한도 도달")
+    if not observations:
+        issue_list.append("주택형별 비교 거래 표본 부족")
+    if observations and not any(x["areaSource"] == "api" for x in observations):
+        issue_list.append("전용면적은 주택형 코드 추정치")
+    if not project.get("requirements"):
+        issue_list.append("모집공고문 청약 자격 미검증")
+    if not project.get("risk"):
+        issue_list.append("전매제한·거주의무·자금 일정 미검증")
+    return {
+        "tier": tier, "label": label, "isProfitVerified": False,
+        "verifiedEligibility": False, "bestType": best,
+        "candidateTypeCount": len(strong),
+        "observationTypeCount": len(observations),
+        "noticeTypePriority": special,
+        "priceCautionCount": len(caution),
+        "priceEvidence": observations,
+        "sameComplexEvidence": same_evidence,
+        "evidenceOrder": ["verified_same_complex_apartment_sales", "distance_checked_nearby_apartment_sales", "unverified_reference"],
+        "stage": "stage2_price_verification",
+        "verificationChecklist": issue_list,
+        "screenVersion": "v13-two-stage-evidence",
+        "reason": ("거리·전용면적·거래 표본·단지별 가격 분산 기준을 충족한 가격 차이 신호입니다. 수익 확정이 아니며 직접 확인해야 합니다."
+                   if strong else "확정적인 가격 우위는 검증되지 않았습니다. 무순위 일정과 청약 자격 또는 비교자료를 우선 확인하세요."),
+        "disclaimer": "실거래 비교는 분양권의 적정 시세·예상 차익·당첨 가능성을 입증하지 않습니다.",
+    }
+
+
+
+# v20: source-aware readiness summary. No unsupported eligibility/profit assertion.
+def build_v20_review(project):
+    opportunity = project.get("opportunity") or {}
+    same = project.get("sameComplexSales") or {}
+    nearby = project.get("referenceMarket") or {}
+    discovery = project.get("discovery") or {}
+    types = project.get("housingTypes") or []
+    prices = [positive_number(x.get("priceEok")) for x in types]
+    prices = [x for x in prices if x is not None]
+    same_types = same.get("byType") or []
+    same_count = sum(int(x.get("transactionCount") or 0) for x in same_types)
+    nearby_count = int(nearby.get("transactionCount") or 0)
+    near_confirmed = bool(nearby.get("locationConfirmed") and nearby.get("distanceChecked"))
+    evidence = (
+        "same_complex_apartment_sales" if same_types else
+        "distance_checked_apartment_sales" if near_confirmed and nearby_count else
+        "unverified_local_reference" if nearby_count else "missing")
+    if same_types:
+        reason = "동일 단지 매매 확인. 분양권 시세와 동일하다는 뜻은 아닙니다."
+    elif near_confirmed and nearby_count:
+        reason = "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다."
+    elif nearby_count:
+        reason = "거래는 있으나 실제 거리 검증이 없어 가격 판정에 사용하지 않습니다."
+    else:
+        reason = "검증할 거래가 부족합니다. 신규 택지·단지 주소·실거래 공개 시점 확인 필요."
+    category = opportunity.get("tier", "watch")
+    # Ranking is a review order, not a probability, expected return or financial recommendation.
+    signal = 0
+    if category == "priority_review": signal = 4
+    elif category in ("manual_review", "same_complex_review"): signal = 2
+    elif category == "price_caution": signal = -2
+    special = bool(discovery.get("isSpecialSupply"))
+    score = (max(-2, signal) * 10 + (15 if special else 0) +
+             (10 if discovery.get("deadlineSoon") else 0) +
+             (6 if discovery.get("startSoon") else 0) +
+             (7 if same_types else 0) + (4 if near_confirmed else 0))
+    # Do not pretend a downloaded API URL is the actual source PDF.
+    return {
+        "version": "v20-evidence-readiness", "reviewScore": score,
+        "priceSignal": category, "evidenceLevel": evidence,
+        "evidenceReason": reason,
+        "sameComplexTradeCount": same_count,
+        "nearbyTradeCount": nearby_count,
+        "areaVerified": any(x.get("exclusiveAreaSqm") for x in types),
+        "priceAvailable": bool(prices),
+        "minTypePriceEok": min(prices) if prices else None,
+        "maxTypePriceEok": max(prices) if prices else None,
+        "deadlineSoon": bool(discovery.get("deadlineSoon")),
+        "startSoon": bool(discovery.get("startSoon")),
+        "special": special,
+        "eligibilityStatus": "requires_official_notice_review",
+        "requiredEvidence": [
+            "모집공고문 원문 및 공급유형별 자격", "전매제한·거주의무",
+            "실제 계약금/중도금/잔금 납부 일정", "취득세·옵션·금융 비용",
+            "주택형·입지·거래시점의 비교 적합성",
+        ],
+        "investmentProfitVerified": False,
+    }
+
+
+def attach_review_evidence(project, catalogue):
+    """User-reviewed notice evidence only; cannot silently set requirements.
+
+    Catalogue is keyed by exact notice id, preventing same-named notices mixing.
+    Only evidence explicitly marked reviewed is surfaced as reviewed; the raw
+    excerpt is not converted into eligibility requirements automatically.
+    """
+    entry = catalogue.get(project.get("id"), {}) if isinstance(catalogue, dict) else {}
+    if not isinstance(entry, dict):
+        entry = {}
+    source = entry.get("sourceUrl")
+    if not isinstance(source, str) or not source.startswith("https://"):
+        source = None
+    excerpts = []
+    for item in (entry.get("excerpts") or [])[:30]:
+        if not isinstance(item, dict):
+            continue
+        page = item.get("page")
+        body = item.get("text")
+        category = item.get("category")
+        if (isinstance(page, int) and page >= 1 and isinstance(body, str)
+                and 0 < len(body) <= 700 and isinstance(category, str)
+                and category in ("eligibility", "resale", "occupancy", "payments", "other")):
+            excerpts.append({"category": category, "page": page, "text": body,
+                             "reviewed": item.get("reviewed") is True})
+    project["noticeEvidence"] = {
+        "status": ("reviewed_excerpts" if excerpts and all(x["reviewed"] for x in excerpts)
+                   else "excerpts_need_review" if excerpts else "no_source_pdf"),
+        "sourceUrl": source, "excerpts": excerpts,
+        "eligibilityAutomaticallyConfirmed": False,
+        "note": "발췌문은 공고문 검토 보조 자료입니다. AI/키워드 추출만으로 청약 자격을 확정하지 않습니다.",
+    }
+
+
+
+# v27: optional best-effort free public-web price lookup.
+# Inspired by https://github.com/Seonh0/naver-land-mcp (MIT).
+# These are unofficial Naver web endpoints, NOT a guaranteed official/open API.
+# Never evade access restrictions, never display guessed prices, and stop on 403/429.
+import time
+from urllib.parse import quote
+
+NAVER_WEB_ROOT = "https://new.land.naver.com"
+NAVER_JWT_PATTERN = re.compile(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+")
+FREE_QUOTE_DELAY_SECONDS = 1.2
+
+def _market_name(value):
+    """Normalize only common *notice* suffixes, never accept a mere substring hit."""
+    name = re.sub(r"\([^)]*\)", "", str(value or ""))
+    name = re.sub(r"(?:공공분양주택|공공분양|신혼희망타운|본청약|무순위|재공급|아파트|공공주택)$", "", name.strip())
+    return re.sub(r"[^가-힣a-z0-9]", "", name.lower())
+
+def _market_name_variants(name):
+    raw = str(name or '').strip()
+    options = [raw, re.sub(r'\([^)]*\)', '', raw).strip()]
+    simplified = re.sub(r'(?:\s*\([^)]*\))*\s*(?:공공분양주택|공공분양|신혼희망타운|본청약|무순위|재공급)$', '', options[-1]).strip()
+    options.append(simplified)
+    # Notice titles can contain an entire sale description after the actual name.
+    for token in ('공공분양주택', '신혼희망타운', '공공분양', '본청약'):
+        if token in simplified: options.append(simplified.split(token)[0].strip())
+    return list(dict.fromkeys(x for x in options if len(_market_name(x)) >= 4))[:5]
+
+def _market_price_eok(value):
+    # Naver listing statistics / KB price table values are usually in 만원.
+    if value is None or isinstance(value, bool): return None
+    if isinstance(value, str):
+        value=value.replace(",", "").strip()
+        if not re.fullmatch(r"\d+(?:\.\d+)?",value): return None
+    try: number=float(value)
+    except (ValueError, TypeError): return None
+    if not (1000 <= number <= 10000000): return None
+    return round(number / 10000, 4)
+
+def _market_price_text_eok(value):
+    """Price from a listing: '35억', '35억 5000', '35억 5,000', '9억 8천'."""
+    x=str(value or '').replace(',', '').replace(' ', '')
+    if not x:return None
+    m=re.fullmatch(r'(\d+(?:\.\d+)?)억(?:(\d+(?:\.\d+)?)(천|만)?)?',x)
+    if m:
+        amount=float(m.group(1))
+        if m.group(2):
+            rest=float(m.group(2))
+            amount += (rest*1000 if m.group(3)=='천' else rest)/10000
+        return round(amount,4) if 0.1<=amount<=1000 else None
+    if re.fullmatch(r'\d+(?:\.\d+)?',x):return _market_price_eok(x)
+    return None
+
+def _market_quote(source, value, kind, area, date, url, *, unit_matched=False, origin='네이버 공개 페이지 비공식 조회'):
+    price=round(float(value),4) if value is not None else None
+    if not price or not (0.1 <= price <= 1000): return None
+    return {'source':source,'priceEok':price,'checkedAt':str(date),
+            'kind':kind,'area':area,'origin':origin,
+            'evidenceUrl':url,'unitTypeMatched':bool(unit_matched)}
+
+class _NaverWebClient:
+    def __init__(self, session, sleeper=time.sleep):
+        self.session=session
+        self.sleep=sleeper
+        self.token=None
+        self.last_call=0.0
+        self.blocked=False
+        self.last_error=""
+        self._session_initialized=False
+        self.headers={
+            'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
+            'Referer':NAVER_WEB_ROOT+'/complexes',
+            'Accept':'application/json, text/plain, */*',
+            'Accept-Language':'ko-KR,ko;q=0.9',
+        }
+
+    def _request(self,path,params=None):
+        if self.blocked:
+            return None
+        if not self._session_initialized:
+            self._session_initialized=True
+            try:
+                page=self.session.get(NAVER_WEB_ROOT+'/complexes',headers=self.headers,timeout=12)
+                if page.status_code in (401,403,429):
+                    self.blocked=True
+                    self.last_error=f"네이버 초기 페이지 HTTP {page.status_code} 접근 제한"
+                    return None
+                page.raise_for_status()
+                tokens=NAVER_JWT_PATTERN.findall(page.text)
+                if tokens:self.token=tokens[0]
+                # Some Naver public endpoints respond without a JWT. A missing
+                # token is not proof that the whole site has blocked access.
+            except requests.RequestException as e:
+                self.last_error='초기 페이지 연결 오류: '+type(e).__name__
+                return None
+        self.sleep(FREE_QUOTE_DELAY_SECONDS)
+        headers=dict(self.headers)
+        if self.token:headers['Authorization']='Bearer '+self.token
+        try:
+            resp=self.session.get(NAVER_WEB_ROOT+'/api'+path,params=params,headers=headers,timeout=12)
+            if resp.status_code in (401,403,429):
+                self.blocked=True
+                self.last_error=f"네이버 API HTTP {resp.status_code} 접근 제한 (우회하지 않음)"
+                return None
+            if resp.status_code >= 400:
+                self.last_error=f"네이버 API HTTP {resp.status_code} ({path})"
+                return None
+            data=resp.json()
+            if not isinstance(data,dict):
+                self.last_error='네이버 API JSON 형식 불일치'
+                return None
+            if data.get('error'):
+                self.last_error='네이버 API 응답 오류'
+                return None
+            self.last_error=''
+            return data
+        except (requests.RequestException,ValueError) as e:
+            self.last_error='네이버 API 연결/응답 오류: '+type(e).__name__
+            return None
+
+    def locate(self, project):
+        name=str(project.get('name') or '')
+        variants=_market_name_variants(name)
+        for keyword in variants:
+            data=self._request('/search',{'keyword':keyword})
+            if not data:continue
+            options=data.get('complexes') or []
+            # Some responses use a nested list; never guess on ambiguity.
+            if isinstance(options,dict):options=options.get('list') or options.get('items') or []
+            expected=set(_market_name(x) for x in variants)
+            exact=[x for x in options if isinstance(x,dict) and
+                   _market_name(x.get('complexName')) in expected and x.get('complexNo')]
+            ids={str(x['complexNo']) for x in exact}
+            if len(ids)==1:return exact[0]
+            if self.blocked:break
+        key=os.environ.get('KAKAO_REST_API_KEY','').strip()
+        addr=site_parcel_address(project)
+        if key and addr and not self.blocked:
+            try:
+                response=self.session.get('https://dapi.kakao.com/v2/local/search/address.json',
+                    params={'query':addr},headers={'Authorization':'KakaoAK '+key},timeout=12)
+                if response.ok:
+                    docs=response.json().get('documents') or []
+                    bcode=str(((docs[0].get('address') or {}).get('b_code') or '')) if len(docs)==1 else ''
+                    if re.fullmatch(r'\d{10}',bcode):
+                        region=self._request('/regions/complexes',{'cortarNo':bcode,'realEstateType':'APT','order':''})
+                        options=(region or {}).get('complexList') or []
+                        exact=[x for x in options if isinstance(x,dict) and
+                               _market_name(x.get('complexName')) in set(_market_name(n) for n in variants)
+                               and x.get('complexNo')]
+                        if len({str(x['complexNo']) for x in exact})==1:return exact[0]
+            except (requests.RequestException, ValueError, TypeError, KeyError):pass
+        if not self.last_error:self.last_error='단지 검색 결과 없음 또는 동일 이름 단지 다수'
+        return None
+
+    def details(self, complex_id):
+        if not str(complex_id).isdigit():return None
+        return self._request('/complexes/'+str(complex_id))
+
+    def price_table(self, complex_id, area_no, provider):
+        if not (str(complex_id).isdigit() and str(area_no).isdigit()):return None
+        return self._request('/complexes/'+str(complex_id)+'/prices',{
+            'complexNo':str(complex_id),'tradeType':'A1','year':'5','areaNo':str(area_no),
+            'type':'table','provider':provider})
+
+    def article_list(self, complex_id):
+        """Fetch only first page of publicly listed sale asking prices."""
+        if not str(complex_id).isdigit():return None
+        return self._request('/articles/complex/'+str(complex_id),{
+            'realEstateType':'APT:ABYG:JGC','tradeType':'A1','page':'1',
+            'type':'list','order':'rank','priceType':'RETAIL','sameAddressGroup':'false'})
+
+def _article_asking_quotes(data, expected_areas, day, url):
+    """Only same-unit listing ASK prices; never treat as transaction or KB appraisal."""
+    if not isinstance(data,dict):return []
+    records=data.get('articleList') or []
+    if not isinstance(records,list) or not expected_areas:return []
+    matched=[]
+    for a in records:
+        if not isinstance(a,dict):continue
+        # Trade type must be explicitly sale; never mix monthly/jeonse listings.
+        if str(a.get('tradeTypeCode') or a.get('tradeType') or '').upper() not in ('A1','매매'):continue
+        try:area=float(a.get('area2') or a.get('exclusiveArea') or 0)
+        except (TypeError,ValueError):continue
+        if not any(abs(area - x)<=2 for x in expected_areas):continue
+        value=_market_price_text_eok(a.get('dealOrWarrantPrc') or a.get('dealPrice'))
+        if value is not None:matched.append((value,area))
+    if not matched:return []
+    values=[v for v,_ in matched]
+    quote=_market_quote('네이버',round(median(values),4),'매매 매물 호가 (실거래 아님)',
+        '청약 전용면적 ±2㎡',day,url,unit_matched=True,
+        origin=f'네이버 매물 목록 비공식 조회 · 매매 {len(values)}건')
+    if quote:
+        quote['priceRangeEok']=[min(values),max(values)]
+        quote['sampleCount']=len(values)
+    return [quote] if quote else []
+
+def _project_unit_areas(project):
+    values=[]
+    for typ in project.get('housingTypes') or []:
+        for key in ('exclusiveAreaSqm','area','areaSqm','exclusiveArea','areaM2'):
+            try:
+                v=float(typ.get(key) or 0)
+                if 15 <= v <= 300:values.append(v);break
+            except (ValueError,TypeError,AttributeError): pass
+    return values
+
+def _attach_naver_kb_from_detail(client, project, complex_id, details, day):
+    """Return separately labelled Naver asking price + KB price from Naver's web tables."""
+    detail=(details.get('complexDetail') or {}) if isinstance(details,dict) else {}
+    real_name=detail.get('complexName') or ''
+    if _market_name(real_name) not in set(_market_name(n) for n in _market_name_variants(project.get('name'))):
+        return []
+    address=str(detail.get('address') or '')
+    target=str(project.get('district') or '')
+    project_dong=identify_legal_dong(target)
+    if project_dong and address and project_dong not in address:
+        return []
+    # Identical names may exist in different cities; validate province where available.
+    province={'서울':'서울','경기':'경기','인천':'인천'}.get(project.get('region'))
+    if province and address and province not in address:
+        return []
+    pyeongs=details.get('complexPyeongDetailList') or []
+    if not isinstance(pyeongs,list):return []
+    expected=_project_unit_areas(project)
+    selected=[]
+    for row in pyeongs:
+        if not isinstance(row,dict): continue
+        area_no=row.get('pyeongNo')
+        if not str(area_no or '').isdigit():continue
+        area=positive_number(row.get('exclusiveArea'))
+        matched=bool(area and any(abs(area-e)<=2 for e in expected))
+        if expected and not matched:continue
+        selected.append((row,area,matched))
+    # No verified unit area => no cross-size "market price" number shown.
+    if not selected: return []
+    selected=selected[:3]
+    quotes=[]
+    complex_url=NAVER_WEB_ROOT+'/complexes/'+str(complex_id)
+    for row,area,matched in selected:
+        label=f'전용 {area:.1f}㎡' if area else '면적 미확인'
+        # articleStatistics means listed asking prices, NOT completed transactions.
+        stats=row.get('articleStatistics') or {}
+        text=str(stats.get('dealPriceString') or '')
+        asks=[]
+        for chunk in re.split(r'~|～| - ',text):
+            val=_market_price_text_eok(chunk)
+            if val:asks.append(val)
+        if asks:
+            price=round(median(asks),4)
+            q=_market_quote('네이버',price,'매매 매물 호가 (계약가격 아님)',label,day,complex_url,unit_matched=matched)
+            if q:
+                if len(asks)>1:q['priceRangeEok']=[min(asks),max(asks)]
+                quotes.append(q)
+        data=client.price_table(complex_id,row['pyeongNo'],'kbstar')
+        if not data:continue
+        prices=data.get('marketPrices') or []
+        if not prices or not isinstance(prices[0],dict):continue
+        p=prices[0]
+        amount=_market_price_eok(p.get('dealAveragePrice'))
+        if amount is None:amount=_market_price_eok(p.get('dealUpperPriceLimit'))
+        date_raw=str(data.get('marketPriceBasisYearMonthDay') or '')
+        stamp=f'{date_raw[:4]}-{date_raw[4:6]}-{date_raw[6:8]}' if re.fullmatch(r'20\d{6}',date_raw) else day
+        q=_market_quote('KB',amount,'KB 매매 참고시세 (네이버 경유)',label,stamp,complex_url,unit_matched=matched,
+            origin='네이버 부동산의 KB 제공 시세 · KB 원본 페이지 재검증 필요')
+        if q:quotes.append(q)
+    # One display record per source: range across ONLY area-matched model types.
+    outputs=[]
+    for source in ('네이버','KB'):
+        scoped=[q for q in quotes if q['source']==source]
+        if not scoped:continue
+        primary=dict(scoped[0])
+        values=[q['priceEok'] for q in scoped]
+        if len(values)>1:
+            primary['priceEok']=round(median(values),4)
+            primary['priceRangeEok']=[min(values),max(values)]
+            primary['area']=str(len(values))+'개 청약 면적별 참고가격'
+            primary['kind']=('매매 매물 호가 범위' if source=='네이버' else 'KB 매매 시세 범위 (네이버 경유)')
+        outputs.append(primary)
+    return outputs
+
+def attach_free_web_quotes(session, projects, today):
+    """Best-effort unofficial data collection with traceable failure statuses.
+
+    Keep only *recent previously checked* source-backed quotes through a short
+    temporary outage. A quote's original checkedAt remains unchanged.
+    """
+    client=_NaverWebClient(session)
+    previous={}
+    try:
+        old=json.loads(Path('data.json').read_text(encoding='utf-8'))
+        for p in old.get('projects') or []:
+            if isinstance(p,dict) and p.get('id'):
+                previous[str(p['id'])]=p.get('privateMarketQuotes') or []
+    except (OSError,ValueError,TypeError):
+        pass
+    from datetime import date as _date
+    try: today_date=_date.fromisoformat(today)
+    except ValueError: today_date=None
+    def valid_cached(q):
+        if not isinstance(q,dict) or q.get('source') not in ('네이버','KB'):
+            return False
+        if not q.get('evidenceUrl') or not q.get('kind'):
+            return False
+        try:
+            checked=_date.fromisoformat(str(q.get('checkedAt'))[:10])
+            return today_date is not None and 0 <= (today_date-checked).days <= 7 and 0 < float(q.get('priceEok')) < 1000
+        except (ValueError,TypeError):return False
+    for p in projects:
+        p['privateMarketQuotes']=[q for q in previous.get(str(p.get('id')),[]) if valid_cached(q)]
+        p['privateMarketStatus']='자동 조회 대기'
+    if os.environ.get('DISABLE_FREE_MARKET_LOOKUP','').lower() in ('1','true','yes'):
+        print('무료 네이버·KB 시세: 설정에 따라 비활성화')
+        for p in projects:p['privateMarketStatus']='수집 설정 비활성화'
+        return
+    matched=0
+    for project in projects:
+        name=str(project.get('name') or '')
+        if not name:continue
+        if client.blocked:
+            project['privateMarketStatus']=client.last_error or '사이트 접근 제한'
+            continue
+        try:
+            found=client.locate(project)
+            if not found:
+                project['privateMarketStatus']=client.last_error or '단지 자동 검색 실패·동일 단지 확인 불가'
+                print('무료 시세 미확인:',name,'|',project['privateMarketStatus'])
+                continue
+            cid=found.get('complexNo')
+            details=client.details(cid)
+            if not details:
+                project['privateMarketStatus']=client.last_error or '단지 상세 정보 없음'
+                print('무료 시세 미확인:',name,'|',project['privateMarketStatus'])
+                continue
+            quotes=_attach_naver_kb_from_detail(client,project,cid,details,today)
+            # Real estate asking-price listing API is a separate route from
+            # pyeong-detail statistics; use it if Naver statistics were absent.
+            if not any(q.get('source')=='네이버' for q in quotes) and not client.blocked:
+                article_data=client.article_list(cid)
+                asking=_article_asking_quotes(article_data,_project_unit_areas(project),today,
+                    NAVER_WEB_ROOT+'/complexes/'+str(cid))
+                if asking:quotes.extend(asking)
+            if quotes:
+                project['privateMarketQuotes']=quotes
+                project['privateMarketStatus']='주택형별 가격 확인'
+                matched+=1
+                print('무료 시세 연결:',name,'|',','.join(sorted(set(x['source'] for x in quotes))),
+                    '|',len(quotes),'개 주택형별 가격 근거')
+            else:
+                project['privateMarketStatus']=client.last_error or '동일 단지·전용면적 일치 시세 없음'
+                print('무료 시세 미확인:',name,'|',project['privateMarketStatus'])
+        except (ValueError,TypeError,KeyError,requests.RequestException) as exc:
+            project['privateMarketStatus']='자료 처리 오류: '+type(exc).__name__
+            print('무료 시세 조회 보류:',name,project['privateMarketStatus'])
+    if client.blocked:print('무료 시세 수집 중단:',client.last_error,'— 차단 우회하지 않음')
+    print('무료 시세 요약: 신규 확인 단지',matched,'/',len(projects),'| 이전 검증 자료 7일 이내만 보존')
+
+
+def main():
+    key = os.environ.get("DATA_GO_KR_API_KEY", "")
+    if not key:
+        raise RuntimeError("DATA_GO_KR_API_KEY is missing")
+    now = datetime.now(ZoneInfo("Asia/Seoul"))
+    today = now.date().isoformat()
+    session = requests.Session()
+    kakao_key = os.environ.get("KAKAO_REST_API_KEY", "").strip()
+    geo_cache = {}
+    place_cache = {}
+    projects = []
+    seen = set()
+    for region in REGIONS:
+        for row in fetch_region(session, key, region):
+            item = convert(row, today)
+            if not item or item["id"] in seen:
+                continue
+            seen.add(item["id"])
+            projects.append(item)
+    # 무순위·잔여세대 전용 API (일반 아파트 API에 포함되지 않음).
+    for row in fetch_remaining(session, key):
+        item = convert_remaining(row, today)
+        if not item or item["id"] in seen:
+            continue
+        seen.add(item["id"])
+        projects.append(item)
+    print(f"수집된 활성 공고: {len(projects)}건 (무순위 포함)")
+    projects.sort(key=lambda p: (p["start"], p["name"]))
+    catalogue_path = Path("notice_evidence.json")
+    try:
+        evidence_catalogue = json.loads(catalogue_path.read_text(encoding="utf-8")) if catalogue_path.exists() else {}
+        if not isinstance(evidence_catalogue, dict):
+            raise ValueError("notice_evidence.json must be an object keyed by notice ID")
+    except (ValueError, OSError) as exc:
+        raise RuntimeError("Invalid notice_evidence.json; existing data preserved") from exc
+
+    for project in projects:
+        # Fail the entire update if an API request fails: preserve existing data.json.
+        try:
+            types = fetch_housing_types(session, key, project)
+        except (requests.RequestException, RuntimeError, ValueError) as exc:
+            if project.get("dataCategory") != "remaining":
+                raise
+            print(f"무순위 주택형 가격 미제공: {project['id']} | {type(exc).__name__}")
+            types = []
+        project["housingTypes"] = types
+        # The public model endpoint exposes LTTOT_TOP_AMOUNT (top supply price per housing type).
+        # Do NOT label the minimum across these values as the lowest unit/floor price.
+        values = [float(x["priceEok"]) for x in types if positive_number(x.get("priceEok"))]
+        project["price"] = max(values, default=None)  # legacy compatibility
+        project["supplyPriceRange"] = {
+            "minEok": min(values, default=None),
+            "maxEok": max(values, default=None),
+            "basis": "per_model_top_amount_range",
+            "modelCount": len(values),
+        }
+        print(f"주택형 조회: {project['name']} | {len(types)}개 | 대표 최고가: {project['price']}")
+
+    # 처음 보는 행정구역도 Kakao의 법정동 코드로 확인 후 실거래 조회에 포함.
+    # 캐시는 한 번의 실행에서 여러 공고가 같은 도로·동을 참조할 때 중복 조회 방지.
+    administrative_cache = {}
+    for project in projects:
+        resolved, method = resolve_district_dynamic(
+            project, session, kakao_key, administrative_cache)
+        if resolved:
+            project["resolvedDistrict"] = list(resolved)
+        # 앱이 행정구역만 확인한 사실을 실제 단지 좌표 확인으로 오인하지 않도록 분리.
+        project["districtResolution"] = {
+            "method": method, "code": resolved[0] if resolved else None,
+            "label": resolved[1] if resolved else None,
+        }
+        print(f"지역코드 판별: {project['name']} | "
+              f"{resolved[0] if resolved else 'unknown'} | "
+              f"{resolved[1] if resolved else '주소 검증 필요'} | {method}")
+
+    # 같은 시군구 API 응답을 공고별로 중복 요청하지 않고 캐시합니다.
+    months = list(recent_months(now.date(), count=TRADE_MONTHS))
+    district_trades = {}
+    codes = sorted({d[0] for project in projects
+                    if (d := identify_district(project)) is not None})
+    for code in codes:
+        combined = []
+        for month in months:
+            combined.extend(fetch_district_month(session, key, code, month))
+        district_trades[code] = combined
+        print(f"지역 실거래 수집: {code} | {len(combined)}건")
+
+    # 분양/입주권 거래는 매매와 별도 API. 별도 활용 신청이 안 된 경우에는
+    # 공고 업데이트를 멈추지 않고 가격 신호를 보류한다.
+    rights_by_district = {}
+    for code in codes:
+        try:
+            all_rights=[]
+            for month in recent_months(now.date(), count=RIGHTS_MONTHS):
+                all_rights.extend(fetch_rights_month(session, key, code, month))
+            rights_by_district[code]=all_rights
+            print(f"분양·입주권 실거래: {code} | {len(all_rights)}건")
+        except (requests.RequestException, RuntimeError, ValueError, ET.ParseError) as exc:
+            rights_by_district[code]=None
+            print(f"분양·입주권 조회 보류: {code} | {type(exc).__name__} | 별도 API 활용 승인 확인")
+
+    # Press report is a discoverability clue, NOT a NAVER quote or verified market price.
+    # Exact notice/name match, dated source, segregated from official transactions.
+    media_catalogue = {'rem-2026930045-2026930045': {'name': '잠실 래미안아이파크', 'validThrough': '2026-12-31', 'reportedTrades': [{'areaBandSqm': 84, 'reportedRightsEok': 43.2, 'dealDate': '2026-06-30', 'sourceTitle': '한국경제 2026-11-18 보도 (전용 84㎡ 입주권 43억 2천만원)', 'sourceUrl': 'https://www.hankyung.com/article/2026111838756', 'notes': '입주권 거래 사례. 공급 84D형과 층·타입·추가분담금 등이 달라 확정 시세로 사용하지 않음'}]}}
+    media_path = Path("media_rights_evidence.json")
+    if media_path.exists():
+        external = json.loads(media_path.read_text(encoding="utf-8"))
+        if not isinstance(external, dict):
+            raise RuntimeError("Invalid media_rights_evidence.json")
+        media_catalogue.update(external)
+
+    for project in projects:
+        project["transactionScan"] = scan_district_trades(
+            project, district_trades, months
+        )
+        info = project["transactionScan"]
+        # 집계/후보 데이터는 시세 판정에 사용하지 않습니다.
+        project["market"] = None  # 검증된 주변 시세는 확인 전
+        project["marketComparable"] = False  # 자동 로또 판정 금지
+        project["referenceMarket"] = comparable_report(
+            project, district_trades, session, kakao_key, geo_cache, place_cache
+        )
+        project["sameComplexSales"] = same_complex_report(
+            project, district_trades, session, kakao_key, geo_cache, place_cache
+        )
+        project["verification"] = verification_status(project)
+        project["discovery"] = discovery_screen(project, today)
+        project["opportunity"] = opportunity_screen(project)
+        project["rightsSales"] = rights_report(project, rights_by_district)
+        rights_signals = attach_rights_opportunity(project)
+        media_signals = attach_reported_rights(project, media_catalogue, today)
+        early_signals = attach_early_price_signals(project)
+        if early_signals:
+            print(f"조기 로또 신호: {project['name']} | {len(early_signals)}개 주택형/거래근거 · 표본 적음/추가 검증")
+        if media_signals:
+            print(f"입주권 보도 근거: {project['name']} | {len(media_signals)}개 주택형 · 공식 API 미검증")
+        if rights_signals:
+            print(f"입주권 가격 신호: {project['name']} | {len(rights_signals)}개 형 | 최고 참고차이 {rights_signals[0]['referenceGapEok']}억")
+        attach_review_evidence(project, evidence_catalogue)
+        project["reviewV20"] = build_v20_review(project)
+        if project["opportunity"].get("tier") == "early_price_review":
+            project["reviewV20"]["reviewScore"] += 22
+            project["reviewV20"]["evidenceReason"] += " 소수 실거래 가격 차이: 조기 검토 후보(수익 미확정)."
+        if project["opportunity"].get("tier") == "rights_trade_review":
+            project["reviewV20"]["reviewScore"] += 45
+            project["reviewV20"]["evidenceReason"] += " 분양·입주권 가격 우위 가능성 검토(추가분담금·거래 세부 확인 필요)."
+        print(f"동일 단지 검증: {project['name']} | {project['sameComplexSales']['status']} "
+              f"| 주택형 {len(project['sameComplexSales']['byType'])}개 "
+              f"| 거래 {project['sameComplexSales']['transactionCount']}건")
+        print(f"기회 포착: {project['name']} | {project['discovery']['label']} "
+              f"| 마감까지 {project['discovery']['daysToDeadline']}일")
+        print(f"돈되는 청약 탐색: {project['name']} | {project['opportunity']['label']} "
+              f"| 엄격 기준 통과 주택형 {project['opportunity']['candidateTypeCount']}개 "
+              f"| 가격 열위 주의 {project['opportunity']['priceCautionCount']}개")
+        ref = project["referenceMarket"]
+        price_label = (f"{ref['referencePriceEok']}억" if ref.get("referencePriceEok") is not None else "비교 표본 부족")
+        print(f"위치 검증: {project['name']} | {ref.get('locationMethod')} | "
+              f"거래단지 탐색 {ref.get('candidateComplexesInspected', 0)}/{ref.get('candidateComplexesTotal', 0)} "
+              f"| 탐색 제한 {ref.get('comparisonCoverageLimited', False)}")
+        print(f"정밀 비교: {project['name']} | {ref.get('status')} | "
+              f"{price_label} | {ref.get('apartmentCount', 0)}개 단지 | "
+              f"{ref.get('transactionCount', 0)}건 | 거리 확인 {ref.get('distanceChecked')}")
+        print(
+            f"실거래 조회: {project['name']} | "
+            f"{info['status']} | {info.get('transactionCount', 0)}건 | "
+            f"동·면적 후보 {info.get('candidateCount', 0)}건 | "
+            f"시군구 확장 탐색 {info.get('districtExplorationCount', 0)}건"
+        )
+
+    # Free best-effort Naver listing + KB-provided prices; no paid license.
+    attach_free_web_quotes(session, projects, today)
+
+    quality_summary = {
+        "activeNotices": len(projects),
+        "remainingNotices": sum(p.get("dataCategory") == "remaining" for p in projects),
+        "preciseSiteLocations": sum(bool((p.get("referenceMarket") or {}).get("locationConfirmed")) for p in projects),
+        "priceReviewNotices": sum(p["opportunity"]["tier"] == "priority_review" for p in projects),
+        "priceCautionNotices": sum(p["opportunity"]["tier"] == "price_caution" for p in projects),
+        "unverifiedProfitNoticeCount": len(projects),
+        "tradeMonths": months,
+        "sameComplexVerifiedNotices": sum(bool(p["sameComplexSales"]["byType"]) for p in projects),
+        "deadlineSoonNotices": sum(p["discovery"]["deadlineSoon"] for p in projects),
+        "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
+        "startsSoonNotices": sum(p["discovery"]["startSoon"] for p in projects),
+        "verificationPendingNotices": sum(p["verification"]["eligibility"] == "official_notice_required" for p in projects),
+        "rightsReviewNotices": sum(bool(p["opportunity"].get("rightsEvidence")) for p in projects),
+        "reportedRightsReviewNotices": sum(bool(p["opportunity"].get("reportedRightsEvidence")) for p in projects),
+        "rightsApiUnavailableDistricts": sum(v is None for v in rights_by_district.values()),
+        "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
+        "algorithm": "v28-listing-price-fallback",
+        "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
+        "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
+    }
+    print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
+    result = {"updated_at": now.isoformat(), "projects": projects,
+              "analysisQuality": quality_summary}
+    Path("data.preview.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print("================================")
+    print("Preview created successfully")
+    print("Current KST date:", today)
+    print("Active or upcoming listings:", len(projects))
+    for region in REGIONS:
+        print(f"{region}: {sum(p['region'] == region for p in projects)}")
+
+
+if __name__ == "__main__":
+    main()
