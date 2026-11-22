@@ -32,9 +32,10 @@ jobs:
         run: pip install requests
 
       - name: Fetch official housing data
-        env:
-          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
-        run: python fetch_live.py
+  env:
+    DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+    KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+  run: python fetch_live.py
 
       - name: Validate and prepare data
         run: |
