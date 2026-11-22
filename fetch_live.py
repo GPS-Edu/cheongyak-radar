@@ -41,7 +41,11 @@ VERIFIED_DISTRICTS = {
     ("경기", "경기도 남양주시"): ("41360", "경기 남양주시"),
     ("경기", "경기도 광주시"): ("41610", "경기 광주시"),
     ("서울", "서울특별시 송파구"): ("11710", "서울 송파구"),
-    ("인천", "인천광역시 서구"): ("28260", "인천 서구"),
+    # 2026-07-01 행정구역 개편 후 코드 (법정동 코드 앞 5자리).
+    ("인천", "인천광역시 서해구"): ("28275", "인천 서해구"),
+    ("인천", "인천광역시 검단구"): ("28290", "인천 검단구"),
+    # 신규 검단지구 공고 중 행정구 접두어가 없는 공식 사업지구 표기.
+    ("인천", "인천 검단신도시"): ("28290", "인천 검단구"),
     ("인천", "인천광역시 부평구"): ("28237", "인천 부평구"),
     ("인천", "인천광역시 계양구"): ("28245", "인천 계양구"),
     ("인천", "인천광역시 연수구"): ("28185", "인천 연수구"),
@@ -142,6 +146,38 @@ def fetch_remaining(session, key):
     return results
 
 
+def official_facts(row):
+    """Only echo explicit public API fields; unknown means unknown, not no restriction."""
+    names = {
+        "RCRIT_PBLANC_DE": "모집공고일",
+        "PRZWNER_PRESNATN_DE": "당첨자 발표일",
+        "CNTRCT_CNCLS_BGNDE": "계약 시작일",
+        "CNTRCT_CNCLS_ENDDE": "계약 종료일",
+        "MVN_PREARNGE_YM": "입주 예정월",
+    }
+    fields = {}
+    for key, label in names.items():
+        value = str(row.get(key) or "").strip()
+        if not value or value in ("-", "null", "None"):
+            continue
+        if len(value) > 100:
+            continue
+        fields[key] = {"label": label, "value": value, "source": "청약홈 공고 API"}
+    return fields
+
+
+def verification_status(project):
+    """Unknown restrictions/eligibility must never be interpreted as unrestricted."""
+    return {
+        "eligibility": "official_notice_required",
+        "resaleRestriction": "official_notice_required",
+        "residencyObligation": "official_notice_required",
+        "depositSchedule": "official_notice_required",
+        "additionalCosts": "not_included",
+        "note": "청약홈 API 날짜·금액은 참고정보. 전매제한·거주의무·자격·계약금 비율은 공고문 원문 미검증.",
+    }
+
+
 def convert_remaining(row, today):
     region = str(row.get("SUBSCRPT_AREA_CODE_NM") or "").strip()
     name = str(row.get("HOUSE_NM") or "").strip()
@@ -169,7 +205,8 @@ def convert_remaining(row, today):
         "announce": get_date(row.get("RCRIT_PBLANC_DE")),
         "start": start, "end": end, "price": None, "housingTypes": [],
         "market": None, "marketComparable": False, "requirements": None,
-        "officialUrl": None,
+        "officialUrl": (str(row.get("PBLANC_URL") or "").strip() if str(row.get("PBLANC_URL") or "").strip().startswith("https://") else None),
+        "officialFacts": official_facts(row),
         "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
         "dataCategory": "remaining",
     }
@@ -209,6 +246,7 @@ def convert(row, today):
         "marketComparable": False,
         "requirements": None,
         "officialUrl": official if official.startswith("https://") else None,
+        "officialFacts": official_facts(row),
         "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
     }
 
@@ -828,17 +866,23 @@ def discovery_screen(project, today):
         phase = "upcoming"
     else:
         phase = "accepting_or_ending"
-    urgent = days is not None and 0 <= days <= 3
+    urgent = phase == "accepting_or_ending" and days is not None and 0 <= days <= 3
+    start_days = ((datetime.strptime(start, "%Y-%m-%d").date() -
+                   datetime.strptime(today, "%Y-%m-%d").date()).days) if start else None
+    start_soon = phase == "upcoming" and start_days is not None and 0 < start_days <= 3
     return {
         "stage": "stage1_discovery", "isSpecialSupply": special,
         "phase": phase, "daysToDeadline": days,
-        "deadlineSoon": urgent,
+        "deadlineSoon": urgent, "startSoon": start_soon,
+        "daysToStart": start_days,
         "priority": ("special_deadline" if special and urgent else
                      "special_notice" if special else
                      "deadline" if urgent else "ordinary_notice"),
         "label": ("무순위·재공급 마감 임박" if special and urgent else
+                  "무순위·재공급 접수 예정" if special and phase == "upcoming" else
                   "무순위·재공급 기회" if special else
-                  "접수 마감 임박" if urgent else "일반 공고 포착"),
+                  "접수 마감 임박" if urgent else
+                  "접수 시작 임박" if start_soon else "일반 공고 포착"),
         "eligibilityVerified": False,
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다.",
     }
@@ -1041,6 +1085,7 @@ def main():
         project["sameComplexSales"] = same_complex_report(
             project, district_trades, session, kakao_key, geo_cache, place_cache
         )
+        project["verification"] = verification_status(project)
         project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
         print(f"동일 단지 검증: {project['name']} | {project['sameComplexSales']['status']} "
@@ -1077,7 +1122,9 @@ def main():
         "sameComplexVerifiedNotices": sum(bool(p["sameComplexSales"]["byType"]) for p in projects),
         "deadlineSoonNotices": sum(p["discovery"]["deadlineSoon"] for p in projects),
         "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
-        "algorithm": "v13-two-stage-evidence",
+        "startsSoonNotices": sum(p["discovery"]["startSoon"] for p in projects),
+        "verificationPendingNotices": sum(p["verification"]["eligibility"] == "official_notice_required" for p in projects),
+        "algorithm": "v14-application-ready-review",
     }
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
     result = {"updated_at": now.isoformat(), "projects": projects,
