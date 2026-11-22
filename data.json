@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T02:21:23.533326+09:00",
+  "updated_at": "2026-11-22T15:56:46.992349+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -636,25 +636,90 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "district_exploration",
-        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "status": "insufficient",
         "modelType": "059.0000A",
-        "referencePriceEok": 2.85,
-        "transactionCount": 738,
-        "apartmentCount": 123,
-        "latestDate": "2026-11-19",
-        "scope": "경기 시흥시",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "055.0000A",
+            "areaSqm": 55.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.0000A",
+            "areaSqm": 59.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.0000B",
+            "areaSqm": 59.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.0000C",
+            "areaSqm": 59.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -1000,25 +1065,252 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "district_exploration",
-        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "status": "insufficient",
         "modelType": "055.0000A",
-        "referencePriceEok": 2.65,
-        "transactionCount": 16,
-        "apartmentCount": 3,
-        "latestDate": "2026-11-09",
-        "scope": "경기 안산시 단원구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "055.0000A",
+            "areaSqm": 55.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "055.0000B",
+            "areaSqm": 55.0,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
+      }
+    },
+    {
+      "id": "rem-2026910292-2026910292",
+      "notice": "rem-2026910292-2026910292",
+      "name": "검암역 푸르지오 프라베뉴 (B-1BL) 공공분양주택",
+      "region": "인천",
+      "district": "인천광역시 서해구 인천검암역세권 공공주택지구 내 B-1BL",
+      "kind": "무순위",
+      "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+      "houseDetailType": "",
+      "announce": "2026-11-18",
+      "start": "2026-11-23",
+      "end": "2026-11-23",
+      "price": 6.294,
+      "housingTypes": [
+        {
+          "type": "084.4783B",
+          "modelNo": "01",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.294
+        },
+        {
+          "type": "084.9219C",
+          "modelNo": "02",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.234
+        }
+      ],
+      "market": null,
+      "marketComparable": false,
+      "requirements": null,
+      "officialUrl": null,
+      "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+      "dataCategory": "remaining",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "modelType": "084.4783B",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "084.4783B",
+            "areaSqm": 84.4783,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9219C",
+            "areaSqm": 84.9219,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "special_supply",
+        "label": "무순위·재공급 공고 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": true,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
+      }
+    },
+    {
+      "id": "rem-2026930046-2026930046",
+      "notice": "rem-2026930046-2026930046",
+      "name": "광주 송정 중흥S-클래스 파크뷰",
+      "region": "경기",
+      "district": "경기도 광주시 광주대로 142",
+      "kind": "무순위",
+      "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+      "houseDetailType": "",
+      "announce": "2026-11-18",
+      "start": "2026-11-23",
+      "end": "2026-11-23",
+      "price": 4.1668,
+      "housingTypes": [
+        {
+          "type": "059.8670A",
+          "modelNo": "01",
+          "supplyAreaSqm": 79.4728,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.1668
+        },
+        {
+          "type": "059.7670C",
+          "modelNo": "02",
+          "supplyAreaSqm": 79.8797,
+          "exclusiveAreaSqm": null,
+          "priceEok": 4.0968
+        }
+      ],
+      "market": null,
+      "marketComparable": false,
+      "requirements": null,
+      "officialUrl": null,
+      "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+      "dataCategory": "remaining",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "modelType": "059.8670A",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "059.8670A",
+            "areaSqm": 59.867,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.7670C",
+            "areaSqm": 59.767,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "special_supply",
+        "label": "무순위·재공급 공고 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": true,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -1651,25 +1943,105 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "district_exploration",
-        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "status": "insufficient",
         "modelType": "084.9500A",
-        "referencePriceEok": 6.35,
-        "transactionCount": 50,
-        "apartmentCount": 12,
-        "latestDate": "2026-11-18",
-        "scope": "경기 부천시 오정구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "059.7100A",
+            "areaSqm": 59.71,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.9900B",
+            "areaSqm": 59.99,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.9900C",
+            "areaSqm": 59.99,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "074.9800A",
+            "areaSqm": 74.98,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9500A",
+            "areaSqm": 84.95,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -2870,8 +3242,273 @@
       },
       "referenceMarket": {
         "status": "insufficient",
-        "reason": "해당 주택형의 참고 거래가 충분하지 않습니다.",
-        "modelType": "104.8286"
+        "modelType": "104.8286",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "084.8861A",
+            "areaSqm": 84.8861,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 14,
+            "apartmentComparisons": [
+              {
+                "apartment": "파크푸르지오",
+                "legalDong": "성포동",
+                "buildYear": 2018,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 14,
+                "medianEok": 7.7,
+                "latestDate": "2026-11-10",
+                "areaSqm": 84.67
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9580B",
+            "areaSqm": 84.958,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 14,
+            "apartmentComparisons": [
+              {
+                "apartment": "파크푸르지오",
+                "legalDong": "성포동",
+                "buildYear": 2018,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 14,
+                "medianEok": 7.7,
+                "latestDate": "2026-11-10",
+                "areaSqm": 84.67
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.8700C",
+            "areaSqm": 84.87,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 14,
+            "apartmentComparisons": [
+              {
+                "apartment": "파크푸르지오",
+                "legalDong": "성포동",
+                "buildYear": 2018,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 14,
+                "medianEok": 7.7,
+                "latestDate": "2026-11-10",
+                "areaSqm": 84.67
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "099.9001A",
+            "areaSqm": 99.9001,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "099.9015B",
+            "areaSqm": 99.9015,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "104.8286",
+            "areaSqm": 104.8286,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
+      }
+    },
+    {
+      "id": "rem-2026930045-2026930045",
+      "notice": "rem-2026930045-2026930045",
+      "name": "잠실 래미안아이파크",
+      "region": "서울",
+      "district": "서울특별시 송파구 신천동 20-4번지 일대(잠실진주주택재건축정비사업)",
+      "kind": "무순위",
+      "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+      "houseDetailType": "",
+      "announce": "2026-11-17",
+      "start": "2026-11-23",
+      "end": "2026-11-24",
+      "price": 18.5607,
+      "housingTypes": [
+        {
+          "type": "043.7300",
+          "modelNo": "01",
+          "supplyAreaSqm": 68.98,
+          "exclusiveAreaSqm": null,
+          "priceEok": 11.0548
+        },
+        {
+          "type": "059.4700A",
+          "modelNo": "02",
+          "supplyAreaSqm": 88.17,
+          "exclusiveAreaSqm": null,
+          "priceEok": 15.7939
+        },
+        {
+          "type": "084.9600D",
+          "modelNo": "03",
+          "supplyAreaSqm": 113.37,
+          "exclusiveAreaSqm": null,
+          "priceEok": 18.5607
+        }
+      ],
+      "market": null,
+      "marketComparable": false,
+      "requirements": null,
+      "officialUrl": null,
+      "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+      "dataCategory": "remaining",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "modelType": "084.9600D",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "043.7300",
+            "areaSqm": 43.73,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.4700A",
+            "areaSqm": 59.47,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9600D",
+            "areaSqm": 84.96,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "special_supply",
+        "label": "무순위·재공급 공고 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": true,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -2927,7 +3564,7 @@
           "202607",
           "202606"
         ],
-        "transactionCount": 967,
+        "transactionCount": 969,
         "candidateCount": 14,
         "candidateTransactions": [
           {
@@ -3142,7 +3779,7 @@
           }
         ],
         "displayLimit": 80,
-        "districtExplorationCount": 266,
+        "districtExplorationCount": 267,
         "districtExplorationTransactions": [
           {
             "apartment": "아크로타워스퀘어",
@@ -3153,6 +3790,21 @@
             "floor": "25",
             "buildYear": "2017",
             "jibun": "203",
+            "matchingTypes": [
+              "084.9409A",
+              "084.9708B",
+              "084.9894C"
+            ]
+          },
+          {
+            "apartment": "당산푸르지오",
+            "legalDong": "영등포동8가",
+            "exclusiveAreaSqm": 84.98,
+            "dealAmountManwon": 187000,
+            "dealDate": "2026-11-11",
+            "floor": "14",
+            "buildYear": "2004",
+            "jibun": "91",
             "matchingTypes": [
               "084.9409A",
               "084.9708B",
@@ -3578,21 +4230,6 @@
               "084.9708B",
               "084.9894C"
             ]
-          },
-          {
-            "apartment": "래미안영등포프레비뉴",
-            "legalDong": "신길동",
-            "exclusiveAreaSqm": 84.98,
-            "dealAmountManwon": 175000,
-            "dealDate": "2026-10-16",
-            "floor": "4",
-            "buildYear": "2015",
-            "jibun": "4945",
-            "matchingTypes": [
-              "084.9409A",
-              "084.9708B",
-              "084.9894C"
-            ]
           }
         ],
         "typeStatistics": [
@@ -3617,7 +4254,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 266,
+              "count": 267,
               "apartmentCount": 90,
               "medianEok": 14.1,
               "minEok": 6.5,
@@ -3647,7 +4284,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 266,
+              "count": 267,
               "apartmentCount": 90,
               "medianEok": 14.1,
               "minEok": 6.5,
@@ -3677,7 +4314,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 266,
+              "count": 267,
               "apartmentCount": 90,
               "medianEok": 14.1,
               "minEok": 6.5,
@@ -3691,25 +4328,355 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "same_dong",
-        "label": "같은 법정동·유사 면적",
+        "status": "insufficient",
         "modelType": "084.9409A",
-        "referencePriceEok": 18.15,
-        "transactionCount": 14,
-        "apartmentCount": 6,
-        "latestDate": "2026-10-16",
-        "scope": "서울 영등포구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "084.9409A",
+            "areaSqm": 84.9409,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9708B",
+            "areaSqm": 84.9708,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9894C",
+            "areaSqm": 84.9894,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
+      }
+    },
+    {
+      "id": "rem-2026910300-2026910300",
+      "notice": "rem-2026910300-2026910300",
+      "name": "산곡역자이힐스테이트앤하늘채",
+      "region": "인천",
+      "district": "인천광역시 부평구 산곡동 10번지 일원(산곡6 주택재개발정비사업)",
+      "kind": "무순위",
+      "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+      "houseDetailType": "",
+      "announce": "2026-11-19",
+      "start": "2026-11-24",
+      "end": "2026-11-24",
+      "price": 10.22,
+      "housingTypes": [
+        {
+          "type": "050.2600A",
+          "modelNo": "01",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.56
+        },
+        {
+          "type": "050.2600B",
+          "modelNo": "02",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 5.6
+        },
+        {
+          "type": "059.9900B",
+          "modelNo": "03",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 7.8
+        },
+        {
+          "type": "075.5600A",
+          "modelNo": "04",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 9.1
+        },
+        {
+          "type": "075.6200B",
+          "modelNo": "05",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 8.94
+        },
+        {
+          "type": "084.9200A",
+          "modelNo": "06",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 9.41
+        },
+        {
+          "type": "084.9800B",
+          "modelNo": "07",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 10.22
+        }
+      ],
+      "market": null,
+      "marketComparable": false,
+      "requirements": null,
+      "officialUrl": null,
+      "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+      "dataCategory": "remaining",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "modelType": "084.9800B",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "050.2600A",
+            "areaSqm": 50.26,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "050.2600B",
+            "areaSqm": 50.26,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.9900B",
+            "areaSqm": 59.99,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "075.5600A",
+            "areaSqm": 75.56,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "075.6200B",
+            "areaSqm": 75.62,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9200A",
+            "areaSqm": 84.92,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9800B",
+            "areaSqm": 84.98,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "special_supply",
+        "label": "무순위·재공급 공고 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": true,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
+      }
+    },
+    {
+      "id": "rem-2026910307-2026910307",
+      "notice": "rem-2026910307-2026910307",
+      "name": "인천 검단신도시 AB13블록 호반써밋Ⅲ",
+      "region": "인천",
+      "district": "인천 검단신도시 AB13블록 호반써밋 아라 (인천광역시 검단구 이음4로 101)",
+      "kind": "무순위",
+      "kindBasis": "청약홈 무순위·잔여세대 API; 세부 유형은 공고문 확인",
+      "houseDetailType": "",
+      "announce": "2026-11-19",
+      "start": "2026-11-24",
+      "end": "2026-11-24",
+      "price": 6.428,
+      "housingTypes": [
+        {
+          "type": "097.9655P",
+          "modelNo": "01",
+          "supplyAreaSqm": null,
+          "exclusiveAreaSqm": null,
+          "priceEok": 6.428
+        }
+      ],
+      "market": null,
+      "marketComparable": false,
+      "requirements": null,
+      "officialUrl": null,
+      "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
+      "dataCategory": "remaining",
+      "transactionScan": {
+        "status": "not_scanned",
+        "reason": "시군구 코드 확인 전"
+      },
+      "referenceMarket": {
+        "status": "insufficient",
+        "modelType": "097.9655P",
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "097.9655P",
+            "areaSqm": 97.9655,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
+        ],
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "special_supply",
+        "label": "무순위·재공급 공고 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": true,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -4310,25 +5277,90 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "district_exploration",
-        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "status": "insufficient",
         "modelType": "084.9794A",
-        "referencePriceEok": 12.5,
-        "transactionCount": 39,
-        "apartmentCount": 15,
-        "latestDate": "2026-11-02",
-        "scope": "서울 종로구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "039.9342",
+            "areaSqm": 39.9342,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.9926",
+            "areaSqm": 59.9926,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9794A",
+            "areaSqm": 84.9794,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9940B",
+            "areaSqm": 84.994,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -5918,25 +6950,87 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "same_dong",
-        "label": "같은 법정동·유사 면적",
+        "status": "insufficient",
         "modelType": "084.9614",
-        "referencePriceEok": 5.15,
-        "transactionCount": 97,
-        "apartmentCount": 18,
-        "latestDate": "2026-11-13",
-        "scope": "경기 고양시 덕양구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "059.8728",
+            "areaSqm": 59.8728,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 7,
+            "apartmentComparisons": [
+              {
+                "apartment": "행신파밀리에트라이하이",
+                "legalDong": "행신동",
+                "buildYear": 2022,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 7,
+                "medianEok": 5.0,
+                "latestDate": "2026-10-16",
+                "areaSqm": 59.78
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "071.9348",
+            "areaSqm": 71.9348,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9614",
+            "areaSqm": 84.9614,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -7937,25 +9031,384 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "same_dong",
-        "label": "같은 법정동·유사 면적",
+        "status": "insufficient",
         "modelType": "084.9848C",
-        "referencePriceEok": 5.52,
-        "transactionCount": 105,
-        "apartmentCount": 9,
-        "latestDate": "2026-11-08",
-        "scope": "경기 부천시 소사구",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+        "transactionCount": 2,
+        "apartmentCount": 1,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "059.9906A",
+            "areaSqm": 59.9906,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": 4.51,
+            "complexCount": 6,
+            "transactionCount": 18,
+            "apartmentComparisons": [
+              {
+                "apartment": "부천한신더휴메트로",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.0,
+                "latestDate": "2026-11-03",
+                "areaSqm": 59.97
+              },
+              {
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
+              },
+              {
+                "apartment": "소사역한라비발디프레스티지",
+                "legalDong": "소사본동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 5.93,
+                "latestDate": "2026-11-16",
+                "areaSqm": 60.59
+              },
+              {
+                "apartment": "더센트럴",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.8,
+                "latestDate": "2026-09-16",
+                "areaSqm": 61.82
+              },
+              {
+                "apartment": "소사센트럴",
+                "legalDong": "소사본동",
+                "buildYear": 2019,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 4.67,
+                "latestDate": "2026-08-08",
+                "areaSqm": 61.34
+              },
+              {
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+          },
+          {
+            "type": "059.2735B",
+            "areaSqm": 59.2735,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": 5.14,
+            "complexCount": 4,
+            "transactionCount": 16,
+            "apartmentComparisons": [
+              {
+                "apartment": "부천한신더휴메트로",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.0,
+                "latestDate": "2026-11-03",
+                "areaSqm": 59.97
+              },
+              {
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
+              },
+              {
+                "apartment": "소사역한라비발디프레스티지",
+                "legalDong": "소사본동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 5.93,
+                "latestDate": "2026-11-16",
+                "areaSqm": 60.59
+              },
+              {
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+          },
+          {
+            "type": "059.2599C",
+            "areaSqm": 59.2599,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": 5.14,
+            "complexCount": 4,
+            "transactionCount": 16,
+            "apartmentComparisons": [
+              {
+                "apartment": "부천한신더휴메트로",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.0,
+                "latestDate": "2026-11-03",
+                "areaSqm": 59.97
+              },
+              {
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
+              },
+              {
+                "apartment": "소사역한라비발디프레스티지",
+                "legalDong": "소사본동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 5.93,
+                "latestDate": "2026-11-16",
+                "areaSqm": 60.59
+              },
+              {
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+          },
+          {
+            "type": "059.1615D",
+            "areaSqm": 59.1615,
+            "areaSource": "model_code_estimate",
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": 5.14,
+            "complexCount": 4,
+            "transactionCount": 16,
+            "apartmentComparisons": [
+              {
+                "apartment": "부천한신더휴메트로",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 11,
+                "medianEok": 6.0,
+                "latestDate": "2026-11-03",
+                "areaSqm": 59.97
+              },
+              {
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
+              },
+              {
+                "apartment": "소사역한라비발디프레스티지",
+                "legalDong": "소사본동",
+                "buildYear": 2024,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 5.93,
+                "latestDate": "2026-11-16",
+                "areaSqm": 60.59
+              },
+              {
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
+          },
+          {
+            "type": "084.5869A",
+            "areaSqm": 84.5869,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 2,
+            "apartmentComparisons": [
+              {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 10.05,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.6433B",
+            "areaSqm": 84.6433,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 2,
+            "apartmentComparisons": [
+              {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 10.05,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "084.9848C",
+            "areaSqm": 84.9848,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고",
+            "referencePriceEok": null,
+            "complexCount": 1,
+            "transactionCount": 2,
+            "apartmentComparisons": [
+              {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 10.05,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              }
+            ],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "manual_review",
+        "label": "가격 차이 추가 검증",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": {
+          "type": "059.1615D",
+          "priceEok": 4.9355,
+          "comparableReferenceEok": 5.14,
+          "observedGapEok": 0.2045,
+          "observedGapPct": 4.0,
+          "apartmentCount": 4,
+          "transactionCount": 16,
+          "distanceVerified": false,
+          "areaSource": "model_code_estimate",
+          "scopeLabel": "같은 법정동·2015년 이후 준공 단지 거래 참고"
+        },
+        "candidateTypeCount": 1,
+        "noticeTypePriority": false,
+        "reason": "비슷한 면적의 단지별 신고 거래와 공급금액의 차이를 검토할 가치가 있습니다. 당첨 자격, 위치, 단지 품질, 세금·대출·전매제한을 검증해야 합니다.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     },
     {
@@ -8011,11 +9464,11 @@
           "202607",
           "202606"
         ],
-        "transactionCount": 4502,
+        "transactionCount": 4500,
         "candidateCount": 0,
         "candidateTransactions": [],
         "displayLimit": 80,
-        "districtExplorationCount": 1069,
+        "districtExplorationCount": 1068,
         "districtExplorationTransactions": [
           {
             "apartment": "금호어울림",
@@ -8490,7 +9943,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 1064,
+              "count": 1063,
               "apartmentCount": 133,
               "medianEok": 3.45,
               "minEok": 1.25,
@@ -8520,7 +9973,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 1063,
+              "count": 1062,
               "apartmentCount": 132,
               "medianEok": 3.45,
               "minEok": 1.25,
@@ -8550,7 +10003,7 @@
               "latestDate": null
             },
             "districtExploration": {
-              "count": 1068,
+              "count": 1067,
               "apartmentCount": 133,
               "medianEok": 3.45,
               "minEok": 1.25,
@@ -8564,25 +10017,75 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "district_exploration",
-        "label": "같은 시군구·유사 면적(거리 미확인)",
+        "status": "insufficient",
         "modelType": "059.9600A",
-        "referencePriceEok": 3.45,
-        "transactionCount": 1064,
-        "apartmentCount": 133,
-        "latestDate": "2026-11-20",
-        "scope": "경기 남양주시",
-        "months": [
-          "202611",
-          "202610",
-          "202609",
-          "202608",
-          "202607",
-          "202606"
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
+        "geocodingEnabled": false,
+        "locationConfirmed": false,
+        "byType": [
+          {
+            "type": "059.9600A",
+            "areaSqm": 59.96,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.7100B",
+            "areaSqm": 59.71,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          },
+          {
+            "type": "059.1400C",
+            "areaSqm": 59.14,
+            "areaSource": "model_code_estimate",
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
+            "referenceIsMarketValue": false,
+            "reason": "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."
+          }
         ],
-        "priceSource": "국토교통부 아파트 매매 실거래 공개자료",
-        "verifiedComparable": false,
-        "warning": "거래 중앙값은 참고 통계입니다. 거리·연식·단지 특성·층·거래조건 등이 검증되지 않아 검증된 시세·예상 차익·로또 판정으로 사용하지 않습니다."
+        "marketComparable": false,
+        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다."
+      },
+      "opportunity": {
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
+        "isProfitVerified": false,
+        "verifiedEligibility": false,
+        "bestType": null,
+        "candidateTypeCount": 0,
+        "noticeTypePriority": false,
+        "reason": "직접 비교할 만한 거래 표본이 부족합니다. 공고 및 주택형을 우선 확인하세요.",
+        "disclaimer": "비교 거래와의 가격 차이는 예상 차익·투자 수익·시장가치가 아닙니다."
       }
     }
   ]
