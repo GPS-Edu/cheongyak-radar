@@ -634,6 +634,8 @@ def parse_rights_xml(content):
     if code not in ("", "00", "000"):
         msg = root.findtext(".//header/resultMsg") or "unknown error"
         raise RightsApiError("API_RESPONSE_ERROR", f"code={code}; {msg[:120]}", permanent=code in ("20", "22", "30"))
+    if root.find(".//body") is None:
+        raise RightsApiError("UNEXPECTED_SCHEMA", "실거래 XML body가 없는 응답")
     entries = []
     for item in root.findall(".//body/items/item"):
         def get(*keys):
@@ -660,7 +662,8 @@ def parse_rights_xml(content):
                         "dealAmountManwon": amount, "dealDate": deal_date,
                         "legalDong": get("umdNm"), "floor": get("floor"),
                         "rightType": kind, "jibun": get("jibun")})
-    return entries, int(root.findtext(".//body/totalCount") or "0")
+    total_raw = (root.findtext(".//body/totalCount") or "0").strip()
+    return entries, int(total_raw) if total_raw.isdigit() else len(entries)
 
 
 def fetch_rights_month(session, key, code, month):
@@ -2105,52 +2108,85 @@ def main():
         district_trades[code] = combined
         print(f"지역 실거래 수집: {code} | {len(combined)}건")
 
-    # A successful apartment-sale API call does NOT imply permission to use
-    # the independent presale-rights API. Stop repeated 401/403 calls.
+    # One low-cost rights-API probe determines which of the already-approved
+    # GitHub Secrets actually works. A separate rights key is preferred, but
+    # GitHub repositories often retain a stale key in one of the two secrets.
+    # Never print keys, complete request URLs, or raw authorization responses.
     rights_by_district = {}
     rights_error_summary = {"status": "ok", "detail": "", "testedDistricts": 0,
-                            "successfulDistricts": 0, "failedDistricts": 0}
-    rights_key = os.environ.get("RIGHTS_API_KEY", "").strip() or key
-    # Requests encodes params itself; a URL-encoded key must be decoded once.
-    if "%" in rights_key:
-        rights_key = unquote(rights_key)
-    blocked = None
-    for code in codes:
-        if blocked is not None:
-            rights_by_district[code] = None
-            continue
-        rights_error_summary["testedDistricts"] += 1
-        try:
-            all_rights=[]
-            for month in recent_months(now.date(), count=RIGHTS_MONTHS):
-                all_rights.extend(fetch_rights_month(session, rights_key, code, month))
-            rights_by_district[code] = all_rights
-            rights_error_summary["successfulDistricts"] += 1
-            print(f"분양·입주권 실거래: {code} | {len(all_rights)}건")
-        except RightsApiError as exc:
-            rights_by_district[code] = None
-            rights_error_summary["failedDistricts"] += 1
-            rights_error_summary["status"] = exc.category
-            rights_error_summary["detail"] = exc.detail
-            print(f"분양·입주권 API 진단: {code} | {exc.category} | {exc.detail}")
-            if exc.permanent:
-                blocked = exc
-                print("분양·입주권 API 반복 조회 중단: 서비스 이용 권한/호출 한도 문제일 수 있습니다. "
-                      "공공데이터포털 데이터 15126471 활용 신청 및 인증키를 확인하세요.")
-        except (requests.Timeout, requests.ConnectionError) as exc:
-            rights_by_district[code] = None
-            rights_error_summary["failedDistricts"] += 1
-            rights_error_summary["status"] = "NETWORK_ERROR"
-            rights_error_summary["detail"] = type(exc).__name__
-            print(f"분양·입주권 API 네트워크 오류: {code} | {type(exc).__name__}")
-        except (requests.RequestException, RuntimeError, ValueError, ET.ParseError) as exc:
-            rights_by_district[code] = None
-            rights_error_summary["failedDistricts"] += 1
-            rights_error_summary["status"] = "UNEXPECTED_ERROR"
-            rights_error_summary["detail"] = type(exc).__name__
-            print(f"분양·입주권 API 응답 오류: {code} | {type(exc).__name__}")
-    if blocked is not None:
-        rights_error_summary["failedDistricts"] = sum(v is None for v in rights_by_district.values())
+                            "successfulDistricts": 0, "failedDistricts": 0,
+                            "credentialSource": "not_tested", "httpStatus": None}
+    source_keys = []
+    for source_name, value in (("RIGHTS_API_KEY", os.environ.get("RIGHTS_API_KEY", "")),
+                               ("DATA_GO_KR_API_KEY", key)):
+        candidate = (value or "").strip()
+        if "%" in candidate:
+            candidate = unquote(candidate)
+        if candidate and not any(existing_key == candidate for _, existing_key in source_keys):
+            source_keys.append((source_name, candidate))
+
+    if not source_keys:
+        rights_error_summary.update(status="MISSING_CREDENTIAL", detail="GitHub Secrets 환경변수 누락")
+        rights_by_district = {code: None for code in codes}
+    else:
+        selected_source = None
+        selected_key = None
+        probe_error = None
+        probe_code = "11710" if "11710" in codes else codes[0] if codes else None
+        probe_month = now.strftime("%Y%m")
+        if probe_code:
+            for source_name, candidate in source_keys:
+                try:
+                    # Probe only one month; do not repeatedly query every
+                    # district with a key that has been refused by the portal.
+                    test_rows = fetch_rights_month(session, candidate, probe_code, probe_month)
+                    selected_source, selected_key = source_name, candidate
+                    rights_error_summary["credentialSource"] = source_name
+                    print(f"분양·입주권 인증 점검 성공: {source_name} | {probe_code} | {len(test_rows)}건 (시험월 {probe_month})")
+                    break
+                except RightsApiError as exc:
+                    probe_error = exc
+                    print(f"분양·입주권 인증 점검 실패: {source_name} | {exc.category} | {exc.detail}")
+                    # Only try another existing approved key on authentication
+                    # errors, never on rate limits or non-auth gateway faults.
+                    if exc.category != "AUTH_OR_SERVICE_PERMISSION":
+                        break
+                except (requests.RequestException, ValueError, ET.ParseError) as exc:
+                    probe_error = RightsApiError("NETWORK_OR_PARSE_ERROR", type(exc).__name__)
+                    print(f"분양·입주권 인증 점검 실패: {source_name} | {type(exc).__name__}")
+                    break
+        if selected_key is None:
+            rights_by_district = {code: None for code in codes}
+            rights_error_summary["status"] = probe_error.category if probe_error else "NOT_TESTED"
+            rights_error_summary["detail"] = probe_error.detail if probe_error else "조회 지역 없음"
+            rights_error_summary["failedDistricts"] = len(codes)
+        else:
+            for code in codes:
+                rights_error_summary["testedDistricts"] += 1
+                try:
+                    all_rights = []
+                    for month in recent_months(now.date(), count=RIGHTS_MONTHS):
+                        all_rights.extend(fetch_rights_month(session, selected_key, code, month))
+                    rights_by_district[code] = all_rights
+                    rights_error_summary["successfulDistricts"] += 1
+                    print(f"분양·입주권 실거래: {code} | {len(all_rights)}건")
+                except RightsApiError as exc:
+                    rights_by_district[code] = None
+                    rights_error_summary["failedDistricts"] += 1
+                    rights_error_summary["status"] = "PARTIAL_FAILURE"
+                    rights_error_summary["detail"] = exc.detail
+                    print(f"분양·입주권 지역 조회 오류: {code} | {exc.category} | {exc.detail}")
+                    if exc.permanent:
+                        break
+                except (requests.RequestException, RuntimeError, ValueError, ET.ParseError) as exc:
+                    rights_by_district[code] = None
+                    rights_error_summary["failedDistricts"] += 1
+                    rights_error_summary["status"] = "PARTIAL_FAILURE"
+                    rights_error_summary["detail"] = type(exc).__name__
+                    print(f"분양·입주권 지역 조회 오류: {code} | {type(exc).__name__}")
+            for code in codes:
+                rights_by_district.setdefault(code, None)
+            rights_error_summary["failedDistricts"] = sum(v is None for v in rights_by_district.values())
     print("분양·입주권 API 전체 진단:", json.dumps(rights_error_summary, ensure_ascii=False))
 
     # Press report is a discoverability clue, NOT a NAVER quote or verified market price.
