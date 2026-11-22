@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T02:11:52.592147+09:00",
+  "updated_at": "2026-11-23T03:42:33.242980+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -76,6 +76,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 4.339,
+        "maxEok": 4.6436,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 4
+      },
       "resolvedDistrict": [
         "41390",
         "경기 시흥시"
@@ -696,12 +702,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.0000A",
@@ -712,12 +720,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.0000B",
@@ -728,12 +738,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.0000C",
@@ -744,12 +756,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -858,7 +872,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026820013-2026820013",
@@ -921,6 +937,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 4.5692,
+        "maxEok": 4.6658,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 2
+      },
       "resolvedDistrict": [
         "41273",
         "경기 안산시 단원구"
@@ -1263,12 +1285,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "055.0000B",
@@ -1279,12 +1303,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -1393,7 +1419,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "rem-2026910292-2026910292",
@@ -1457,6 +1485,12 @@
       },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "supplyPriceRange": {
+        "minEok": 6.234,
+        "maxEok": 6.294,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 2
+      },
       "resolvedDistrict": [
         "28275",
         "인천 서해구"
@@ -1993,12 +2027,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9219C",
@@ -2009,12 +2045,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -2123,7 +2161,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "rem-2026930046-2026930046",
@@ -2187,6 +2227,12 @@
       },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "supplyPriceRange": {
+        "minEok": 4.0968,
+        "maxEok": 4.1668,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 2
+      },
       "resolvedDistrict": [
         "41610",
         "경기 광주시"
@@ -2725,12 +2771,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.7670C",
@@ -2741,12 +2789,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -2855,7 +2905,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000457-2026000457",
@@ -2939,6 +2991,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 6.1345,
+        "maxEok": 8.5406,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 5
+      },
       "resolvedDistrict": [
         "41196",
         "경기 부천시 오정구"
@@ -3547,12 +3605,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.9900B",
@@ -3563,12 +3623,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.9900C",
@@ -3579,12 +3641,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "074.9800A",
@@ -3595,12 +3659,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9500A",
@@ -3611,12 +3677,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -3725,7 +3793,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000576-2026000576",
@@ -3816,6 +3886,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 10.99,
+        "maxEok": 14.084,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 6
+      },
       "resolvedDistrict": [
         "41271",
         "경기 안산시 상록구"
@@ -4979,11 +5055,13 @@
             "type": "084.8861A",
             "areaSqm": 84.8861,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 7.7,
             "complexCount": 1,
             "transactionCount": 14,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "파크푸르지오",
@@ -5001,17 +5079,19 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "084.9580B",
             "areaSqm": 84.958,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 7.7,
             "complexCount": 1,
             "transactionCount": 14,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "파크푸르지오",
@@ -5029,17 +5109,19 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "084.8700C",
             "areaSqm": 84.87,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 7.7,
             "complexCount": 1,
             "transactionCount": 14,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "파크푸르지오",
@@ -5057,7 +5139,7 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "099.9001A",
@@ -5068,12 +5150,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "099.9015B",
@@ -5084,12 +5168,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "104.8286",
@@ -5100,12 +5186,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -5151,10 +5239,59 @@
         "verifiedEligibility": false,
         "bestType": null,
         "candidateTypeCount": 0,
-        "observationTypeCount": 0,
+        "observationTypeCount": 3,
         "noticeTypePriority": false,
         "priceCautionCount": 0,
-        "priceEvidence": [],
+        "priceEvidence": [
+          {
+            "type": "084.8700C",
+            "priceEok": 10.99,
+            "comparableReferenceEok": 7.7,
+            "observedGapEok": -3.29,
+            "observedGapPct": -42.7,
+            "apartmentCount": 1,
+            "transactionCount": 14,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-10"
+          },
+          {
+            "type": "084.8861A",
+            "priceEok": 11.05,
+            "comparableReferenceEok": 7.7,
+            "observedGapEok": -3.35,
+            "observedGapPct": -43.5,
+            "apartmentCount": 1,
+            "transactionCount": 14,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-10"
+          },
+          {
+            "type": "084.9580B",
+            "priceEok": 11.05,
+            "comparableReferenceEok": 7.7,
+            "observedGapEok": -3.35,
+            "observedGapPct": -43.5,
+            "apartmentCount": 1,
+            "transactionCount": 14,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-10"
+          }
+        ],
         "sameComplexEvidence": [],
         "evidenceOrder": [
           "verified_same_complex_apartment_sales",
@@ -5163,7 +5300,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
-          "주택형별 비교 거래 표본 부족",
+          "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
         ],
@@ -5213,7 +5350,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "rem-2026930045-2026930045",
@@ -5284,6 +5423,12 @@
       },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "supplyPriceRange": {
+        "minEok": 11.0548,
+        "maxEok": 18.5607,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 3
+      },
       "resolvedDistrict": [
         "11710",
         "서울 송파구"
@@ -6267,9 +6412,9 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "insufficient",
+        "status": "limited_sample_review",
         "modelType": "084.9600D",
-        "referencePriceEok": null,
+        "referencePriceEok": 9.425,
         "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
         "transactionCount": 2,
         "apartmentCount": 1,
@@ -6286,11 +6431,13 @@
             "type": "043.7300",
             "areaSqm": 43.73,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 8.5,
             "complexCount": 1,
             "transactionCount": 1,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "잠실라펜앤",
@@ -6308,7 +6455,7 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "059.4700A",
@@ -6319,6 +6466,8 @@
             "referencePriceEok": 18.65,
             "complexCount": 2,
             "transactionCount": 9,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "잠실올림픽공원아이파크",
@@ -6353,11 +6502,13 @@
             "type": "084.9600D",
             "areaSqm": 84.96,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 9.425,
             "complexCount": 1,
             "transactionCount": 2,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "이트리움송파(281-4)",
@@ -6375,7 +6526,7 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           }
         ],
         "marketComparable": false,
@@ -6436,7 +6587,7 @@
           "latestComparisonDate": "2026-10-25"
         },
         "candidateTypeCount": 0,
-        "observationTypeCount": 1,
+        "observationTypeCount": 3,
         "noticeTypePriority": true,
         "priceCautionCount": 0,
         "priceEvidence": [
@@ -6455,6 +6606,38 @@
             "qualityGatePassed": false,
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-10-25"
+          },
+          {
+            "type": "043.7300",
+            "priceEok": 11.0548,
+            "comparableReferenceEok": 8.5,
+            "observedGapEok": -2.5548,
+            "observedGapPct": -30.1,
+            "apartmentCount": 1,
+            "transactionCount": 1,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-08-19"
+          },
+          {
+            "type": "084.9600D",
+            "priceEok": 18.5607,
+            "comparableReferenceEok": 9.425,
+            "observedGapEok": -9.1357,
+            "observedGapPct": -96.9,
+            "apartmentCount": 1,
+            "transactionCount": 2,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-09-09"
           }
         ],
         "sameComplexEvidence": [],
@@ -6515,7 +6698,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000560-2026000560",
@@ -6585,6 +6770,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 17.75,
+        "maxEok": 18.27,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 3
+      },
       "resolvedDistrict": [
         "11560",
         "서울 영등포구"
@@ -7394,6 +7585,8 @@
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "아크로타워스퀘어",
@@ -7532,6 +7725,8 @@
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "아크로타워스퀘어",
@@ -7670,6 +7865,8 @@
             "referencePriceEok": 17.925,
             "complexCount": 11,
             "transactionCount": 43,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "아크로타워스퀘어",
@@ -7954,7 +8151,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "rem-2026910300-2026910300",
@@ -8053,6 +8252,12 @@
       },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "supplyPriceRange": {
+        "minEok": 5.56,
+        "maxEok": 10.22,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 7
+      },
       "resolvedDistrict": [
         "28237",
         "인천 부평구"
@@ -9806,6 +10011,8 @@
             "referencePriceEok": 4.0062,
             "complexCount": 2,
             "transactionCount": 27,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평신일해피트리더루츠",
@@ -9845,6 +10052,8 @@
             "referencePriceEok": 4.0062,
             "complexCount": 2,
             "transactionCount": 27,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평신일해피트리더루츠",
@@ -9884,6 +10093,8 @@
             "referencePriceEok": 5.25,
             "complexCount": 5,
             "transactionCount": 79,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평캐슬&더샵퍼스트",
@@ -9956,6 +10167,8 @@
             "referencePriceEok": 5.9,
             "complexCount": 2,
             "transactionCount": 11,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평신일해피트리더루츠",
@@ -9995,6 +10208,8 @@
             "referencePriceEok": 5.9,
             "complexCount": 2,
             "transactionCount": 11,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평신일해피트리더루츠",
@@ -10034,6 +10249,8 @@
             "referencePriceEok": 6.25,
             "complexCount": 5,
             "transactionCount": 36,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평두산위브더파크",
@@ -10106,6 +10323,8 @@
             "referencePriceEok": 6.25,
             "complexCount": 5,
             "transactionCount": 36,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부평두산위브더파크",
@@ -10389,7 +10608,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "rem-2026910307-2026910307",
@@ -10446,6 +10667,12 @@
       },
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
+      "supplyPriceRange": {
+        "minEok": 6.428,
+        "maxEok": 6.428,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 1
+      },
       "resolvedDistrict": [
         "28290",
         "인천 검단구"
@@ -10690,12 +10917,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -10804,7 +11033,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000505-2026000505",
@@ -10881,6 +11112,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 11.8241,
+        "maxEok": 25.7484,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 4
+      },
       "resolvedDistrict": [
         "11110",
         "서울 종로구"
@@ -11464,22 +11701,26 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.9926",
             "areaSqm": 59.9926,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 20.5675,
             "complexCount": 2,
             "transactionCount": 3,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "경희궁자이(2단지)",
@@ -11508,7 +11749,7 @@
             "distanceCheckedCount": 2,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "084.9794A",
@@ -11519,6 +11760,8 @@
             "referencePriceEok": 21.025,
             "complexCount": 2,
             "transactionCount": 7,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "경희궁자이(2단지)",
@@ -11558,6 +11801,8 @@
             "referencePriceEok": 21.025,
             "complexCount": 2,
             "transactionCount": 7,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "경희궁자이(2단지)",
@@ -11632,10 +11877,26 @@
         "verifiedEligibility": false,
         "bestType": null,
         "candidateTypeCount": 0,
-        "observationTypeCount": 2,
+        "observationTypeCount": 3,
         "noticeTypePriority": false,
         "priceCautionCount": 0,
         "priceEvidence": [
+          {
+            "type": "059.9926",
+            "priceEok": 18.9843,
+            "comparableReferenceEok": 20.5675,
+            "observedGapEok": 1.5832,
+            "observedGapPct": 7.7,
+            "apartmentCount": 2,
+            "transactionCount": 3,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": 31.0,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-10-24"
+          },
           {
             "type": "084.9940B",
             "priceEok": 25.1744,
@@ -11727,7 +11988,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000585-2026000585",
@@ -11797,6 +12060,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 6.4472,
+        "maxEok": 8.4579,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 3
+      },
       "resolvedDistrict": [
         "41281",
         "경기 고양시 덕양구"
@@ -13371,11 +13640,13 @@
             "type": "059.8728",
             "areaSqm": 59.8728,
             "areaSource": "model_code_estimate",
-            "status": "insufficient",
+            "status": "limited_sample_review",
             "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": null,
+            "referencePriceEok": 5.0,
             "complexCount": 1,
             "transactionCount": 7,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "행신파밀리에트라이하이",
@@ -13393,7 +13664,7 @@
             "distanceCheckedCount": 1,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "071.9348",
@@ -13404,12 +13675,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9614",
@@ -13420,12 +13693,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": true,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -13471,10 +13746,27 @@
         "verifiedEligibility": false,
         "bestType": null,
         "candidateTypeCount": 0,
-        "observationTypeCount": 0,
+        "observationTypeCount": 1,
         "noticeTypePriority": false,
         "priceCautionCount": 0,
-        "priceEvidence": [],
+        "priceEvidence": [
+          {
+            "type": "059.8728",
+            "priceEok": 6.4472,
+            "comparableReferenceEok": 5.0,
+            "observedGapEok": -1.4472,
+            "observedGapPct": -28.9,
+            "apartmentCount": 1,
+            "transactionCount": 7,
+            "distanceVerified": false,
+            "areaSource": "model_code_estimate",
+            "coverageComplete": true,
+            "complexPriceDispersionPct": null,
+            "qualityGatePassed": false,
+            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-10-16"
+          }
+        ],
         "sameComplexEvidence": [],
         "evidenceOrder": [
           "verified_same_complex_apartment_sales",
@@ -13483,7 +13775,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
-          "주택형별 비교 거래 표본 부족",
+          "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
         ],
@@ -13533,7 +13825,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000591-2026000591",
@@ -13631,6 +13925,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 4.9355,
+        "maxEok": 7.8847,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 7
+      },
       "resolvedDistrict": [
         "41194",
         "경기 부천시 소사구"
@@ -15593,6 +15893,8 @@
             "referencePriceEok": 4.67,
             "complexCount": 9,
             "transactionCount": 112,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "더센트럴",
@@ -15709,6 +16011,8 @@
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부천소사현진에버빌아파트",
@@ -15814,6 +16118,8 @@
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부천소사현진에버빌아파트",
@@ -15919,6 +16225,8 @@
             "referencePriceEok": 5.1,
             "complexCount": 8,
             "transactionCount": 113,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "부천소사현진에버빌아파트",
@@ -16024,6 +16332,8 @@
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "일루미스테이트",
@@ -16096,6 +16406,8 @@
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "일루미스테이트",
@@ -16168,6 +16480,8 @@
             "referencePriceEok": 7.47,
             "complexCount": 5,
             "transactionCount": 76,
+            "smallSample": false,
+            "comparisonQuality": "review",
             "apartmentComparisons": [
               {
                 "apartment": "일루미스테이트",
@@ -16450,7 +16764,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     },
     {
       "id": "apt-2026000575-2026000575",
@@ -16520,6 +16836,12 @@
         }
       },
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
+      "supplyPriceRange": {
+        "minEok": 5.9919,
+        "maxEok": 6.075,
+        "basis": "per_model_top_amount_range",
+        "modelCount": 3
+      },
       "resolvedDistrict": [
         "41360",
         "경기 남양주시"
@@ -17118,12 +17440,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.7100B",
@@ -17134,12 +17458,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.1400C",
@@ -17150,12 +17476,14 @@
             "referencePriceEok": null,
             "complexCount": 0,
             "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
             "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -17264,7 +17592,9 @@
           "주택형·입지·거래시점의 비교 적합성"
         ],
         "investmentProfitVerified": false
-      }
+      },
+      "privateMarketQuotes": [],
+      "privateMarketStatus": "네이버 API 연결/응답 오류: ReadTimeout"
     }
   ],
   "analysisQuality": {
@@ -17291,7 +17621,7 @@
     "reportedRightsReviewNotices": 0,
     "rightsApiUnavailableDistricts": 14,
     "earlyPriceReviewNotices": 0,
-    "algorithm": "v23-official-small-sample-discovery",
+    "algorithm": "v28-listing-price-fallback",
     "reviewedPdfNotices": 0,
     "noticePdfPending": 14
   }
