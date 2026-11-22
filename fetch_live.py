@@ -706,6 +706,144 @@ def comparable_report(project, trades, session, kakao_key, geo_cache, place_cach
     }
 
 
+def _complex_name_key(value):
+    """엄격한 단지명 정규화: 공백·문장부호·'아파트' 접미사만 제거."""
+    value = re.sub(r"\([^)]*\)", "", str(value or "")).lower()
+    value = re.sub(r"[^가-힣a-z0-9]", "", value)
+    return re.sub(r"아파트$", "", value)
+
+
+def _same_complex_name(project_name, transaction_name):
+    """짧거나 흔한 접두어 일치로 같은 단지를 결정하지 않는다."""
+    project_key = _complex_name_key(project_name)
+    trade_key = _complex_name_key(transaction_name)
+    if min(len(project_key), len(trade_key)) < 7:
+        return False
+    return (project_key == trade_key or
+            (min(len(project_key), len(trade_key)) >= 10 and
+             (project_key in trade_key or trade_key in project_key)))
+
+
+def same_complex_report(project, district_trades, session, kakao_key,
+                        geo_cache, place_cache=None):
+    """동일 단지 거래를 주변 시세와 별도로 수집·표시한다.
+
+    매칭에 반드시 검증된 단지 위치 또는 공고/거래의 정확한 지번이 필요하다.
+    단지명만 비슷하면 매칭하지 않으며, 아파트 *매매* 거래만 반환한다.
+    신축 예정 단지나 데이터 부족은 정상적인 미확인 결과다.
+    """
+    district = identify_district(project)
+    result = {"status": "not_verified", "source": "국토교통부 아파트 매매 실거래",
+              "matchesAreApartmentSales": True, "byType": [],
+              "transactionCount": 0, "latestDate": None,
+              "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다."}
+    if not district:
+        result["reason"] = "확인된 시군구 코드를 찾지 못했습니다."
+        return result
+    rows = district_trades.get(district[0], [])
+    if not rows:
+        result["reason"] = "해당 시군구에 조회된 아파트 매매 거래가 없습니다."
+        return result
+    models = target_area_types(project)
+    if not models:
+        result["reason"] = "비교할 공급 주택형 면적이 없습니다."
+        return result
+    exact_site_parcel = site_parcel_address(project)
+    project_dong = identify_legal_dong(project.get("district", ""))
+    site, site_method, _ = site_location(
+        session, kakao_key, project, geo_cache,
+        place_cache if place_cache is not None else {})
+    result["siteLocationMethod"] = site_method
+    # 지번이 명시된 공고라면 주소 전체를 정규화하여 같은 지번인지 검증.
+    parcel_match = None
+    if exact_site_parcel:
+        m = re.search(r"([가-힣]+동(?:\d+가)?)\s+(\d+(?:-\d+)?)$", exact_site_parcel)
+        if m:
+            parcel_match = (m.group(1), m.group(2))
+    candidate_rows = []
+    geo_ok = {}
+    for row in rows:
+        if not _same_complex_name(project.get("name"), row.get("apartment")):
+            continue
+        if _safe_positive_int(row.get("floor")) < 2:
+            continue
+        row_dong = str(row.get("legalDong") or "").strip()
+        row_parcel = str(row.get("jibun") or "").strip()
+        parcel_confirmed = bool(parcel_match and (row_dong, row_parcel) == parcel_match)
+        # 주소가 일치하지 않는 거래는 실제 두 좌표가 충분히 가까워야만 동일 단지 후보.
+        coordinate_confirmed = False
+        if not parcel_confirmed and site and row_parcel:
+            address = trade_address(project, row)
+            if address:
+                if address not in geo_ok:
+                    geo_ok[address] = geocode_address(session, kakao_key, address, geo_cache)
+                point = geo_ok[address]
+                coordinate_confirmed = bool(point and
+                    haversine_km(site[0], site[1], point[0], point[1]) <= 0.15)
+        if not parcel_confirmed and not coordinate_confirmed:
+            continue
+        candidate_rows.append((row, "same_parcel" if parcel_confirmed else "within_150m_and_name"))
+    result["matchMethods"] = sorted(set(method for _, method in candidate_rows))
+    by_type = []
+    for model in models:
+        subset = [(r, method) for r, method in candidate_rows
+                  if abs(r["exclusiveAreaSqm"] - model["area"]) <= 1.0]
+        subset.sort(key=lambda pair: pair[0]["dealDate"], reverse=True)
+        if not subset:
+            continue
+        prices = [pair[0]["dealAmountManwon"] for pair in subset]
+        by_type.append({
+            "type": model["type"], "areaSqm": model["area"],
+            "areaSource": "api" if model["verifiedArea"] else "model_code_estimate",
+            "transactionCount": len(subset), "medianEok": round(median(prices)/10000, 4),
+            "minEok": round(min(prices)/10000, 4), "maxEok": round(max(prices)/10000, 4),
+            "latestDate": subset[0][0]["dealDate"],
+            "matchMethods": sorted(set(method for _, method in subset)),
+            "recentTransactions": [{"dealDate": r["dealDate"],
+              "apartment": r["apartment"], "exclusiveAreaSqm": r["exclusiveAreaSqm"],
+              "dealAmountManwon": r["dealAmountManwon"], "floor": r.get("floor"),
+              "matchMethod": method} for r, method in subset[:6]],
+            "comparisonIsProfit": False,
+        })
+    result["byType"] = by_type
+    result["transactionCount"] = len({id(r) for r, _ in candidate_rows})
+    result["latestDate"] = max((r["dealDate"] for r, _ in candidate_rows), default=None)
+    result["status"] = "same_complex_sales_found" if by_type else "not_verified"
+    result["reason"] = ("동일 단지명과 지번 또는 150m 이내 좌표가 일치한 아파트 매매 실거래입니다."
+                        if by_type else "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다.")
+    return result
+
+
+def discovery_screen(project, today):
+    """자료 부족과 무관하게 접수 기회(1차)를 모니터링. 이 결과는 가격 검증과 독립적."""
+    special = project.get("kind") in ("무순위", "잔여세대", "계약취소주택")
+    end, start = get_date(project.get("end")), get_date(project.get("start"))
+    days = ((datetime.strptime(end, "%Y-%m-%d").date() -
+             datetime.strptime(today, "%Y-%m-%d").date()).days) if end else None
+    if days is None:
+        phase = "date_unknown"
+    elif days < 0:
+        phase = "closed"
+    elif start and start > today:
+        phase = "upcoming"
+    else:
+        phase = "accepting_or_ending"
+    urgent = days is not None and 0 <= days <= 3
+    return {
+        "stage": "stage1_discovery", "isSpecialSupply": special,
+        "phase": phase, "daysToDeadline": days,
+        "deadlineSoon": urgent,
+        "priority": ("special_deadline" if special and urgent else
+                     "special_notice" if special else
+                     "deadline" if urgent else "ordinary_notice"),
+        "label": ("무순위·재공급 마감 임박" if special and urgent else
+                  "무순위·재공급 기회" if special else
+                  "접수 마감 임박" if urgent else "일반 공고 포착"),
+        "eligibilityVerified": False,
+        "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다.",
+    }
+
+
 def opportunity_screen(project):
     """감사 가능한 가격 신호. 거래중앙값은 시세/수익 인증이 아니다.
 
@@ -714,6 +852,9 @@ def opportunity_screen(project):
     """
     special = project.get("kind") in ("무순위", "잔여세대", "계약취소주택")
     report = project.get("referenceMarket") or {}
+    same_complex = project.get("sameComplexSales") or {}
+    verified_same_types = {str(row.get("type")): row
+                           for row in same_complex.get("byType") or []}
     models = {str(m.get("type") or m.get("modelNo") or ""): m
               for m in project.get("housingTypes") or []}
     observations = []
@@ -761,6 +902,28 @@ def opportunity_screen(project):
             strong.append(observation)
         elif usable and pct <= -10:
             caution.append(observation)
+    # 동일 단지의 직접 거래는 인근 비교보다 먼저 검토하되, 소수 표본과
+    # 명목 면적 추정값을 가격 우위 확정 판정에 사용하지 않는다.
+    same_evidence = []
+    for model_name, group in verified_same_types.items():
+        model = models.get(model_name)
+        price = positive_number(model.get("priceEok")) if model else None
+        ref = positive_number(group.get("medianEok"))
+        if price is None or ref is None:
+            continue
+        delta = round(ref-price,4)
+        same_evidence.append({
+            "type": model_name, "priceEok": round(price,4),
+            "sameComplexMedianEok": round(ref,4),
+            "observedGapEok": delta,
+            "observedGapPct": round(100*delta/ref,1),
+            "transactionCount": int(group.get("transactionCount") or 0),
+            "latestDate": group.get("latestDate"),
+            "areaVerified": group.get("areaSource")=="api",
+            "evidenceStatus": "same_complex_apartment_sales_review",
+            "strongEnoughForAutomaticProfitClaim": False,
+        })
+    same_evidence.sort(key=lambda x: -x["observedGapPct"])
     # 강한 후보가 하나라도 있으면 우선 검토. 모든 비교는 '기회 추정'이 아닌 '실사 대상'.
     strong.sort(key=lambda x: (-x["observedGapPct"],-x["transactionCount"]))
     caution.sort(key=lambda x: (x["observedGapPct"],-x["transactionCount"]))
@@ -774,6 +937,8 @@ def opportunity_screen(project):
         tier, label, best = "price_caution", "가격 열위 주의", caution[0]
     elif positives:
         tier, label, best = "manual_review", "가격 차이 근거 재확인", positives[0]
+    elif same_evidence and same_evidence[0]["observedGapPct"] >= 10:
+        tier, label, best = "same_complex_review", "동일 단지 거래 비교 필요", None
     else:
         tier, label, best = "watch", "공고·비교자료 확인", None
     issue_list = []
@@ -797,8 +962,11 @@ def opportunity_screen(project):
         "noticeTypePriority": special,
         "priceCautionCount": len(caution),
         "priceEvidence": observations,
+        "sameComplexEvidence": same_evidence,
+        "evidenceOrder": ["verified_same_complex_apartment_sales", "distance_checked_nearby_apartment_sales", "unverified_reference"],
+        "stage": "stage2_price_verification",
         "verificationChecklist": issue_list,
-        "screenVersion": "v12-evidence-first",
+        "screenVersion": "v13-two-stage-evidence",
         "reason": ("거리·전용면적·거래 표본·단지별 가격 분산 기준을 충족한 가격 차이 신호입니다. 수익 확정이 아니며 직접 확인해야 합니다."
                    if strong else "확정적인 가격 우위는 검증되지 않았습니다. 무순위 일정과 청약 자격 또는 비교자료를 우선 확인하세요."),
         "disclaimer": "실거래 비교는 분양권의 적정 시세·예상 차익·당첨 가능성을 입증하지 않습니다.",
@@ -870,7 +1038,16 @@ def main():
         project["referenceMarket"] = comparable_report(
             project, district_trades, session, kakao_key, geo_cache, place_cache
         )
+        project["sameComplexSales"] = same_complex_report(
+            project, district_trades, session, kakao_key, geo_cache, place_cache
+        )
+        project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
+        print(f"동일 단지 검증: {project['name']} | {project['sameComplexSales']['status']} "
+              f"| 주택형 {len(project['sameComplexSales']['byType'])}개 "
+              f"| 거래 {project['sameComplexSales']['transactionCount']}건")
+        print(f"기회 포착: {project['name']} | {project['discovery']['label']} "
+              f"| 마감까지 {project['discovery']['daysToDeadline']}일")
         print(f"돈되는 청약 탐색: {project['name']} | {project['opportunity']['label']} "
               f"| 엄격 기준 통과 주택형 {project['opportunity']['candidateTypeCount']}개 "
               f"| 가격 열위 주의 {project['opportunity']['priceCautionCount']}개")
@@ -897,7 +1074,10 @@ def main():
         "priceCautionNotices": sum(p["opportunity"]["tier"] == "price_caution" for p in projects),
         "unverifiedProfitNoticeCount": len(projects),
         "tradeMonths": months,
-        "algorithm": "v12-evidence-first",
+        "sameComplexVerifiedNotices": sum(bool(p["sameComplexSales"]["byType"]) for p in projects),
+        "deadlineSoonNotices": sum(p["discovery"]["deadlineSoon"] for p in projects),
+        "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
+        "algorithm": "v13-two-stage-evidence",
     }
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
     result = {"updated_at": now.isoformat(), "projects": projects,
