@@ -19,7 +19,7 @@ PAGE_SIZE = 100
 TRADE_MONTHS = 6  # 계약월 기준: 당월 포함 6개월
 # 거리 확인은 선택사항. GitHub Secret KAKAO_REST_API_KEY가 없으면 지도좌표 미검증.
 MAX_DISTANCE_KM = 2.0
-MAX_GEOCODE_COMPLEXES = 45
+MAX_GEOCODE_COMPLEXES = 65  # 단지 수 제한: 위치 확인한 후보를 우선 검토
 MIN_COMPARABLE_TRADES = 5
 MIN_COMPARABLE_COMPLEXES = 2
 COMPARISON_AREA_TOLERANCE = 2.0  # 제곱미터
@@ -39,6 +39,13 @@ VERIFIED_DISTRICTS = {
     ("경기", "경기도 부천시 소사구"): ("41194", "경기 부천시 소사구"),
     ("경기", "경기도 고양시 덕양구"): ("41281", "경기 고양시 덕양구"),
     ("경기", "경기도 남양주시"): ("41360", "경기 남양주시"),
+    ("경기", "경기도 광주시"): ("41610", "경기 광주시"),
+    ("서울", "서울특별시 송파구"): ("11710", "서울 송파구"),
+    ("인천", "인천광역시 서구"): ("28260", "인천 서구"),
+    ("인천", "인천광역시 부평구"): ("28237", "인천 부평구"),
+    ("인천", "인천광역시 계양구"): ("28245", "인천 계양구"),
+    ("인천", "인천광역시 연수구"): ("28185", "인천 연수구"),
+    ("인천", "인천광역시 남동구"): ("28200", "인천 남동구"),
 }
 
 
@@ -276,7 +283,7 @@ def target_area_types(project):
 
 
 def identify_district(project):
-    address = project.get("district", "")
+    address = str(project.get("district") or "").strip()
     for (region, prefix), district in VERIFIED_DISTRICTS.items():
         if project["region"] == region and address.startswith(prefix):
             return district
@@ -468,6 +475,75 @@ def geocode_address(session, kakao_key, address, cache):
     return result
 
 
+
+def site_location(session, kakao_key, project, geo_cache, place_cache):
+    """공고의 위치를 보수적으로 확인한다.
+
+    1) 정확한 '동 + 지번'을 우선 사용한다.
+    2) 없으면 청약 단지명으로 카카오 장소검색을 수행한다. 장소 이름과
+       관할 시군구가 모두 일치하고 서로 모순된 결과가 없는 경우에만 사용.
+    검색 실패 또는 결과가 애매하면 좌표를 사용하지 않는다.
+    """
+    if not kakao_key:
+        return None, "api_key_missing", None
+    address = site_parcel_address(project)
+    if address:
+        point = geocode_address(session, kakao_key, address, geo_cache)
+        if point:
+            return point, "parcel_address", address
+    district = identify_district(project)
+    if not district:
+        return None, "district_unknown", None
+    name = str(project.get("name") or "").strip()
+    # 긴 별칭·블록명은 장소 검색에서 잘못된 랜드마크와 매칭될 수 있음.
+    simple_name = re.sub(r"\([^)]*\)", "", name).strip()
+    simple_name = re.sub(r"\s+(?:공공분양주택|신혼희망타운).*$", "", simple_name).strip()
+    if len(simple_name) < 5:
+        return None, "place_name_unusable", None
+    key = (district[0], simple_name)
+    if key not in place_cache:
+        try:
+            resp = session.get(
+                "https://dapi.kakao.com/v2/local/search/keyword.json",
+                params={"query": simple_name, "size": 10},
+                headers={"Authorization": "KakaoAK " + kakao_key}, timeout=12,
+            )
+            resp.raise_for_status()
+            place_cache[key] = resp.json().get("documents") or []
+        except (requests.RequestException, ValueError, AttributeError) as exc:
+            print("단지 장소조회 보류:", type(exc).__name__)
+            place_cache[key] = []
+    docs = place_cache[key]
+    def norm(s):
+        return re.sub(r"[^가-힣a-z0-9]", "", str(s or "").lower())
+    wanted = norm(simple_name)
+    # 작은 아파트명 공통 접두어만으로는 판정하지 않고 정확한 일치만 허용.
+    expected_district = district[1].replace("서울 ", "").replace("경기 ", "").replace("인천 ", "")
+    matching = []
+    for d in docs:
+        place_name = norm(d.get("place_name"))
+        addr = str(d.get("road_address_name") or d.get("address_name") or "")
+        district_tail = expected_district.split()[-1]
+        if place_name != wanted or district_tail not in addr:
+            continue
+        try:
+            lat, lon = float(d["y"]), float(d["x"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        if 33 < lat < 39 and 124 < lon < 132:
+            matching.append((lat, lon))
+    if len(matching) != 1:
+        return None, "ambiguous_or_missing_place", None
+    return matching[0], "exact_place_name", simple_name
+
+
+def _safe_positive_int(v):
+    try:
+        n = int(str(v))
+        return n if n >= 0 else 0
+    except (ValueError, TypeError):
+        return 0
+
 def trade_address(project, trade):
     """실거래가의 법정동+지번으로 단지 위치를 찾는다. 지번 없으면 제외."""
     jibun = str(trade.get("jibun") or "").strip()
@@ -485,133 +561,149 @@ def trade_address(project, trade):
     return f"{prefix} {dong} {jibun}"
 
 
-def comparable_report(project, trades, session, kakao_key, geo_cache):
-    """거래량 편향 방지: 단지별 중앙값 -> 단지 중앙값의 중앙값.
+def comparable_report(project, trades, session, kakao_key, geo_cache, place_cache=None):
+    """주택형별 *검토용* 비교: 위치 확인 우선, 동일 지역 거래의 엄격한 분리.
 
-    실제 인접성 검증은 좌표가 모두 확보된 단지만 가능. 신축(2015+)
-    등 기준은 휴리스틱이고, '확정 시세' 및 자동 로또 판정에는 사용하지 않는다.
+    수집 중 누락된 단지/거래가 있을 수 있으므로 referencePriceEok는
+    반드시 참고값이며 market/marketComparable은 여전히 설정하지 않는다.
     """
+    if place_cache is None:
+        place_cache = {}
     models = project.get("housingTypes") or []
     if not models:
-        return {"status": "no_models", "reason": "주택형 가격 정보가 없습니다.", "byType": []}
-    site_address = site_parcel_address(project)
-    site = geocode_address(session, kakao_key, site_address, geo_cache) if site_address else None
+        return {"status": "no_models", "reason": "주택형 가격 정보가 없습니다.", "byType": [],
+                "locationConfirmed": False, "locationMethod": "no_models"}
+    site, site_method, site_evidence = site_location(
+        session, kakao_key, project, geo_cache, place_cache
+    )
+    district = identify_district(project)
+    district_rows = trades.get(district[0], []) if district else []
     legal_dong = identify_legal_dong(project.get("district", ""))
-    scan = project.get("transactionScan") or {}
-    district_code = identify_district(project)
-    district_rows = trades.get(district_code[0], []) if district_code else []
+    # 동·지번+아파트명으로 위치 조회. 한 공고의 모든 주택형에서 동일 단지 좌표 재사용.
     groups = []
+    district_candidates = defaultdict(list)
     for model in models:
-        model_type = str(model.get("type") or model.get("modelNo") or "")
+        name = str(model.get("type") or model.get("modelNo") or "")
         area = positive_number(model.get("exclusiveAreaSqm"))
-        verified_area = area is not None
+        area_verified = area is not None
         if area is None:
-            found = re.match(r"^(\d{2,3}(?:\.\d+)?)", model_type)
-            area = positive_number(found.group(1)) if found else None
+            match = re.match(r"^(\d{2,3}(?:\.\d+)?)", name)
+            area = positive_number(match.group(1)) if match else None
         if area is None:
-            groups.append({"type": model_type, "status": "area_unknown", "reason": "면적 확인 불가"})
+            groups.append({"type": name, "status": "area_unknown", "referencePriceEok": None,
+                           "reason": "전용면적을 확인할 수 없습니다."})
             continue
         eligible = []
         for row in district_rows:
-            year = str(row.get("buildYear") or "")
-            floor = str(row.get("floor") or "")
-            if (abs(row["exclusiveAreaSqm"] - area) > COMPARISON_AREA_TOLERANCE
-                    or not year.isdigit() or int(year) < 2015
-                    or row.get("dealAmountManwon", 0) <= 0):
+            year = _safe_positive_int(row.get("buildYear"))
+            floor = _safe_positive_int(row.get("floor"))
+            if abs(row["exclusiveAreaSqm"] - area) > COMPARISON_AREA_TOLERANCE:
                 continue
-            # 저층 거래는 별도 특수성 때문에 제외 (1층, 지하층 등).
-            if floor and floor.lstrip('-').isdigit() and int(floor) < 2:
+            # 준공연도 없는 자료는 검증 불가, 2015 이전 구축은 별도 탐색표만 이용.
+            if year < 2015 or floor < 2:
                 continue
             eligible.append(row)
-        grouped = defaultdict(list)
         for row in eligible:
-            grouped[complex_key(row)].append(row)
-        # API 호출수를 과도하게 늘리지 않도록 거래 많은 최근 단지를 우선 선택.
-        ranked = sorted(grouped.items(), key=lambda kv: (-len(kv[1]), max(x["dealDate"] for x in kv[1])))
-        shortlisted = ranked[:MAX_GEOCODE_COMPLEXES]
-        output = []
-        for key, rows in shortlisted:
-            same_dong = bool(legal_dong and key[1] == legal_dong)
-            dist = None
+            district_candidates[complex_key(row)].append((name, row))
+        groups.append({"type": name, "areaSqm": area,
+                       "areaSource": "api" if area_verified else "model_code_estimate",
+                       "status": "pending"})
+
+    # 우선순위에 거래량을 과도하게 쓰지 않는다: 동일 법정동 -> 최근 거래 ->
+    # 비교 가능한 주택형 다양성 -> 거래건수. 실제 거리는 좌표 조회 이후 결정.
+    # API 일일 호출을 무제한 쓰지 않기 위해 한 공고당 최대 65단지까지 검사하고
+    # 한도에 닿으면 coverageLimited를 표시한다.
+    ordered = sorted(district_candidates.items(),
+        key=lambda kv: (
+            0 if legal_dong and kv[0][1] == legal_dong else 1,
+            -max(int(t[1]["dealDate"].replace("-", "")) for t in kv[1]),
+            -len({t[0] for t in kv[1]}),
+            -len(kv[1]),
+            kv[0],
+        ))
+    inspected = ordered[:MAX_GEOCODE_COMPLEXES]
+    limit_hit = len(ordered) > len(inspected)
+    positions = {}
+    if site:
+        for key, tagged in inspected:
+            address = trade_address(project, tagged[0][1])
+            point = geocode_address(session, kakao_key, address, geo_cache) if address else None
+            if point:
+                dist = haversine_km(site[0], site[1], point[0], point[1])
+                if dist <= MAX_DISTANCE_KM:
+                    positions[key] = round(dist, 3)
+    for group in groups:
+        if group["status"] == "area_unknown":
+            continue
+        model_name = group["type"]
+        comps = []
+        for key, tagged in inspected:
+            subset = [r for m, r in tagged if m == model_name]
+            if not subset:
+                continue
             if site:
-                apt_addr = trade_address(project, rows[0])
-                coords = geocode_address(session, kakao_key, apt_addr, geo_cache)
-                if coords:
-                    dist = round(haversine_km(site[0], site[1], coords[0], coords[1]), 2)
-            # 좌표가 확보되면 2km 이내만 사용하고 미검증 주소는 제외.
-            # 좌표가 없으면 같은 법정동 신축 거래만 '후보'로 보여준다.
-            if site and dist is not None:
-                if dist > MAX_DISTANCE_KM:
-                    continue
-                scope = "distance_checked"
-            elif same_dong:
-                scope = "same_dong_only"
+                if key not in positions:
+                    continue  # 좌표 없는 거래를 거리 검증된 것으로 섞지 않음
+                distance, scope = positions[key], "distance_checked"
+            elif legal_dong and key[1] == legal_dong:
+                distance, scope = None, "same_dong_only"
             else:
                 continue
-            amounts = [x["dealAmountManwon"] for x in rows]
-            output.append({
-                "apartment": rows[0]["apartment"],
-                "legalDong": rows[0]["legalDong"],
-                "buildYear": int(rows[0]["buildYear"]),
-                "distanceKm": dist,
-                "scope": scope,
-                "count": len(rows),
-                "medianEok": round(median(amounts) / 10000, 4),
-                "latestDate": max(x["dealDate"] for x in rows),
-                "areaSqm": round(median(x["exclusiveAreaSqm"] for x in rows), 2),
+            comps.append({
+                "apartment": key[0], "legalDong": key[1],
+                "buildYear": _safe_positive_int(subset[0].get("buildYear")),
+                "distanceKm": distance, "scope": scope,
+                "count": len(subset),
+                "medianEok": round(median(r["dealAmountManwon"] for r in subset) / 10000, 4),
+                "latestDate": max(r["dealDate"] for r in subset),
+                "areaSqm": round(median(r["exclusiveAreaSqm"] for r in subset), 2),
             })
-        # 거리 정보가 있을 경우 확인된 단지만 분석; 없으면 법정동만 표시
-        verified = [x for x in output if x["scope"] == "distance_checked"]
-        same = [x for x in output if x["scope"] == "same_dong_only"]
-        selected = verified if verified else same
-        selected.sort(key=lambda x: (x["distanceKm"] if x["distanceKm"] is not None else 999, -x["count"], x["apartment"]))
-        count = sum(x["count"] for x in selected)
-        enough = len(selected) >= MIN_COMPARABLE_COMPLEXES and count >= MIN_COMPARABLE_TRADES
-        # 비교단지별 중앙값의 중앙값 사용: 거래 많은 1개 단지가 지표를 독점하지 않음.
-        ref_price = round(median(x["medianEok"] for x in selected), 4) if enough else None
-        if verified:
-            scope = "distance_checked_review"
-            label = "반경 2km·2015년 이후 준공 단지 거래 참고"
-        elif same:
-            scope = "same_dong_modern_review"
-            label = "같은 법정동·2015년 이후 준공 단지 거래 참고"
+        comps.sort(key=lambda x: (x["distanceKm"] if x["distanceKm"] is not None else 999,
+                                   -x["count"], x["apartment"]))
+        n_trades = sum(x["count"] for x in comps)
+        sufficiently_sampled = len(comps) >= MIN_COMPARABLE_COMPLEXES and n_trades >= MIN_COMPARABLE_TRADES
+        # 지역코드/주소·면적 확실성 없는 자료는 메인 시세로 간주하지 않음.
+        reference = round(median(x["medianEok"] for x in comps), 4) if sufficiently_sampled else None
+        if site and comps:
+            status, label = "distance_checked_review", "2km 이내·2015년 이후 준공 거래 참고"
+        elif comps:
+            status, label = "same_dong_modern_review", "같은 법정동·2015년 이후 준공 거래 참고"
         else:
-            scope = "insufficient"
-            label = "비교 단지 부족"
-        groups.append({
-            "type": model_type,
-            "areaSqm": area,
-            "areaSource": "api" if verified_area else "model_code_estimate",
-            "status": scope if enough else "insufficient",
+            status, label = "insufficient", "비교 단지 부족"
+        group.update({
+            "status": status if sufficiently_sampled else "insufficient",
             "scopeLabel": label,
-            "referencePriceEok": ref_price,
-            "complexCount": len(selected),
-            "transactionCount": count,
-            "apartmentComparisons": selected[:12],
-            "sitePositionChecked": site is not None,
-            "distanceCheckedCount": len(verified),
+            "referencePriceEok": reference,
+            "complexCount": len(comps), "transactionCount": n_trades,
+            "apartmentComparisons": comps[:12], "sitePositionChecked": bool(site),
+            "distanceCheckedCount": len(comps) if site else 0,
             "referenceIsMarketValue": False,
-            "reason": ("단지별 거래 중앙값의 중앙값. 거래량이 한 단지에 쏠리지 않게 계산합니다."
-                       if enough else "인근·준공연도·면적 조건을 만족하는 거래가 부족합니다."),
+            "coverageLimited": limit_hit,
+            "reason": ("좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. "
+                       "이는 적정 시세나 확정 차익이 아닙니다."
+                       if reference is not None else "거리·면적·연식 조건을 만족하는 비교 단지와 거래가 부족합니다."),
         })
     representative = max(models, key=lambda x: positive_number(x.get("priceEok")) or 0)
     rep_name = str(representative.get("type") or representative.get("modelNo") or "")
-    ref = next((x for x in groups if x["type"] == rep_name), None)
+    rep = next((x for x in groups if x.get("type") == rep_name), None)
     return {
-        "status": ref["status"] if ref else "insufficient",
+        "status": rep.get("status") if rep else "insufficient",
         "modelType": rep_name,
-        "referencePriceEok": ref.get("referencePriceEok") if ref else None,
-        "scopeLabel": ref.get("scopeLabel") if ref else "비교 대상 없음",
-        "transactionCount": ref.get("transactionCount", 0) if ref else 0,
-        "apartmentCount": ref.get("complexCount", 0) if ref else 0,
-        "distanceChecked": bool(ref and ref.get("distanceCheckedCount")),
+        "referencePriceEok": rep.get("referencePriceEok") if rep else None,
+        "scopeLabel": rep.get("scopeLabel") if rep else "비교 대상 없음",
+        "transactionCount": rep.get("transactionCount", 0) if rep else 0,
+        "apartmentCount": rep.get("complexCount", 0) if rep else 0,
+        "distanceChecked": bool(rep and rep.get("distanceCheckedCount")),
         "geocodingEnabled": bool(kakao_key),
-        "locationConfirmed": site is not None,
-        "byType": groups,
-        "marketComparable": False,
-        "reason": "참고 거래 분석일 뿐 매물 시세·적정가·확정 수익을 의미하지 않습니다.",
+        "locationConfirmed": bool(site),
+        "locationMethod": site_method,
+        "siteGeocodingEvidence": site_evidence,
+        "comparisonCoverageLimited": limit_hit,
+        "candidateComplexesInspected": len(inspected),
+        "candidateComplexesTotal": len(ordered),
+        "byType": groups, "marketComparable": False,
+        "reason": "공식 실거래 기반 검토 자료이며 적정 시세·투자 수익을 보장하지 않습니다.",
     }
-
 
 
 def opportunity_screen(project):
@@ -629,7 +721,8 @@ def opportunity_screen(project):
         comp_price = positive_number(group.get("referencePriceEok"))
         n_complex = int(group.get("complexCount") or 0)
         n_trades = int(group.get("transactionCount") or 0)
-        distance_verified = int(group.get("distanceCheckedCount") or 0) >= 3
+        distance_verified = (int(group.get("distanceCheckedCount") or 0) >= 3
+                             and not group.get("coverageLimited"))
         if comp_price is None or n_complex < 3 or n_trades < 8:
             continue
         price = float(model["priceEok"])
@@ -676,6 +769,7 @@ def main():
     session = requests.Session()
     kakao_key = os.environ.get("KAKAO_REST_API_KEY", "").strip()
     geo_cache = {}
+    place_cache = {}
     projects = []
     seen = set()
     for region in REGIONS:
@@ -729,13 +823,16 @@ def main():
         project["market"] = None  # 검증된 주변 시세는 확인 전
         project["marketComparable"] = False  # 자동 로또 판정 금지
         project["referenceMarket"] = comparable_report(
-            project, district_trades, session, kakao_key, geo_cache
+            project, district_trades, session, kakao_key, geo_cache, place_cache
         )
         project["opportunity"] = opportunity_screen(project)
         print(f"돈되는 청약 탐색: {project['name']} | {project['opportunity']['label']} "
               f"| 비교 주택형 {project['opportunity']['candidateTypeCount']}개")
         ref = project["referenceMarket"]
         price_label = (f"{ref['referencePriceEok']}억" if ref.get("referencePriceEok") is not None else "비교 표본 부족")
+        print(f"위치 검증: {project['name']} | {ref.get('locationMethod')} | "
+              f"거래단지 탐색 {ref.get('candidateComplexesInspected', 0)}/{ref.get('candidateComplexesTotal', 0)} "
+              f"| 탐색 제한 {ref.get('comparisonCoverageLimited', False)}")
         print(f"정밀 비교: {project['name']} | {ref.get('status')} | "
               f"{price_label} | {ref.get('apartmentCount', 0)}개 단지 | "
               f"{ref.get('transactionCount', 0)}건 | 거리 확인 {ref.get('distanceChecked')}")
