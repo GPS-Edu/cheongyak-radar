@@ -23,6 +23,8 @@ MAX_GEOCODE_COMPLEXES = 65  # 단지 수 제한: 위치 확인한 후보를 우�
 MIN_COMPARABLE_TRADES = 5
 MIN_COMPARABLE_COMPLEXES = 2
 COMPARISON_AREA_TOLERANCE = 2.0  # 제곱미터
+RIGHTS_API_URL = "https://apis.data.go.kr/1613000/RTMSDataSvcSilvTrade/getRTMSDataSvcSilvTrade"
+RIGHTS_MONTHS = 12
 TRADE_API_URL = (
     "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade/"
     "getRTMSDataSvcAptTrade"
@@ -566,6 +568,250 @@ def fetch_district_month(session, key, lawd_code, yyyymm):
             break
         page += 1
     return trades
+
+
+
+def parse_rights_xml(content):
+    """분양권/입주권 실거래만 파싱. 취소 건, 가격/면적 없는 건은 제외."""
+    root = ET.fromstring(content)
+    code = (root.findtext(".//header/resultCode") or "").strip()
+    if code not in ("00", "000"):
+        msg = root.findtext(".//header/resultMsg") or "unknown error"
+        raise RuntimeError(f"Rights API: {code} {msg}")
+    entries = []
+    for item in root.findall(".//body/items/item"):
+        def get(*keys):
+            for key in keys:
+                val = (item.findtext(key) or "").strip()
+                if val:
+                    return val
+            return ""
+        if get("cdealDay", "cdealDe") or get("cdealType") in ("O", "Y"):
+            continue
+        name = get("aptNm", "buildingName", "bldgNm", "aptName")
+        amount = positive_number(get("dealAmount", "dealAmt"))
+        area = positive_number(get("excluUseAr", "excluUseArea", "exclusiveArea"))
+        year, month, day = get("dealYear"), get("dealMonth"), get("dealDay")
+        if not name or amount is None or area is None or not (year.isdigit() and month.isdigit() and day.isdigit()):
+            continue
+        try:
+            deal_date = datetime(int(year), int(month), int(day)).date().isoformat()
+        except ValueError:
+            continue
+        kind_raw = get("slerGbn", "rightGbn", "tradeType", "type")
+        kind = "입주권" if "입주" in kind_raw else ("분양권" if "분양" in kind_raw else "분양·입주권(세부 미확인)")
+        entries.append({"apartment": name, "exclusiveAreaSqm": round(area, 3),
+                        "dealAmountManwon": amount, "dealDate": deal_date,
+                        "legalDong": get("umdNm"), "floor": get("floor"),
+                        "rightType": kind, "jibun": get("jibun")})
+    return entries, int(root.findtext(".//body/totalCount") or "0")
+
+
+def fetch_rights_month(session, key, code, month):
+    rows = []
+    page = 1
+    while True:
+        response = session.get(RIGHTS_API_URL, params={"serviceKey":key, "LAWD_CD": code,
+            "DEAL_YMD":month, "pageNo":page,"numOfRows":1000}, timeout=35)
+        response.raise_for_status()
+        batch, total = parse_rights_xml(response.content)
+        rows.extend(batch)
+        if page * 1000 >= total:
+            break
+        page += 1
+    return rows
+
+
+def rights_report(project, rights_by_district):
+    """동일 단지명 + 같은 시군구 + 공고 주택형 면적으로 분양/입주권 별도 확인.
+
+    지번/동 확인이 안 되는 경우에도 검토 신호는 남기지만 '동일 단지 확정'은 금지.
+    """
+    result = {"status":"no_matching_trades", "source":"국토교통부 아파트 분양권전매 실거래",
+              "dataType":"sale_or_occupancy_right", "byType":[], "reviewOnly":True}
+    district = identify_district(project)
+    if not district:
+        result["status"] = "district_unknown"
+        return result
+    rows = rights_by_district.get(district[0])
+    if rows is None:
+        result["status"] = "api_unavailable"
+        return result
+    name = project.get("name")
+    project_dong = identify_legal_dong(project.get("district", ""))
+    name_matches = [r for r in rows if _same_complex_name(name, r.get("apartment"))
+                    and (not project_dong or not r.get("legalDong") or project_dong == r["legalDong"])]
+    for model in target_area_types(project):
+        if not model.get("verifiedArea"):
+            continue  # 주택형 코드 유추 면적은 억대 가격 신호에 사용 금지
+        matches = [r for r in name_matches if abs(r["exclusiveAreaSqm"]-model["area"]) <= 1.0]
+        if not matches:
+            continue
+        matches.sort(key=lambda r:r["dealDate"], reverse=True)
+        prices = [r["dealAmountManwon"] for r in matches]
+        matched = (project_dong and all(r.get("legalDong") == project_dong for r in matches))
+        result["byType"].append({
+            "type": model["type"], "areaSqm": model["area"],
+            "transactionCount":len(matches), "medianEok":round(median(prices)/10000,4),
+            "minEok":round(min(prices)/10000,4),"maxEok":round(max(prices)/10000,4),
+            "latestDate":matches[0]["dealDate"],
+            "rightTypes":sorted(set(r["rightType"] for r in matches)),
+            "sameDistrictConfirmed":True,"legalDongConfirmed":bool(matched),
+            "addressVerified":False,"matchingMethod":"name_district_area_review",
+            "transactions":[{"date":r["dealDate"],"amountEok":round(r["dealAmountManwon"]/10000,4),
+                             "type":r["rightType"],"floor":r["floor"]} for r in matches[:5]],
+        })
+    result["status"] = "matched_for_review" if result["byType"] else "no_matching_trades"
+    result["matchCount"] = sum(x["transactionCount"] for x in result["byType"])
+    return result
+
+
+
+def attach_reported_rights(project, catalogue, today):
+    """검증 가능한 공개 보도 근거. 공공 API 데이터와 섞지 않음."""
+    op = project.get("opportunity") or {}
+    op["reportedRightsEvidence"] = []
+    item = catalogue.get(project.get("id"))
+    if not isinstance(item, dict) or item.get("name") != project.get("name"):
+        return []
+    if today > str(item.get("validThrough", "")):
+        return []
+    models = project.get("housingTypes") or []
+    signals=[]
+    for evidence in item.get("reportedTrades") or []:
+        reported=positive_number(evidence.get("reportedRightsEok"))
+        area=positive_number(evidence.get("areaBandSqm"))
+        source=str(evidence.get("sourceUrl") or "")
+        if not reported or not area or not source.startswith("https://"):
+            continue
+        for model in models:
+            exact=positive_number(model.get("exclusiveAreaSqm"))
+            if exact is None or abs(exact-area)>=1.8:
+                continue
+            price=positive_number(model.get("priceEok"))
+            if price is None:
+                continue
+            difference=round(reported-price,4)
+            pct=round(difference/reported*100,1)
+            signals.append({"type":model.get("type"),"salePriceEok":price,
+                "reportedRightsEok":reported,"referenceGapEok":difference,"referenceGapPct":pct,
+                "dealDate":evidence.get("dealDate"),"areaNote":f"{area:g}㎡대 (공급 타입과 불일치 가능)",
+                "sourceTitle":evidence.get("sourceTitle"),"sourceUrl":source,
+                "verifiedAsOfficialApi":False,"profitVerified":False})
+    op["reportedRightsEvidence"]=signals
+    if any(x["referenceGapEok"]>=2 and x["referenceGapPct"]>=10 for x in signals):
+        if op.get("tier") not in ("priority_review","rights_trade_review"):
+            op["tier"]="rights_trade_review"
+            op["label"]="입주권 보도 가격차 검토"
+        op["reason"] = "언론에 보도된 동일 단지 전용면적대 입주권 거래가 확인되었습니다. 실제 분양권 가치·추가분담금·거래 취소 여부는 미검증입니다."
+    return signals
+
+
+def attach_rights_opportunity(project):
+    """일반 아파트 실거래 판단과 별도로 입주권 기회 신호를 추가한다."""
+    op = project.get("opportunity") or {}
+    rights = project.get("rightsSales") or {}
+    models = {str(x.get("type")):x for x in project.get("housingTypes") or []}
+    signals=[]
+    for item in rights.get("byType") or []:
+        model=models.get(str(item.get("type")))
+        price=positive_number((model or {}).get("priceEok"))
+        reference=positive_number(item.get("medianEok"))
+        if price is None or reference is None:
+            continue
+        gap=round(reference-price,4)
+        percent=round(100*gap/reference,1)
+        signals.append({"type":item["type"],"salePriceEok":price,"rightsMedianEok":reference,
+                        "referenceGapEok":gap,"referenceGapPct":percent,
+                        "transactionCount":item["transactionCount"],"latestDate":item["latestDate"],
+                        "rightTypes":item["rightTypes"],"verification":"name_district_area_only",
+                        "isInvestmentProfit":False})
+    signals.sort(key=lambda x:x["referenceGapEok"],reverse=True)
+    op["rightsEvidence"]=signals
+    positive=[x for x in signals if x["referenceGapEok"]>=2 and x["referenceGapPct"]>=10]
+    if positive and op.get("tier") not in ("priority_review",):
+        op["tier"]="rights_trade_review"
+        op["label"]="분양·입주권 가격 우위 검토"
+        op["reason"]="동일 명칭·시군구·면적의 분양/입주권 거래 가격 신호입니다. 거래권리 종류·동호수·권리가액·추가분담금·계약 상태를 확인해야 합니다. 예상 순이익이 아닙니다."
+    project["opportunity"]=op
+    return signals
+
+
+
+
+def attach_early_price_signals(project):
+    """Small-sample *discovery* leads, never a verified valuation/profit.
+
+    Each signal keeps the exact model, source, area validation, trade count and date.
+    Private asking prices are deliberately excluded from server-side ranking.
+    """
+    op = project.get("opportunity") or {}
+    types = {str(m.get("type") or m.get("modelNo") or ""): m
+             for m in project.get("housingTypes") or []}
+    signals = []
+
+    def collect(rows, source, label, reference_key, count_key, date_key, condition):
+        for row in rows:
+            if not condition(row):
+                continue
+            typ = str(row.get("type") or "")
+            model = types.get(typ)
+            if not model:
+                continue
+            supply = positive_number(model.get("priceEok"))
+            reference = positive_number(row.get(reference_key))
+            if supply is None or reference is None:
+                continue
+            count = int(row.get(count_key) or 0)
+            if count < 1:
+                continue
+            gap = round(reference - supply, 4)
+            pct = round(100 * gap / reference, 1)
+            if gap < 1.5 or pct < 10:
+                continue
+            signals.append({
+                "type": typ, "source": source, "sourceLabel": label,
+                "salePriceEok": round(supply, 4),
+                "referenceEok": round(reference, 4),
+                "referenceGapEok": gap, "referenceGapPct": pct,
+                "transactionCount": count,
+                "latestDate": row.get(date_key) or None,
+                "verifiedArea": bool(model.get("exclusiveAreaSqm")),
+                "reviewOnly": True, "profitVerified": False,
+            })
+
+    # Same-complex apartment sales: exact parcel or within 150m and same complex name.
+    collect((project.get("sameComplexSales") or {}).get("byType") or [],
+            "same_complex_sale", "동일 단지 매매 신고", "medianEok",
+            "transactionCount", "latestDate",
+            lambda r: r.get("areaSource") == "api")
+    # Rights trades: name + legal district (+ sometimes legal dong) + official area.
+    collect((project.get("rightsSales") or {}).get("byType") or [],
+            "rights_trade", "분양·입주권 신고(단지명 확인 필요)", "medianEok",
+            "transactionCount", "latestDate", lambda r: True)
+    # Nearby: at least one distance-checked comparand and official area; not a district average.
+    reference = project.get("referenceMarket") or {}
+    collect(reference.get("byType") or [],
+            "nearby_sale", "주변 유사 단지 매매(2km 검증)", "referencePriceEok",
+            "transactionCount", "latestComparisonDate",
+            lambda r: (reference.get("locationConfirmed") is True
+                       and int(r.get("distanceCheckedCount") or 0) > 0
+                       and r.get("areaSource") == "api"
+                       and not r.get("coverageLimited")
+                       and not reference.get("comparisonCoverageLimited")))
+    # Source ordering is not a profit or valuation ranking.
+    order = {"same_complex_sale": 0, "rights_trade": 1, "nearby_sale": 2}
+    signals.sort(key=lambda s: (order.get(s["source"], 9), -s["referenceGapEok"]))
+    op["earlyPriceSignals"] = signals[:20]
+    op["earlySignalCount"] = len(signals)
+    # Do not demote strong price tier, rights tier, or any special notice.
+    if signals and op.get("tier") in ("watch", "manual_review", "same_complex_review", "special_supply"):
+        op["tier"] = "early_price_review"
+        op["label"] = "로또 조기 검토 · 적은 거래 표본"
+        op["reason"] = ("공식 매매 또는 분양·입주권 신고거래에서 가격 차이 신호를 찾았습니다. "
+                        "1~2건도 검토 대상으로 표시하지만 적정 시세나 수익은 미검증입니다.")
+    project["opportunity"] = op
+    return signals
 
 
 def summarize_trades(rows):
@@ -1374,6 +1620,30 @@ def main():
         district_trades[code] = combined
         print(f"지역 실거래 수집: {code} | {len(combined)}건")
 
+    # 분양/입주권 거래는 매매와 별도 API. 별도 활용 신청이 안 된 경우에는
+    # 공고 업데이트를 멈추지 않고 가격 신호를 보류한다.
+    rights_by_district = {}
+    for code in codes:
+        try:
+            all_rights=[]
+            for month in recent_months(now.date(), count=RIGHTS_MONTHS):
+                all_rights.extend(fetch_rights_month(session, key, code, month))
+            rights_by_district[code]=all_rights
+            print(f"분양·입주권 실거래: {code} | {len(all_rights)}건")
+        except (requests.RequestException, RuntimeError, ValueError, ET.ParseError) as exc:
+            rights_by_district[code]=None
+            print(f"분양·입주권 조회 보류: {code} | {type(exc).__name__} | 별도 API 활용 승인 확인")
+
+    media_path = Path("media_rights_evidence.json")
+    if media_path.exists():
+        media_catalogue = json.loads(media_path.read_text(encoding="utf-8"))
+        if not isinstance(media_catalogue, dict):
+            raise RuntimeError("Invalid media_rights_evidence.json")
+    else:
+        # v22 two-file deployment: time-limited, explicitly unverified press reference.
+        # Only used for the single exact notice key, never treated as official transaction data.
+        media_catalogue = {'rem-2026930045-2026930045': {'name': '잠실 래미안아이파크', 'validThrough': '2026-11-26', 'reportedTrades': [{'areaBandSqm': 84, 'reportedRightsEok': 43.2, 'dealDate': '2026-06-30', 'sourceTitle': '한국경제 2026-11-18 보도 (전용 84㎡ 입주권 43억 2천만원)', 'sourceUrl': 'https://www.hankyung.com/article/2026111838756', 'notes': '보도된 입주권 거래는 동일 전용면적대의 사례이며 공급 84D형과 동일 동·층·타입인지 확인되지 않음'}]}}
+
     for project in projects:
         project["transactionScan"] = scan_district_trades(
             project, district_trades, months
@@ -1391,8 +1661,24 @@ def main():
         project["verification"] = verification_status(project)
         project["discovery"] = discovery_screen(project, today)
         project["opportunity"] = opportunity_screen(project)
+        project["rightsSales"] = rights_report(project, rights_by_district)
+        rights_signals = attach_rights_opportunity(project)
+        media_signals = attach_reported_rights(project, media_catalogue, today)
+        early_signals = attach_early_price_signals(project)
+        if early_signals:
+            print(f"조기 로또 신호: {project['name']} | {len(early_signals)}개 주택형/거래근거 · 표본 적음/추가 검증")
+        if media_signals:
+            print(f"입주권 보도 근거: {project['name']} | {len(media_signals)}개 주택형 · 공식 API 미검증")
+        if rights_signals:
+            print(f"입주권 가격 신호: {project['name']} | {len(rights_signals)}개 형 | 최고 참고차이 {rights_signals[0]['referenceGapEok']}억")
         attach_review_evidence(project, evidence_catalogue)
         project["reviewV20"] = build_v20_review(project)
+        if project["opportunity"].get("tier") == "early_price_review":
+            project["reviewV20"]["reviewScore"] += 22
+            project["reviewV20"]["evidenceReason"] += " 소수 실거래 가격 차이: 조기 검토 후보(수익 미확정)."
+        if project["opportunity"].get("tier") == "rights_trade_review":
+            project["reviewV20"]["reviewScore"] += 45
+            project["reviewV20"]["evidenceReason"] += " 분양·입주권 가격 우위 가능성 검토(추가분담금·거래 세부 확인 필요)."
         print(f"동일 단지 검증: {project['name']} | {project['sameComplexSales']['status']} "
               f"| 주택형 {len(project['sameComplexSales']['byType'])}개 "
               f"| 거래 {project['sameComplexSales']['transactionCount']}건")
@@ -1429,7 +1715,11 @@ def main():
         "specialDeadlineSoonNotices": sum(p["discovery"]["isSpecialSupply"] and p["discovery"]["deadlineSoon"] for p in projects),
         "startsSoonNotices": sum(p["discovery"]["startSoon"] for p in projects),
         "verificationPendingNotices": sum(p["verification"]["eligibility"] == "official_notice_required" for p in projects),
-        "algorithm": "v20-unified-evidence-readiness",
+        "rightsReviewNotices": sum(bool(p["opportunity"].get("rightsEvidence")) for p in projects),
+        "reportedRightsReviewNotices": sum(bool(p["opportunity"].get("reportedRightsEvidence")) for p in projects),
+        "rightsApiUnavailableDistricts": sum(v is None for v in rights_by_district.values()),
+        "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
+        "algorithm": "v23-official-small-sample-discovery",
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
