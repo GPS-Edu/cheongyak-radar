@@ -32,10 +32,10 @@ jobs:
         run: pip install requests
 
       - name: Fetch official housing data
-  env:
-    DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
-    KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
-  run: python fetch_live.py
+        env:
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+          KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+        run: python fetch_live.py
 
       - name: Validate and prepare data
         run: |
@@ -46,6 +46,12 @@ jobs:
           from datetime import datetime
 
           source = Path("data.preview.json")
+
+          if not source.exists():
+              raise RuntimeError(
+                  "data.preview.json was not created"
+              )
+
           payload = json.loads(
               source.read_text(encoding="utf-8")
           )
@@ -54,7 +60,9 @@ jobs:
           updated = payload.get("updated_at")
 
           if not isinstance(projects, list):
-              raise RuntimeError("Invalid projects data")
+              raise RuntimeError(
+                  "Invalid projects data"
+              )
 
           if not projects:
               raise RuntimeError(
@@ -63,22 +71,42 @@ jobs:
               )
 
           if not updated:
-              raise RuntimeError("Missing update timestamp")
+              raise RuntimeError(
+                  "Missing update timestamp"
+              )
 
           datetime.fromisoformat(updated)
 
           required = (
-              "id", "name", "region", "start", "end"
+              "id",
+              "name",
+              "region",
+              "start",
+              "end",
           )
 
           for project in projects:
-              if not all(project.get(k) for k in required):
+              if not isinstance(project, dict):
+                  raise RuntimeError(
+                      "Invalid project entry"
+                  )
+
+              if not all(
+                  project.get(k) for k in required
+              ):
                   raise RuntimeError(
                       "Incomplete listing detected"
                   )
 
-          shutil.copyfile(source, "data.json")
-          print("Validated listings:", len(projects))
+          shutil.copyfile(
+              source,
+              "data.json"
+          )
+
+          print(
+              "Validated listings:",
+              len(projects)
+          )
           PY
 
       - name: Commit updated data
