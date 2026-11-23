@@ -2317,6 +2317,11 @@ def main():
             print(f"v41 큰 가격차이 탐색: {project['name']} | {lead['type']} | "
                   f"{lead['kind']} | +{lead['gapEok']}억 | 검토용")
 
+    analyzed = sum(bool(p.get("marketAnalysisV41")) for p in projects)
+    with_rows = sum(bool((p.get("marketAnalysisV41") or {}).get("rows")) for p in projects)
+    with_baseline = sum(bool((p.get("marketAnalysisV41") or {}).get("baseline")) for p in projects)
+    print(f"가격분석 데이터 생성: {analyzed}/{len(projects)}개 공고 | 근거 포함 {with_rows}개 | 비교 기준 충족 {with_baseline}개")
+
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
@@ -2327,6 +2332,10 @@ def main():
 
     quality_summary = {
         "activeNotices": len(projects),
+        "marketEngineVersion": "v42-ui-compatible-v41-ledger",
+        "marketAnalyzedNotices": analyzed,
+        "marketEvidenceNotices": with_rows,
+        "marketBaselineNotices": with_baseline,
         "remainingNotices": sum(p.get("dataCategory") == "remaining" for p in projects),
         "preciseSiteLocations": sum(bool((p.get("referenceMarket") or {}).get("locationConfirmed")) for p in projects),
         "priceReviewNotices": sum(p["opportunity"]["tier"] == "priority_review" for p in projects),

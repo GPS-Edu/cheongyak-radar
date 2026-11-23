@@ -54,17 +54,25 @@ def build_market_analysis(project, today=None):
         ('press_rights', o.get('reportedRightsEvidence'), 'reportedRightsEok', 'salePriceEok', 'dealDate', '언론 보도 입주권 거래', 1),
     ]
     seen = set()
+    rejected = {"no_type_match": 0, "missing_price": 0, "price_mismatch": 0}
+    source_totals = {}
     for kind, observations, marketkey, pricekey, datekey, label, starting_grade in specs:
+        source_totals[kind] = len(observations or [])
         for x in observations or []:
             if not isinstance(x, dict):
                 continue
             typ = str(x.get('type') or '').strip()
             if typ not in models:
+                rejected["no_type_match"] += 1
                 continue
             model, price = models[typ]
             reference = positive(x.get(marketkey))
             claimed_price = positive(x.get(pricekey))
-            if not reference or not claimed_price or abs(price - claimed_price) > 0.02:
+            if not reference or not claimed_price:
+                rejected["missing_price"] += 1
+                continue
+            if abs(price - claimed_price) > 0.02:
+                rejected["price_mismatch"] += 1
                 continue
             count = max(0, int(x.get('transactionCount') or 0))
             grade = starting_grade
@@ -141,6 +149,10 @@ def build_market_analysis(project, today=None):
     lead = upside[0] if upside else None
     return {
         'version': 'v41-source-separated', 'rows': ledger, 'quotes': quotes[:12],
+        'sourceTotals': source_totals, 'rejectedEvidence': rejected,
+        'noEvidenceReason': ('' if ledger else
+            ('주택형·공급가 대조에서 제외된 자료 있음' if sum(rejected.values()) else
+             '확인 가능한 주택형별 거래 근거가 수집되지 않음')),
         'baseline': baseline, 'upsideLead': lead,
         'candidate': bool(upside), 'priceStatus': 'reference_available' if baseline else 'reference_pending',
         'maxObservedGapEok': lead['gapEok'] if lead else None,

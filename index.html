@@ -434,21 +434,39 @@ function matchingMoneyEvidenceAll(p){
  return [...dedup.values()].sort((a,b)=>b.grade-a.grade||b.gap-a.gap);
 }
 function matchingMoneyEvidence(p){return matchingMoneyEvidenceAll(p)[0]||null}
-// v41: only the server-reviewed, model-specific evidence ledger drives the main panel.
-function v41Ledger(p){const a=p.marketAnalysisV41;return a&&a.version==='v41-source-separated'?a:null}
+// v42: accept server ledger when present; otherwise show safe, explicitly labelled
+// legacy evidence without pretending the latest market engine already ran.
+function v41Ledger(p){
+ const a=p.marketAnalysisV41;
+ if(a&&a.version==='v41-source-separated')return a;
+ const legacy=matchingMoneyEvidenceAll(p);
+ if(!legacy.length)return null;
+ const kindMap={apartment:'same_apartment',nearby:'nearby_apartment',rights:'rights_reported',early:'early_observation',press:'press_rights'};
+ const rows=legacy.map(e=>({kind:kindMap[e.kind],type:e.type,label:e.source,
+  saleEok:e.price,referenceEok:e.market,gapEok:e.gap,grade:e.grade,
+  date:e.date==='일자 미확인'?'':e.date,count:e.count,
+  notes:[e.note,'이전 수집본 근거 · 최신 엔진 재분석 전'],url:e.url}));
+ const anchors=rows.filter(e=>(e.kind==='same_apartment'||e.kind==='nearby_apartment')&&e.grade>=3);
+ const baseline=anchors.sort((x,y)=>y.grade-x.grade||y.count-x.count)[0]||null;
+ const upsides=rows.filter(e=>e.gapEok>=1.5&&e.gapEok/e.referenceEok>=.1);
+ const upsideLead=upsides.sort((x,y)=>y.gapEok-x.gapEok)[0]||null;
+ return {version:'v42-legacy-provisional',rows,quotes:[],baseline,upsideLead,
+  priceStatus:baseline?'reference_available':'reference_pending',
+  candidate:!!upsideLead,legacy:true};
+}
 function v41Grade(e){return e?.grade>=4?'높음 · 거래 검증':e?.grade===3?'보통 · 비교 검토':e?.grade===2?'제한적 · 추가 확인':'탐색 신호 · 미검증'}
 function v41MarketSearch(p,provider){return marketSearchUrl(p,provider)}
 function v41EvidenceLink(e){return e&&/^https:\/\//.test(e.url||'')?` · <a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">근거 열기 ↗</a>`:''}
 function moneyPanel(p){
  const a=v41Ledger(p),range=supplyRange(p);
- if(!a)return `<div class="radar-money"><div><small>공식 공급가 범위</small><b>${esc(range.label)}</b></div><div><small>실거래 기준 비교</small><b>재분석 대기</b></div><div class="money-gap unverified"><small>v41 분석 자료 필요</small><b>수집 작업 실행 필요</b></div></div><p class="radar-money-note">GitHub Actions에서 최신 수집을 실행하면 가격 근거 종류별 결과가 표시됩니다. 과거 데이터의 참고가를 현재 시세로 재사용하지 않습니다.</p>`;
+ if(!a)return `<div class="radar-money"><div><small>공식 공급가 범위</small><b>${esc(range.label)}</b></div><div><small>실거래 기준 비교</small><b>근거 미확보</b></div><div class="money-gap unverified"><small>가격 차이</small><b>산정 보류</b></div></div><p class="radar-money-note">${p.marketAnalysisV41?('새 가격 엔진 결과: '+(p.marketAnalysisV41.noEvidenceReason||'비교 가능한 거래 미확보')+'.'):'현재 데이터에 새 가격 분석 필드가 없고, 이전 비교 근거도 확인되지 않았습니다.'} 분양가가 저렴하지 않다는 의미는 아닙니다. 현재 공고의 데이터 업데이트 시각: ${esc(dataUpdated||'미확인')}.</p>`;
  const base=a.baseline,lead=a.upsideLead;
  const signed=x=>(x>=0?'+':'−')+money(Math.abs(x));
  const primaryType=base?.type||lead?.type||'';
  const price=base?money(base.saleEok):lead?money(lead.saleEok):range.label;
  const val=base?money(base.referenceEok):'검증 중';
  const gap=base?signed(base.gapEok):'산정 보류';
- const baselineText=base?`${base.type}형 · ${base.label} · ${base.date||'거래일 미확인'} · ${v41Grade(base)}${base.count?' · '+base.count+'건':''}`:'같은 주택형·신뢰도 요건을 충족하는 실거래 기준값이 없습니다.';
+ const baselineText=(a.legacy?'⚠ 이전 수집본 근거 · 정확도 제한 · ': '')+(base?`${base.type}형 · ${base.label} · ${base.date||'거래일 미확인'} · ${v41Grade(base)}${base.count?' · '+base.count+'건':''}`:'같은 주택형·신뢰도 요건을 충족하는 실거래 기준값이 없습니다.');
  let leadHtml='';
  if(lead&&(!base||lead.kind!==base.kind||Math.abs(lead.gapEok-base.gapEok)>.01)){
   leadHtml=`<div class="radar-lead"><div class="radar-lead-top"><strong>🔥 큰 가격 차이 탐색 신호</strong><span>${esc(lead.type)}형</span></div><b>${esc(signed(lead.gapEok))}</b><p>공급가 ${esc(money(lead.saleEok))} / ${esc(lead.label)} ${esc(money(lead.referenceEok))}</p><small>${esc(lead.date||'일자 미확인')} · ${esc(v41Grade(lead))} · ${(lead.notes||[]).map(esc).join(' · ')||'계약 조건 차이 검토 필요'} · 실현 수익 아님</small>${v41EvidenceLink(lead)}</div>`;
@@ -461,7 +479,7 @@ function marketV41Detail(p){
  const a=v41Ledger(p);if(!a)return '';
  const rows=(a.rows||[]).slice(0,25);
  const items=rows.map(e=>`<div class="v41-evidence-row"><div class="flexbetween"><strong>${esc(e.type)}형 · ${esc(e.label)}</strong><b>${esc((e.gapEok>=0?'+':'−')+money(Math.abs(e.gapEok)))}</b></div><div class="fineprint">공급가 ${esc(money(e.saleEok))} · 거래 참고 ${esc(money(e.referenceEok))} · ${esc(e.date||'일자 미확인')} · ${esc(v41Grade(e))} · ${esc(e.count||0)}건${v41EvidenceLink(e)}</div><div class="fineprint">${(e.notes||[]).map(esc).join(' · ')||'단순 가격 비교 · 투자 수익 아님'}</div></div>`).join('');
- return `<div class="card"><strong>📚 v41 주택형별 가격 근거 장부</strong><p class="fineprint">같은 단지 매매 → 주변 실거래 → 분양·입주권 신고 → 언론 보도 순으로 분리합니다. 서로 다른 종류의 가격을 평균내지 않습니다.</p>${items||'<p class="small muted">비교 자료 없음. 자료 누락일 수 있으며 저평가 기회가 없다는 뜻은 아닙니다.</p>'}<p class="fineprint">최종 시세나 실현 차익을 보장하지 않으며, 매물 호가는 실제 거래가격이 아닙니다.</p></div>`;
+ return `<div class="card"><strong>📚 주택형별 가격 근거 장부 ${a.legacy?'· 이전 데이터 임시 복구':''}</strong><p class="fineprint">같은 단지 매매 → 주변 실거래 → 분양·입주권 신고 → 언론 보도 순으로 분리합니다. 서로 다른 종류의 가격을 평균내지 않습니다.</p>${items||'<p class="small muted">비교 자료 없음. 자료 누락일 수 있으며 저평가 기회가 없다는 뜻은 아닙니다.</p>'}<p class="fineprint">최종 시세나 실현 차익을 보장하지 않으며, 매물 호가는 실제 거래가격이 아닙니다.</p></div>`;
 }
 function moneySpotlightHtml(list){
  const top=[...list].sort((a,b)=>priceDiscoveryScore(b)-priceDiscoveryScore(a)||v20Rank(b)-v20Rank(a))[0];
