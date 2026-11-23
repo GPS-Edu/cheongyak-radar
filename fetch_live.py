@@ -2301,6 +2301,14 @@ def main():
             project["privateMarketStatus"] = "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
         print("무료 웹 시세: 비활성화 · 국토부 실제 신고 거래를 우선 표시")
 
+    # Automatically acquire and extract notice evidence from public official notice links.
+    # No asserted eligibility or resale period is derived from unreviewed excerpts.
+    if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
+        from notice_auto import enrich_projects
+        limit = int(os.environ.get("NOTICE_PDF_MAX_PER_RUN", "15"))
+        count = enrich_projects(session, projects, limit=limit)
+        print(f"공식 PDF 자동 발췌: {count}/{min(len(projects), limit)}개 공고")
+
     quality_summary = {
         "activeNotices": len(projects),
         "remainingNotices": sum(p.get("dataCategory") == "remaining" for p in projects),
@@ -2320,6 +2328,7 @@ def main():
         "rightsApiHealth": rights_error_summary,
         "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
         "algorithm": "v28-listing-price-fallback",
+        "autoExtractedPdfNotices": sum(p["noticeEvidence"]["status"] == "auto_extracted_unreviewed" for p in projects),
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
