@@ -2350,6 +2350,20 @@ def main():
 
     print("위치 API 독립 관측 자료:", sum(bool((p.get("localTradeObservations") or {}).get("byType")) for p in projects), "/", len(projects), "개 공고")
 
+    # v47: explore broad within-district comparable cohorts, regardless of dong.
+    from market_discovery import analyze as analyze_broad
+    broad_hits = 0
+    for project in projects:
+        district = identify_district(project)
+        rows = district_trades.get(district[0], []) if district else []
+        broad = analyze_broad(project, rows, today)
+        project["broadMarketV47"] = broad
+        broad_hits += bool(broad["candidate"])
+        print(f"폭넓은 가격 탐색: {project['name']} | {broad['status']} | "
+              f"신호 {broad['candidateCount']}개 주택형 | "
+              f"거래군 {sum(len(m['bands']) for m in broad['byType'])}개")
+    print(f"v47 시장 탐색 신호: {broad_hits}/{len(projects)}개 공고")
+
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
@@ -2391,9 +2405,14 @@ def main():
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
+    quality_summary["broadMarketCandidateNotices"] = broad_hits
+    quality_summary["broadMarketAnalyzedNotices"] = len(projects)
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
+    from notice_events import update_events
+    changed_events = update_events(projects, generated_at=now.isoformat())
+    print(f"공고 변경 감지: {len(changed_events)}건 (새 공고/정정)")
     result = {"updated_at": now.isoformat(), "projects": projects,
-              "analysisQuality": quality_summary}
+              "analysisQuality": quality_summary, "noticeEvents": changed_events}
     Path("data.preview.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
     )
