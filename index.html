@@ -74,6 +74,19 @@
 .value-verdict .value-why{font-size:12px;line-height:1.6;margin:8px 0 0;color:#405977}
 .value-verdict .value-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
 .value-verdict .value-tags span{font-size:10px;background:#ffffffb8;padding:5px 7px;border-radius:7px;color:#31516d}
+
+/* v52 canonical, source-aware price cards */
+.v52-card{border:1px solid #bcd7fa;border-radius:15px;background:#f4f8ff;padding:13px;margin:12px 0}
+.v52-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.v52-grid>div{min-width:0;border-radius:10px;background:#fff;padding:10px}
+.v52-grid small,.v52-price small{display:block;color:#526b86;font-size:11px}
+.v52-grid b{display:block;color:#163d70;font-size:18px;margin-top:3px;overflow-wrap:anywhere}
+.v52-price{margin-top:9px;border-radius:10px;background:#fff;padding:11px}
+.v52-price b{font-size:24px;color:#bd5900;display:block;margin-top:5px}
+.v52-proof{font-size:11px;color:#576d82;line-height:1.55;margin:8px 0}
+.v52-lead{margin-top:10px;padding:10px;border-radius:10px;background:#fff4e9;border:1px solid #f1cfac}
+.v52-lead b{font-size:20px;color:#af4b03}
+.v52-card details{margin-top:9px}
 </style><style>
 .v47-money{border:1px solid #f3c78e;background:#fff6e9;border-radius:14px;padding:14px;margin:12px 0;color:#603b13}.v47-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.v47-top span{font-size:10px}.v47-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}.v47-three>div{background:#fff;border-radius:9px;padding:9px 6px}.v47-three small{font-size:10px;display:block}.v47-three b{font-size:17px;display:block;margin-top:5px}.v47-cohort{padding:9px 0;border-bottom:1px solid #e4e7ee}.v47-legacy{margin:8px 0}.v47-legacy summary{font-size:11px;cursor:pointer;color:#596f8e}.v47-market-note{padding:8px 12px;border-radius:10px;background:#f4f6fa;font-size:11px;color:#61718c;margin:8px 0}@media(max-width:360px){.v47-three b{font-size:14px}}
 </style>
@@ -228,7 +241,7 @@ function funding(p){
 // 무순위라는 이유만으로 로또 후보로 오인하거나, 단지명만으로 판정하지 않습니다.
 function lottoCandidateLevel(p){
  if(dataMode!=='live')return lottery(p).label==='로또 후보'?'review':null;
- const a=v41Ledger(p);if(p.marketV49?.candidate)return 'early_review';if(p.broadMarketV47?.candidate)return 'early_review';if(a&&a.candidate)return a.upsideLead?.grade>=3?'verified_comparison':'early_review';
+ const a=v41Ledger(p);if(p.priceSummaryV52?.candidate||p.marketV49?.candidate)return 'early_review';if(p.broadMarketV47?.candidate)return 'early_review';if(a&&a.candidate)return a.upsideLead?.grade>=3?'verified_comparison':'early_review';
  const o=p.opportunity||{};
  if(o.tier==='priority_review'&&Number(o.candidateTypeCount)>0)return 'verified_comparison';
  if((o.earlyPriceSignals||[]).some(s=>Number(s.referenceGapEok)>=1.5&&Number(s.referenceGapPct)>=10&&Number(s.transactionCount)>=1))return 'early_review';
@@ -547,37 +560,26 @@ function moneyPanel(p){
 // never the leading market estimate when the age-aware engine is present.
 const legacyMoneyPanel=moneyPanel;
 function v50MarketPanel(p){
- const d=v49Market(p), range=supplyRange(p);
- if(!d){
-  const old=broadV47(p), oldContext=old?.bestSignal||old?.contextReference;
-  const stale=analysisQuality?.marketEngineVersion||'데이터 버전 미확인';
-  const oldHtml=oldContext?`<details class="v49-legacy"><summary>이전 수집 거래 참고자료 보기 · 신축 시세 아님</summary>${broadMarketHtml(p)}</details>`:'';
-  return `<section class="v49-area"><div class="v49-head"><strong>🟠 가격 분석 데이터 갱신 필요</strong><small>최신 신축 분석 없음</small></div><div class="v49-stats"><div><small>공식 공급가</small><b>${esc(range.label)}</b></div><div><small>현재 신축 비교가</small><b>새 분석 미반영</b></div></div><p class="fineprint">이 화면에 신축 분석 필드(marketV49)가 없습니다. 수집 로그의 v49 분석 기록과 GitHub data.json 커밋을 확인하세요. 데이터 버전: ${esc(stale)}. 이전 시군구 중앙값을 신축 적정가로 표시하지 않습니다.</p>${oldHtml}</section>`;
+ const card=p.priceSummaryV52, market=v49Market(p), range=supplyRange(p);
+ if(!card||card.version!=='v52-opportunity-summary'){
+  const stale=analysisQuality?.marketEngineVersion||'구버전 데이터';
+  return `<div class="v52-card"><strong>🔄 가격 분석 자료 버전 불일치</strong><p class="v52-proof">공급가 ${esc(range.label)} · 현재 데이터 ${esc(stale)}. 공식 공고는 계속 표시합니다. 최신 분석값은 아직 배포되지 않았습니다. GitHub Actions 수집·검증 로그를 확인하세요.</p></div>`;
  }
- const records=(d.byType||[]).flatMap(t=>(t.bands||[]).map(b=>({type:t.type,saleEok:t.saleEok,areaSqm:t.areaSqm,...b})));
- const rank={same_name:0,new_0_5:1,recent_6_12:2,age_unknown:4,mid_13_20:5,old_21_plus:6};
- const ordered=records.sort((a,b)=>(rank[a.cohort]??9)-(rank[b.cohort]??9)||b.transactionCount-a.transactionCount);
- const preferred=ordered.find(b=>['same_name','new_0_5','recent_6_12'].includes(b.cohort));
- const observed=preferred||ordered[0]||null;
- const lead=d.bestSignal||null;
- const selected=lead&&(!observed||lead.source==='rights_api'||lead.source==='rights_report'||(rank[lead.source]??9)<=(rank[observed.cohort]??9))?lead:observed;
- const hasQuality=!!preferred;
- const supply=selected?.saleEok??null;
- const ref=selected?.referenceEok??null;
- const difference=selected?.gapEok??null;
- const valid=Number.isFinite(Number(ref))&&Number(ref)>0;
- const label=selected?.category==='rights'?'입주권·분양권 탐색 참고가':selected?.source?`${v49Tier(selected.source)} 참고가`:(observed?`${v49Tier(observed.cohort)} 거래 참고가`:'유사 면적 신고 거래 미확보');
- const comment=!valid?'주택형별 거래가 아직 없어 가격 비교는 보류합니다. 공고 후보는 유지해요.':
-  selected?.category==='rights'?'입주권 거래는 권리·추가분담금에 따라 실제 완성 주택가격과 다릅니다.':
-  hasQuality?'최근 신축·준신축 신고 거래에 기초한 시장 탐색 가격이며 해당 단지 감정 시세는 아닙니다.':
-  '신축·준신축 비교가 확보되지 않아 구축·연식 미상 거래를 참고로만 표시합니다. 이 가격으로 신축의 가치가 낮다고 판단하지 않습니다.';
- const badge=hasQuality?'신축 거래 자료':valid?'비교 근거 제한':'거래 미확보';
- const items=(d.byType||[]).map(t=>`<div class="v49-unit"><b>${esc(t.type)}형 · 공급가 ${esc(money(t.saleEok))}</b>${(t.bands||[]).map(b=>`<p class="fineprint"><b>${esc(v49Tier(b.cohort))}</b> ${esc(money(b.referenceEok))} · ${esc(b.complexCount)}개 단지 ${esc(b.transactionCount)}건 · ${esc(b.latestDate)}</p>${(b.comparables||[]).slice(0,8).map(c=>`<p class="fineprint">• ${esc(c.name)} · ${esc(money(c.medianEok))} · ${esc(c.count)}건 · ${esc(c.buildYear||'연식 미상')}</p>`).join('')}`).join('')}${(t.rights||[]).map(r=>`<p class="fineprint">분양·입주권 신고 ${esc(money(r.referenceEok))} · ${esc(r.date)}</p>`).join('')}${(t.extraRights||[]).map(r=>`<p class="fineprint">보도 참고 ${esc(money(r.referenceEok))} · ${esc(r.date)}</p>`).join('')}</div>`).join('');
- let extra='';
- if(lead&&valid&& (lead.referenceEok!==ref||lead.type!==selected?.type)){
-  extra=`<div class="v49-diff"><small>🔥 별도 큰 가격 차이 탐색 · ${esc(v49Tier(lead.source))}</small><b>${esc(lead.gapEok>=0?'+':'−')}${esc(money(Math.abs(lead.gapEok)))}</b><span>${esc(lead.type)}형 · 일반 매매 시세와 별개 · 확정 이익 아님</span></div>`;
- }
- return `<section class="v49-area"><div class="v49-head"><strong>📊 주택형별 가격 매력 탐색</strong><small>${esc(badge)}</small></div><div class="v49-stats"><div><small>${esc(selected?.type||'대표')}형 공급가</small><b>${esc(supply?money(supply):range.label)}</b></div><div><small>${esc(label)}</small><b>${esc(valid?money(ref):'자료 없음')}</b></div></div><div class="v49-diff"><small>거래 참고 가격 차이 · 예상 수익 아님</small><b>${esc(valid&&Number.isFinite(Number(difference))?(difference>=0?'+':'−')+money(Math.abs(difference)):'산정 보류')}</b><span>${esc(selected?.type||'')}${selected?.latestDate?' · '+esc(selected.latestDate):''} · ${esc(observed?`${observed.complexCount}개 단지 / ${observed.transactionCount}건`:'별도 가격 근거')}</span></div><p class="fineprint">${esc(comment)}</p>${extra}<details><summary>모든 주택형·신축/구축 거래·실거래 단지 펼쳐보기</summary>${items||'<p class="fineprint">최근 신고 거래 중 대응하는 주택형이 없습니다.</p>'}</details></section>`;
+ const baseline=card.baseline, headline=card.headline;
+ const selected=headline||baseline;
+ const sale=selected?.saleEok;
+ const type=selected?.type||'';
+ const headlineMoney=r=>`${r.gapEok>=0?'+':'−'}${money(Math.abs(r.gapEok))}`;
+ const marketLabel=r=>r?.category==='rights'?'입주권·분양권 참고 (매매 아님)':r?.cohort?v49Tier(r.cohort):'거래 참고';
+ const baselineTitle=baseline?`${baseline.type}형 ${marketLabel(baseline)}`:'매매 실거래 비교';
+ const refLabel=baseline?`${money(baseline.referenceEok)}`:'확보 전';
+ const detail=market?(market.byType||[]).map(t=>`<div class="v49-unit"><b>${esc(t.type)}형 · 공급가 ${esc(money(t.saleEok))}</b>${(t.bands||[]).map(b=>`<p class="v52-proof">${esc(v49Tier(b.cohort))} ${esc(money(b.referenceEok))} · ${esc(b.complexCount)}개 단지 ${esc(b.transactionCount)}건 · 최근 ${esc(b.latestDate||'미상')}</p>${(b.comparables||[]).slice(0,5).map(c=>`<p class="v52-proof">• ${esc(c.name)} · ${esc(money(c.medianEok))} · ${esc(c.count)}건 · ${esc(c.buildYear||'연식 미상')}</p>`).join('')}`).join('')}</div>`).join(''):'';
+ const main=`<div class="v52-grid"><div><small>${esc(type?type+'형 분양가':'공식 공급가 범위')}</small><b>${esc(sale?money(sale):range.label)}</b></div><div><small>${esc(baselineTitle)}</small><b>${esc(refLabel)}</b></div></div>`;
+ const mainDiff=baseline?`<div class="v52-price"><small>${esc(baseline.type)}형 매매 거래 비교 가격 차이 · 수익 아님</small><b>${esc(headlineMoney(baseline))}</b></div>`:`<p class="v52-proof">매매 신고 거래 기준가를 확보하지 못했습니다. 로또 후보를 목록에서 제외하지 않습니다.</p>`;
+ const showSeparateLead=headline&&(!baseline||headline.category==='rights'||headline.type!==baseline.type||Math.abs(Number(headline.referenceEok)-Number(baseline.referenceEok))>.01);
+ const leadBlock=showSeparateLead?`<div class="v52-lead"><small>🔥 별도 큰 가격 차이 탐색 신호 · ${esc(marketLabel(headline))}</small><b>${esc(headlineMoney(headline))}</b><p class="v52-proof">${esc(headline.type)}형 공급가 ${esc(money(headline.saleEok))} / 탐색 참고가 ${esc(money(headline.referenceEok))} · ${esc(headline.latestDate||'거래일 미상')}<br>이 값은 검증된 순수익이나 해당 단지의 확정 시세가 아닙니다.</p></div>`:'';
+ const meta=baseline?`<p class="v52-proof">${esc(baseline.transactionCount)}건 · ${esc(baseline.complexCount)}개 비교 단지 · ${esc(baseline.latestDate)} · ${esc(baseline.confidence==='medium'?'거래 표본 확인':'근거 제한')}. 동일 단지 여부·거래 조건은 별도 확인.</p>`:'';
+ return `<section class="v52-card"><strong>💰 가격 매력도 · 주택형별 비교</strong>${main}${mainDiff}${leadBlock}${meta}<details><summary>거래 단지·연식·다른 주택형 펼쳐보기</summary>${detail||'<p class="v52-proof">주택형별 실거래가 없습니다.</p>'}</details><p class="v52-proof">${esc(card.note||'공식 거래 가격 관측자료 · 현재 시세 및 실현 수익 아님')}</p></section>`;
 }
 moneyPanel=function(p){return v50MarketPanel(p);};
 function marketV41Detail(p){
@@ -594,7 +596,7 @@ function moneySpotlightHtml(list){
  if(!top)return '';
  return `<div class="radar-spotlight"><div class="spot-kicker">🎯 내게 가치 있는 청약 우선 검토</div><h3>${esc(top.name)}</h3><div class="spot-sub">${esc(top.district)} · ${esc(top.kind)} · ${esc(scheduleStatus(top).label)}</div>${moneyPanel(top)}<button class="primary full" onclick="openDetail('${esc(top.id)}')">공고 자세히 보기 →</button></div>`;
 }
-function v49OpportunityScore(p){const a=v49Market(p), lead=a?.bestSignal;return lead?Math.min(85,25+Math.min(45,Number(lead.gapEok||0)*2)+(lead.category==='rights'?10:0)):0}
+function v49OpportunityScore(p){const a=v49Market(p), lead=p.priceSummaryV52?.headline||a?.bestSignal;return lead?Math.min(85,25+Math.min(45,Number(lead.gapEok||0)*2)+(lead.category==='rights'?10:0)):0}
 function priceDiscoveryScore(p){
  const score=v49OpportunityScore(p);if(score)return score;
  const a=v41Ledger(p);
@@ -668,7 +670,7 @@ function projectCard(p){
  const reason=candidate?'가격 비교 후보입니다. 거래 근거와 자격을 확인하세요.':noticeType(p)?'무순위·재공급 일정 확인이 필요한 공고입니다.':'관심지역 공고입니다. 세부 자격은 공고문에서 확인하세요.';
  return `<article class="card radar-compact"><div class="rc-top"><span class="rc-type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><span class="rc-sub">${esc(s.label)}</span></div><h3>${esc(p.name)}</h3><div class="rc-sub">📍 ${esc(p.district)}</div><div class="rc-spot"><span class="rc-chip ${candidate?'hit':''}">${label}</span><span class="rc-chip ${urgent?'warn':''}">${urgent?'⏰ 3일 내 마감':'📅 '+esc(p.end||'접수일 미확인')}</span><span class="rc-chip">${esc(budget.label)}</span></div>${personalValueHtml(p)}${moneyPanel(p)}<p class="rc-reason">${reason}</p><div class="rc-action"><button class="primary" onclick="openDetail('${esc(p.id)}')">핵심 분석 보기 →</button><button class="bookmark ${b?'active':''}" onclick="toggleSave('${esc(p.id)}')" aria-label="관심 공고 저장">${b?'★':'☆'}</button></div></article>`;
 }
-function statusBanner(){if(dataMode==='live'){let date=dataUpdated?new Date(dataUpdated):null;let stale=!date||isNaN(date)||Date.now()-date.getTime()>24*3600*1000||!!dataError;return `<div class="banner-head"><strong><span class="sync-dot ${stale?'':'ok'}"></span>${stale?'⚠ 갱신 지연·이전 자료':'실제 공고 데이터'}</strong><span>${esc(dataUpdated||'갱신 시각 미확인')}</span></div><div>${dataError?'업데이트 오류로 마지막 확인 자료를 표시합니다. 접수 일정은 청약홈에서 다시 확인하세요.':'공식 공고 기반 · 시세/자격 판정은 별도 검증 필요'}</div>`}return '<div class="banner-head"><strong>⚠ 공고 데이터 불러오기 실패</strong><span>확인 필요</span></div><div>확인되지 않은 가상 공고를 실제 청약 목록에 표시하지 않습니다. 네트워크 상태를 확인하고 청약홈에서 직접 접수 일정을 확인하세요.</div>'}
+function statusBanner(){if(dataMode==='live'){let date=dataUpdated?new Date(dataUpdated):null;let stale=!date||isNaN(date)||Date.now()-date.getTime()>24*3600*1000||!!dataError;return `<div class="banner-head"><strong><span class="sync-dot ${stale?'':'ok'}"></span>${stale?'⚠ 갱신 지연·이전 자료':'실제 공고 데이터'}</strong><span>${esc(dataUpdated||'갱신 시각 미확인')}</span></div><div>${dataError?esc(dataError)+' · 접수 일정은 청약홈에서 다시 확인하세요.':'공식 공고 기반 · 시세/자격 판정은 별도 검증 필요'}</div>`}return '<div class="banner-head"><strong>⚠ 공고 데이터 불러오기 실패</strong><span>확인 필요</span></div><div>확인되지 않은 가상 공고를 실제 청약 목록에 표시하지 않습니다. 네트워크 상태를 확인하고 청약홈에서 직접 접수 일정을 확인하세요.</div>'}
 // v9: prioritization is a review queue, never a profitability guarantee.
 function dashboardHtml(list){
  const reviews=dataMode==='live'?list.filter(p=>isLottoCandidate(p)||['priority_review','manual_review','same_complex_review','rights_trade_review','early_price_review'].includes(p.opportunity?.tier)).length:0;
@@ -1099,18 +1101,18 @@ async function refreshLive(manual=false){
   const checked=payload.projects.map(normalize).filter(Boolean);
   if(!checked.length)throw Error('표시할 실제 공고 없음');
   dataMode='live';dataUpdated=payload.updated_at;analysisQuality=payload.analysisQuality||null;
-  projects=checked;dataError='';
+  projects=checked;dataError=Number(payload.dataSchemaVersion||0)<52?'가격 분석 구버전 데이터 · v52 배포 미완료':'';
   // 마지막 정상 수집본만 기기에 저장. 네트워크 장애 시 가상 공고로 대체하지 않음.
   try{localStorage.setItem('radar-last-valid-live-v1',JSON.stringify(payload))}catch(_error){}
   processNewData(projects,payload.noticeEvents||[]);deadlineAlerts();
-  if(manual)showToast('실제 공고를 갱신했어요');
+  if(manual)showToast(dataError?'공고 갱신 · 가격 분석 구버전 확인':'공고와 가격 분석을 갱신했어요');
  }catch(error){
   dataError=String(error?.message||'네트워크 오류');
   let cached=null;
   try{cached=JSON.parse(localStorage.getItem('radar-last-valid-live-v1')||'null')}catch(_error){}
   if(cached&&cached.updated_at&&Array.isArray(cached.projects)&&cached.projects.length){
    const checked=cached.projects.map(normalize).filter(Boolean);
-   if(checked.length){dataMode='live';dataUpdated=cached.updated_at;analysisQuality=cached.analysisQuality||null;projects=checked;}
+   if(checked.length){dataMode='live';dataUpdated=cached.updated_at;analysisQuality=cached.analysisQuality||null;projects=checked;dataError='네트워크 오류로 브라우저에 저장된 이전 data.json 표시 중';}
    else{dataMode='unavailable';projects=[];dataUpdated='';analysisQuality=null;}
   }else{dataMode='unavailable';projects=[];dataUpdated='';analysisQuality=null;}
   // 오류 상태에서는 신규/마감 알림을 만들지 않음.

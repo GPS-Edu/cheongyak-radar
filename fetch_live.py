@@ -2079,6 +2079,13 @@ def main():
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     today = now.date().isoformat()
     session = requests.Session()
+    # Retry transient upstream failures without attempting to bypass rate limits.
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+    retry = Retry(total=2, connect=2, read=1, backoff_factor=0.8,
+                  status_forcelist=(429, 500, 502, 503, 504),
+                  allowed_methods=frozenset(['GET']))
+    session.mount('https://', HTTPAdapter(max_retries=retry))
     kakao_key = os.environ.get("KAKAO_REST_API_KEY", "").strip()
     geo_cache = {}
     place_cache = {}
@@ -2377,6 +2384,14 @@ def main():
         print(f"v49 신축 중심 탐색: {project['name']} | 신호 {a['signalCount']}개 | "
               f"연식별 거래군 {a['marketCohortCount']}개 | 입주권 신호 {a['rightsSignalCount']}개")
 
+    # v52: single price presentation contract with consistent type/source validation.
+    from market_v52 import summarize as summarize_prices
+    for project in projects:
+        project["priceSummaryV52"] = summarize_prices(project, project["marketV49"], today)
+    print("v52 가격카드 생성:", sum(bool(p["priceSummaryV52"]["baseline"]) for p in projects),
+          "/", len(projects), "개 공고, 큰 가격 차이 신호",
+          sum(bool(p["priceSummaryV52"]["headline"]) for p in projects), "개")
+
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
@@ -2418,7 +2433,10 @@ def main():
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
-    quality_summary["marketEngineVersion"] = "v50-newbuild-canonical-price-panel"
+    quality_summary["marketEngineVersion"] = "v52-type-safe-opportunity"
+    quality_summary["v52PriceCardNotices"] = sum(bool(p.get("priceSummaryV52")) for p in projects)
+    quality_summary["v52BaselineNotices"] = sum(bool(p["priceSummaryV52"]["baseline"]) for p in projects)
+    quality_summary["v52LeadNotices"] = sum(bool(p["priceSummaryV52"]["headline"]) for p in projects)
     quality_summary["v49MarketNotices"] = sum(bool(p.get("marketV49", {}).get("marketCohortCount")) for p in projects)
     quality_summary["v49MarketRecords"] = sum(sum(len(t.get("bands", [])) for t in p.get("marketV49",{}).get("byType",[])) for p in projects)
     quality_summary["v49CandidateNotices"] = sum(bool(p.get("marketV49", {}).get("candidate")) for p in projects)
