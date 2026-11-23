@@ -2418,8 +2418,9 @@ def main():
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
-    quality_summary["marketEngineVersion"] = "v49-newbuild-by-unit-and-rights-separated"
+    quality_summary["marketEngineVersion"] = "v50-newbuild-canonical-price-panel"
     quality_summary["v49MarketNotices"] = sum(bool(p.get("marketV49", {}).get("marketCohortCount")) for p in projects)
+    quality_summary["v49MarketRecords"] = sum(sum(len(t.get("bands", [])) for t in p.get("marketV49",{}).get("byType",[])) for p in projects)
     quality_summary["v49CandidateNotices"] = sum(bool(p.get("marketV49", {}).get("candidate")) for p in projects)
     quality_summary["v49RightsSignalNotices"] = sum(bool(p.get("marketV49", {}).get("rightsSignalCount")) for p in projects)
     quality_summary["broadMarketCandidateNotices"] = broad_hits

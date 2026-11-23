@@ -543,13 +543,43 @@ function moneyPanel(p){
  const caution=exploratory?'<p class="radar-money-note" style="color:#9a5707;font-weight:700">⚠ 참고 거래는 같은 단지의 검증 시세가 아닙니다. 표시된 차이는 가능한 기회를 탐색하는 수치이며 실제 수익이 아닙니다.</p>':'';
  return `<div class="radar-money"><div><small>${esc(primaryType?primaryType+'형 공급가':'공식 공급가 범위')}</small><b>${esc(price)}</b></div><div><small>${esc(label)}</small><b>${esc(val)}</b></div><div class="money-gap ${!base?'unverified':base.gapEok<0?'negative':''}"><small>${esc(gapLabel)} · 수익 아님</small><b>${esc(gap)}</b></div></div><p class="radar-money-note">${esc(baselineText)}</p>${caution}${leadHtml}<div class="v41-market-row"><strong>현재 호가·시세는 별도 확인</strong>${qparts||'<small>확인된 최신 호가·KB 시세 데이터 없음</small>'}<div class="v41-market-links"><a href="${esc(v41MarketSearch(p,'네이버'))}" target="_blank" rel="noopener noreferrer">네이버 매물 확인 ↗</a><a href="${esc(v41MarketSearch(p,'KB'))}" target="_blank" rel="noopener noreferrer">KB 시세 확인 ↗</a></div></div>`;
 }
-const legacyMoneyPanel=moneyPanel;moneyPanel=function(p){const d=broadV47(p);return broadMarketHtml(p)+(d?.contextReference?`<details class="v47-legacy"><summary>📚 기존 개별 거래 근거 더 보기</summary>${legacyMoneyPanel(p)}</details>`:legacyMoneyPanel(p));};
-const preV49MoneyPanel=moneyPanel;
-moneyPanel=function(p){
- const a=v49Market(p);
- if(!a)return preV49MoneyPanel(p);
- return v49Panel(p)+(a.bestSignal?'<details class="v49-legacy"><summary>다른 가격 비교 근거 보기</summary>'+preV49MoneyPanel(p)+'</details>':'');
-};
+// v50: One canonical price summary. The old v47 median is secondary context,
+// never the leading market estimate when the age-aware engine is present.
+const legacyMoneyPanel=moneyPanel;
+function v50MarketPanel(p){
+ const d=v49Market(p), range=supplyRange(p);
+ if(!d){
+  const old=broadV47(p), oldContext=old?.bestSignal||old?.contextReference;
+  const stale=analysisQuality?.marketEngineVersion||'데이터 버전 미확인';
+  const oldHtml=oldContext?`<details class="v49-legacy"><summary>이전 수집 거래 참고자료 보기 · 신축 시세 아님</summary>${broadMarketHtml(p)}</details>`:'';
+  return `<section class="v49-area"><div class="v49-head"><strong>🟠 가격 분석 데이터 갱신 필요</strong><small>최신 신축 분석 없음</small></div><div class="v49-stats"><div><small>공식 공급가</small><b>${esc(range.label)}</b></div><div><small>현재 신축 비교가</small><b>새 분석 미반영</b></div></div><p class="fineprint">이 화면에 신축 분석 필드(marketV49)가 없습니다. 수집 로그의 v49 분석 기록과 GitHub data.json 커밋을 확인하세요. 데이터 버전: ${esc(stale)}. 이전 시군구 중앙값을 신축 적정가로 표시하지 않습니다.</p>${oldHtml}</section>`;
+ }
+ const records=(d.byType||[]).flatMap(t=>(t.bands||[]).map(b=>({type:t.type,saleEok:t.saleEok,areaSqm:t.areaSqm,...b})));
+ const rank={same_name:0,new_0_5:1,recent_6_12:2,age_unknown:4,mid_13_20:5,old_21_plus:6};
+ const ordered=records.sort((a,b)=>(rank[a.cohort]??9)-(rank[b.cohort]??9)||b.transactionCount-a.transactionCount);
+ const preferred=ordered.find(b=>['same_name','new_0_5','recent_6_12'].includes(b.cohort));
+ const observed=preferred||ordered[0]||null;
+ const lead=d.bestSignal||null;
+ const selected=lead&&(!observed||lead.source==='rights_api'||lead.source==='rights_report'||(rank[lead.source]??9)<=(rank[observed.cohort]??9))?lead:observed;
+ const hasQuality=!!preferred;
+ const supply=selected?.saleEok??null;
+ const ref=selected?.referenceEok??null;
+ const difference=selected?.gapEok??null;
+ const valid=Number.isFinite(Number(ref))&&Number(ref)>0;
+ const label=selected?.category==='rights'?'입주권·분양권 탐색 참고가':selected?.source?`${v49Tier(selected.source)} 참고가`:(observed?`${v49Tier(observed.cohort)} 거래 참고가`:'유사 면적 신고 거래 미확보');
+ const comment=!valid?'주택형별 거래가 아직 없어 가격 비교는 보류합니다. 공고 후보는 유지해요.':
+  selected?.category==='rights'?'입주권 거래는 권리·추가분담금에 따라 실제 완성 주택가격과 다릅니다.':
+  hasQuality?'최근 신축·준신축 신고 거래에 기초한 시장 탐색 가격이며 해당 단지 감정 시세는 아닙니다.':
+  '신축·준신축 비교가 확보되지 않아 구축·연식 미상 거래를 참고로만 표시합니다. 이 가격으로 신축의 가치가 낮다고 판단하지 않습니다.';
+ const badge=hasQuality?'신축 거래 자료':valid?'비교 근거 제한':'거래 미확보';
+ const items=(d.byType||[]).map(t=>`<div class="v49-unit"><b>${esc(t.type)}형 · 공급가 ${esc(money(t.saleEok))}</b>${(t.bands||[]).map(b=>`<p class="fineprint"><b>${esc(v49Tier(b.cohort))}</b> ${esc(money(b.referenceEok))} · ${esc(b.complexCount)}개 단지 ${esc(b.transactionCount)}건 · ${esc(b.latestDate)}</p>${(b.comparables||[]).slice(0,8).map(c=>`<p class="fineprint">• ${esc(c.name)} · ${esc(money(c.medianEok))} · ${esc(c.count)}건 · ${esc(c.buildYear||'연식 미상')}</p>`).join('')}`).join('')}${(t.rights||[]).map(r=>`<p class="fineprint">분양·입주권 신고 ${esc(money(r.referenceEok))} · ${esc(r.date)}</p>`).join('')}${(t.extraRights||[]).map(r=>`<p class="fineprint">보도 참고 ${esc(money(r.referenceEok))} · ${esc(r.date)}</p>`).join('')}</div>`).join('');
+ let extra='';
+ if(lead&&valid&& (lead.referenceEok!==ref||lead.type!==selected?.type)){
+  extra=`<div class="v49-diff"><small>🔥 별도 큰 가격 차이 탐색 · ${esc(v49Tier(lead.source))}</small><b>${esc(lead.gapEok>=0?'+':'−')}${esc(money(Math.abs(lead.gapEok)))}</b><span>${esc(lead.type)}형 · 일반 매매 시세와 별개 · 확정 이익 아님</span></div>`;
+ }
+ return `<section class="v49-area"><div class="v49-head"><strong>📊 주택형별 가격 매력 탐색</strong><small>${esc(badge)}</small></div><div class="v49-stats"><div><small>${esc(selected?.type||'대표')}형 공급가</small><b>${esc(supply?money(supply):range.label)}</b></div><div><small>${esc(label)}</small><b>${esc(valid?money(ref):'자료 없음')}</b></div></div><div class="v49-diff"><small>거래 참고 가격 차이 · 예상 수익 아님</small><b>${esc(valid&&Number.isFinite(Number(difference))?(difference>=0?'+':'−')+money(Math.abs(difference)):'산정 보류')}</b><span>${esc(selected?.type||'')}${selected?.latestDate?' · '+esc(selected.latestDate):''} · ${esc(observed?`${observed.complexCount}개 단지 / ${observed.transactionCount}건`:'별도 가격 근거')}</span></div><p class="fineprint">${esc(comment)}</p>${extra}<details><summary>모든 주택형·신축/구축 거래·실거래 단지 펼쳐보기</summary>${items||'<p class="fineprint">최근 신고 거래 중 대응하는 주택형이 없습니다.</p>'}</details></section>`;
+}
+moneyPanel=function(p){return v50MarketPanel(p);};
 function marketV41Detail(p){
  const a=v41Ledger(p);if(!a)return '';
  const rows=(a.rows||[]).slice(0,25);
