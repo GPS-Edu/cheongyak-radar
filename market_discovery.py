@@ -51,11 +51,14 @@ def analyze(project, rows, today=None):
             name = str(row.get('apartment') or '').strip()
             parcel = str(row.get('jibun') or '').strip()
             dong = str(row.get('legalDong') or '').strip()
-            if not amt or not name or not year or year < 1980: continue
+            if not amt or not name: continue
+            # API buildYear is sometimes omitted. Missing year is a separate
+            # evidence group, NOT a reason to discard a reported sale.
+            if year is not None and (year < 1970 or year > today.year + 2): year = None
             # Modern is not a location claim. Permit new and 10-20 year comps,
             # separately, and use older transactions as supplementary context.
-            group = 'newer_2015' if year >= 2015 else 'established_2005' if year >= 2005 else 'older'
-            cohorts[group][(name, dong, parcel)].append((amt/10000, rawdate, int(year)))
+            group = ('unknown_age' if year is None else 'newer_2015' if year >= 2015 else 'established_2005' if year >= 2005 else 'older')
+            cohorts[group][(name, dong, parcel)].append((amt/10000, rawdate, int(year) if year is not None else None))
         bands=[]
         for cohort, complexes in cohorts.items():
             # Per-complex medians, not all transactions pooled (large blocks bias).
@@ -76,18 +79,26 @@ def analyze(project, rows, today=None):
                     'transactionCount':len(v),'medianEok':round(median(r[0] for r in v),4),
                     'latestDate':max(r[1] for r in v),'buildYear':v[0][2]}
                     for k,v in order[:8]],
-                'note':'동일 시군구 내 유사 면적 거래군. 대상 단지의 실제 시세가 아닙니다.',
+                'note':'동일 시군구 내 유사 면적 거래군. 대상 단지의 실제 시세가 아닙니다.' + (' 준공연도 미확인 거래군.' if cohort == 'unknown_age' else ''),
             })
-        bands.sort(key=lambda b: (b['cohort']!='newer_2015',-b['complexCount'],-b['transactionCount']))
+        bands.sort(key=lambda b: (b['cohort']!='newer_2015',b['cohort']=='unknown_age',-b['complexCount'],-b['transactionCount']))
         # Broad signal: no strict distance/count gate, but a single weak source
         # cannot become a verified market price.
         promising=[b for b in bands if b['gapEok']>=1.0 and b['gapPct']>=8]
         promising.sort(key=lambda b:(-b['gapEok'],-b['complexCount']))
         result.append({'type':typ,'areaSqm':round(area,2),'areaSource':source,
           'saleEok':round(sale,4),'bands':bands,'discovery':promising[0] if promising else None})
+    # Always expose a *context reference* when transactions exist, even when
+    # the distribution shows no positive upside. Keep it distinct from lotto signal.
+    contextual=[]
+    for r in result:
+        observed=sorted(r['bands'],key=lambda b:(b['cohort']=='unknown_age',b['cohort']!='newer_2015',-b['complexCount'],-b['transactionCount']))
+        if observed: contextual.append({'type':r['type'],**observed[0]})
+    contextual.sort(key=lambda b:(-b['complexCount'],-b['transactionCount'], -b['gapEok']))
     hits=[{'type':r['type'],**r['discovery']} for r in result if r['discovery']]
     hits.sort(key=lambda x:(-x['gapEok'],-x['complexCount']))
     return {'version':'v47-broad-district-cohorts','status':'observed' if any(r['bands'] for r in result) else 'no_comparable_sales',
       'regionScope':'same_lawd_cd_not_distance_verified','byType':result,'candidate':bool(hits),
-      'bestSignal':hits[0] if hits else None,'candidateCount':len(hits),
+      'bestSignal':hits[0] if hits else None,'contextReference':contextual[0] if contextual else None,'candidateCount':len(hits),
+      'evidenceCount':sum(len(r['bands']) for r in result), 'transactionCount':sum(b['transactionCount'] for r in result for b in r['bands']),
       'disclaimer':'거래군은 시군구 단위 탐색이며 입지·층·연식 차이를 완전히 반영하지 않습니다. 가격 차이는 예상 수익이 아닙니다.'}

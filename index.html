@@ -476,12 +476,13 @@ function v41EvidenceLink(e){return e&&/^https:\/\//.test(e.url||'')?` · <a href
 function broadV47(p){return p.broadMarketV47?.version==='v47-broad-district-cohorts'?p.broadMarketV47:null}
 function broadMarketHtml(p){
  const d=broadV47(p);if(!d)return '';
- const b=d.bestSignal;
- if(!b)return '<div class="v47-market-note">🔎 유사 면적 거래 탐색은 완료했지만 뚜렷한 가격 우위 신호가 없어요. 후보는 유지됩니다.</div>';
- const bands=(d.byType||[]).flatMap(x=>x.bands||[]);
- const nums=bands.reduce((a,x)=>a+x.transactionCount,0);
- const label=b.cohort==='newer_2015'?'2015년 이후 준공 거래군':b.cohort==='established_2005'?'2005~2014년 준공 거래군':'구축 거래군';
- return `<div class="v47-money"><div class="v47-top"><b>🔥 폭넓은 로또 탐색 신호</b><span>${esc(b.type)}형 · ${esc(label)}</span></div><div class="v47-three"><div><small>공급가</small><b>${esc(money(b.saleEok))}</b></div><div><small>유사 면적 거래 중앙값</small><b>${esc(money(b.referenceEok))}</b></div><div><small>단순 가격 차이</small><b>+${esc(money(b.gapEok))}</b></div></div><p class="fineprint">같은 시군구 ${esc(b.complexCount)}개 단지 · ${esc(b.transactionCount)}건 · 최근 ${esc(b.latestDate)} · 전체 탐색 거래 ${esc(nums)}건. 지역·상품성 차이 미보정, 예상 수익 아님.</p><details><summary>신축·구축 거래군과 비교 단지 전체 보기</summary>${(d.byType||[]).map(t=>`<div class="v47-cohort"><strong>${esc(t.type)}형 · 공급가 ${esc(money(t.saleEok))}</strong>${(t.bands||[]).map(g=>`<p class="fineprint"><b>${esc(g.cohort)} · ${esc(g.complexCount)}개 단지 / ${esc(g.transactionCount)}건</b> · 단지별 중앙값 ${esc(money(g.lowEok))}~${esc(money(g.highEok))} · 비교 중앙값 ${esc(money(g.referenceEok))} · 단순 차이 ${esc(money(g.gapEok))}</p>${(g.comparables||[]).map(c=>`<p class="fineprint">${esc(c.name)} · ${esc(c.legalDong)} · ${esc(c.buildYear)}년 · ${esc(c.transactionCount)}건 · ${esc(money(c.medianEok))}</p>`).join('')}`).join('')}</div>`).join('')}</details></div>`;
+ const b=d.bestSignal||d.contextReference;
+ if(!b)return '<div class="v47-market-note">🔎 주택형과 연결되는 신고 거래가 아직 없어요. 공고는 그대로 추천 목록에 유지합니다. 면적·거래 자료를 추가 수집할 필요가 있습니다.</div>';
+ const groups=(d.byType||[]).flatMap(x=>x.bands||[]);
+ const names={newer_2015:'2015년 이후 준공 거래',established_2005:'2005~2014년 준공 거래',older:'2004년 이전 거래',unknown_age:'준공연도 미확인 거래'};
+ const title=d.bestSignal?'🔥 폭넓은 로또 탐색 신호':'📊 유사 면적 실거래 참고';
+ const sign=b.gapEok>=0?'+':'−';
+ return `<div class="v47-money"><div class="v47-top"><b>${title}</b><span>${esc(b.type)}형 · ${esc(names[b.cohort]||b.cohort)}</span></div><div class="v47-three"><div><small>공급가</small><b>${esc(money(b.saleEok))}</b></div><div><small>유사 면적 거래 중앙값</small><b>${esc(money(b.referenceEok))}</b></div><div><small>거래 참고 가격 차이</small><b>${sign}${esc(money(Math.abs(b.gapEok)))}</b></div></div><p class="fineprint">같은 시군구 ${esc(b.complexCount)}개 단지 · ${esc(b.transactionCount)}건 · 최근 ${esc(b.latestDate)} · 거래군 ${esc(groups.length)}개. 시장권역 전체 평균이 아닌 연식별 거래 관측값이며 대상 단지 시세·예상 수익이 아닙니다.</p><details><summary>거래군 및 비교 단지 확인</summary>${(d.byType||[]).map(t=>`<div class="v47-cohort"><strong>${esc(t.type)}형 · 공급가 ${esc(money(t.saleEok))}</strong>${(t.bands||[]).map(g=>`<p class="fineprint"><b>${esc(names[g.cohort]||g.cohort)} · ${esc(g.complexCount)}개 단지 / ${esc(g.transactionCount)}건</b> · 단지별 중앙값 ${esc(money(g.lowEok))}~${esc(money(g.highEok))} · 중앙값 ${esc(money(g.referenceEok))}</p>${(g.comparables||[]).map(c=>`<p class="fineprint">${esc(c.name)} · ${esc(c.legalDong)} · ${esc(c.buildYear||'준공연도 미확인')} · ${esc(c.transactionCount)}건 · ${esc(money(c.medianEok))}</p>`).join('')}`).join('')}</div>`).join('')}</details></div>`;
 }
 function moneyPanel(p){
  const a=v41Ledger(p),range=supplyRange(p);
@@ -515,7 +516,7 @@ function moneyPanel(p){
  const caution=exploratory?'<p class="radar-money-note" style="color:#9a5707;font-weight:700">⚠ 참고 거래는 같은 단지의 검증 시세가 아닙니다. 표시된 차이는 가능한 기회를 탐색하는 수치이며 실제 수익이 아닙니다.</p>':'';
  return `<div class="radar-money"><div><small>${esc(primaryType?primaryType+'형 공급가':'공식 공급가 범위')}</small><b>${esc(price)}</b></div><div><small>${esc(label)}</small><b>${esc(val)}</b></div><div class="money-gap ${!base?'unverified':base.gapEok<0?'negative':''}"><small>${esc(gapLabel)} · 수익 아님</small><b>${esc(gap)}</b></div></div><p class="radar-money-note">${esc(baselineText)}</p>${caution}${leadHtml}<div class="v41-market-row"><strong>현재 호가·시세는 별도 확인</strong>${qparts||'<small>확인된 최신 호가·KB 시세 데이터 없음</small>'}<div class="v41-market-links"><a href="${esc(v41MarketSearch(p,'네이버'))}" target="_blank" rel="noopener noreferrer">네이버 매물 확인 ↗</a><a href="${esc(v41MarketSearch(p,'KB'))}" target="_blank" rel="noopener noreferrer">KB 시세 확인 ↗</a></div></div>`;
 }
-const legacyMoneyPanel=moneyPanel;moneyPanel=function(p){const d=broadV47(p);return broadMarketHtml(p)+(d?.candidate?`<details class="v47-legacy"><summary>📊 기존 신고 거래·입주권·보도 근거 더 보기</summary>${legacyMoneyPanel(p)}</details>`:legacyMoneyPanel(p));};
+const legacyMoneyPanel=moneyPanel;moneyPanel=function(p){const d=broadV47(p);return broadMarketHtml(p)+(d?.contextReference?`<details class="v47-legacy"><summary>📚 기존 개별 거래 근거 더 보기</summary>${legacyMoneyPanel(p)}</details>`:legacyMoneyPanel(p));};
 function marketV41Detail(p){
  const a=v41Ledger(p);if(!a)return '';
  const rows=(a.rows||[]).slice(0,25);
@@ -573,6 +574,7 @@ function personalValue(p){
  else if(strong.length)reasons.push('비교 거래에서 가격 우위 신호');
  else if(signals.length)reasons.push('큰 가격 차이 탐색 신호 · 검증 전');
  else if(localSignals.length)reasons.push('같은 법정동 유사 면적 거래에서 가격 매력 가능성');
+ else if(broad?.contextReference)reasons.push('유사 면적 실거래 비교 확보 · 가격 매력 검토');
  else reasons.push('가격 우위 근거 부족 · 발견 후보로 유지');
  if(noticeType(p))reasons.push('무순위·재공급 기회');
  if(urgent)reasons.push('접수 마감 임박');
@@ -587,7 +589,7 @@ function personalValue(p){
  else if(matched&&(broad?.candidate||localSignals.length||signals.length||noticeType(p))){title='관심 후보 · 확인 추천';}
  else if(!matched){level='low';title='관심 지역 밖';tone='low';}
  else {level='low';title='추가 자료 확보 필요';tone='low';}
- const evidence=broad?.candidate?'시장권역 거래 탐색':strong.length?'거래 비교 근거':signals.length?'가격 탐색 근거':localSignals.length?'법정동 거래 참고':'가격 근거 부족';
+ const evidence=broad?.candidate?'시장권역 거래 탐색':strong.length?'거래 비교 근거':signals.length?'가격 탐색 근거':localSignals.length?'법정동 거래 참고':broad?.contextReference?'유사 면적 실거래 참고':'가격 근거 부족';
  return {score,title,tone,level,reasons:reasons.slice(0,4),evidence};
 }
 function personalValueHtml(p){
