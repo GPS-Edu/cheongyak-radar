@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T09:32:49.791083+09:00",
+  "updated_at": "2026-11-23T12:34:27.423188+09:00",
   "projects": [
     {
       "id": "apt-2026820015-2026820015",
@@ -75,6 +75,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://apply.lh.or.kr",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 4.339,
@@ -965,8 +966,27 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -993,7 +1013,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026820013-2026820013",
@@ -1055,6 +1099,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://apply.lh.or.kr/",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 4.5692,
@@ -1067,7 +1112,7 @@
         "경기 안산시 단원구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41273",
         "label": "경기 안산시 단원구"
       },
@@ -1779,8 +1824,27 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -1807,7 +1871,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "rem-2026910292-2026910292",
@@ -1869,6 +1957,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.prugio.com/hb/2026/pravenue",
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "supplyPriceRange": {
@@ -2630,12 +2719,145 @@
         "matchCount": 0
       },
       "noticeEvidence": {
-        "status": "no_source_pdf",
-        "sourceUrl": null,
-        "excerpts": [],
+        "status": "auto_extracted_unreviewed",
+        "sourceUrl": "https://www.prugio.com/hb/2026/pravenue/assets/pdf/검암역 푸르지오 프라베뉴 (B-1BL) 공공분양주택(국민주택)_무순위 입주자모집공고.pdf",
+        "excerpts": [
+          {
+            "category": "resale",
+            "page": 1,
+            "text": "특별시, 경기도) 지역에 비규제지역 (국민주택) 거주(주민등록표등본 기준)하는 무주택세대구성원(외국인 청약 불가) 재당첨제한 전매제한 거주의무기간 분양가상한제 3년 없음 없음 적용 *최초 당첨자 발표일(2026.09.08.)로부터 3년 무순위(사후) 구분 최초 입주자모집공고일 무순위(사후) 접수일 당첨자발표일 서류접수 계약체결 입주자모집공고일 일정 202",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 2,
+            "text": "계약서와 함께 보관하시고 분실하지 않도록 주의하시기 바라며, 분실했을 경우 발생하는 모든 문제의 책임은 계약자 본인에게 있습니다. ※ 공급계약서에 대한 인지세 중 계약자가 납부하여야 할 인지세의 미납, 과소 납부로 인하여 발생하는 모든 문제의 책임은 계약자에게 있습니다. ■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」 제56조에 따라 「주택법」 제64조 제1항 및 제65조 제1항을 위반하여 적발된 경우, 위반한 행위를 적발한 날부터 10년간 입주자로 선정될 수 없습니다. ■ 투기적발자 처벌(「주택법」 제64조, 제65조 및 제101조) - 분양과 관련하여 주택청약통장 및 주택 분양권을 불법 거래하다가 적발된 자는 「주택법」에 따라 주택공급계약이 취소될 수 있으며, 형사 고발되어 3년 이하의 징역에 처하거나, 3천만원 이하의 벌금이 부과될 수 있습니다. 다만, 주택법 제64조 제1항을 위반하여 입주자로 선정된 지위",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 1,
+            "text": "비규제지역 (국민주택) 거주(주민등록표등본 기준)하는 무주택세대구성원(외국인 청약 불가) 재당첨제한 전매제한 거주의무기간 분양가상한제 3년 없음 없음 적용 *최초 당첨자 발표일(2026.09.08.)로부터 3년 무순위(사후) 구분 최초 입주자모집공고일 무순위(사후) 접수일 당첨자발표일 서류접수 계약체결 입주자모집공고일 일정 2026.08.21.(금)",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "상담전화와 신청자 개인의 다양하고 복잡한 상황에 대하여 정확하지 않은 정보의 제공으로 청약 관련 사항에 대한 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적 효력이 없으므로 청약의 참고자료로만 활용해 주시기 바랍니다. 신청자 본인이 무순위(사후) 입주자모집공고문을 통해 청약자격 등을 숙지하시어 관련 서류 등을 발급받아 직접 확인하신 후 신청하시기 바라며, 청약자격 미숙지, 착오신청 등에 대해서는 신청자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시 기 바랍니다. ■ 한국부동산원 청약홈 콜센터는 청약홈 홈페이지(www.applyhome.co.kr) 이용안내 및 기본적인 청약자격 상담을 하고 있으나, 고객 상담과정에서 청약자 개인의 다양하고 복잡 한 상황에 대한 정확하지 않은 정보의 제공으로 일부 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적효력이 없으므로 참고자료로만 활용해 주시기 바라며 청약자격 미숙지, 착오신청 등에 대해서는 청약자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "약 관련 사항에 대한 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적 효력이 없으므로 청약의 참고자료로만 활용해 주시기 바랍니다. 신청자 본인이 무순위(사후) 입주자모집공고문을 통해 청약자격 등을 숙지하시어 관련 서류 등을 발급받아 직접 확인하신 후 신청하시기 바라며, 청약자격 미숙지, 착오신청 등에 대해서는 신청자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시 기 바랍니다. ■ 한국부동산원 청약홈 콜센터는 청약홈 홈페이지(www.applyhome.co.kr) 이용안내 및 기본적인 청약자격 상담을 하고 있으나, 고객 상담과정에서 청약자 개인의 다양하고 복잡 한 상황에 대한 정확하지 않은 정보의 제공으로 일부 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적효력이 없으므로 참고자료로만 활용해 주시기 바라며 청약자격 미숙지, 착오신청 등에 대해서는 청약자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시기 바랍니다. ■ 금회 공급하는 주택은 무순위(사후) 입주자모집공고일(202",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "등을 발급받아 직접 확인하신 후 신청하시기 바라며, 청약자격 미숙지, 착오신청 등에 대해서는 신청자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시 기 바랍니다. ■ 한국부동산원 청약홈 콜센터는 청약홈 홈페이지(www.applyhome.co.kr) 이용안내 및 기본적인 청약자격 상담을 하고 있으나, 고객 상담과정에서 청약자 개인의 다양하고 복잡 한 상황에 대한 정확하지 않은 정보의 제공으로 일부 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적효력이 없으므로 참고자료로만 활용해 주시기 바라며 청약자격 미숙지, 착오신청 등에 대해서는 청약자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시기 바랍니다. ■ 금회 공급하는 주택은 무순위(사후) 입주자모집공고일(2026.11.18.) 현재 수도권(인천광역시, 서울특별시, 경기도)에 거주(주민등록표등본 기준)하는 무주택세대구성원인 성년자 에게 1인 1주택 기준으로 공급합니다.(외국인 청약불가) ■ 금회 공급하는 주택은 청약저축 가입여부, 과거당첨 사실",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "yhome.co.kr) 이용안내 및 기본적인 청약자격 상담을 하고 있으나, 고객 상담과정에서 청약자 개인의 다양하고 복잡 한 상황에 대한 정확하지 않은 정보의 제공으로 일부 착오 안내가 이루어지는 경우가 있습니다. 청약과 관련한 상담내용은 법적효력이 없으므로 참고자료로만 활용해 주시기 바라며 청약자격 미숙지, 착오신청 등에 대해서는 청약자 본인에게 책임이 있으니 불이익을 당하는 일이 없도록 유의하여 주시기 바랍니다. ■ 금회 공급하는 주택은 무순위(사후) 입주자모집공고일(2026.11.18.) 현재 수도권(인천광역시, 서울특별시, 경기도)에 거주(주민등록표등본 기준)하는 무주택세대구성원인 성년자 에게 1인 1주택 기준으로 공급합니다.(외국인 청약불가) ■ 금회 공급하는 주택은 청약저축 가입여부, 과거당첨 사실여부, 소득 및 자산 요건을 불문하며, 당첨 및 계약체결 시에도 재당첨제한 및 당첨자 관리 등이 적용되지 않습니다. ■ 금회 공급하는 주택형은 최초 입주자모집공고 시 1순위 및 2순위에서 청약 마감된 주택형이며, 예비입주자를 대상으로 추가입주자를 선",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 2,
+            "text": "「주택법」 제63조 및 제63조의2에 따른 비투기과열지구 및 비조정대상지역이며, 「부동산 거 래신고 등에 관한 법률 시행령」 제3조 및 별표 1에 따라 거래가격 6억원 이상의 주택에 대해서 ‘주택취득자금 조달 및 입주계획서’ 제출을 의무화합니다.(추가선택품목 계약 등 추가 계약체결로 인하여 계약금액이 변경되는 경우 변경신고가 필요할 수도 있음). 따라서 계약자는 부동산 실거래 신고에 따른 필요서류를 사업주체에 제공하여야 하며, 신고를 거부하거나 서류미비, 미제출로 인하여 발생하는 과태료 부과 등의 모든 책임은 계약자 본인에게 있으니 이 점 양지하시기 바랍니다. ■ 부동산 거래 관련 인지세 납부 안내(「인지세법」 제1조, 제3조 제1항 제1호 및 제3호, 제8조에 따름) 대상증서 공급계약서, 발코니확장계약서 : 부동산 소유권 이전에 관한 증서(소유권이전 등기 신청시 제출하는 계약서), 추가선택품목(유상옵션) 계약서 : 도급에 관한 증서 납부기한 2023.01.01. 시행된 「인지세법」 제8조 제3항에 따라 계약일이 속하는 달의 다음 달 10일까",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 3,
+            "text": "[단위 : 세대, 원] 계약금(10%) 중도금(60%) 잔금(30%) 금회 계약 시 계약 후 입주지정기간 주택형 동(라인) 층별 공급 공급금액 1회(10%) 2회(10%) 3회(10%) 4회(10%) 5회(10%) 6회(10%) 15일 이내 주택도시기금",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 3,
+            "text": "납부하여야 하며, 융자금에 대한 이자를 납부기한 내 미납 시 미납한 금액에 대해 연체료가 발생합니다. ■ 아파트 분양대금 납부계좌 및 납부방법 구분 금융기관 계좌번호 예금주 계약금 신한은행 100-038-919762 인천도시공사 2차 계약금, 중도금, 잔금 세대별 가상계좌 부여 예정 ※ 분양대금 중 계약금은 지정된 계약 기간에 상기 계약금 계좌로 계약 동·호수 및 계약자명을 기재하고 입금하여야 하며, 입금증은 계약 시 견본주택에 제출하여야 합니다.(견본주 택 수납 불가 / 무통장 입금 시 예시 : 101동 1201호 계약자 → `1011201홍길동‘) ※ 분양대금 중 2차 계약금, 중도금 및 잔금은 계약체결 시 세대별 부여되는 가상계좌로 입금하여야 하며, 가상계좌로 입금 된 중도금",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 3,
+            "text": "금융기관 계좌번호 예금주 계약금 신한은행 100-038-919762 인천도시공사 2차 계약금, 중도금, 잔금 세대별 가상계좌 부여 예정 ※ 분양대금 중 계약금은 지정된 계약 기간에 상기 계약금 계좌로 계약 동·호수 및 계약자명을 기재하고 입금하여야 하며, 입금증은 계약 시 견본주택에 제출하여야 합니다.(견본주 택 수납 불가 / 무통장 입금 시 예시 : 101동 1201호 계약자 → `1011201홍길동‘) ※ 분양대금 중 2차 계약금, 중도금 및 잔금은 계약체결 시 세대별 부여되는 가상계좌로 입금하여야 하며, 가상계좌로 입금 된 중도금 및 잔금은 모계좌(신한은행 100-038-919762, 예금주 : 인천도시공사)로 이체되어 관리되며, 가상계좌는 계약체결 시 세대별 계약서에 명기하여 고지할 예정이오니",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          }
+        ],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "preliminary",
+          "sourceUrl": "https://www.prugio.com/hb/2026/pravenue/assets/pdf/검암역 푸르지오 프라베뉴 (B-1BL) 공공분양주택(국민주택)_무순위 입주자모집공고.pdf",
+          "resale": {
+            "status": "needs_review",
+            "label": "전매제한",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제",
+                "context": " 재당첨제한 전매제한 거주의무기간 분양가상한제 "
+              },
+              {
+                "page": 2,
+                "line": "■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」",
+                "context": " ■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」 "
+              }
+            ]
+          },
+          "occupancy": {
+            "status": "needs_review",
+            "label": "거주의무",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제",
+                "context": " 재당첨제한 전매제한 거주의무기간 분양가상한제 "
+              }
+            ]
+          },
+          "eligibility": {
+            "rules": {},
+            "unknownRequirements": [
+              "공급유형별 요건",
+              "세대 전체 주택 소유",
+              "재당첨 제한",
+              "소득·자산·특별공급",
+              "우선공급 지역·기간",
+              "정정공고"
+            ],
+            "ambiguous": [],
+            "mode": "explicit_common_rules_only",
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "pdfPageCount": 14,
+        "sourceClass": "linked_from_notice_or_issuer_page",
+        "reason": null,
+        "discovery": {
+          "pagesChecked": 4,
+          "candidatesChecked": 4,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -2662,7 +2884,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "rem-2026930046-2026930046",
@@ -2724,6 +2970,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.s-class.co.kr/",
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "supplyPriceRange": {
@@ -2737,7 +2984,7 @@
         "경기 광주시"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41610",
         "label": "경기 광주시"
       },
@@ -3491,8 +3738,27 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -3519,7 +3785,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000457-2026000457",
@@ -3602,6 +3892,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.부천대장하우스토리디센트.com",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 6.1345,
@@ -4486,8 +4777,29 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": [
+            "source_unreachable"
+          ]
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -4514,7 +4826,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000576-2026000576",
@@ -4604,6 +4940,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://xi.co.kr/armusee",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 10.99,
@@ -4616,7 +4953,7 @@
         "경기 안산시 상록구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41271",
         "label": "경기 안산시 상록구"
       },
@@ -6489,9 +6826,9 @@
         "apartmentCount": 0,
         "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "경기도 안산시 상록구 성포동 586",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 7,
         "candidateComplexesTotal": 7,
@@ -6501,7 +6838,7 @@
             "areaSqm": 84.8861,
             "areaSource": "model_code_estimate",
             "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.6,
             "complexCount": 1,
             "transactionCount": 21,
@@ -6512,16 +6849,16 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.336,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 21,
                 "medianEok": 7.6,
                 "latestDate": "2026-11-10",
                 "areaSqm": 84.67
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
@@ -6531,7 +6868,7 @@
             "areaSqm": 84.958,
             "areaSource": "model_code_estimate",
             "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.6,
             "complexCount": 1,
             "transactionCount": 21,
@@ -6542,16 +6879,16 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.336,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 21,
                 "medianEok": 7.6,
                 "latestDate": "2026-11-10",
                 "areaSqm": 84.67
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
@@ -6561,7 +6898,7 @@
             "areaSqm": 84.87,
             "areaSource": "model_code_estimate",
             "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "referencePriceEok": 7.6,
             "complexCount": 1,
             "transactionCount": 21,
@@ -6572,16 +6909,16 @@
                 "apartment": "파크푸르지오",
                 "legalDong": "성포동",
                 "buildYear": 2018,
-                "distanceKm": 0.336,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 21,
                 "medianEok": 7.6,
                 "latestDate": "2026-11-10",
                 "areaSqm": 84.67
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
@@ -6598,7 +6935,7 @@
             "smallSample": false,
             "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
-            "sitePositionChecked": true,
+            "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
@@ -6616,7 +6953,7 @@
             "smallSample": false,
             "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
-            "sitePositionChecked": true,
+            "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
@@ -6634,7 +6971,7 @@
             "smallSample": false,
             "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
-            "sitePositionChecked": true,
+            "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
@@ -6652,7 +6989,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -6813,7 +7150,7 @@
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-10"
           },
           {
@@ -6829,7 +7166,7 @@
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-10"
           },
           {
@@ -6845,7 +7182,7 @@
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-10"
           }
         ],
@@ -6857,6 +7194,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
+          "청약 단지 위치 확인 필요",
           "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
@@ -6882,8 +7220,29 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "not_a_pdf",
+        "discovery": {
+          "pagesChecked": 4,
+          "candidatesChecked": 4,
+          "failures": [
+            "not_a_pdf"
+          ]
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -6910,7 +7269,86 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.8700C",
+            "saleEok": 10.99,
+            "referenceEok": 7.6,
+            "gapEok": -3.39,
+            "gapPct": -44.6,
+            "grade": 2,
+            "date": "2026-11-10",
+            "ageDays": 13,
+            "count": 21,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.8861A",
+            "saleEok": 11.05,
+            "referenceEok": 7.6,
+            "gapEok": -3.45,
+            "gapPct": -45.4,
+            "grade": 2,
+            "date": "2026-11-10",
+            "ageDays": 13,
+            "count": 21,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.9580B",
+            "saleEok": 11.05,
+            "referenceEok": 7.6,
+            "gapEok": -3.45,
+            "gapPct": -45.4,
+            "grade": 2,
+            "date": "2026-11-10",
+            "ageDays": 13,
+            "count": 21,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          }
+        ],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 3,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "rem-2026930045-2026930045",
@@ -6979,6 +7417,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.raemian.co.kr/sales/s/jamsiljinju",
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "supplyPriceRange": {
@@ -6992,7 +7431,7 @@
         "서울 송파구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "11710",
         "label": "서울 송파구"
       },
@@ -8548,17 +8987,17 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "distance_checked_review",
+        "status": "insufficient",
         "modelType": "084.9600D",
-        "referencePriceEok": 16.2,
-        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-        "transactionCount": 8,
-        "apartmentCount": 2,
-        "distanceChecked": true,
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "서울특별시 송파구 신천동 20-4",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 19,
         "candidateComplexesTotal": 19,
@@ -8567,124 +9006,67 @@
             "type": "043.7300",
             "areaSqm": 43.73,
             "areaSource": "model_code_estimate",
-            "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 8.5,
-            "complexCount": 1,
-            "transactionCount": 1,
-            "smallSample": true,
-            "comparisonQuality": "limited",
-            "apartmentComparisons": [
-              {
-                "apartment": "잠실라펜앤",
-                "legalDong": "방이동",
-                "buildYear": 2024,
-                "distanceKm": 0.817,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 8.5,
-                "latestDate": "2026-08-19",
-                "areaSqm": 44.09
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
+            "smallSample": false,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "059.4700A",
             "areaSqm": 59.47,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 21.875,
-            "complexCount": 3,
-            "transactionCount": 20,
-            "smallSample": false,
-            "comparisonQuality": "review",
+            "status": "limited_sample_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 31.661,
+            "complexCount": 1,
+            "transactionCount": 3,
+            "smallSample": true,
+            "comparisonQuality": "limited",
             "apartmentComparisons": [
               {
                 "apartment": "잠실르엘",
                 "legalDong": "신천동",
                 "buildYear": 2025,
-                "distanceKm": 0.34,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 3,
                 "medianEok": 31.661,
                 "latestDate": "2026-02-27",
                 "areaSqm": 59.82
-              },
-              {
-                "apartment": "잠실올림픽공원아이파크",
-                "legalDong": "풍납동",
-                "buildYear": 2019,
-                "distanceKm": 0.888,
-                "scope": "distance_checked",
-                "count": 12,
-                "medianEok": 21.875,
-                "latestDate": "2026-10-25",
-                "areaSqm": 59.95
-              },
-              {
-                "apartment": "송파파밀리에더퍼스트",
-                "legalDong": "송파동",
-                "buildYear": 2023,
-                "distanceKm": 1.748,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 15.0,
-                "latestDate": "2026-08-15",
-                "areaSqm": 59.94
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 3,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
           },
           {
             "type": "084.9600D",
             "areaSqm": 84.96,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 16.2,
-            "complexCount": 2,
-            "transactionCount": 8,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "잠실올림픽공원아이파크",
-                "legalDong": "풍납동",
-                "buildYear": 2019,
-                "distanceKm": 0.888,
-                "scope": "distance_checked",
-                "count": 3,
-                "medianEok": 23.0,
-                "latestDate": "2026-05-20",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "이트리움송파(281-4)",
-                "legalDong": "풍납동",
-                "buildYear": 2024,
-                "distanceKm": 1.63,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 9.4,
-                "latestDate": "2026-09-09",
-                "areaSqm": 84.7
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 2,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -8698,7 +9080,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -8831,71 +9213,39 @@
         "bestType": {
           "type": "059.4700A",
           "priceEok": 15.7939,
-          "comparableReferenceEok": 21.875,
-          "observedGapEok": 6.0811,
-          "observedGapPct": 27.8,
-          "apartmentCount": 3,
-          "transactionCount": 20,
-          "distanceVerified": true,
+          "comparableReferenceEok": 31.661,
+          "observedGapEok": 15.8671,
+          "observedGapPct": 50.1,
+          "apartmentCount": 1,
+          "transactionCount": 3,
+          "distanceVerified": false,
           "areaSource": "model_code_estimate",
           "coverageComplete": true,
-          "complexPriceDispersionPct": 111.1,
+          "complexPriceDispersionPct": null,
           "qualityGatePassed": false,
-          "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-          "latestComparisonDate": "2026-10-25"
+          "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+          "latestComparisonDate": "2026-02-27"
         },
         "candidateTypeCount": 0,
-        "observationTypeCount": 3,
+        "observationTypeCount": 1,
         "noticeTypePriority": true,
         "priceCautionCount": 0,
         "priceEvidence": [
           {
             "type": "059.4700A",
             "priceEok": 15.7939,
-            "comparableReferenceEok": 21.875,
-            "observedGapEok": 6.0811,
-            "observedGapPct": 27.8,
-            "apartmentCount": 3,
-            "transactionCount": 20,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 111.1,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-10-25"
-          },
-          {
-            "type": "084.9600D",
-            "priceEok": 18.5607,
-            "comparableReferenceEok": 16.2,
-            "observedGapEok": -2.3607,
-            "observedGapPct": -14.6,
-            "apartmentCount": 2,
-            "transactionCount": 8,
-            "distanceVerified": false,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 144.7,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-09-09"
-          },
-          {
-            "type": "043.7300",
-            "priceEok": 11.0548,
-            "comparableReferenceEok": 8.5,
-            "observedGapEok": -2.5548,
-            "observedGapPct": -30.1,
+            "comparableReferenceEok": 31.661,
+            "observedGapEok": 15.8671,
+            "observedGapPct": 50.1,
             "apartmentCount": 1,
-            "transactionCount": 1,
+            "transactionCount": 3,
             "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-08-19"
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-02-27"
           }
         ],
         "sameComplexEvidence": [],
@@ -8906,6 +9256,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
+          "청약 단지 위치 확인 필요",
           "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
@@ -8931,17 +9282,39 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "pdf_notice_date_mismatch",
+        "discovery": {
+          "pagesChecked": 4,
+          "candidatesChecked": 4,
+          "failures": [
+            "not_a_pdf",
+            "pdf_notice_date_mismatch"
+          ]
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
-        "reviewScore": 29,
+        "reviewScore": 25,
         "priceSignal": "special_supply",
-        "evidenceLevel": "distance_checked_apartment_sales",
-        "evidenceReason": "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다.",
+        "evidenceLevel": "missing",
+        "evidenceReason": "검증할 거래가 부족합니다. 신규 택지·단지 주소·실거래 공개 시점 확인 필요.",
         "sameComplexTradeCount": 0,
-        "nearbyTradeCount": 8,
+        "nearbyTradeCount": 0,
         "areaVerified": false,
         "priceAvailable": true,
         "minTypePriceEok": 11.0548,
@@ -8959,7 +9332,69 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.4700A",
+            "saleEok": 15.7939,
+            "referenceEok": 31.661,
+            "gapEok": 15.8671,
+            "gapPct": 50.1,
+            "grade": 2,
+            "date": "2026-02-27",
+            "ageDays": 269,
+            "count": 3,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요",
+              "6개월 초과 거래"
+            ],
+            "url": "",
+            "useAsValuation": false
+          }
+        ],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 1,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "",
+        "baseline": null,
+        "upsideLead": {
+          "kind": "nearby_apartment",
+          "label": "주변 유사 단지 매매 실거래",
+          "type": "059.4700A",
+          "saleEok": 15.7939,
+          "referenceEok": 31.661,
+          "gapEok": 15.8671,
+          "gapPct": 50.1,
+          "grade": 2,
+          "date": "2026-02-27",
+          "ageDays": 269,
+          "count": 3,
+          "notes": [
+            "위치·거래 표본·단지 차이 검토 필요",
+            "6개월 초과 거래"
+          ],
+          "url": "",
+          "useAsValuation": false
+        },
+        "candidate": true,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": 15.8671,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000560-2026000560",
@@ -9028,6 +9463,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.해링턴플레이스문래.com",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 17.75,
@@ -9040,7 +9476,7 @@
         "서울 영등포구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "11560",
         "label": "서울 영등포구"
       },
@@ -10126,17 +10562,17 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "distance_checked_review",
+        "status": "insufficient",
         "modelType": "084.9409A",
-        "referencePriceEok": 17.8,
-        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-        "transactionCount": 106,
-        "apartmentCount": 13,
-        "distanceChecked": true,
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "서울특별시 영등포구 문래동3가 27-1",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 20,
         "candidateComplexesTotal": 20,
@@ -10145,454 +10581,55 @@
             "type": "084.9409A",
             "areaSqm": 84.9409,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 17.8,
-            "complexCount": 13,
-            "transactionCount": 106,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "포레나영등포센트럴",
-                "legalDong": "영등포동7가",
-                "buildYear": 2020,
-                "distanceKm": 0.687,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 18.0,
-                "latestDate": "2026-02-05",
-                "areaSqm": 84.8
-              },
-              {
-                "apartment": "아크로타워스퀘어",
-                "legalDong": "영등포동7가",
-                "buildYear": 2017,
-                "distanceKm": 0.846,
-                "scope": "distance_checked",
-                "count": 14,
-                "medianEok": 20.45,
-                "latestDate": "2026-11-13",
-                "areaSqm": 84.7
-              },
-              {
-                "apartment": "브라운스톤당산",
-                "legalDong": "당산동4가",
-                "buildYear": 2015,
-                "distanceKm": 0.964,
-                "scope": "distance_checked",
-                "count": 9,
-                "medianEok": 16.0,
-                "latestDate": "2026-11-06",
-                "areaSqm": 84.04
-              },
-              {
-                "apartment": "당산롯데캐슬프레스티지",
-                "legalDong": "당산동4가",
-                "buildYear": 2017,
-                "distanceKm": 1.104,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 19.0,
-                "latestDate": "2026-08-29",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "문래모아미래도",
-                "legalDong": "문래동5가",
-                "buildYear": 2017,
-                "distanceKm": 1.172,
-                "scope": "distance_checked",
-                "count": 17,
-                "medianEok": 14.4,
-                "latestDate": "2026-10-10",
-                "areaSqm": 84.75
-              },
-              {
-                "apartment": "당산센트럴아이파크",
-                "legalDong": "당산동5가",
-                "buildYear": 2020,
-                "distanceKm": 1.251,
-                "scope": "distance_checked",
-                "count": 8,
-                "medianEok": 24.175,
-                "latestDate": "2026-07-29",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "e편한세상 문래 에듀플라츠",
-                "legalDong": "문래동6가",
-                "buildYear": 2020,
-                "distanceKm": 1.297,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 14.9,
-                "latestDate": "2026-04-14",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "영등포중흥에스클래스",
-                "legalDong": "양평동1가",
-                "buildYear": 2021,
-                "distanceKm": 1.316,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 16.05,
-                "latestDate": "2026-10-15",
-                "areaSqm": 84.95
-              },
-              {
-                "apartment": "신길센트럴아이파크",
-                "legalDong": "신길동",
-                "buildYear": 2019,
-                "distanceKm": 1.697,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 16.74,
-                "latestDate": "2026-10-17",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "래미안영등포프레비뉴",
-                "legalDong": "신길동",
-                "buildYear": 2015,
-                "distanceKm": 1.723,
-                "scope": "distance_checked",
-                "count": 11,
-                "medianEok": 17.8,
-                "latestDate": "2026-10-16",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "신길센트럴자이아파트",
-                "legalDong": "신길동",
-                "buildYear": 2021,
-                "distanceKm": 1.889,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 18.75,
-                "latestDate": "2026-06-20",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "더샵파크프레스티지",
-                "legalDong": "신길동",
-                "buildYear": 2022,
-                "distanceKm": 1.913,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 16.7,
-                "latestDate": "2026-09-12",
-                "areaSqm": 84.9
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 13,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9708B",
             "areaSqm": 84.9708,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 17.8,
-            "complexCount": 13,
-            "transactionCount": 106,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "포레나영등포센트럴",
-                "legalDong": "영등포동7가",
-                "buildYear": 2020,
-                "distanceKm": 0.687,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 18.0,
-                "latestDate": "2026-02-05",
-                "areaSqm": 84.8
-              },
-              {
-                "apartment": "아크로타워스퀘어",
-                "legalDong": "영등포동7가",
-                "buildYear": 2017,
-                "distanceKm": 0.846,
-                "scope": "distance_checked",
-                "count": 14,
-                "medianEok": 20.45,
-                "latestDate": "2026-11-13",
-                "areaSqm": 84.7
-              },
-              {
-                "apartment": "브라운스톤당산",
-                "legalDong": "당산동4가",
-                "buildYear": 2015,
-                "distanceKm": 0.964,
-                "scope": "distance_checked",
-                "count": 9,
-                "medianEok": 16.0,
-                "latestDate": "2026-11-06",
-                "areaSqm": 84.04
-              },
-              {
-                "apartment": "당산롯데캐슬프레스티지",
-                "legalDong": "당산동4가",
-                "buildYear": 2017,
-                "distanceKm": 1.104,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 19.0,
-                "latestDate": "2026-08-29",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "문래모아미래도",
-                "legalDong": "문래동5가",
-                "buildYear": 2017,
-                "distanceKm": 1.172,
-                "scope": "distance_checked",
-                "count": 17,
-                "medianEok": 14.4,
-                "latestDate": "2026-10-10",
-                "areaSqm": 84.75
-              },
-              {
-                "apartment": "당산센트럴아이파크",
-                "legalDong": "당산동5가",
-                "buildYear": 2020,
-                "distanceKm": 1.251,
-                "scope": "distance_checked",
-                "count": 8,
-                "medianEok": 24.175,
-                "latestDate": "2026-07-29",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "e편한세상 문래 에듀플라츠",
-                "legalDong": "문래동6가",
-                "buildYear": 2020,
-                "distanceKm": 1.297,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 14.9,
-                "latestDate": "2026-04-14",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "영등포중흥에스클래스",
-                "legalDong": "양평동1가",
-                "buildYear": 2021,
-                "distanceKm": 1.316,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 16.05,
-                "latestDate": "2026-10-15",
-                "areaSqm": 84.95
-              },
-              {
-                "apartment": "신길센트럴아이파크",
-                "legalDong": "신길동",
-                "buildYear": 2019,
-                "distanceKm": 1.697,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 16.74,
-                "latestDate": "2026-10-17",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "래미안영등포프레비뉴",
-                "legalDong": "신길동",
-                "buildYear": 2015,
-                "distanceKm": 1.723,
-                "scope": "distance_checked",
-                "count": 11,
-                "medianEok": 17.8,
-                "latestDate": "2026-10-16",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "신길센트럴자이아파트",
-                "legalDong": "신길동",
-                "buildYear": 2021,
-                "distanceKm": 1.889,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 18.75,
-                "latestDate": "2026-06-20",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "더샵파크프레스티지",
-                "legalDong": "신길동",
-                "buildYear": 2022,
-                "distanceKm": 1.913,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 16.7,
-                "latestDate": "2026-09-12",
-                "areaSqm": 84.9
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 13,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9894C",
             "areaSqm": 84.9894,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 17.8,
-            "complexCount": 13,
-            "transactionCount": 106,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "포레나영등포센트럴",
-                "legalDong": "영등포동7가",
-                "buildYear": 2020,
-                "distanceKm": 0.687,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 18.0,
-                "latestDate": "2026-02-05",
-                "areaSqm": 84.8
-              },
-              {
-                "apartment": "아크로타워스퀘어",
-                "legalDong": "영등포동7가",
-                "buildYear": 2017,
-                "distanceKm": 0.846,
-                "scope": "distance_checked",
-                "count": 14,
-                "medianEok": 20.45,
-                "latestDate": "2026-11-13",
-                "areaSqm": 84.7
-              },
-              {
-                "apartment": "브라운스톤당산",
-                "legalDong": "당산동4가",
-                "buildYear": 2015,
-                "distanceKm": 0.964,
-                "scope": "distance_checked",
-                "count": 9,
-                "medianEok": 16.0,
-                "latestDate": "2026-11-06",
-                "areaSqm": 84.04
-              },
-              {
-                "apartment": "당산롯데캐슬프레스티지",
-                "legalDong": "당산동4가",
-                "buildYear": 2017,
-                "distanceKm": 1.104,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 19.0,
-                "latestDate": "2026-08-29",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "문래모아미래도",
-                "legalDong": "문래동5가",
-                "buildYear": 2017,
-                "distanceKm": 1.172,
-                "scope": "distance_checked",
-                "count": 17,
-                "medianEok": 14.4,
-                "latestDate": "2026-10-10",
-                "areaSqm": 84.75
-              },
-              {
-                "apartment": "당산센트럴아이파크",
-                "legalDong": "당산동5가",
-                "buildYear": 2020,
-                "distanceKm": 1.251,
-                "scope": "distance_checked",
-                "count": 8,
-                "medianEok": 24.175,
-                "latestDate": "2026-07-29",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "e편한세상 문래 에듀플라츠",
-                "legalDong": "문래동6가",
-                "buildYear": 2020,
-                "distanceKm": 1.297,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 14.9,
-                "latestDate": "2026-04-14",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "영등포중흥에스클래스",
-                "legalDong": "양평동1가",
-                "buildYear": 2021,
-                "distanceKm": 1.316,
-                "scope": "distance_checked",
-                "count": 5,
-                "medianEok": 16.05,
-                "latestDate": "2026-10-15",
-                "areaSqm": 84.95
-              },
-              {
-                "apartment": "신길센트럴아이파크",
-                "legalDong": "신길동",
-                "buildYear": 2019,
-                "distanceKm": 1.697,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 16.74,
-                "latestDate": "2026-10-17",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "래미안영등포프레비뉴",
-                "legalDong": "신길동",
-                "buildYear": 2015,
-                "distanceKm": 1.723,
-                "scope": "distance_checked",
-                "count": 11,
-                "medianEok": 17.8,
-                "latestDate": "2026-10-16",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "신길센트럴자이아파트",
-                "legalDong": "신길동",
-                "buildYear": 2021,
-                "distanceKm": 1.889,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 18.75,
-                "latestDate": "2026-06-20",
-                "areaSqm": 84.98
-              },
-              {
-                "apartment": "더샵파크프레스티지",
-                "legalDong": "신길동",
-                "buildYear": 2022,
-                "distanceKm": 1.913,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 16.7,
-                "latestDate": "2026-09-12",
-                "areaSqm": 84.9
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 13,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -10606,7 +10643,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -10750,59 +10787,10 @@
         "verifiedEligibility": false,
         "bestType": null,
         "candidateTypeCount": 0,
-        "observationTypeCount": 3,
+        "observationTypeCount": 0,
         "noticeTypePriority": false,
         "priceCautionCount": 0,
-        "priceEvidence": [
-          {
-            "type": "084.9894C",
-            "priceEok": 17.75,
-            "comparableReferenceEok": 17.8,
-            "observedGapEok": 0.05,
-            "observedGapPct": 0.3,
-            "apartmentCount": 13,
-            "transactionCount": 106,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 67.9,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-13"
-          },
-          {
-            "type": "084.9708B",
-            "priceEok": 17.85,
-            "comparableReferenceEok": 17.8,
-            "observedGapEok": -0.05,
-            "observedGapPct": -0.3,
-            "apartmentCount": 13,
-            "transactionCount": 106,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 67.9,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-13"
-          },
-          {
-            "type": "084.9409A",
-            "priceEok": 18.27,
-            "comparableReferenceEok": 17.8,
-            "observedGapEok": -0.47,
-            "observedGapPct": -2.6,
-            "apartmentCount": 13,
-            "transactionCount": 106,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 67.9,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-13"
-          }
-        ],
+        "priceEvidence": [],
         "sameComplexEvidence": [],
         "evidenceOrder": [
           "verified_same_complex_apartment_sales",
@@ -10811,7 +10799,8 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
-          "전용면적은 주택형 코드 추정치",
+          "청약 단지 위치 확인 필요",
+          "주택형별 비교 거래 표본 부족",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
         ],
@@ -10836,17 +10825,36 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
-        "reviewScore": 14,
+        "reviewScore": 10,
         "priceSignal": "watch",
-        "evidenceLevel": "distance_checked_apartment_sales",
-        "evidenceReason": "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다.",
+        "evidenceLevel": "missing",
+        "evidenceReason": "검증할 거래가 부족합니다. 신규 택지·단지 주소·실거래 공개 시점 확인 필요.",
         "sameComplexTradeCount": 0,
-        "nearbyTradeCount": 106,
+        "nearbyTradeCount": 0,
         "areaVerified": false,
         "priceAvailable": true,
         "minTypePriceEok": 17.75,
@@ -10864,7 +10872,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "rem-2026910300-2026910300",
@@ -10961,6 +10993,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.xi.co.kr/sangokxi",
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "supplyPriceRange": {
@@ -13449,8 +13482,29 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "not_a_pdf",
+        "discovery": {
+          "pagesChecked": 4,
+          "candidatesChecked": 4,
+          "failures": [
+            "not_a_pdf"
+          ]
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -13477,7 +13531,158 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.9900B",
+            "saleEok": 7.8,
+            "referenceEok": 5.245,
+            "gapEok": -2.555,
+            "gapPct": -48.7,
+            "grade": 2,
+            "date": "2026-11-18",
+            "ageDays": 5,
+            "count": 166,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.9200A",
+            "saleEok": 9.41,
+            "referenceEok": 6.5825,
+            "gapEok": -2.8275,
+            "gapPct": -43.0,
+            "grade": 2,
+            "date": "2026-11-20",
+            "ageDays": 3,
+            "count": 82,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.9800B",
+            "saleEok": 10.22,
+            "referenceEok": 6.5825,
+            "gapEok": -3.6375,
+            "gapPct": -55.3,
+            "grade": 2,
+            "date": "2026-11-20",
+            "ageDays": 3,
+            "count": 82,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "050.2600A",
+            "saleEok": 5.56,
+            "referenceEok": 3.7,
+            "gapEok": -1.86,
+            "gapPct": -50.3,
+            "grade": 2,
+            "date": "2026-10-29",
+            "ageDays": 25,
+            "count": 56,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "050.2600B",
+            "saleEok": 5.6,
+            "referenceEok": 3.7,
+            "gapEok": -1.9,
+            "gapPct": -51.4,
+            "grade": 2,
+            "date": "2026-10-29",
+            "ageDays": 25,
+            "count": 56,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "075.6200B",
+            "saleEok": 8.94,
+            "referenceEok": 5.945,
+            "gapEok": -2.995,
+            "gapPct": -50.4,
+            "grade": 2,
+            "date": "2026-11-15",
+            "ageDays": 8,
+            "count": 25,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "075.5600A",
+            "saleEok": 9.1,
+            "referenceEok": 5.945,
+            "gapEok": -3.155,
+            "gapPct": -53.1,
+            "grade": 2,
+            "date": "2026-11-15",
+            "ageDays": 8,
+            "count": 25,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          }
+        ],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 7,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "rem-2026910307-2026910307",
@@ -13532,6 +13737,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.gd3-hoban.co.kr/",
       "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
       "dataCategory": "remaining",
       "supplyPriceRange": {
@@ -13545,7 +13751,7 @@
         "인천 검단구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "28290",
         "label": "인천 검단구"
       },
@@ -14215,8 +14421,27 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "official_pdf_not_discovered",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 0,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -14243,7 +14468,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000505-2026000505",
@@ -14319,6 +14568,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://brand.hldni.com/gyeonghuigung/",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 11.8241,
@@ -14331,7 +14581,7 @@
         "서울 종로구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "11110",
         "label": "서울 종로구"
       },
@@ -14891,17 +15141,17 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "distance_checked_review",
+        "status": "insufficient",
         "modelType": "084.9794A",
-        "referencePriceEok": 21.975,
-        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-        "transactionCount": 29,
-        "apartmentCount": 4,
-        "distanceChecked": true,
+        "referencePriceEok": null,
+        "scopeLabel": "비교 단지 부족",
+        "transactionCount": 0,
+        "apartmentCount": 0,
+        "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "서울특별시 종로구 교남동 28",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 5,
         "candidateComplexesTotal": 5,
@@ -14918,7 +15168,7 @@
             "smallSample": false,
             "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
-            "sitePositionChecked": true,
+            "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
@@ -14928,179 +15178,55 @@
             "type": "059.9926",
             "areaSqm": 59.9926,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 21.5,
-            "complexCount": 3,
-            "transactionCount": 13,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "경희궁자이(3단지)",
-                "legalDong": "평동",
-                "buildYear": 2017,
-                "distanceKm": 0.095,
-                "scope": "distance_checked",
-                "count": 4,
-                "medianEok": 23.0,
-                "latestDate": "2026-05-12",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "경희궁자이(2단지)",
-                "legalDong": "홍파동",
-                "buildYear": 2017,
-                "distanceKm": 0.332,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 21.5,
-                "latestDate": "2026-09-28",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "경희궁롯데캐슬",
-                "legalDong": "무악동",
-                "buildYear": 2019,
-                "distanceKm": 0.823,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 17.505,
-                "latestDate": "2026-10-24",
-                "areaSqm": 59.67
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 3,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9794A",
             "areaSqm": 84.9794,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 21.975,
-            "complexCount": 4,
-            "transactionCount": 29,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "경희궁자이(3단지)",
-                "legalDong": "평동",
-                "buildYear": 2017,
-                "distanceKm": 0.095,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 25.0,
-                "latestDate": "2026-05-12",
-                "areaSqm": 84.84
-              },
-              {
-                "apartment": "경희궁자이(2단지)",
-                "legalDong": "홍파동",
-                "buildYear": 2017,
-                "distanceKm": 0.332,
-                "scope": "distance_checked",
-                "count": 12,
-                "medianEok": 26.575,
-                "latestDate": "2026-11-02",
-                "areaSqm": 84.84
-              },
-              {
-                "apartment": "경희궁롯데캐슬",
-                "legalDong": "무악동",
-                "buildYear": 2019,
-                "distanceKm": 0.823,
-                "scope": "distance_checked",
-                "count": 4,
-                "medianEok": 18.95,
-                "latestDate": "2026-05-28",
-                "areaSqm": 84.88
-              },
-              {
-                "apartment": "인왕산2차아이파크",
-                "legalDong": "무악동",
-                "buildYear": 2015,
-                "distanceKm": 0.991,
-                "scope": "distance_checked",
-                "count": 6,
-                "medianEok": 14.2,
-                "latestDate": "2026-06-06",
-                "areaSqm": 84.05
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 4,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           },
           {
             "type": "084.9940B",
             "areaSqm": 84.994,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 21.975,
-            "complexCount": 4,
-            "transactionCount": 29,
+            "status": "insufficient",
+            "scopeLabel": "비교 단지 부족",
+            "referencePriceEok": null,
+            "complexCount": 0,
+            "transactionCount": 0,
             "smallSample": false,
-            "comparisonQuality": "review",
-            "apartmentComparisons": [
-              {
-                "apartment": "경희궁자이(3단지)",
-                "legalDong": "평동",
-                "buildYear": 2017,
-                "distanceKm": 0.095,
-                "scope": "distance_checked",
-                "count": 7,
-                "medianEok": 25.0,
-                "latestDate": "2026-05-12",
-                "areaSqm": 84.84
-              },
-              {
-                "apartment": "경희궁자이(2단지)",
-                "legalDong": "홍파동",
-                "buildYear": 2017,
-                "distanceKm": 0.332,
-                "scope": "distance_checked",
-                "count": 12,
-                "medianEok": 26.575,
-                "latestDate": "2026-11-02",
-                "areaSqm": 84.84
-              },
-              {
-                "apartment": "경희궁롯데캐슬",
-                "legalDong": "무악동",
-                "buildYear": 2019,
-                "distanceKm": 0.823,
-                "scope": "distance_checked",
-                "count": 4,
-                "medianEok": 18.95,
-                "latestDate": "2026-05-28",
-                "areaSqm": 84.88
-              },
-              {
-                "apartment": "인왕산2차아이파크",
-                "legalDong": "무악동",
-                "buildYear": 2015,
-                "distanceKm": 0.991,
-                "scope": "distance_checked",
-                "count": 6,
-                "medianEok": 14.2,
-                "latestDate": "2026-06-06",
-                "areaSqm": 84.05
-              }
-            ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 4,
+            "comparisonQuality": "insufficient",
+            "apartmentComparisons": [],
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
-            "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
+            "reason": "거리·면적·연식 조건을 만족하는 거래가 없습니다."
           }
         ],
         "marketComparable": false,
@@ -15114,7 +15240,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -15241,80 +15367,16 @@
         "reason": "기회 포착은 모집공고와 일정에만 근거합니다. 자격·수익 판단과는 별개입니다."
       },
       "opportunity": {
-        "tier": "manual_review",
-        "label": "가격 차이 근거 재확인",
+        "tier": "watch",
+        "label": "공고·비교자료 확인",
         "isProfitVerified": false,
         "verifiedEligibility": false,
-        "bestType": {
-          "type": "059.9926",
-          "priceEok": 18.9843,
-          "comparableReferenceEok": 21.5,
-          "observedGapEok": 2.5157,
-          "observedGapPct": 11.7,
-          "apartmentCount": 3,
-          "transactionCount": 13,
-          "distanceVerified": true,
-          "areaSource": "model_code_estimate",
-          "coverageComplete": true,
-          "complexPriceDispersionPct": 31.4,
-          "qualityGatePassed": false,
-          "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-          "latestComparisonDate": "2026-10-24"
-        },
+        "bestType": null,
         "candidateTypeCount": 0,
-        "observationTypeCount": 3,
+        "observationTypeCount": 0,
         "noticeTypePriority": false,
         "priceCautionCount": 0,
-        "priceEvidence": [
-          {
-            "type": "059.9926",
-            "priceEok": 18.9843,
-            "comparableReferenceEok": 21.5,
-            "observedGapEok": 2.5157,
-            "observedGapPct": 11.7,
-            "apartmentCount": 3,
-            "transactionCount": 13,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 31.4,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-10-24"
-          },
-          {
-            "type": "084.9940B",
-            "priceEok": 25.1744,
-            "comparableReferenceEok": 21.975,
-            "observedGapEok": -3.1994,
-            "observedGapPct": -14.6,
-            "apartmentCount": 4,
-            "transactionCount": 29,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 87.1,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-02"
-          },
-          {
-            "type": "084.9794A",
-            "priceEok": 25.7484,
-            "comparableReferenceEok": 21.975,
-            "observedGapEok": -3.7734,
-            "observedGapPct": -17.2,
-            "apartmentCount": 4,
-            "transactionCount": 29,
-            "distanceVerified": true,
-            "areaSource": "model_code_estimate",
-            "coverageComplete": true,
-            "complexPriceDispersionPct": 87.1,
-            "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-02"
-          }
-        ],
+        "priceEvidence": [],
         "sameComplexEvidence": [],
         "evidenceOrder": [
           "verified_same_complex_apartment_sales",
@@ -15323,7 +15385,8 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
-          "전용면적은 주택형 코드 추정치",
+          "청약 단지 위치 확인 필요",
+          "주택형별 비교 거래 표본 부족",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
         ],
@@ -15344,21 +15407,190 @@
         "matchCount": 0
       },
       "noticeEvidence": {
-        "status": "no_source_pdf",
-        "sourceUrl": null,
-        "excerpts": [],
+        "status": "auto_extracted_unreviewed",
+        "sourceUrl": "https://brand.hldni.com/gyeonghuigung/file/★02-1.경희궁 에피트 입주자모집공고문 (★261112_신탁사업부 통합)_clean(최종1).pdf",
+        "excerpts": [
+          {
+            "category": "resale",
+            "page": 1,
+            "text": "투기과열지구, 청약과열지역 (2024.11.13. 이전부터 계속 거주) 인천광역시 및 경기도 거주자 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 10년 3년 없음 미적용 민간택지 일반공급 1순위 접수일 일반공급 2순위 구분 입주자모집공고일 특별공급 접수일 당첨자발표일 서류접수 계약체결 해당지역 기타지역 접수일",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 4,
+            "text": "(단, 청약자격 및 순위 등은 입주자모집공고일 기준으로 산정) ※ 청약저축에서 종합저축으로 전환하는 경우, 입주자모집공고일 전일까지 전환개설 완료하여야 청약 신청이 가능하며, 전환개설한 날을 기준으로 산정 (단, 국민주택 청약 시 기존 청약통 장가입일을 기준으로 산정) ■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」 제56조에 따라 「주택법」 제64조제1항 및 제65조제1항을 위반하여 적발된 경우, 위반한 행위를 적발한 날부터 10년간 입주자로 선정될 수 없습니다. ■ 청약 시 신청자의 착오로 인한 잘못된 신청에 대해서는 수정 접수가 불가하며, 이에 대한 책임은 청약 신청자에게 있으므로 유의하시기 바랍니다. ■ 유의사항 및 제한사항 등 본인의 자격사항에 대해 청약자 본인이 직접 확인 후 청약하시어 부적격 당첨으로 인한 불이익을 당하는 일이 없도록 하여 주시기 바랍니다. ■ 「주택공급에 관한 규칙」 제57조제8항에",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 6,
+            "text": "자에게 제공하여야 합니다. 계약자의 귀책사유로 신고 또는 서류 제출 의무를 이행하지 않은 경우에는 관계 법령에 따라 과태료가 부과될 수 있습니다. ■ 본 주택의 전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다. 구분 특별공급, 일반공급 전매제한기간 소유권이전등기일까지(다만, 그 기간이 3년을 초과하는 경우 3년) 3 공급대상 및 공급금액 ■ 「주택공급에 관한 규칙」 제20조의 규정에 의거 서울특별시 종로구 도시개발과 - 17144호(2026.11.11.)로 입주자모집공고 승인 ■ 공급위치 : 서울특별시 종로구 교남동 28번지 일원 ■ 공급규모 : 아파트 지하 6층, 지상 21층 3개동 총 228세대(토지등소유자 10세대, 보류지 5세대, 임대 78",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 6,
+            "text": "제출 의무를 이행하지 않은 경우에는 관계 법령에 따라 과태료가 부과될 수 있습니다. ■ 본 주택의 전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다. 구분 특별공급, 일반공급 전매제한기간 소유권이전등기일까지(다만, 그 기간이 3년을 초과하는 경우 3년) 3 공급대상 및 공급금액 ■ 「주택공급에 관한 규칙」 제20조의 규정에 의거 서울특별시 종로구 도시개발과 - 17144호(2026.11.11.)로 입주자모집공고 승인 ■ 공급위치 : 서울특별시 종로구 교남동 28번지 일원 ■ 공급규모 : 아파트 지하 6층, 지상 21층 3개동 총 228세대(토지등소유자 10세대, 보류지 5세대, 임대 78세대, 기타1세대 포함) 중 일반분양 134세대 [특별공급 72세대(기관추천 13세대, 다자녀가구 13세대, 신혼부부 20세대, 노부모부양 4세대, 생애최초 9세대, 신생아 13세대) 포함] 및 부대",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 1,
+            "text": "투기과열지구, 청약과열지역 (2024.11.13. 이전부터 계속 거주) 인천광역시 및 경기도 거주자 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 10년 3년 없음 미적용 민간택지 일반공급 1순위 접수일 일반공급 2순위 구분 입주자모집공고일 특별공급 접수일 당첨자발표일 서류접수 계약체결 해당지역 기타지역 접수일",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 1,
+            "text": "후 소유권을 이전하는 경 우 별도의 허가절차를 득해야 합니다. 당 사업지가 위치한 서울특별시 종로구는 토지거래허가구역으로, 거래 대상의 토지면적(대지지분)이 15㎡ 초과일 경우 토지거래허가 대상에 해당됩 니다. 이에 따라 본 아파트의 일부주택형은 토지거래허가 대상으로 소유권 행사(전매, 매매, 의무거주기간, 주택처분 등)에 제한이 있으니 청약 및 계약 전 반드시 확인하시기 바랍니다. ※ 본 내용은 추후 정부정책에 따라 변동될 수 있습니다. ■ 2024.10.01. 시행된 「주택공급에 관한 규칙」에 따라, 민간 사전청약 당첨자 및 그 세대원은 ‘24.10.01.부터 사전당첨자 지위를 유지한 상태에서 다른 주택에 청약할 수 있습니다. 다만, 사전당첨자 및 그 세대원이 다른 주택(APT, 불법행위재공급, 규제지역 무순위)에 청약하여 당첨된 경우 사전당첨자로서의 지위를 상실하여 사전청약 주택의 입주자로 선정될 수 없습니다. ■ 신청자격은 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 확인하며, 확인결과 신청자격과 다르게 당첨된 사실이 판명될 경우",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "그 세대원은 ‘24.10.01.부터 사전당첨자 지위를 유지한 상태에서 다른 주택에 청약할 수 있습니다. 다만, 사전당첨자 및 그 세대원이 다른 주택(APT, 불법행위재공급, 규제지역 무순위)에 청약하여 당첨된 경우 사전당첨자로서의 지위를 상실하여 사전청약 주택의 입주자로 선정될 수 없습니다. ■ 신청자격은 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 확인하며, 확인결과 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익(계약체결 불가, 일정기간 입주자저축 사용 및 입주자선정 제한 등)을 받으니 반드시 입주자모집공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "수 있습니다. 다만, 사전당첨자 및 그 세대원이 다른 주택(APT, 불법행위재공급, 규제지역 무순위)에 청약하여 당첨된 경우 사전당첨자로서의 지위를 상실하여 사전청약 주택의 입주자로 선정될 수 없습니다. ■ 신청자격은 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 확인하며, 확인결과 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익(계약체결 불가, 일정기간 입주자저축 사용 및 입주자선정 제한 등)을 받으니 반드시 입주자모집공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별·면적별 예치금 충족 1순위(24개월 이상,",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "주자로 선정될 수 없습니다. ■ 신청자격은 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 확인하며, 확인결과 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익(계약체결 불가, 일정기간 입주자저축 사용 및 입주자선정 제한 등)을 받으니 반드시 입주자모집공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별·면적별 예치금 충족 1순위(24개월 이상, 지역별·면적별 예치금 충족) 가입 세대주 요건 - -",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "주자저축 사용 및 입주자선정 제한 등)을 받으니 반드시 입주자모집공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별·면적별 예치금 충족 1순위(24개월 이상, 지역별·면적별 예치금 충족) 가입 세대주 요건 - - - 필요 필요 필요 필요 - - 1 -",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "(단위: 세대,원) 분양가격 계약금(10%) 중도금(60%) 잔금 주택형 약식 공급 해당 층 1차 2차 1차(10%) 2차(10%) 3차(10%) 4차(10%) 5차(10%) 6차(10%) (30%) (주거전용 표기 세대 동호구분 세대",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "(단위: 세대,원) 분양가격 계약금(10%) 중도금(60%) 잔금 주택형 약식 공급 해당 층 1차 2차 1차(10%) 2차(10%) 3차(10%) 4차(10%) 5차(10%) 6차(10%) (30%) (주거전용 표기 세대 동호구분 세대 구분 대지비 건축비",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "계약금(10%) 중도금(60%) 잔금 주택형 약식 공급 해당 층 1차 2차 1차(10%) 2차(10%) 3차(10%) 4차(10%) 5차(10%) 6차(10%) (30%) (주거전용 표기 세대 동호구분 세대 구분 대지비 건축비 계 면적기준) (타입) 수 수 계약 후",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 8,
+            "text": "50,000,000 194,411,000 244,411,000 244,411,000 244,411,000 244,411,000 244,411,000 244,411,000 733,233,000 • 계약자는 분양대금의 총 10% 완납 후 시행위탁자가 알선한 중도금 대출 취급기관의 중도금 대출을 통해 중도금을 납입할 수 있으나, 중도금 대출 관련 정부 및 금융기관의 정책(중도금 대출의 제한 등), 대출기관의 규제 등으로 인해 대출 알선이 불가할 수 있으며, 이러한 경우 계약자는 상기 분양대금(중도금 및 미납대금, 연체료 포함)을 납부일정에 따라 계약자의 부담으로 사업주체에게 납부하여 야 합니다. ※ 중도금 대출 금융기관의 알선은 시행위탁자의 의무사항이 아니며 정부정책, 금융기관, 시행위탁자의 사정 등으로 대출 알선 불가 및 대출관련 제반 사항[대출 취급기관(제1·2금융권 및 기타 대출방식 포함), 대출금리 조건 등]이 변경되더라도 사업주체등에게 책임을 물을 수 없습니다. ※ 시행위탁자가 알선한 금융기관을 통해 중도금 대출 신청이",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          }
+        ],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "preliminary",
+          "sourceUrl": "https://brand.hldni.com/gyeonghuigung/file/★02-1.경희궁 에피트 입주자모집공고문 (★261112_신탁사업부 통합)_clean(최종1).pdf",
+          "resale": {
+            "status": "needs_review",
+            "label": "전매제한",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형",
+                "context": " 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 "
+              },
+              {
+                "page": 4,
+                "line": "■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」 제56조에",
+                "context": " ■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다. 또한 2021.02.19. 시행된 「주택공급에 관한 규칙」 제56조에 "
+              },
+              {
+                "page": 6,
+                "line": "■ 본 주택의 전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다.",
+                "context": " ■ 본 주택의 전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다. "
+              },
+              {
+                "page": 6,
+                "line": "전매제한기간 소유권이전등기일까지(다만, 그 기간이 3년을 초과하는 경우 3년)",
+                "context": " 전매제한기간 소유권이전등기일까지(다만, 그 기간이 3년을 초과하는 경우 3년) "
+              }
+            ]
+          },
+          "occupancy": {
+            "status": "needs_review",
+            "label": "거주의무",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형",
+                "context": " 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 "
+              },
+              {
+                "page": 1,
+                "line": "니다. 이에 따라 본 아파트의 일부주택형은 토지거래허가 대상으로 소유권 행사(전매, 매매, 의무거주기간, 주택처분 등)에 제한이 있으니 청약 및 계약 전 반드시 확인하시기 바랍니다.",
+                "context": "우 별도의 허가절차를 득해야 합니다. 당 사업지가 위치한 서울특별시 종로구는 토지거래허가구역으로, 거래 대상의 토지면적(대지지분)이 15㎡ 초과일 경우 토지거래허가 대상에 해당됩 니다. 이에 따라 본 아파트의 일부주택형은 토지거래허가 대상으로 소유권 행사(전매, 매매, 의무거주기간, 주택처분 등)에 제한이 있으니 청약 및 계약 전 반드시 확인하시기 바랍니다. ※ 본 내용은 추후 정부정책에 따라 변동될 수 있습니다."
+              }
+            ]
+          },
+          "eligibility": {
+            "rules": {},
+            "unknownRequirements": [
+              "공급유형별 요건",
+              "세대 전체 주택 소유",
+              "재당첨 제한",
+              "소득·자산·특별공급",
+              "우선공급 지역·기간",
+              "정정공고"
+            ],
+            "ambiguous": [],
+            "mode": "explicit_common_rules_only",
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "pdfPageCount": 65,
+        "sourceClass": "linked_from_notice_or_issuer_page",
+        "reason": null,
+        "discovery": {
+          "pagesChecked": 3,
+          "candidatesChecked": 3,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
-        "reviewScore": 30,
-        "priceSignal": "manual_review",
-        "evidenceLevel": "distance_checked_apartment_sales",
-        "evidenceReason": "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다.",
+        "reviewScore": 6,
+        "priceSignal": "watch",
+        "evidenceLevel": "missing",
+        "evidenceReason": "검증할 거래가 부족합니다. 신규 택지·단지 주소·실거래 공개 시점 확인 필요.",
         "sameComplexTradeCount": 0,
-        "nearbyTradeCount": 29,
+        "nearbyTradeCount": 0,
         "areaVerified": false,
         "priceAvailable": true,
         "minTypePriceEok": 11.8241,
@@ -15376,7 +15608,31 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000585-2026000585",
@@ -15445,6 +15701,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://gy-thehue.com",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 6.4472,
@@ -15457,7 +15714,7 @@
         "경기 고양시 덕양구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41281",
         "label": "경기 고양시 덕양구"
       },
@@ -17016,14 +17273,14 @@
         "status": "limited_sample_review",
         "modelType": "084.9614",
         "referencePriceEok": 6.28,
-        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+        "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
         "transactionCount": 1,
         "apartmentCount": 1,
-        "distanceChecked": true,
+        "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "경기도 고양시 덕양구 행신동 173-1",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 35,
         "candidateComplexesTotal": 35,
@@ -17033,7 +17290,7 @@
             "areaSqm": 59.8728,
             "areaSource": "model_code_estimate",
             "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "referencePriceEok": 5.0,
             "complexCount": 1,
             "transactionCount": 11,
@@ -17044,16 +17301,16 @@
                 "apartment": "행신파밀리에트라이하이",
                 "legalDong": "행신동",
                 "buildYear": 2022,
-                "distanceKm": 1.108,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 11,
                 "medianEok": 5.0,
                 "latestDate": "2026-10-16",
                 "areaSqm": 59.78
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
@@ -17070,7 +17327,7 @@
             "smallSample": false,
             "comparisonQuality": "insufficient",
             "apartmentComparisons": [],
-            "sitePositionChecked": true,
+            "sitePositionChecked": false,
             "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
@@ -17081,7 +17338,7 @@
             "areaSqm": 84.9614,
             "areaSource": "model_code_estimate",
             "status": "limited_sample_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "referencePriceEok": 6.28,
             "complexCount": 1,
             "transactionCount": 1,
@@ -17092,16 +17349,16 @@
                 "apartment": "행신파밀리에트라이하이",
                 "legalDong": "행신동",
                 "buildYear": 2022,
-                "distanceKm": 1.108,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 6.28,
                 "latestDate": "2026-03-06",
                 "areaSqm": 84.91
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 1,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "거리·면적·연식을 확인한 소수 거래의 관측값입니다. 시세 확정이 아니며 표본이 작습니다."
@@ -17118,7 +17375,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -17267,7 +17524,7 @@
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-10-16"
           },
           {
@@ -17283,7 +17540,7 @@
             "coverageComplete": true,
             "complexPriceDispersionPct": null,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-03-06"
           }
         ],
@@ -17295,6 +17552,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
+          "청약 단지 위치 확인 필요",
           "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
@@ -17316,19 +17574,175 @@
         "matchCount": 0
       },
       "noticeEvidence": {
-        "status": "no_source_pdf",
-        "sourceUrl": null,
-        "excerpts": [],
+        "status": "auto_extracted_unreviewed",
+        "sourceUrl": "https://gy-thehue.com/pdf/notice_full.pdf",
+        "excerpts": [
+          {
+            "category": "resale",
+            "page": 1,
+            "text": "비규제지역 경기도 고양시 거주자 수도권경기도서울특별시인천광역시거주자( , , ) 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 없음 1년 없음 미적용 민간택지 구분 입주자모집공고일 특별공급 접수일 일반공급 1순위 접수일 일반공급 2순위 접수일 당첨자발표일 서류접수 계약체결 2026.12.11.( 금",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 4,
+            "text": "및 순위 등은 입주자모집공고일 기준으로 산정 ) ※ 청약저축에서 종합저축으로 전환하는 경우, 입주자모집공고일 전일까지 전환개설 완료하여야 청약 신청이 가능하며전환개설한, 날을 기준으로 산정 ( 단국민주택, 청약 시 기존 청약통장가입일을 기준으로 산정) ■ 위장전입 및 불법 전매제한 등을 통한 부정한 당첨자는 「주택법」 제65조 및 「주민등록법」 제37조에 따라 처벌될 수 있습니다또한. 2021.02.19. 시행된 「주택공급에 관한 규칙」 제56조에 따라 「주택법」 제64조제항1 및 제65조제항을1 위반하여 적발된 경우위반한, 행위를 적발한 날부터 10년간 입주자로 선정될 수 없습니다. ■ 청약 시 신청자의 착오로 인한 잘못된 신청에 대해서는 수정 접수가 불가하며이에, 대한 책임은 청약 신청자에게 있으므로 유의하시기 바랍니다. ■ 유의사항 및 제한사항 등 본인의 자격사항에 대해 청약자 본인이 직접 확인 후 청약하시어 부적격 당첨으로 인한 불이익을 당하는 일이 없도록 하여 주시기 바랍니다. ■ 「주택공급에 관한 규칙 」 제 57 조제항에",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 5,
+            "text": "장군수· 또는 구청장에게 공 동으로 ‘부동산 거래신고를’ 해야 합니다따라서. 부동산 거래신고에 따른 필요 서류를 사업주체에 제공해야 하며신고를, 거부하거나 서류 미비미제출로· 인하여 발생하는 과태료 부 과 등의 모든책임은 계약자에게 있으니 양지하시기 바랍니다. ■본 주택의 전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다. (※ 본 주택은 「수도권정비계획법 시행령」 제조9 별표1 규정에 따른 과밀억제권역입니다.) 구분 특별공급 일반공급 전매제한기간 최초 당첨자발표일 (2026.12.09.)로부터 1 년 - 5 -",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 5,
+            "text": "전매제한은 최초 당첨자발표일로부터 적용되며 기간은 아래와 같습니다. (※ 본 주택은 「수도권정비계획법 시행령」 제조9 별표1 규정에 따른 과밀억제권역입니다.) 구분 특별공급 일반공급 전매제한기간 최초 당첨자발표일 (2026.12.09.)로부터 1 년 - 5 -",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 1,
+            "text": "비규제지역 경기도 고양시 거주자 수도권경기도서울특별시인천광역시거주자( , , ) 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 없음 1년 없음 미적용 민간택지 구분 입주자모집공고일 특별공급 접수일 일반공급 1순위 접수일 일반공급 2순위 접수일 당첨자발표일 서류접수 계약체결 2026.12.11.( 금 )~ 2026",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 5,
+            "text": "25년 이상 장기복무 군인 중 국방부국군복지단에서( ) 추천한 분 은 수도권투기과열지구가( 아닌 지역으로 한정) 청약 시 해당 주택건설지역에 거주하지 않아도 해당 주택건설지역에 거주하는 것으로 보아 해당지역 거주자격으로 청약신청이 가능합니 다. (해당지역의 의무거주기간을 적용하지 않음) ■ 부동산 거래신고자금조달, 및 입주계획서 신고 의무화로 비규제지역인 경기도 고양시는 「부동산 거래신고 등에 관한 법률 시행령」 제조3 및 별표1 규정에 의거 실제 거래가격이 6억 원 이상인 주택매매 계약최초( 공급계약 및 분양권입주권· 전매를 포함의) 부동산거래 신고 시 자금조달계획 및 입주계획서매수자( 본인이 입주할지 여부입주, 예정시기 등 거래대상 주 택의 이용계획의) 신고를 의무화하며, 「부동산 거래신고 등에 관한 법률」 제조3 규정에 의거 부동산 계약 시 계약체결일로부터 30일 이내 관할 소재지의 시장군수· 또는 구청장에게 공 동으로 ‘부동산 거래신고를’ 해야 합니다따라서. 부동산 거래신고에 따른 필요 서류를",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "자. , 본인이 입주자모집공고를 통해 청약자격 등을 숙지하시어 관련 서류 등을 발급받아 직접 확인하신 후 신청하시기 바랍니다. 청약자격 미숙지 및 착오 신청 등에 대해서는 청약자 본인에게 책임이 있으니불이익을, 당하는 일이 없도록 유의하여 주시기 바랍니다. ■ 신청자격은 당첨자를 대상으로 전산조회제출서류, 등을 통해 사업주체에서 확인하며확인결과, 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익계약체결( 불가일정기간, 입주자저축 사용 및 입주자선정 제한 등을) 받으니 반드시 입주자모집공고문의 신청자격기준일정방법유의사항, , , , 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "류 등을 발급받아 직접 확인하신 후 신청하시기 바랍니다. 청약자격 미숙지 및 착오 신청 등에 대해서는 청약자 본인에게 책임이 있으니불이익을, 당하는 일이 없도록 유의하여 주시기 바랍니다. ■ 신청자격은 당첨자를 대상으로 전산조회제출서류, 등을 통해 사업주체에서 확인하며확인결과, 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익계약체결( 불가일정기간, 입주자저축 사용 및 입주자선정 제한 등을) 받으니 반드시 입주자모집공고문의 신청자격기준일정방법유의사항, , , , 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별면",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "주시기 바랍니다. ■ 신청자격은 당첨자를 대상으로 전산조회제출서류, 등을 통해 사업주체에서 확인하며확인결과, 신청자격과 다르게 당첨된 사실이 판명될 경우에는 부적격 당첨자로서 불이익계약체결( 불가일정기간, 입주자저축 사용 및 입주자선정 제한 등을) 받으니 반드시 입주자모집공고문의 신청자격기준일정방법유의사항, , , , 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별면적별· 예치금 충족 1순위 (12개월 이상, 지역별면적별· 예치금 충족) 가입 세대주 요건",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "입주자모집공고문의 신청자격기준일정방법유의사항, , , , 등을 정확히 확인후 신청하시기 바랍니다. 특별공급 일반공급 신청자격 기관추천 다자녀가구 신혼부부 노부모부양 생애최초 신생아 1순위 2순위 청약통장 자격요건 6개월 이상, 지역별면적별· 예치금 충족 1순위 (12개월 이상, 지역별면적별· 예치금 충족) 가입 세대주 요건 - - - 필요 - - - - 소득 또는 자산기준",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "( 단위 : 세대원, ) 공급금액 계약금(5%) 중도금(60%) 잔금(35%) 약식 공급 해당 1차 2차 1차(10%) 2차(10%) 3차 (10%) 4차(10%) 5차(10%) 6차 (10%) 동별 층구분 표",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "( 단위 : 세대원, ) 공급금액 계약금(5%) 중도금(60%) 잔금(35%) 약식 공급 해당 1차 2차 1차(10%) 2차(10%) 3차 (10%) 4차(10%) 5차(10%) 6차 (10%) 동별 층구분 표기 세대수 세대수 대지비 건축비",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 7,
+            "text": "중도금(60%) 잔금(35%) 약식 공급 해당 1차 2차 1차(10%) 2차(10%) 3차 (10%) 4차(10%) 5차(10%) 6차 (10%) 동별 층구분 표기 세대수 세대수 대지비 건축비 계 계약후 계약시 2027-05-17 2027-09-17 2028-01-17 2028-05-15 2028-09-15 2029-01-15 입",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 8,
+            "text": "기한 내에 계약자가 전액 부담하여야 합니다 . ■공통사항 - 본 주택은 분양가 상한제 미적용 주택으로 상기 분양금액은 사업주체 자체 기준에 따라 공급총액 범위 내에서 주택형별동별층별, , 등으로 적의 조정하여 책정한 금액입니다. - 「 주택공급에 관한 규칙」 제 60조에 의거 계약금중도금잔금으로, , 구분하였으며동, 규정에 의거 중도금 납부 일자는 건축공정에 따라 변동될 수 있습니다 . - 상기 공급금액에는 각 주택형별 공히 소유권 이전등기비용취득세가, 포함되어 있지 않습니다. - 전용면적 85 ㎡ 이하의 주택은 부가가치세 적용 대상이 아닙니다. - 상기 공급금액은 발코니 확장 비용유상옵션품목가구가전, ( , 등 유상옵션) 금액이 포함되지 아니한 금액이며발코니, 확장 및 유상옵션품목은 계약자가 선택하여 계약하는 사항으로별도의, 계약을 통해 선택이 가능합니다 . - 근린생활시설은 상기 공급대상 및 공급금액에 포함되어 있지 않습니다. - 상기 공급금액 납부일",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          }
+        ],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "preliminary",
+          "sourceUrl": "https://gy-thehue.com/pdf/notice_full.pdf",
+          "resale": {
+            "status": "period_found",
+            "months": 12,
+            "label": "전매제한",
+            "reason": "문구 자동 식별(예외·정정공고·주택형별 차이는 별도 검증 필요)",
+            "evidence": [
+              {
+                "status": "period_found",
+                "months": 12,
+                "page": 5,
+                "text": "전매제한기간 최초 당첨자발표일 (2026.12.09.)로부터 1 년"
+              }
+            ]
+          },
+          "occupancy": {
+            "status": "needs_review",
+            "label": "거주의무",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형",
+                "context": "경기도 고양시 거주자 수도권경기도서울특별시인천광역시거주자( , , ) 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 없음 1년 없음 미적용 민간택지"
+              },
+              {
+                "page": 5,
+                "line": "다. (해당지역의 의무거주기간을 적용하지 않음)",
+                "context": "은 수도권투기과열지구가( 아닌 지역으로 한정) 청약 시 해당 주택건설지역에 거주하지 않아도 해당 주택건설지역에 거주하는 것으로 보아 해당지역 거주자격으로 청약신청이 가능합니 다. (해당지역의 의무거주기간을 적용하지 않음) ■ 부동산 거래신고자금조달, 및 입주계획서 신고 의무화로 비규제지역인 경기도 고양시는 「부동산 거래신고 등에 관한 법률 시행령」 제조3 및 별표1 규정에 의거 실제 거래가격이 6억"
+              }
+            ]
+          },
+          "eligibility": {
+            "rules": {},
+            "unknownRequirements": [
+              "공급유형별 요건",
+              "세대 전체 주택 소유",
+              "재당첨 제한",
+              "소득·자산·특별공급",
+              "우선공급 지역·기간",
+              "정정공고"
+            ],
+            "ambiguous": [],
+            "mode": "explicit_common_rules_only",
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "pdfPageCount": 68,
+        "sourceClass": "linked_from_notice_or_issuer_page",
+        "reason": null,
+        "discovery": {
+          "pagesChecked": 3,
+          "candidatesChecked": 3,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
-        "reviewScore": 4,
+        "reviewScore": 0,
         "priceSignal": "watch",
-        "evidenceLevel": "distance_checked_apartment_sales",
-        "evidenceReason": "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다.",
+        "evidenceLevel": "unverified_local_reference",
+        "evidenceReason": "거래는 있으나 실제 거리 검증이 없어 가격 판정에 사용하지 않습니다.",
         "sameComplexTradeCount": 0,
         "nearbyTradeCount": 1,
         "areaVerified": false,
@@ -17348,7 +17762,69 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.8728",
+            "saleEok": 6.4472,
+            "referenceEok": 5.0,
+            "gapEok": -1.4472,
+            "gapPct": -28.9,
+            "grade": 2,
+            "date": "2026-10-16",
+            "ageDays": 38,
+            "count": 11,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.9614",
+            "saleEok": 8.4579,
+            "referenceEok": 6.28,
+            "gapEok": -2.1779,
+            "gapPct": -34.7,
+            "grade": 2,
+            "date": "2026-03-06",
+            "ageDays": 262,
+            "count": 1,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요",
+              "6개월 초과 거래"
+            ],
+            "url": "",
+            "useAsValuation": false
+          }
+        ],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 2,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000591-2026000591",
@@ -17445,6 +17921,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://www.소사휴먼빌.com",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 4.9355,
@@ -17457,7 +17934,7 @@
         "경기 부천시 소사구"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41194",
         "label": "경기 부천시 소사구"
       },
@@ -19396,17 +19873,17 @@
         "warning": "같은 법정동·면적 비교는 검토 자료이고 다른 동의 거래는 시군구 탐색 자료입니다. 실제 거리, 준공연도, 층, 입지, 전용면적 확인 전에는 주변 시세·예상차익·로또 판정에 사용하지 않습니다."
       },
       "referenceMarket": {
-        "status": "distance_checked_review",
+        "status": "same_dong_modern_review",
         "modelType": "084.9848C",
-        "referencePriceEok": 7.0875,
-        "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-        "transactionCount": 144,
-        "apartmentCount": 6,
-        "distanceChecked": true,
+        "referencePriceEok": 7.7375,
+        "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+        "transactionCount": 6,
+        "apartmentCount": 2,
+        "distanceChecked": false,
         "geocodingEnabled": true,
-        "locationConfirmed": true,
-        "locationMethod": "parcel_address",
-        "siteGeocodingEvidence": "경기도 부천시 소사구 소사본동 277-30",
+        "locationConfirmed": false,
+        "locationMethod": "ambiguous_or_missing_place",
+        "siteGeocodingEvidence": null,
         "comparisonCoverageLimited": false,
         "candidateComplexesInspected": 33,
         "candidateComplexesTotal": 33,
@@ -19415,97 +19892,20 @@
             "type": "059.9906A",
             "areaSqm": 59.9906,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 4.325,
-            "complexCount": 16,
-            "transactionCount": 228,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.35,
+            "complexCount": 7,
+            "transactionCount": 43,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
-                "apartment": "신일해피트리",
-                "legalDong": "소사본동",
-                "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 4.3,
-                "latestDate": "2026-05-17",
-                "areaSqm": 59.94
-              },
-              {
-                "apartment": "더센트럴",
-                "legalDong": "소사본동",
-                "buildYear": 2020,
-                "distanceKm": 0.758,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.8,
-                "latestDate": "2026-09-16",
-                "areaSqm": 61.82
-              },
-              {
-                "apartment": "부천소사현진에버빌아파트",
-                "legalDong": "소사본동",
-                "buildYear": 2023,
-                "distanceKm": 0.826,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 4.35,
-                "latestDate": "2026-07-12",
-                "areaSqm": 59.84
-              },
-              {
-                "apartment": "리아아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 0.893,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.23,
-                "latestDate": "2026-02-09",
-                "areaSqm": 60.06
-              },
-              {
-                "apartment": "역곡역아테움스위첸",
-                "legalDong": "괴안동",
-                "buildYear": 2026,
-                "distanceKm": 0.936,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 5.28,
-                "latestDate": "2026-05-10",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 156,
-                "medianEok": 6.0,
-                "latestDate": "2026-11-16",
-                "areaSqm": 59.96
-              },
-              {
-                "apartment": "한울펠리스",
-                "legalDong": "소사본동",
-                "buildYear": 2016,
-                "distanceKm": 1.031,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.1,
-                "latestDate": "2026-11-07",
-                "areaSqm": 58.81
-              },
-              {
                 "apartment": "부천한신더휴메트로",
                 "legalDong": "소사본동",
                 "buildYear": 2020,
-                "distanceKm": 1.08,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 31,
                 "medianEok": 5.73,
                 "latestDate": "2026-11-03",
@@ -19515,49 +19915,71 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.099,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 4,
                 "medianEok": 5.93,
                 "latestDate": "2026-11-16",
                 "areaSqm": 60.59
               },
               {
-                "apartment": "우석WS아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 1.113,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.3,
-                "latestDate": "2026-11-07",
-                "areaSqm": 59.79
-              },
-              {
                 "apartment": "소사센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2019,
-                "distanceKm": 1.149,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 3,
                 "medianEok": 4.45,
                 "latestDate": "2026-08-08",
                 "areaSqm": 61.34
               },
               {
-                "apartment": "이안시그니처역곡",
-                "legalDong": "괴안동",
-                "buildYear": 2024,
-                "distanceKm": 1.387,
-                "scope": "distance_checked",
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
+              },
+              {
+                "apartment": "더센트럴",
+                "legalDong": "소사본동",
+                "buildYear": 2020,
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
-                "medianEok": 4.72,
-                "latestDate": "2026-02-28",
-                "areaSqm": 60.76
+                "medianEok": 3.8,
+                "latestDate": "2026-09-16",
+                "areaSqm": 61.82
+              },
+              {
+                "apartment": "신일해피트리",
+                "legalDong": "소사본동",
+                "buildYear": 2021,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 4.3,
+                "latestDate": "2026-05-17",
+                "areaSqm": 59.94
+              },
+              {
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 16,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -19566,86 +19988,20 @@
             "type": "059.2735B",
             "areaSqm": 59.2735,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 4.3,
-            "complexCount": 15,
-            "transactionCount": 227,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.325,
+            "complexCount": 6,
+            "transactionCount": 40,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
-                "apartment": "신일해피트리",
-                "legalDong": "소사본동",
-                "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 4.3,
-                "latestDate": "2026-05-17",
-                "areaSqm": 59.94
-              },
-              {
-                "apartment": "부천소사현진에버빌아파트",
-                "legalDong": "소사본동",
-                "buildYear": 2023,
-                "distanceKm": 0.826,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 4.35,
-                "latestDate": "2026-07-12",
-                "areaSqm": 59.84
-              },
-              {
-                "apartment": "리아아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 0.893,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.23,
-                "latestDate": "2026-02-09",
-                "areaSqm": 60.06
-              },
-              {
-                "apartment": "역곡역아테움스위첸",
-                "legalDong": "괴안동",
-                "buildYear": 2026,
-                "distanceKm": 0.936,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 5.28,
-                "latestDate": "2026-05-10",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 156,
-                "medianEok": 6.0,
-                "latestDate": "2026-11-16",
-                "areaSqm": 59.96
-              },
-              {
-                "apartment": "한울펠리스",
-                "legalDong": "소사본동",
-                "buildYear": 2016,
-                "distanceKm": 1.031,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.1,
-                "latestDate": "2026-11-07",
-                "areaSqm": 58.81
-              },
-              {
                 "apartment": "부천한신더휴메트로",
                 "legalDong": "소사본동",
                 "buildYear": 2020,
-                "distanceKm": 1.08,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 31,
                 "medianEok": 5.73,
                 "latestDate": "2026-11-03",
@@ -19655,60 +20011,60 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.099,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 4,
                 "medianEok": 5.93,
                 "latestDate": "2026-11-16",
                 "areaSqm": 60.59
               },
               {
-                "apartment": "우석WS아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 1.113,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.3,
-                "latestDate": "2026-11-07",
-                "areaSqm": 59.79
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
               },
               {
                 "apartment": "소사센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2019,
-                "distanceKm": 1.149,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 3.8,
                 "latestDate": "2026-04-04",
                 "areaSqm": 59.29
               },
               {
-                "apartment": "이안시그니처역곡",
-                "legalDong": "괴안동",
-                "buildYear": 2024,
-                "distanceKm": 1.387,
-                "scope": "distance_checked",
+                "apartment": "신일해피트리",
+                "legalDong": "소사본동",
+                "buildYear": 2021,
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
-                "medianEok": 4.72,
-                "latestDate": "2026-02-28",
-                "areaSqm": 60.76
+                "medianEok": 4.3,
+                "latestDate": "2026-05-17",
+                "areaSqm": 59.94
               },
               {
-                "apartment": "센트럴시티뷰",
-                "legalDong": "심곡본동",
-                "buildYear": 2018,
-                "distanceKm": 1.68,
-                "scope": "distance_checked",
-                "count": 3,
-                "medianEok": 3.5,
-                "latestDate": "2026-11-11",
-                "areaSqm": 57.65
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 15,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -19717,86 +20073,20 @@
             "type": "059.2599C",
             "areaSqm": 59.2599,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 4.3,
-            "complexCount": 15,
-            "transactionCount": 227,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.325,
+            "complexCount": 6,
+            "transactionCount": 40,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
-                "apartment": "신일해피트리",
-                "legalDong": "소사본동",
-                "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 4.3,
-                "latestDate": "2026-05-17",
-                "areaSqm": 59.94
-              },
-              {
-                "apartment": "부천소사현진에버빌아파트",
-                "legalDong": "소사본동",
-                "buildYear": 2023,
-                "distanceKm": 0.826,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 4.35,
-                "latestDate": "2026-07-12",
-                "areaSqm": 59.84
-              },
-              {
-                "apartment": "리아아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 0.893,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.23,
-                "latestDate": "2026-02-09",
-                "areaSqm": 60.06
-              },
-              {
-                "apartment": "역곡역아테움스위첸",
-                "legalDong": "괴안동",
-                "buildYear": 2026,
-                "distanceKm": 0.936,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 5.28,
-                "latestDate": "2026-05-10",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 156,
-                "medianEok": 6.0,
-                "latestDate": "2026-11-16",
-                "areaSqm": 59.96
-              },
-              {
-                "apartment": "한울펠리스",
-                "legalDong": "소사본동",
-                "buildYear": 2016,
-                "distanceKm": 1.031,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.1,
-                "latestDate": "2026-11-07",
-                "areaSqm": 58.81
-              },
-              {
                 "apartment": "부천한신더휴메트로",
                 "legalDong": "소사본동",
                 "buildYear": 2020,
-                "distanceKm": 1.08,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 31,
                 "medianEok": 5.73,
                 "latestDate": "2026-11-03",
@@ -19806,60 +20096,60 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.099,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 4,
                 "medianEok": 5.93,
                 "latestDate": "2026-11-16",
                 "areaSqm": 60.59
               },
               {
-                "apartment": "우석WS아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 1.113,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.3,
-                "latestDate": "2026-11-07",
-                "areaSqm": 59.79
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
               },
               {
                 "apartment": "소사센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2019,
-                "distanceKm": 1.149,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 3.8,
                 "latestDate": "2026-04-04",
                 "areaSqm": 59.29
               },
               {
-                "apartment": "이안시그니처역곡",
-                "legalDong": "괴안동",
-                "buildYear": 2024,
-                "distanceKm": 1.387,
-                "scope": "distance_checked",
+                "apartment": "신일해피트리",
+                "legalDong": "소사본동",
+                "buildYear": 2021,
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
-                "medianEok": 4.72,
-                "latestDate": "2026-02-28",
-                "areaSqm": 60.76
+                "medianEok": 4.3,
+                "latestDate": "2026-05-17",
+                "areaSqm": 59.94
               },
               {
-                "apartment": "센트럴시티뷰",
-                "legalDong": "심곡본동",
-                "buildYear": 2018,
-                "distanceKm": 1.68,
-                "scope": "distance_checked",
-                "count": 3,
-                "medianEok": 3.5,
-                "latestDate": "2026-11-11",
-                "areaSqm": 57.65
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 15,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -19868,86 +20158,20 @@
             "type": "059.1615D",
             "areaSqm": 59.1615,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 4.3,
-            "complexCount": 15,
-            "transactionCount": 227,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 4.325,
+            "complexCount": 6,
+            "transactionCount": 40,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
-                "apartment": "신일해피트리",
-                "legalDong": "소사본동",
-                "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 4.3,
-                "latestDate": "2026-05-17",
-                "areaSqm": 59.94
-              },
-              {
-                "apartment": "부천소사현진에버빌아파트",
-                "legalDong": "소사본동",
-                "buildYear": 2023,
-                "distanceKm": 0.826,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 4.35,
-                "latestDate": "2026-07-12",
-                "areaSqm": 59.84
-              },
-              {
-                "apartment": "리아아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 0.893,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.23,
-                "latestDate": "2026-02-09",
-                "areaSqm": 60.06
-              },
-              {
-                "apartment": "역곡역아테움스위첸",
-                "legalDong": "괴안동",
-                "buildYear": 2026,
-                "distanceKm": 0.936,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 5.28,
-                "latestDate": "2026-05-10",
-                "areaSqm": 59.85
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 156,
-                "medianEok": 6.0,
-                "latestDate": "2026-11-16",
-                "areaSqm": 59.96
-              },
-              {
-                "apartment": "한울펠리스",
-                "legalDong": "소사본동",
-                "buildYear": 2016,
-                "distanceKm": 1.031,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.1,
-                "latestDate": "2026-11-07",
-                "areaSqm": 58.81
-              },
-              {
                 "apartment": "부천한신더휴메트로",
                 "legalDong": "소사본동",
                 "buildYear": 2020,
-                "distanceKm": 1.08,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 31,
                 "medianEok": 5.73,
                 "latestDate": "2026-11-03",
@@ -19957,60 +20181,60 @@
                 "apartment": "소사역한라비발디프레스티지",
                 "legalDong": "소사본동",
                 "buildYear": 2024,
-                "distanceKm": 1.099,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 4,
                 "medianEok": 5.93,
                 "latestDate": "2026-11-16",
                 "areaSqm": 60.59
               },
               {
-                "apartment": "우석WS아파트",
-                "legalDong": "괴안동",
-                "buildYear": 2016,
-                "distanceKm": 1.113,
-                "scope": "distance_checked",
-                "count": 1,
-                "medianEok": 3.3,
-                "latestDate": "2026-11-07",
-                "areaSqm": 59.79
+                "apartment": "부천소사현진에버빌아파트",
+                "legalDong": "소사본동",
+                "buildYear": 2023,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 2,
+                "medianEok": 4.35,
+                "latestDate": "2026-07-12",
+                "areaSqm": 59.84
               },
               {
                 "apartment": "소사센트럴",
                 "legalDong": "소사본동",
                 "buildYear": 2019,
-                "distanceKm": 1.149,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 3.8,
                 "latestDate": "2026-04-04",
                 "areaSqm": 59.29
               },
               {
-                "apartment": "이안시그니처역곡",
-                "legalDong": "괴안동",
-                "buildYear": 2024,
-                "distanceKm": 1.387,
-                "scope": "distance_checked",
+                "apartment": "신일해피트리",
+                "legalDong": "소사본동",
+                "buildYear": 2021,
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
-                "medianEok": 4.72,
-                "latestDate": "2026-02-28",
-                "areaSqm": 60.76
+                "medianEok": 4.3,
+                "latestDate": "2026-05-17",
+                "areaSqm": 59.94
               },
               {
-                "apartment": "센트럴시티뷰",
-                "legalDong": "심곡본동",
-                "buildYear": 2018,
-                "distanceKm": 1.68,
-                "scope": "distance_checked",
-                "count": 3,
-                "medianEok": 3.5,
-                "latestDate": "2026-11-11",
-                "areaSqm": 57.65
+                "apartment": "한울펠리스",
+                "legalDong": "소사본동",
+                "buildYear": 2016,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 1,
+                "medianEok": 3.1,
+                "latestDate": "2026-11-07",
+                "areaSqm": 58.81
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 15,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -20019,83 +20243,39 @@
             "type": "084.5869A",
             "areaSqm": 84.5869,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 7.0875,
-            "complexCount": 6,
-            "transactionCount": 144,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 7.7375,
+            "complexCount": 2,
+            "transactionCount": 6,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 5,
+                "medianEok": 9.5,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              },
+              {
                 "apartment": "신일해피트리",
                 "legalDong": "소사본동",
                 "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 5.975,
                 "latestDate": "2026-01-22",
                 "areaSqm": 84.84
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 75,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-11",
-                "areaSqm": 84.97
-              },
-              {
-                "apartment": "부천옥길자이",
-                "legalDong": "옥길동",
-                "buildYear": 2018,
-                "distanceKm": 1.458,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 7.395,
-                "latestDate": "2026-10-27",
-                "areaSqm": 84.67
-              },
-              {
-                "apartment": "옥길호반베르디움",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.495,
-                "scope": "distance_checked",
-                "count": 25,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-04",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "옥길센트리뷰",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.85,
-                "scope": "distance_checked",
-                "count": 31,
-                "medianEok": 6.78,
-                "latestDate": "2026-10-22",
-                "areaSqm": 84.88
-              },
-              {
-                "apartment": "역곡아펠리시움",
-                "legalDong": "괴안동",
-                "buildYear": 2022,
-                "distanceKm": 1.931,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 5.74,
-                "latestDate": "2026-08-21",
-                "areaSqm": 84.68
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 6,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -20104,83 +20284,39 @@
             "type": "084.6433B",
             "areaSqm": 84.6433,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 7.0875,
-            "complexCount": 6,
-            "transactionCount": 144,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 7.7375,
+            "complexCount": 2,
+            "transactionCount": 6,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 5,
+                "medianEok": 9.5,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              },
+              {
                 "apartment": "신일해피트리",
                 "legalDong": "소사본동",
                 "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 5.975,
                 "latestDate": "2026-01-22",
                 "areaSqm": 84.84
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 75,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-11",
-                "areaSqm": 84.97
-              },
-              {
-                "apartment": "부천옥길자이",
-                "legalDong": "옥길동",
-                "buildYear": 2018,
-                "distanceKm": 1.458,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 7.395,
-                "latestDate": "2026-10-27",
-                "areaSqm": 84.67
-              },
-              {
-                "apartment": "옥길호반베르디움",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.495,
-                "scope": "distance_checked",
-                "count": 25,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-04",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "옥길센트리뷰",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.85,
-                "scope": "distance_checked",
-                "count": 31,
-                "medianEok": 6.78,
-                "latestDate": "2026-10-22",
-                "areaSqm": 84.88
-              },
-              {
-                "apartment": "역곡아펠리시움",
-                "legalDong": "괴안동",
-                "buildYear": 2022,
-                "distanceKm": 1.931,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 5.74,
-                "latestDate": "2026-08-21",
-                "areaSqm": 84.68
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 6,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -20189,83 +20325,39 @@
             "type": "084.9848C",
             "areaSqm": 84.9848,
             "areaSource": "model_code_estimate",
-            "status": "distance_checked_review",
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "referencePriceEok": 7.0875,
-            "complexCount": 6,
-            "transactionCount": 144,
+            "status": "same_dong_modern_review",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "referencePriceEok": 7.7375,
+            "complexCount": 2,
+            "transactionCount": 6,
             "smallSample": false,
             "comparisonQuality": "review",
             "apartmentComparisons": [
               {
+                "apartment": "힐스테이트소사역",
+                "legalDong": "소사본동",
+                "buildYear": 2025,
+                "distanceKm": null,
+                "scope": "same_dong_only",
+                "count": 5,
+                "medianEok": 9.5,
+                "latestDate": "2026-11-01",
+                "areaSqm": 84.98
+              },
+              {
                 "apartment": "신일해피트리",
                 "legalDong": "소사본동",
                 "buildYear": 2021,
-                "distanceKm": 0.487,
-                "scope": "distance_checked",
+                "distanceKm": null,
+                "scope": "same_dong_only",
                 "count": 1,
                 "medianEok": 5.975,
                 "latestDate": "2026-01-22",
                 "areaSqm": 84.84
-              },
-              {
-                "apartment": "일루미스테이트",
-                "legalDong": "범박동",
-                "buildYear": 2024,
-                "distanceKm": 0.968,
-                "scope": "distance_checked",
-                "count": 75,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-11",
-                "areaSqm": 84.97
-              },
-              {
-                "apartment": "부천옥길자이",
-                "legalDong": "옥길동",
-                "buildYear": 2018,
-                "distanceKm": 1.458,
-                "scope": "distance_checked",
-                "count": 10,
-                "medianEok": 7.395,
-                "latestDate": "2026-10-27",
-                "areaSqm": 84.67
-              },
-              {
-                "apartment": "옥길호반베르디움",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.495,
-                "scope": "distance_checked",
-                "count": 25,
-                "medianEok": 7.85,
-                "latestDate": "2026-11-04",
-                "areaSqm": 84.99
-              },
-              {
-                "apartment": "옥길센트리뷰",
-                "legalDong": "옥길동",
-                "buildYear": 2017,
-                "distanceKm": 1.85,
-                "scope": "distance_checked",
-                "count": 31,
-                "medianEok": 6.78,
-                "latestDate": "2026-10-22",
-                "areaSqm": 84.88
-              },
-              {
-                "apartment": "역곡아펠리시움",
-                "legalDong": "괴안동",
-                "buildYear": 2022,
-                "distanceKm": 1.931,
-                "scope": "distance_checked",
-                "count": 2,
-                "medianEok": 5.74,
-                "latestDate": "2026-08-21",
-                "areaSqm": 84.68
               }
             ],
-            "sitePositionChecked": true,
-            "distanceCheckedCount": 6,
+            "sitePositionChecked": false,
+            "distanceCheckedCount": 0,
             "referenceIsMarketValue": false,
             "coverageLimited": false,
             "reason": "좌표 검증·면적·준공연도 기준을 적용한 단지별 거래 중앙값의 중앙값입니다. 이는 적정 시세나 확정 차익이 아닙니다."
@@ -20282,7 +20374,7 @@
         "transactionCount": 0,
         "latestDate": null,
         "warning": "동일 단지 아파트 매매 거래 참고자료입니다. 분양권·입주권 시세나 실제 수익을 뜻하지 않습니다.",
-        "siteLocationMethod": "parcel_address",
+        "siteLocationMethod": "ambiguous_or_missing_place",
         "matchMethods": [],
         "reason": "동일 단지·면적·주소 검증을 통과한 아파트 매매 거래가 없습니다."
       },
@@ -20433,113 +20525,113 @@
           {
             "type": "084.5869A",
             "priceEok": 7.8256,
-            "comparableReferenceEok": 7.0875,
-            "observedGapEok": -0.7381,
-            "observedGapPct": -10.4,
-            "apartmentCount": 6,
-            "transactionCount": 144,
-            "distanceVerified": true,
+            "comparableReferenceEok": 7.7375,
+            "observedGapEok": -0.0881,
+            "observedGapPct": -1.1,
+            "apartmentCount": 2,
+            "transactionCount": 6,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 36.8,
+            "complexPriceDispersionPct": 59.0,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-11"
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-01"
           },
           {
             "type": "084.6433B",
             "priceEok": 7.8307,
-            "comparableReferenceEok": 7.0875,
-            "observedGapEok": -0.7432,
-            "observedGapPct": -10.5,
-            "apartmentCount": 6,
-            "transactionCount": 144,
-            "distanceVerified": true,
+            "comparableReferenceEok": 7.7375,
+            "observedGapEok": -0.0932,
+            "observedGapPct": -1.2,
+            "apartmentCount": 2,
+            "transactionCount": 6,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 36.8,
+            "complexPriceDispersionPct": 59.0,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-11"
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-01"
           },
           {
             "type": "084.9848C",
             "priceEok": 7.8847,
-            "comparableReferenceEok": 7.0875,
-            "observedGapEok": -0.7972,
-            "observedGapPct": -11.2,
-            "apartmentCount": 6,
-            "transactionCount": 144,
-            "distanceVerified": true,
+            "comparableReferenceEok": 7.7375,
+            "observedGapEok": -0.1472,
+            "observedGapPct": -1.9,
+            "apartmentCount": 2,
+            "transactionCount": 6,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 36.8,
+            "complexPriceDispersionPct": 59.0,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
-            "latestComparisonDate": "2026-11-11"
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
+            "latestComparisonDate": "2026-11-01"
           },
           {
             "type": "059.1615D",
             "priceEok": 4.9355,
-            "comparableReferenceEok": 4.3,
-            "observedGapEok": -0.6355,
-            "observedGapPct": -14.8,
-            "apartmentCount": 15,
-            "transactionCount": 227,
-            "distanceVerified": true,
+            "comparableReferenceEok": 4.325,
+            "observedGapEok": -0.6105,
+            "observedGapPct": -14.1,
+            "apartmentCount": 6,
+            "transactionCount": 40,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 93.5,
+            "complexPriceDispersionPct": 91.3,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-16"
           },
           {
             "type": "059.2735B",
             "priceEok": 5.4986,
-            "comparableReferenceEok": 4.3,
-            "observedGapEok": -1.1986,
-            "observedGapPct": -27.9,
-            "apartmentCount": 15,
-            "transactionCount": 227,
-            "distanceVerified": true,
+            "comparableReferenceEok": 4.325,
+            "observedGapEok": -1.1736,
+            "observedGapPct": -27.1,
+            "apartmentCount": 6,
+            "transactionCount": 40,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 93.5,
+            "complexPriceDispersionPct": 91.3,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-16"
           },
           {
             "type": "059.2599C",
             "priceEok": 5.5051,
-            "comparableReferenceEok": 4.3,
-            "observedGapEok": -1.2051,
-            "observedGapPct": -28.0,
-            "apartmentCount": 15,
-            "transactionCount": 227,
-            "distanceVerified": true,
+            "comparableReferenceEok": 4.325,
+            "observedGapEok": -1.1801,
+            "observedGapPct": -27.3,
+            "apartmentCount": 6,
+            "transactionCount": 40,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 93.5,
+            "complexPriceDispersionPct": 91.3,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-16"
           },
           {
             "type": "059.9906A",
             "priceEok": 5.5932,
-            "comparableReferenceEok": 4.325,
-            "observedGapEok": -1.2682,
-            "observedGapPct": -29.3,
-            "apartmentCount": 16,
-            "transactionCount": 228,
-            "distanceVerified": true,
+            "comparableReferenceEok": 4.35,
+            "observedGapEok": -1.2432,
+            "observedGapPct": -28.6,
+            "apartmentCount": 7,
+            "transactionCount": 43,
+            "distanceVerified": false,
             "areaSource": "model_code_estimate",
             "coverageComplete": true,
-            "complexPriceDispersionPct": 93.5,
+            "complexPriceDispersionPct": 91.3,
             "qualityGatePassed": false,
-            "scopeLabel": "2km 이내·2015년 이후 준공 거래 참고",
+            "scopeLabel": "같은 법정동·2015년 이후 준공 거래 참고",
             "latestComparisonDate": "2026-11-16"
           }
         ],
@@ -20551,6 +20643,7 @@
         ],
         "stage": "stage2_price_verification",
         "verificationChecklist": [
+          "청약 단지 위치 확인 필요",
           "전용면적은 주택형 코드 추정치",
           "모집공고문 청약 자격 미검증",
           "전매제한·거주의무·자금 일정 미검증"
@@ -20576,17 +20669,39 @@
         "sourceUrl": null,
         "excerpts": [],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "unavailable",
+          "resale": {
+            "status": "needs_review"
+          },
+          "occupancy": {
+            "status": "needs_review"
+          },
+          "eligibility": {
+            "rules": {},
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "reason": "pdf_project_name_mismatch",
+        "discovery": {
+          "pagesChecked": 2,
+          "candidatesChecked": 1,
+          "failures": [
+            "source_unreachable",
+            "pdf_project_name_mismatch"
+          ]
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
-        "reviewScore": 4,
+        "reviewScore": 0,
         "priceSignal": "watch",
-        "evidenceLevel": "distance_checked_apartment_sales",
-        "evidenceReason": "위치 검증한 주변 아파트 매매 비교. 같은 단지 거래는 아닙니다.",
+        "evidenceLevel": "unverified_local_reference",
+        "evidenceReason": "거래는 있으나 실제 거리 검증이 없어 가격 판정에 사용하지 않습니다.",
         "sameComplexTradeCount": 0,
-        "nearbyTradeCount": 144,
+        "nearbyTradeCount": 6,
         "areaVerified": false,
         "priceAvailable": true,
         "minTypePriceEok": 4.9355,
@@ -20604,7 +20719,158 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.9906A",
+            "saleEok": 5.5932,
+            "referenceEok": 4.35,
+            "gapEok": -1.2432,
+            "gapPct": -28.6,
+            "grade": 2,
+            "date": "2026-11-16",
+            "ageDays": 7,
+            "count": 43,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.1615D",
+            "saleEok": 4.9355,
+            "referenceEok": 4.325,
+            "gapEok": -0.6105,
+            "gapPct": -14.1,
+            "grade": 2,
+            "date": "2026-11-16",
+            "ageDays": 7,
+            "count": 40,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.2735B",
+            "saleEok": 5.4986,
+            "referenceEok": 4.325,
+            "gapEok": -1.1736,
+            "gapPct": -27.1,
+            "grade": 2,
+            "date": "2026-11-16",
+            "ageDays": 7,
+            "count": 40,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "059.2599C",
+            "saleEok": 5.5051,
+            "referenceEok": 4.325,
+            "gapEok": -1.1801,
+            "gapPct": -27.3,
+            "grade": 2,
+            "date": "2026-11-16",
+            "ageDays": 7,
+            "count": 40,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.5869A",
+            "saleEok": 7.8256,
+            "referenceEok": 7.7375,
+            "gapEok": -0.0881,
+            "gapPct": -1.1,
+            "grade": 2,
+            "date": "2026-11-01",
+            "ageDays": 22,
+            "count": 6,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.6433B",
+            "saleEok": 7.8307,
+            "referenceEok": 7.7375,
+            "gapEok": -0.0932,
+            "gapPct": -1.2,
+            "grade": 2,
+            "date": "2026-11-01",
+            "ageDays": 22,
+            "count": 6,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          },
+          {
+            "kind": "nearby_apartment",
+            "label": "주변 유사 단지 매매 실거래",
+            "type": "084.9848C",
+            "saleEok": 7.8847,
+            "referenceEok": 7.7375,
+            "gapEok": -0.1472,
+            "gapPct": -1.9,
+            "grade": 2,
+            "date": "2026-11-01",
+            "ageDays": 22,
+            "count": 6,
+            "notes": [
+              "위치·거래 표본·단지 차이 검토 필요"
+            ],
+            "url": "",
+            "useAsValuation": false
+          }
+        ],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 7,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     },
     {
       "id": "apt-2026000575-2026000575",
@@ -20673,6 +20939,7 @@
           "source": "청약홈 공고 API"
         }
       },
+      "developerUrl": "https://ws-thehue.com",
       "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
       "supplyPriceRange": {
         "minEok": 5.9919,
@@ -20685,7 +20952,7 @@
         "경기 남양주시"
       ],
       "districtResolution": {
-        "method": "kakao_legal_dong_code",
+        "method": "verified_static_mapping",
         "code": "41360",
         "label": "경기 남양주시"
       },
@@ -21519,12 +21786,161 @@
         "matchCount": 0
       },
       "noticeEvidence": {
-        "status": "no_source_pdf",
-        "sourceUrl": null,
-        "excerpts": [],
+        "status": "auto_extracted_unreviewed",
+        "sourceUrl": "https://ws-thehue.com/download/왕숙한신더휴센텀 모집공고 전문.pdf",
+        "excerpts": [
+          {
+            "category": "resale",
+            "page": 1,
+            "text": "비규제지역 (공공분양) (2025.11.19. 이전부터 계속 거주) (2026.05.19. 이전부터 계속 거주) 서울특별시, 인천광역시 거주자 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 공공택지 10년 3년 없음 적용 (공공주택지구, 대규모 택지개발지구) 구분 입주자모집공고일 특별공급 접수일 일반공급 1순위 접수일일반공급 2순위 접수일 당첨자발표일 서류접수 계약체결",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 3,
+            "text": "불이익에 대해서는 본인에게 책임이 있습니다.) ■ 금회 공급되는 주택은 「공공주택 특별법」에 의한 공공주택 및 「주택법」에 의한 국민주택(전용 85㎡ 이하 주택)이며, 분양가상한제 적용주택으로 「주택공급에 관한 규칙」 제54조에 따라 재당첨제한은 10년 적용되고, 「주택법 시행령」 제73조에 의해 전매제한이 3년 적용됩니다. 구분 기준일(~로부터) 기간 관련 법령 재당첨제한 당첨자 발표일 10년 「공공주택 특별법」, 「주택공급에 관한 규칙」 제54조 3년 전매제한 당첨자 발표일 (단, 전매행위 제한기간 이내에 해당 주택에 대한 소유권이전등기를 완료한 경우, 「주택법」 제64조, 「주택법 시행령」 제73조 제1항 별표3 소유권이전등기를 완료한 때에 전매행",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 3,
+            "text": "관련 법령 재당첨제한 당첨자 발표일 10년 「공공주택 특별법」, 「주택공급에 관한 규칙」 제54조 3년 전매제한 당첨자 발표일 (단, 전매행위 제한기간 이내에 해당 주택에 대한 소유권이전등기를 완료한 경우, 「주택법」 제64조, 「주택법 시행령」 제73조 제1항 별표3 소유권이전등기를 완료한 때에 전매행위 제한기간이 지난 것으로 봄.) ■ 금회 공급되는 주택은 「주택공급에 관한 규칙」 제54조에 따라 과거 재당첨 제한 대상 주택(분양가상한제 적용주택, 분양전환공공임대주택, 토지임대주택, 이전기관 종사자 특별공급주택, 투기과열지구 및 청약과열지역에서 공급되는 주택 등)에 당첨된 자의 세대에 속하여 재당첨 제한 기간 중에 있는 분은 청약할 수 없으며, 청약하여 당첨 시 부적격 당첨자로 처리되어 부적격 당첨자 본인은",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "resale",
+            "page": 3,
+            "text": "첨제한 당첨자 발표일 10년 「공공주택 특별법」, 「주택공급에 관한 규칙」 제54조 3년 전매제한 당첨자 발표일 (단, 전매행위 제한기간 이내에 해당 주택에 대한 소유권이전등기를 완료한 경우, 「주택법」 제64조, 「주택법 시행령」 제73조 제1항 별표3 소유권이전등기를 완료한 때에 전매행위 제한기간이 지난 것으로 봄.) ■ 금회 공급되는 주택은 「주택공급에 관한 규칙」 제54조에 따라 과거 재당첨 제한 대상 주택(분양가상한제 적용주택, 분양전환공공임대주택, 토지임대주택, 이전기관 종사자 특별공급주택, 투기과열지구 및 청약과열지역에서 공급되는 주택 등)에 당첨된 자의 세대에 속하여 재당첨 제한 기간 중에 있는 분은 청약할 수 없으며, 청약하여 당첨 시 부적격 당첨자로 처리되어 부적격 당첨자 본인은 향후 청약하려는 지역에 따라 최대 1년간 다른",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "occupancy",
+            "page": 1,
+            "text": "비규제지역 (공공분양) (2025.11.19. 이전부터 계속 거주) (2026.05.19. 이전부터 계속 거주) 서울특별시, 인천광역시 거주자 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 공공택지 10년 3년 없음 적용 (공공주택지구, 대규모 택지개발지구) 구분 입주자모집공고일 특별공급 접수일 일반공급 1순위 접수일일반공급 2순위 접수일 당첨자발표일 서류접수 계약체결",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "지하시어 주민등록표등·초본, 등기사항전부증명서 및 소득 관련 서류 등을 발급받아 직접 확인하신 후 신청하시기 바라며, 청약 자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과)되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 시, 신청 자격을 확인(검증)하지 않고 신청자(청약자)의 입력(기재)사항만으로 당첨자를 결정하므로, 본 공고문의 신청자격(무주택세대구성원여부, 거주지역, 재당첨제한여부, 주택소유여부 및 소득·자산 등), 유의사항 등을 사전에 정확하게 확인하시기 바라며, 청약자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과) 되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 후, 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 신청자격을 확인한 결과 신청자격과 다르게(자격상향지원 등) 당첨된 사실이 판명될 경우에는 계약체결 불가, 부적격 당첨자 명단관리(향후 청약하려는 지역에 따라 최대 1년간 입주자선정 제한 및",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "청하시기 바라며, 청약 자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과)되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 시, 신청 자격을 확인(검증)하지 않고 신청자(청약자)의 입력(기재)사항만으로 당첨자를 결정하므로, 본 공고문의 신청자격(무주택세대구성원여부, 거주지역, 재당첨제한여부, 주택소유여부 및 소득·자산 등), 유의사항 등을 사전에 정확하게 확인하시기 바라며, 청약자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과) 되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 후, 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 신청자격을 확인한 결과 신청자격과 다르게(자격상향지원 등) 당첨된 사실이 판명될 경우에는 계약체결 불가, 부적격 당첨자 명단관리(향후 청약하려는 지역에 따라 최대 1년간 입주자선정 제한 및 입주자저축 사용 제한 등) 등의 불이익을 받게 되오니, 반드시 입주자모집 공고문의 신청자격, 기준,",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "등), 유의사항 등을 사전에 정확하게 확인하시기 바라며, 청약자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과) 되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 후, 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 신청자격을 확인한 결과 신청자격과 다르게(자격상향지원 등) 당첨된 사실이 판명될 경우에는 계약체결 불가, 부적격 당첨자 명단관리(향후 청약하려는 지역에 따라 최대 1년간 입주자선정 제한 및 입주자저축 사용 제한 등) 등의 불이익을 받게 되오니, 반드시 입주자모집 공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. ■ 중도금 대출은행의 알선은 사업주체 및 시공사의 의무사항이 아니고 계약자에 대한 편의제공에 불과하며, 정부정책, 금융기관, 사업주체 및 시공사의 사정 등으로 대출관련 제반사항(대출 취급기관, 조건 등)이 변경되더라도 사업주체 및 시공사에 책임을 물을 수 없습니다. ■ 「왕숙 한신더휴 센텀」은 입주자모집공고의 내용과",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "eligibility",
+            "page": 1,
+            "text": "사전에 정확하게 확인하시기 바라며, 청약자격 미숙지, 착오 신청 등에 대해서는 엄격하게 처리(부적격 처리 혹은 불이익 부과) 되며, 청약자 본인에게 책임이 있음을 유의하여 주시기 바랍니다. ■ 당첨자 선정 후, 당첨자를 대상으로 전산조회, 제출서류 등을 통해 사업주체에서 신청자격을 확인한 결과 신청자격과 다르게(자격상향지원 등) 당첨된 사실이 판명될 경우에는 계약체결 불가, 부적격 당첨자 명단관리(향후 청약하려는 지역에 따라 최대 1년간 입주자선정 제한 및 입주자저축 사용 제한 등) 등의 불이익을 받게 되오니, 반드시 입주자모집 공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. ■ 중도금 대출은행의 알선은 사업주체 및 시공사의 의무사항이 아니고 계약자에 대한 편의제공에 불과하며, 정부정책, 금융기관, 사업주체 및 시공사의 사정 등으로 대출관련 제반사항(대출 취급기관, 조건 등)이 변경되더라도 사업주체 및 시공사에 책임을 물을 수 없습니다. ■ 「왕숙 한신더휴 센텀」은 입주자모집공고의 내용과 관련하여 자세한 안내가",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 1,
+            "text": "이 판명될 경우에는 계약체결 불가, 부적격 당첨자 명단관리(향후 청약하려는 지역에 따라 최대 1년간 입주자선정 제한 및 입주자저축 사용 제한 등) 등의 불이익을 받게 되오니, 반드시 입주자모집 공고문의 신청자격, 기준, 일정, 방법, 유의사항 등을 정확히 확인후 신청하시기 바랍니다. ■ 중도금 대출은행의 알선은 사업주체 및 시공사의 의무사항이 아니고 계약자에 대한 편의제공에 불과하며, 정부정책, 금융기관, 사업주체 및 시공사의 사정 등으로 대출관련 제반사항(대출 취급기관, 조건 등)이 변경되더라도 사업주체 및 시공사에 책임을 물을 수 없습니다. ■ 「왕숙 한신더휴 센텀」은 입주자모집공고의 내용과 관련하여 자세한 안내가 이루어질 수 있도록 상담을 실시할 예정이오나, 많은 전화상담 신청으로 인해 대기시간이 다소 길어질 수 있음을 양해해 주시기 바랍니다. ■ 금회 공급되는 주택은 「주택공급에 관한 규칙」 제4조 제1항 및 제3항의 규정에 의거, 입주자모집공고일 현재 수도권(경기도 및 서울특별시, 인천광역시) 지역에 거주(주민등록표등본 기준)하는 성년자인",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 4,
+            "text": "약체결일로부터 30일 이내에 사업주체가 관할 지자체에 단독 신고합니다. 또한, 「부동산 거래신고 등에 관한 법률 시행령」 제3조 및 별표1 규정에 의거 거래가격 6억원 이상의 주택에 대해서 ‘주택취득자금 조달 및 입주계획서’ 제출을 의무화합니다.(추가선택품목 계약 등 추가 계약 체결로 인하여 계약금액이 변경되는 경우 변경 신고가 필요할 수도 있음) 따라서, 계약 체결 시 부동산 거래신고에 따른 필요 서류(주택취득자금 조달 및 입주계획서 포함)를 사업주체에게 제공하여야 하며, 신고를 거부하거나 서류 미비, 미제출로 인하여 발생하는 과태료 부과 등의 모든 책임은 계약자 본인에게 있으니 이 점 양지하시기 바랍니다. ■ (인지세 납부 관련) 아파트 공급계약서, 발코니확장 및 추가선택품목 계약서는 「인지세법」 제3조 제1항 제1호에 따라 인지세 납부 대상으로, 공급계약 체결 시 사업주체와 분양계약자는 과세기준에 해당하는 인지세를 각 1/2씩 분담하며, 분양계약자가 인지세 전액을 납부하고 사업주체는 인지세 분담액(1/2)을 분양계약자의 잔금에서 차감합니다. 정부수",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 4,
+            "text": "아파트 공급계약서, 발코니확장 및 추가선택품목 계약서는 「인지세법」 제3조 제1항 제1호에 따라 인지세 납부 대상으로, 공급계약 체결 시 사업주체와 분양계약자는 과세기준에 해당하는 인지세를 각 1/2씩 분담하며, 분양계약자가 인지세 전액을 납부하고 사업주체는 인지세 분담액(1/2)을 분양계약자의 잔금에서 차감합니다. 정부수입인지는 취급 금융기관에 방문하여 구매하거나, 전자수입인지사이트(www.e-revenuestamp.or.kr)에서 발급가능하며, 보다 자세한 내용은 국세청 소비세과(☎126)로 확인하여 주시기 바랍니다. 기재금액 1천만원 초과∼3천만원 이하 3천만원 초과∼5천만원 이하 5천만원 초과∼1억원 이하 1억원 초과∼10억원 이하 10억원 초과 납부세액 2만원 4만원 7만원 15만원 35만원 ※ 공급계약서, 중간 전매계약서, 최종 전매계약서는 각각 인지세 납부 대상이 되는 부동산 소유권이전에 관한 증서에 해당하",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          },
+          {
+            "category": "payments",
+            "page": 5,
+            "text": "[단위 : 원, 세대] 계약금(10%) 중도금(60%) 잔금(30%) 타입 융자금 제외 융자금 주택형 (약식 동(라인) 층별 세대수 공급금액 1차(10%) 2차(10%) 3차(10%) 4차(10%) 5차(10%) 6차(10%) 계약 시 잔금 (주택",
+            "reviewed": false,
+            "extractionMethod": "automatic_pdf_text"
+          }
+        ],
         "eligibilityAutomaticallyConfirmed": false,
-        "note": "공식 PDF의 자동 발췌문입니다. 추출은 법적 판정이 아닙니다.",
-        "reason": "official_pdf_not_discovered"
+        "ruleEngine": {
+          "version": "v37.1",
+          "status": "preliminary",
+          "sourceUrl": "https://ws-thehue.com/download/왕숙한신더휴센텀 모집공고 전문.pdf",
+          "resale": {
+            "status": "needs_review",
+            "label": "전매제한",
+            "reason": "문서에 서로 다른 기간·대상 조건이 존재함",
+            "evidence": [
+              {
+                "status": "period_found",
+                "months": 36,
+                "page": 3,
+                "text": "따라 재당첨제한은 10년 적용되고, 「주택법 시행령」 제73조에 의해 전매제한이 3년 적용됩니다."
+              },
+              {
+                "status": "period_found",
+                "months": 120,
+                "page": 29,
+                "text": "■ 「주택법」, 「주택공급에 관한 규칙」에 따라 주택의 전매행위 제한을 위반한 경우, 위반자는 위반한 행위 적발일로부터 10년간 입주자격을 제한합니다."
+              }
+            ]
+          },
+          "occupancy": {
+            "status": "needs_review",
+            "label": "거주의무",
+            "reason": "명시적인 기간·적용 여부를 안전하게 확정할 수 없음",
+            "evidence": [
+              {
+                "page": 1,
+                "line": "재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형",
+                "context": "(공공분양) (2025.11.19. 이전부터 계속 거주) (2026.05.19. 이전부터 계속 거주) 서울특별시, 인천광역시 거주자 재당첨제한 전매제한 거주의무기간 분양가상한제 택지유형 공공택지"
+              }
+            ]
+          },
+          "eligibility": {
+            "rules": {},
+            "unknownRequirements": [
+              "공급유형별 요건",
+              "세대 전체 주택 소유",
+              "재당첨 제한",
+              "소득·자산·특별공급",
+              "우선공급 지역·기간",
+              "정정공고"
+            ],
+            "ambiguous": [],
+            "mode": "explicit_common_rules_only",
+            "positiveVerdictAllowed": false
+          }
+        },
+        "note": "공고문 출처와 명시적 문구 기반 사전 판정. 최종 법적 적격 판정은 아님.",
+        "pdfPageCount": 53,
+        "sourceClass": "linked_from_notice_or_issuer_page",
+        "reason": null,
+        "discovery": {
+          "pagesChecked": 4,
+          "candidatesChecked": 5,
+          "failures": []
+        }
       },
       "reviewV20": {
         "version": "v20-evidence-readiness",
@@ -21551,13 +21967,41 @@
         ],
         "investmentProfitVerified": false
       },
-      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
+      "privateMarketStatus": "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시",
+      "marketAnalysisV41": {
+        "version": "v41-source-separated",
+        "rows": [],
+        "quotes": [],
+        "sourceTotals": {
+          "same_apartment": 0,
+          "nearby_apartment": 0,
+          "rights_reported": 0,
+          "early_observation": 0,
+          "press_rights": 0
+        },
+        "rejectedEvidence": {
+          "no_type_match": 0,
+          "missing_price": 0,
+          "price_mismatch": 0
+        },
+        "noEvidenceReason": "확인 가능한 주택형별 거래 근거가 수집되지 않음",
+        "baseline": null,
+        "upsideLead": null,
+        "candidate": false,
+        "priceStatus": "reference_pending",
+        "maxObservedGapEok": null,
+        "note": "매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다."
+      }
     }
   ],
   "analysisQuality": {
     "activeNotices": 14,
+    "marketEngineVersion": "v42-ui-compatible-v41-ledger",
+    "marketAnalyzedNotices": 14,
+    "marketEvidenceNotices": 5,
+    "marketBaselineNotices": 0,
     "remainingNotices": 5,
-    "preciseSiteLocations": 6,
+    "preciseSiteLocations": 0,
     "priceReviewNotices": 0,
     "priceCautionNotices": 0,
     "unverifiedProfitNoticeCount": 14,
@@ -21593,8 +22037,12 @@
       "httpStatus": null
     },
     "earlyPriceReviewNotices": 0,
-    "algorithm": "v28-listing-price-fallback",
-    "autoExtractedPdfNotices": 0,
+    "algorithm": "v37-conservative-public-notice-rules",
+    "preliminaryRuleEngineNotices": 4,
+    "preliminaryResalePeriods": 1,
+    "preliminaryOccupancyPeriods": 0,
+    "commonEligibilityRulesDetected": 0,
+    "autoExtractedPdfNotices": 4,
     "reviewedPdfNotices": 0,
     "noticePdfPending": 14
   }
