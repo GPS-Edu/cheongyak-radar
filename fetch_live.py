@@ -2364,6 +2364,19 @@ def main():
               f"거래군 {sum(len(m['bands']) for m in broad['byType'])}개")
     print(f"v47 시장 탐색 신호: {broad_hits}/{len(projects)}개 공고")
 
+    # v49: project-wide new-build-aware comparison. Every notice receives the
+    # same multi-type, source-separated discovery evaluation, including rights.
+    from market_v49 import analyse as analyse_newbuild
+    for project in projects:
+        district = identify_district(project)
+        district_code = district[0] if district else None
+        apartment_rows = district_trades.get(district_code, [])
+        rights_rows = rights_by_district.get(district_code) or []
+        project["marketV49"] = analyse_newbuild(project, apartment_rows, rights_rows, today)
+        a = project["marketV49"]
+        print(f"v49 신축 중심 탐색: {project['name']} | 신호 {a['signalCount']}개 | "
+              f"연식별 거래군 {a['marketCohortCount']}개 | 입주권 신호 {a['rightsSignalCount']}개")
+
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
@@ -2405,6 +2418,10 @@ def main():
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
     }
+    quality_summary["marketEngineVersion"] = "v49-newbuild-by-unit-and-rights-separated"
+    quality_summary["v49MarketNotices"] = sum(bool(p.get("marketV49", {}).get("marketCohortCount")) for p in projects)
+    quality_summary["v49CandidateNotices"] = sum(bool(p.get("marketV49", {}).get("candidate")) for p in projects)
+    quality_summary["v49RightsSignalNotices"] = sum(bool(p.get("marketV49", {}).get("rightsSignalCount")) for p in projects)
     quality_summary["broadMarketCandidateNotices"] = broad_hits
     quality_summary["broadMarketAnalyzedNotices"] = len(projects)
     print("분석 품질 요약:", json.dumps(quality_summary, ensure_ascii=False))
