@@ -210,6 +210,9 @@ def convert_remaining(row, today):
         "market": None, "marketComparable": False, "requirements": None,
         "officialUrl": (str(row.get("PBLANC_URL") or "").strip() if str(row.get("PBLANC_URL") or "").strip().startswith("https://") else None),
         "officialFacts": official_facts(row),
+        "developerUrl": next((str(row.get(k)).strip() for k in
+            ("HMPG_ADRES", "HMPG_URL", "HOMEPAGE_URL", "BSNS_MBY_HMPG")
+            if str(row.get(k) or "").strip().startswith("https://")), None),
         "notes": "무순위·잔여세대 전용 API 수집 공고. 계약취소 여부 및 거주·주택보유 자격은 공고문 확인 필수.",
         "dataCategory": "remaining",
     }
@@ -250,6 +253,9 @@ def convert(row, today):
         "requirements": None,
         "officialUrl": official if official.startswith("https://") else None,
         "officialFacts": official_facts(row),
+        "developerUrl": next((str(row.get(k)).strip() for k in
+            ("HMPG_ADRES", "HMPG_URL", "HOMEPAGE_URL", "BSNS_MBY_HMPG")
+            if str(row.get(k) or "").strip().startswith("https://")), None),
         "notes": "청약홈 API에서 수집한 공고입니다. 가격은 주택형별 최고 공급금액이며, 자격과 일정은 모집공고문에서 확인하세요.",
     }
 
@@ -2305,7 +2311,7 @@ def main():
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
         from notice_auto import enrich_projects
-        limit = int(os.environ.get("NOTICE_PDF_MAX_PER_RUN", "15"))
+        limit = int(os.environ.get("NOTICE_PDF_MAX_PER_RUN", "30"))
         count = enrich_projects(session, projects, limit=limit)
         print(f"공식 PDF 자동 발췌: {count}/{min(len(projects), limit)}개 공고")
 
@@ -2327,7 +2333,11 @@ def main():
         "rightsApiUnavailableDistricts": sum(v is None for v in rights_by_district.values()),
         "rightsApiHealth": rights_error_summary,
         "earlyPriceReviewNotices": sum(bool((p.get("opportunity") or {}).get("earlyPriceSignals")) for p in projects),
-        "algorithm": "v28-listing-price-fallback",
+        "algorithm": "v37-conservative-public-notice-rules",
+        "preliminaryRuleEngineNotices": sum((p.get("noticeEvidence") or {}).get("ruleEngine", {}).get("status") == "preliminary" for p in projects),
+        "preliminaryResalePeriods": sum((p.get("noticeEvidence") or {}).get("ruleEngine", {}).get("resale",{}).get("status") == "period_found" for p in projects),
+        "preliminaryOccupancyPeriods": sum((p.get("noticeEvidence") or {}).get("ruleEngine", {}).get("occupancy",{}).get("status") == "period_found" for p in projects),
+        "commonEligibilityRulesDetected": sum(bool((p.get("noticeEvidence") or {}).get("ruleEngine", {}).get("eligibility",{}).get("rules")) for p in projects),
         "autoExtractedPdfNotices": sum(p["noticeEvidence"]["status"] == "auto_extracted_unreviewed" for p in projects),
         "reviewedPdfNotices": sum(p["noticeEvidence"]["status"] == "reviewed_excerpts" for p in projects),
         "noticePdfPending": sum(p["noticeEvidence"]["status"] != "reviewed_excerpts" for p in projects),
