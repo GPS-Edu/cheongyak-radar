@@ -2307,6 +2307,16 @@ def main():
             project["privateMarketStatus"] = "비공식 네이버 자동조회 비활성화 · 공식 실거래 표시"
         print("무료 웹 시세: 비활성화 · 국토부 실제 신고 거래를 우선 표시")
 
+    # v41: source-separated, model-matched price evidence. No synthetic market value.
+    from market_v41 import build_market_analysis
+    for project in projects:
+        project["marketAnalysisV41"] = build_market_analysis(project, today)
+        analysis = project["marketAnalysisV41"]
+        if analysis["upsideLead"]:
+            lead = analysis["upsideLead"]
+            print(f"v41 큰 가격차이 탐색: {project['name']} | {lead['type']} | "
+                  f"{lead['kind']} | +{lead['gapEok']}억 | 검토용")
+
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
     if os.environ.get("ENABLE_NOTICE_PDF_AUTO", "1") == "1":
