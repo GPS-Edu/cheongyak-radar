@@ -87,6 +87,18 @@
 .v52-lead{margin-top:10px;padding:10px;border-radius:10px;background:#fff4e9;border:1px solid #f1cfac}
 .v52-lead b{font-size:20px;color:#af4b03}
 .v52-card details{margin-top:9px}
+
+/* v54: concise, user-first legal summary; sources remain available on demand */
+.radar-v54-brief{border:1px solid #d7e6f5!important;padding:15px!important}
+.radar-v54-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.radar-v54-heading>strong{font-size:15px}.radar-v54-heading>span{font-size:11px;color:#64748b}
+.radar-v54-rows{display:grid;gap:0}.radar-v54-row{display:flex;align-items:center;justify-content:space-between;padding:10px 2px;border-bottom:1px solid #eef1f5;gap:12px;font-size:13px}
+.radar-v54-row span{color:#64748b}.radar-v54-row strong{color:#173e75;text-align:right}
+.radar-v54-expand{margin-top:13px;border-radius:10px;background:#f3f7fd;padding:10px 12px}
+.radar-v54-expand>summary{cursor:pointer;font-size:12px;font-weight:700;color:#2b65af}
+.radar-v54-expanded{padding-top:12px;font-size:12px;line-height:1.65}.radar-v54-source{padding-top:12px;border-top:1px solid #e2e9f3;margin-top:12px}.radar-v54-source p{margin:5px 0;color:#536780}
+.radar-v54-pdf{display:inline-block;margin-top:13px;color:#2466cb;font-size:12px;font-weight:700;text-decoration:none}
+.radar-v54-note{margin:9px 0 0;color:#8793a3;font-size:11px;line-height:1.5}
 </style><style>
 .v47-money{border:1px solid #f3c78e;background:#fff6e9;border-radius:14px;padding:14px;margin:12px 0;color:#603b13}.v47-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.v47-top span{font-size:10px}.v47-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}.v47-three>div{background:#fff;border-radius:9px;padding:9px 6px}.v47-three small{font-size:10px;display:block}.v47-three b{font-size:17px;display:block;margin-top:5px}.v47-cohort{padding:9px 0;border-bottom:1px solid #e4e7ee}.v47-legacy{margin:8px 0}.v47-legacy summary{font-size:11px;cursor:pointer;color:#596f8e}.v47-market-note{padding:8px 12px;border-radius:10px;background:#f4f6fa;font-size:11px;color:#61718c;margin:8px 0}@media(max-width:360px){.v47-three b{font-size:14px}}
 </style>
@@ -562,8 +574,17 @@ const legacyMoneyPanel=moneyPanel;
 function v50MarketPanel(p){
  const card=p.priceSummaryV52, market=v49Market(p), range=supplyRange(p);
  if(!card||card.version!=='v52-opportunity-summary'){
-  const stale=analysisQuality?.marketEngineVersion||'구버전 데이터';
-  return `<div class="v52-card"><strong>🔄 가격 분석 자료 버전 불일치</strong><p class="v52-proof">공급가 ${esc(range.label)} · 현재 데이터 ${esc(stale)}. 공식 공고는 계속 표시합니다. 최신 분석값은 아직 배포되지 않았습니다. GitHub Actions 수집·검증 로그를 확인하세요.</p></div>`;
+  // Earlier published data can still contain real, source-labeled price evidence.
+  // Do not erase it just because a newer presentation contract is absent.
+  const stale=analysisQuality?.marketEngineVersion||'이전 수집 형식';
+  const oldEvidence=market&&Array.isArray(market.byType)&&market.byType.some(t=>(t.bands||[]).length||(t.rights||[]).length||(t.extraRights||[]).length);
+  const ledger=v41Ledger(p);
+  const hasLedger=ledger&&((ledger.rows||[]).length||(ledger.quotes||[]).length);
+  let panel='';
+  if(oldEvidence)panel=v49Panel(p);
+  else if(hasLedger)panel=legacyMoneyPanel(p);
+  else panel=`<div class="v52-grid"><div><small>공식 공급가 범위</small><b>${esc(range.label)}</b></div><div><small>거래 비교</small><b>수집된 근거 없음</b></div></div>`;
+  return `<section class="v52-card"><strong>📊 기존 거래 근거로 가격 탐색</strong><p class="v52-proof">새 통합 분석 자료는 아직 게시되지 않았습니다. 현재 데이터: ${esc(stale)} · 이전 실거래 자료는 출처와 기준을 구분해 표시합니다. 확정 시세차익이 아닙니다.</p>${panel}<details><summary>데이터 갱신 문제 해결 방법</summary><p class="v52-proof">GitHub Actions에서 최신 수집 워크플로를 실행해 data.json을 갱신하세요. 수집 완료 후 이 화면의 공고 새로고침 버튼을 누르면 됩니다. 기존 자료가 없다면 가격을 임의로 생성하지 않습니다.</p></details></section>`;
  }
  const baseline=card.baseline, headline=card.headline;
  const selected=headline||baseline;
@@ -993,18 +1014,32 @@ function autoTaxHtml(p){
  const won=rate===null?'가격 미확인':Math.round(base*100000000*rate/100).toLocaleString('ko-KR')+'원';
  return `<div><strong>③ 취득세 자동 계산 · 일반세율 가정</strong><div class="facts" style="margin-top:10px"><span class="muted">분양가 기준</span><b>${hasPrice?esc(base.toFixed(4))+'억원':'미확인'}</b><span class="muted">가정 세율</span><b>${rate===null?'미확인':rate.toFixed(3)+'%'}</b><span class="muted">세액 계산 예시</span><b>${esc(won)}</b></div><p class="fineprint">최고 공급가격 주택형·일반 주택 유상취득 가정. 취득 시 주택 수, 규제지역, 취득시점, 면적, 취득 유형, 감면, 교육세, 농특세 등이 반영되지 않아 실제 납부세액은 자동 확정할 수 없습니다.</p></div>`;
 }
+function compactRuleValue(rule){
+ if(!rule)return '확인 중';
+ if(rule.status==='not_applicable_stated')return '해당 없음';
+ if(rule.status==='period_found'&&Number.isFinite(Number(rule.months))&&Number(rule.months)>0){
+  const months=Number(rule.months);const years=Math.floor(months/12);
+  return (years?years+'년':'')+(months%12?' '+months%12+'개월':'');
+ }
+ return '확인 중';
+}
 function verificationHubHtml(p){
  const n=p.noticeEvidence||{},engine=n.ruleEngine||{},pre=precheckEligibility(p);
- const official=engine.status==='preliminary';
  const pdf=n.sourceUrl&&/^https:\/\//.test(n.sourceUrl)?n.sourceUrl:null;
- const ruleBlock=(num,title,rule)=>`<div style="margin:16px 0"><strong>${num} ${title}</strong><p><span class="status-chip ${rule?.status==='needs_review'?'review':'good'}">${esc(safeRuleText(rule))}</span></p>${ruleCitationHtml(rule)}<p class="fineprint">해당 문서의 문구를 사전 분석했습니다. 예외·정정공고·주택형별 적용 여부는 법적 확정이 아닙니다.</p></div>`;
- const items=pre.checked.map(x=>`<li>${esc(x.label)}: <b>${esc(x.result)}</b>${x.evidence.length?' · '+esc(x.evidence[0].page)+'쪽':''}</li>`).join('');
- return `<div class="card" id="verificationHub" style="border:2px solid #dbe7f5"><strong>🔎 자동 분석 · 전매 / 거주 / 세금 / 신청 자격</strong><p class="small muted">공고문을 찾아 명시된 규정을 분석하고 내 조건과 자동 비교합니다. 사용자 확인 버튼은 필요하지 않습니다.</p><div class="tagrow"><span class="status-chip ${official?'review':'bad'}">${official?'공고문 기반 사전 분석':'공고 근거 불충분 · 판단 보류'}</span></div>
- ${ruleBlock('①','전매제한',engine.resale)}<div class="divider"></div>
- ${ruleBlock('②','거주의무',engine.occupancy)}<div class="divider"></div>
- ${autoTaxHtml(p)}<div class="divider"></div>
- <div style="margin:16px 0"><strong>④ 신청 자격 · 내 조건 자동 비교</strong><p class="small"><span class="status-chip ${pre.fail?'bad':'review'}">${esc(pre.status)}</span></p>${items?'<ul class="bullet">'+items+'</ul>':'<p class="small muted">공통 자격 규정을 확실히 식별하지 못해 임의 판정하지 않았습니다.</p>'}<p class="small muted">추가로 확인할 조건: ${esc(pre.remaining.join(' · '))}</p><p class="fineprint">공고에 여러 공급유형이 존재하므로 특정 공급유형의 자격을 전체 신청자에게 자동 적용하지 않습니다. '입력 조건과 일치'는 공식 적격 인증이 아닙니다.</p></div>
- ${pdf?`<p class="small"><a href="${esc(pdf)}" target="_blank" rel="noopener noreferrer">분석에 사용한 PDF 원문 · ${esc(n.sourceClass||'출처 미확인')} ↗</a></p>`:`<p class="small muted">공식 PDF를 확보하지 못했습니다. 원인: ${esc(n.reason||'출처 확인 중')}</p>`}<p class="fineprint">판정 엔진 ${esc(engine.version||'실행 전')} · 문서 출처/정정 여부가 불분명하면 보류 · 공고문 최종 확인 및 청약홈 인증 조회가 필요할 수 있습니다.</p></div>`;
+ const eligible=pre.fail?'조건 불일치 확인':pre.checked.length?'일부 조건 확인':'확인 중';
+ const summaryRow=(label,value)=>`<div class="radar-v54-row"><span>${label}</span><strong>${esc(value)}</strong></div>`;
+ const details=[];
+ const sections=[['전매제한',engine.resale],['거주의무',engine.occupancy]];
+ sections.forEach(([label,rule])=>{
+  const rec=Array.isArray(rule?.evidence)?rule.evidence:[];
+  if(rec.length)details.push(`<div class="radar-v54-source"><b>${label}</b>${rec.slice(0,2).map(e=>`<p>${esc(e.page||'?')}쪽 · ${esc(String(e.text||e.context||'').slice(0,400))}</p>`).join('')}</div>`);
+ });
+ if(pre.checked.length)details.push(`<div class="radar-v54-source"><b>내 조건 비교</b><p>${pre.checked.map(x=>esc(x.label+' — '+x.result)).join(' / ')}</p></div>`);
+ return `<div class="card radar-v54-brief" id="verificationHub"><div class="radar-v54-heading"><strong>🛡️ 청약 전 간단 확인</strong><span>참고용</span></div>
+ <div class="radar-v54-rows">${summaryRow('전매제한',compactRuleValue(engine.resale))}${summaryRow('거주의무',compactRuleValue(engine.occupancy))}${summaryRow('신청 자격',eligible)}</div>
+ <details class="radar-v54-expand"><summary>취득세 예상액·공고문 근거 보기</summary><div class="radar-v54-expanded">${autoTaxHtml(p)}${details.join('')||'<p class="small muted">확인 가능한 공고문 근거가 아직 없습니다.</p>'}</div></details>
+ ${pdf?`<a class="radar-v54-pdf" href="${esc(pdf)}" target="_blank" rel="noopener noreferrer">📄 모집공고문 보기 ↗</a>`:''}
+ <p class="radar-v54-note">신청 전 공식 공고에서 세부 자격을 확인하세요.</p></div>`;
 }
 function openDetail(id){currentId=id;const p=projects.find(x=>x.id===id);if(!p)return;let ev=evaluate(p),l=lottery(p),s=scheduleStatus(p),f=funding(p);let lines=[['지역',p.district],['공급 유형',p.kind],['분류 근거',p.kindBasis||'공고문 확인 필요'],['모집공고일',p.announce||'미확인'],['접수 시작',p.start||'미확인'],['접수 종료',p.end||'미확인'],['공고번호',p.notice||'미확인']];let facts=lines.map(([a,b])=>`<span class="muted">${esc(a)}</span><span>${esc(b)}</span>`).join('');let chips=ev.fails.map(x=>`<li style="color:#b84d50">✕ ${esc(x)}</li>`).join('')+ev.passes.map(x=>`<li>✓ ${esc(x)}</li>`).join('')+ev.unknown.map(x=>`<li>◌ ${esc(x)} · 공고 확인</li>`).join('');$('detailContent').innerHTML=`<div class="notice ${dataMode==='live'?'':'warning'}">${dataMode==='live'?'실제 공고 메타데이터 기반 · 최종 자격은 공고문 확인':'🧪 가상 공고 체험 화면입니다. 실제 신청할 수 없습니다.'}</div><div class="detail-hero"><div class="row"><span class="type ${noticeType(p)?'unsold':''}">${esc(p.kind)}</span><span style="font-size:36px">🏢</span></div><div><h2>${esc(p.name)}</h2><p>⌖ ${esc(p.district)} · ${esc(s.label)}</p></div></div><div class="card"><div class="flexbetween"><strong>기본 정보</strong><button class="bookmark ${saved.includes(p.id)?'active':''}" onclick="toggleSave('${esc(p.id)}')">${saved.includes(p.id)?'★':'☆'}</button></div><div class="divider"></div><div class="facts">${facts}</div></div>${personalValueHtml(p)}${discoveryInfo(p)}<div class="card"><strong>🏷️ 민간 매물 호가·KB 참고 시세 (선택 확인)</strong><p class="fineprint">무료 자동조회 결과는 네이버 매물 호가와 네이버 경유 KB 제공 시세를 구분합니다. 조회 실패 시 표시하지 않으며 직접 확인한 가격을 저장할 수도 있습니다.</p>${providerCardGrid(p)}<p class="fineprint">${esc(supplyRange(p).description)}</p></div>${actualDealCards(p)}${rightsOpportunityHtml(p)}${opportunityDetailHtml(p)}${sameComplexHtml(p)}<div class="card"><strong>📈 로또 청약 가격 비교 · 근거 종류별 확인</strong><div class="metrics"><div><small class="muted">공식 공급가 범위</small><b>${esc(supplyRange(p).label)}</b></div><div><small class="muted">${esc(rightsCardReference(p).label)}</small><b>${esc(rightsCardReference(p).value)}</b></div></div><div class="tagrow"><span class="status-chip ${l.score!==null&&l.score>=15?'good':'review'}">${esc(l.label)}</span></div><p class="small muted">${esc(l.reason)}</p><p class="fineprint">비교 적합성: ${p.marketComparable===true?"비교 검토 표시됨":"확인 전"} · 실거래가 출처와 거래 날짜를 확인하세요.</p><div class="fineprint">${dataMode==='live'?'선택된 가격 근거: '+esc(rightsCardReference(p).detail)+' · <b>근거 제한 / 예상 차익 아님</b>':'시세 출처: '+esc(p.marketSource||'연결 전')}</div><div class="warn">단순 가격 비교는 투자 수익이나 당첨 가능성을 보장하지 않습니다. 전매제한·거주의무·대출·세금·자금 마련 가능성도 확인하세요.</div></div>${housingTypesHtml(p)}${realisticComparableHtml(p)}${tradeStatisticsHtml(p)}${tradeCandidatesHtml(p)}<div class="card"><strong>💳 자금 계획 시뮬레이션</strong><p class="small muted">실제 대출 승인액·취득세·중도금 일정은 반영되지 않는 단순 가정입니다.</p><div class="facts"><span class="muted">계약금 추정</span><strong>${f.deposit===null?'공고 확인 필요':esc(money(f.deposit))}</strong><span class="muted">가정 대출 비율</span><strong>${f.loan===null?'미입력':f.loan+'%'}</strong><span class="muted">필요 자기자금 가정</span><strong>${f.estimated===null?'조건에서 설정':esc(money(f.estimated))}</strong><span class="muted">입력한 현금</span><strong>${f.cash===null?'미입력':esc(money(f.cash))}</strong></div><div class="tagrow"><span class="status-chip ${f.verdict==='가정상 현금 부족'?'bad':'review'}">${esc(f.verdict)}</span></div><div class="warn">※ 대출 가능 여부는 DSR·LTV·소득·규제·금융기관 심사에 따라 달라집니다. 실제 필요한 금액은 취득세, 옵션, 이자 및 이사비 등을 더해 따로 확인하세요.</div></div><div class="card"><strong>📅 청약 일정</strong><p class="small muted">${esc(p.start||'시작일 미확인')} ~ ${esc(p.end||'종료일 미확인')} · ${esc(s.label)}</p><div class="warn">⚠ 최종 모집공고문으로 자격·가격·접수일을 확인하세요.</div></div><button class="primary full" onclick="openOfficial()">${dataMode==='live'?'청약홈에서 공식 공고 확인':'청약홈 홈페이지 열기'} ↗</button>`; $('detailContent').insertAdjacentHTML('beforeend',officialFactsHtml(p)+fundingStepsHtml(p)+fundingSimulatorHtml(p)+riskChecklistHtml(p));updateFundingSimulator();$('detailContent').insertAdjacentHTML('beforeend',v20EvidenceHtml(p)+v20DocumentHtml(p)+v20FundingHtml(p)+layeredPriceEvidenceHtml(p)+priceDiscoveryHtml(p)+independentPriceCheckHtml(p));updateV20Funding();$('detailContent').insertAdjacentHTML('afterbegin',verificationHubHtml(p));
  const container=$('detailContent');
@@ -1101,11 +1136,11 @@ async function refreshLive(manual=false){
   const checked=payload.projects.map(normalize).filter(Boolean);
   if(!checked.length)throw Error('표시할 실제 공고 없음');
   dataMode='live';dataUpdated=payload.updated_at;analysisQuality=payload.analysisQuality||null;
-  projects=checked;dataError=Number(payload.dataSchemaVersion||0)<52?'가격 분석 구버전 데이터 · v52 배포 미완료':'';
+  projects=checked;dataError=Number(payload.dataSchemaVersion||0)<52?'가격 분석 데이터가 이전 버전입니다 · 기존 근거를 참고로 표시 중':'';
   // 마지막 정상 수집본만 기기에 저장. 네트워크 장애 시 가상 공고로 대체하지 않음.
   try{localStorage.setItem('radar-last-valid-live-v1',JSON.stringify(payload))}catch(_error){}
   processNewData(projects,payload.noticeEvents||[]);deadlineAlerts();
-  if(manual)showToast(dataError?'공고 갱신 · 가격 분석 구버전 확인':'공고와 가격 분석을 갱신했어요');
+  if(manual)showToast(dataError?'공고 갱신 · 가격 분석은 기존 근거를 표시 중':'공고와 가격 분석을 갱신했어요');
  }catch(error){
   dataError=String(error?.message||'네트워크 오류');
   let cached=null;
