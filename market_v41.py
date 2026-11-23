@@ -143,6 +143,14 @@ def build_market_analysis(project, today=None):
     # transaction evidence; rights and articles may never displace it.
     anchors = [x for x in ledger if x['kind'] in ('same_apartment', 'nearby_apartment') and x['grade'] >= 3]
     baseline = anchors[0] if anchors else None
+    # A nearby observation can aid discovery even without parcel geocoding.
+    # Keep it strictly separate from a coordinate-verified valuation anchor.
+    provisional_candidates = [x for x in ledger if
+        x['kind'] == 'nearby_apartment' and x['grade'] >= 2
+        and x['count'] >= 3 and x['date'] and x['ageDays'] is not None
+        and 0 <= x['ageDays'] <= 365]
+    provisional_candidates.sort(key=lambda x: (-x['count'], -x['grade'], x['date']))
+    provisional = provisional_candidates[0] if provisional_candidates else None
     # Missed-upside prevention: do not bury promising rights/article signals.
     upside = [x for x in ledger if x['gapEok'] >= 1.5 and x['gapPct'] >= 10]
     upside.sort(key=lambda x: (-x['gapEok'], -x['grade']))
@@ -153,8 +161,8 @@ def build_market_analysis(project, today=None):
         'noEvidenceReason': ('' if ledger else
             ('주택형·공급가 대조에서 제외된 자료 있음' if sum(rejected.values()) else
              '확인 가능한 주택형별 거래 근거가 수집되지 않음')),
-        'baseline': baseline, 'upsideLead': lead,
-        'candidate': bool(upside), 'priceStatus': 'reference_available' if baseline else 'reference_pending',
+        'baseline': baseline, 'provisional': provisional, 'upsideLead': lead,
+        'candidate': bool(upside), 'priceStatus': 'reference_available' if baseline else ('provisional_observation' if provisional else 'evidence_unavailable'),
         'maxObservedGapEok': lead['gapEok'] if lead else None,
         'note': '매매 실거래·분양/입주권·보도·호가·시세는 서로 다른 자료입니다. 단순 가격 차이는 수익이 아닙니다.',
     }

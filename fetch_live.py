@@ -1074,20 +1074,36 @@ def site_parcel_address(project):
     return m.group(1).strip()
 
 
+def _kakao_query_with_retry(session, endpoint, params, kakao_key):
+    """Retry transient failures without changing the location-evidence standard."""
+    import time
+    last_error = None
+    for attempt in range(3):
+        try:
+            response = session.get(endpoint, params=params,
+                headers={"Authorization": "KakaoAK " + kakao_key},
+                timeout=(8, 24))
+            if response.status_code in (429, 500, 502, 503, 504):
+                response.raise_for_status()
+            response.raise_for_status()
+            return response.json()
+        except (requests.RequestException, ValueError) as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(0.5 * (attempt + 1))
+    raise last_error
+
+
 def geocode_address(session, kakao_key, address, cache):
     if not kakao_key or not address:
         return None
     if address in cache:
         return cache[address]
     try:
-        response = session.get(
+        payload = _kakao_query_with_retry(session,
             "https://dapi.kakao.com/v2/local/search/address.json",
-            params={"query": address},
-            headers={"Authorization": "KakaoAK " + kakao_key},
-            timeout=15,
-        )
-        response.raise_for_status()
-        docs = response.json().get("documents") or []
+            {"query": address}, kakao_key)
+        docs = payload.get("documents") or []
         item = docs[0] if docs else None
         result = (float(item["y"]), float(item["x"])) if item else None
         if result and not (33 < result[0] < 39 and 124 < result[1] < 132):
@@ -1127,13 +1143,10 @@ def site_location(session, kakao_key, project, geo_cache, place_cache):
     key = (district[0], simple_name)
     if key not in place_cache:
         try:
-            resp = session.get(
+            payload = _kakao_query_with_retry(session,
                 "https://dapi.kakao.com/v2/local/search/keyword.json",
-                params={"query": simple_name, "size": 10},
-                headers={"Authorization": "KakaoAK " + kakao_key}, timeout=12,
-            )
-            resp.raise_for_status()
-            place_cache[key] = resp.json().get("documents") or []
+                {"query": simple_name, "size": 10}, kakao_key)
+            place_cache[key] = payload.get("documents") or []
         except (requests.RequestException, ValueError, AttributeError) as exc:
             print("단지 장소조회 보류:", type(exc).__name__)
             place_cache[key] = []
@@ -2320,7 +2333,22 @@ def main():
     analyzed = sum(bool(p.get("marketAnalysisV41")) for p in projects)
     with_rows = sum(bool((p.get("marketAnalysisV41") or {}).get("rows")) for p in projects)
     with_baseline = sum(bool((p.get("marketAnalysisV41") or {}).get("baseline")) for p in projects)
-    print(f"가격분석 데이터 생성: {analyzed}/{len(projects)}개 공고 | 근거 포함 {with_rows}개 | 비교 기준 충족 {with_baseline}개")
+    with_preview = sum(bool((p.get("marketAnalysisV41") or {}).get("provisional")) for p in projects)
+    print(f"가격분석 데이터 생성: {analyzed}/{len(projects)}개 공고 | 근거 포함 {with_rows}개 | 엄격 기준 충족 {with_baseline}개 | 조건부 관측가 {with_preview}개")
+
+    # v44: first-party public trade observation independent from Kakao geocoding.
+    # Keep this separate from strictly spatially verified valuations.
+    from market_observation import observe as observe_same_dong
+    for project in projects:
+        district = identify_district(project)
+        rows = district_trades.get(district[0], []) if district else []
+        legal_dong = identify_legal_dong(project.get("district", ""))
+        obs = observe_same_dong(project, rows, legal_dong, today)
+        project["localTradeObservations"] = obs
+        print(f"동일 법정동 관측: {project['name']} | {obs['status']} | "
+              f"주택형 자료 {len(obs['byType'])}개")
+
+    print("위치 API 독립 관측 자료:", sum(bool((p.get("localTradeObservations") or {}).get("byType")) for p in projects), "/", len(projects), "개 공고")
 
     # Automatically acquire and extract notice evidence from public official notice links.
     # No asserted eligibility or resale period is derived from unreviewed excerpts.
@@ -2332,10 +2360,12 @@ def main():
 
     quality_summary = {
         "activeNotices": len(projects),
-        "marketEngineVersion": "v42-ui-compatible-v41-ledger",
+        "marketEngineVersion": "v44-local-trade-observations-v41-ledger",
+        "localObservationNotices": sum(bool((p.get("localTradeObservations") or {}).get("byType")) for p in projects),
         "marketAnalyzedNotices": analyzed,
         "marketEvidenceNotices": with_rows,
         "marketBaselineNotices": with_baseline,
+        "marketProvisionalNotices": with_preview,
         "remainingNotices": sum(p.get("dataCategory") == "remaining" for p in projects),
         "preciseSiteLocations": sum(bool((p.get("referenceMarket") or {}).get("locationConfirmed")) for p in projects),
         "priceReviewNotices": sum(p["opportunity"]["tier"] == "priority_review" for p in projects),
